@@ -1,0 +1,27 @@
+{
+ "tb_train": 538,
+ "tb_dedup": 401,
+ "p4_train_qwen3-4b_T0_agent": 344,
+ "p4_dedup": 370,
+ "eval_qwen3-4b_T0_agent": 383,
+ "p4_train_qwen3-4b_T1": 365,
+ "eval_qwen3-4b_T1": 386,
+ "p4_train_qwen3-4b_T1r2": 368,
+ "eval_qwen3-4b_T1r2": 390,
+ "p4_train_qwen3-4b_T3": 353,
+ "eval_qwen3-4b_T3": 397,
+ "p4_train_qwen3-8b_T0_agent": 279,
+ "eval_qwen3-8b_T0_agent": 369,
+ "p4_train_qwen3-8b_T1": 286,
+ "eval_qwen3-8b_T1": 393,
+ "train_total": 2533,
+ "train_p3_tables": {
+  "public_abalone.csv": 318,
+  "public_auto_mpg_v4.csv": 317,
+  "public_bike_v4.csv": 347,
+  "public_penguins_v3.csv": 320,
+  "public_student.csv": 356,
+  "public_wine_quality.csv": 337
+ },
+ "train_tb_tables": 29
+}

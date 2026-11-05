@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.DS_Store
+.venv/
+# external dependency, cloned by scripts/setup_toxicbench.sh
+data/toxicbench/
+# regenerated logs / intermediate outputs
+experiments/results/
+results.tsv
+# model weights and trained scorer members
+models/
+vllm.log

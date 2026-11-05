@@ -1,0 +1,11 @@
+# Versions used for every reported number. Python 3.11+.
+# CPU-only analysis (steps 0-4) needs the first four; the P5 scorer also needs torch/transformers/peft/accelerate.
+# P4 agent runs additionally need a vLLM server (scripts/serve_vllm.sh), installed on the GPU machine.
+numpy==2.5.4
+pandas==3.1.0
+scipy==1.18.1
+scikit-learn==1.9.1
+torch==2.15.0
+transformers==5.22.1
+peft==0.21.2
+accelerate==1.15.0

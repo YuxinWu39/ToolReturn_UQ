@@ -1,0 +1,44 @@
+{
+ "public_penguins_v3.csv": {
+  "sha256": "f204db2c753b0937caac3cb35258562c14f073e4bbc76be24b4c51ce22767a93",
+  "license": "CC0",
+  "cite": "Horst et al. palmerpenguins",
+  "source": "public_penguins_v3.csv",
+  "rows": 344
+ },
+ "public_auto_mpg_v4.csv": {
+  "sha256": "240f4657d747fe105f3c992251daba65f926ef54c4dec3cde34e398e8cf5da9c",
+  "license": "CC BY 4.0",
+  "cite": "UCI 9, doi:10.24432/C5859H",
+  "source": "public_auto_mpg_v4.csv",
+  "rows": 398
+ },
+ "public_bike_v4.csv": {
+  "sha256": "e03de4ee4ef4dc376ac6e04bf829673c6269e8eba5c60fa121640fa2f829504f",
+  "license": "CC BY 4.0",
+  "cite": "UCI 275, doi:10.24432/C5W894",
+  "source": "public_bike_v4.csv",
+  "rows": 17379
+ },
+ "public_wine_quality.csv": {
+  "sha256": "428bd8df7313b159988405ae5e3be6d363993d73f7ffc2adedfdc1d496508191",
+  "license": "CC BY 4.0",
+  "cite": "UCI 186, doi:10.24432/C56S3T",
+  "source": "https://archive.ics.uci.edu/static/public/186/data.csv",
+  "rows": 6497
+ },
+ "public_abalone.csv": {
+  "sha256": "25f3dc964447fcb3d68cf1048c04ed69d1474771c4fb34318e10778800a4342f",
+  "license": "CC BY 4.0",
+  "cite": "UCI 1, doi:10.24432/C55C7W",
+  "source": "https://archive.ics.uci.edu/static/public/1/data.csv",
+  "rows": 4177
+ },
+ "public_student.csv": {
+  "sha256": "5be7b02f13f5800fddd66e2c8d834cd00ece14c552fb404def2397b31b63236b",
+  "license": "CC BY 4.0",
+  "cite": "UCI 320, doi:10.24432/C5TG7T",
+  "source": "https://archive.ics.uci.edu/static/public/320/data.csv",
+  "rows": 649
+ }
+}

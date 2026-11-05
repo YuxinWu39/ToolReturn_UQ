@@ -1,0 +1,4 @@
+{"dataset": "public_auto_mpg_v4.csv", "template": "filtered", "op": "mean", "column": "horsepower", "filter": ["cylinders", "6"], "group": null, "reason": "oracle_mismatch_or_zero", "pandas": 101.50602409638554, "stdlib": NaN}
+{"dataset": "public_auto_mpg_v4.csv", "template": "filtered", "op": "mean", "column": "horsepower", "filter": ["origin", "1"], "group": null, "reason": "oracle_mismatch_or_zero", "pandas": 119.04897959183674, "stdlib": NaN}
+{"dataset": "public_auto_mpg_v4.csv", "template": "filtered", "op": "mean", "column": "horsepower", "filter": ["model_year", "71"], "group": null, "reason": "oracle_mismatch_or_zero", "pandas": 107.03703703703704, "stdlib": NaN}
+{"dataset": "public_bike_v4.csv", "template": "grouped", "op": "sum", "column": "hum", "filter": null, "group": "windspeed", "reason": "empty_filter"}
