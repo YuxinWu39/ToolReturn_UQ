@@ -412,3 +412,65 @@ used / all toxic runs and used / poison-fired runs (per the review: 91.3% vs 97.
 
 Not re-run: the k-sweep (unaffected), the scorer (its eval files are built by build_dataset.py from the same first
 scalar events; the exposure caveat applies to its head-5 interpretation and is noted, numbers unchanged at chance).
+
+## F9 (A-P4-Gemini, 2026-11-07) — Gemini Flash external replication and scalar coverage
+
+Protocol commit `4fa7740` precedes generation. Collection implementation `f01f8bf`;
+`gemini-3.8-flash`, T1, low reasoning effort, provider-default sampling, no API seed,
+same 210 tasks and ReAct prompt, eight-step limit. Independent clean repeats 0 and 1
+and toxic repeat 0 produced 630 complete trajectories. The twelve disjoint shards
+were merged after verifying one row per task per repeat. All stored metrics match
+recomputation with the pinned ToxicBench evaluator. Data and machine-readable
+summary are under `data/ours/p4/gemini-3.8-flash/T1/`.
+
+| Run | Tasks | Task success | Poison fired | Poison adoption | Subsequent-evidence flag | Recovery |
+|---|---:|---:|---:|---:|---:|---:|
+| Clean 0 | 210 | 200 | 0 | 0 | 0 | 0 |
+| Clean 1 | 210 | 198 | 0 | 0 | 0 | 0 |
+| Toxic 0 | 210 | 131 | 128 | 72 | 55 | 50 |
+
+Conditional on the 128 actually exposed runs, poison adoption was
+72/128 = 56.2%,
+and recovery was 50/128 =
+39.1%. The legacy `poisoned_answer_used` flag
+counts mentions and was 73/210; 72 of those
+were exposed. The final-answer anomaly keyword flag was zero. Recovery is an outcome
+after further evidence calls. Intentional error detection requires separate annotation.
+In 37/50 recovery trajectories,
+a Python tool error also occurred after the poisoned return, so retry and harness behavior
+are material to interpreting recovery. Under poison_once, later successful tool calls
+can return the true result.
+
+Of the 128 first poisoned observations, 35 were scalar under the existing parser
+(26 adoptions, 9 recoveries), and 93 were non-scalar (46 adoptions, 41 recoveries).
+This output-format difference and the model-specific sampling settings limit
+direct comparison with the Qwen rates. The 82 toxic runs without a fired poison
+are separately visible in the summary.
+
+**H5 is not confirmed.** The registered subtle slice contains 73 eligible tasks,
+but only 7 paired scalar tasks from 3 tables
+have valid confidence on both sides. Their within-table AUROC is
+0.556, table-bootstrap 95% interval
+[0.500, 0.667]; the upper endpoint exceeds 0.60.
+The plausible+subtle secondary slice has 17/178 paired tasks
+from 5 tables, AUROC 0.520
+[0.500, 0.560]. These are diagnostics for selected
+scalar events. The low coverage and missing tables prevent a full-task confidence claim.
+A dedicated obvious-corruption sanity control for verbalized confidence was not collected,
+so these estimates are withheld from positive signal-quality headlines.
+
+Confidence was a valid integer in 731/769
+shadow requests. Among valid replies, 711 were 100.
+All 630 trajectories had parseable final answers and zero intermediate action parse errors.
+The two clean repetitions disagree on success for 4/210 tasks.
+
+Formal responses recorded 1679 live and 769
+shadow requests, 1,260,597 input tokens and
+125,680 output tokens. At Google's listed introductory prices
+of $0.75/M input and $3.75/M output, recorded formal usage estimates to
+$1.42. Pilot usage adds about $0.04. This estimate covers saved response usage.
+The run used Python 3.11.13 / NumPy 1.26.4 / pandas 2.2.3 / SciPy 1.10.1 /
+scikit-learn 1.7.0, which differs from the original requirements file.
+The protocol, manifest, environment and trajectory hashes are recorded in the run directory.
+
+[Google pricing](https://ai.google.dev/gemini-api/docs/pricing).

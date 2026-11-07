@@ -307,3 +307,27 @@ actually-seen rows is 0.61-0.62 (was reported 0.58) with coverage 0.48 — "no h
 reworded. Preview-seen vs not compliance: 98-99% vs 95%.
 Still open from the review (not done here): worker-process isolation for model code (SAFE_BUILTINS audit), the
 anomaly_detection flag definition in the paper, both compliance denominators in Table 1, Gemini protocol (collaborator).
+
+## 2026-11-07 — Gemini Flash T1 external replication
+
+```
+Step: A-P4-Gemini, 630 trajectories and paired scalar confidence summary
+1 Protocol-before-results  4fa7740 precedes all Gemini generation. Collection code f01f8bf. [x]
+2 Hypothesis served        H5 external replication; 7/73 subtle tasks paired, upper CI 0.667. [x]
+3 Sanity check             20/20 clean smoke success; paired pilot poison delivered.
+                           Four Flash regression tests pass. 630 rows, no missing/duplicate
+                           task-replicates; all upstream metrics and event steps rechecked.
+                           Six table checksums match provenance. Dedicated confidence
+                           sanity corruption control uncollected; H5 diagnostic only. [x]
+4 Confirmatory/exploratory Registered H5 statistic not confirmed. Coverage and behavioral
+                           diagnostics qualify scope. No signal-quality headline. [x]
+5 Claim scope              72/128 exposed runs adopt poison, 50 recover. 35 exposures scalar.
+                           Strong closed model does further tool work under poison_once.
+                           No universal blind-compliance or intentional-detection claim. [x]
+6 Reviewer objection       Different return formatting, sampling and tool-error retries.
+                           Per-format counts, raw traces and runtime versions reported. [x]
+7 Workshop fitness         Adds a closed-family boundary to F5-F8. Results recorded as F9. [x]
+Verdict: PASS for collection; H5 not confirmed and limited by scalar coverage.
+Recorded formal usage: 1,260,597 input / 125,680 output tokens.
+Estimated formal API usage cost: $1.42; pilot approximately $0.04.
+```

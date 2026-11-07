@@ -1,0 +1,21 @@
+{
+  "protocol_commit": "4fa7740",
+  "model": "gemini-3.8-flash",
+  "tier": "T1",
+  "shards": 12,
+  "created_utc": "2026-11-07T08:18:21Z",
+  "task_sha256": "266432d9ea64f13d401ac59138fb3995e9be6b511970bf4998268e7097047f93",
+  "code_sha256": {
+    "macos_p4_worker.py": "7a303d6be968894133f522dc1753b9f15e95620b8cb86eb250674f72efc0de35",
+    "p4_run.py": "e68ae097719d94fa32325b5d5376fd070141641b91d34f5470d229ade3ce13d2"
+  },
+  "python": "3.11.13 (main, Jun  5 2025, 08:21:08) [Clang 14.0.6 ]",
+  "settings": {
+    "live_max_tokens": 2048,
+    "shadow_max_tokens": 512,
+    "max_steps": 8,
+    "reasoning_effort": "low",
+    "api_seed": null,
+    "sampling": "provider_default"
+  }
+}

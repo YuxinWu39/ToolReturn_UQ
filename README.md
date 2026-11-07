@@ -34,6 +34,10 @@ cd experiments
 .venv/bin/python p4_score_zeroparam.py --agent qwen3-4b --tier T1   # reproduces F5 from committed trajectories
 ```
 
+A Gemini Flash T1 replication adds 630 trajectories. Its output formatting leaves 7/73 subtle tasks
+with paired scalar confidence, and H5 is not confirmed. Run instructions and scope are in
+[docs/GEMINI_FLASH.md](docs/GEMINI_FLASH.md); results are in [findings.md, F9](findings.md#f9-a-p4-gemini-2026-11-07--gemini-flash-external-replication-and-scalar-coverage).
+
 All agent trajectories and scored events are committed under `data/ours/`, so every number in
 `findings.md` except the agent runs themselves can be recomputed on a CPU. See [AGENTS.md](AGENTS.md) for the
 end-to-end pipeline and what every file does.

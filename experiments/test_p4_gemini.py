@@ -5,6 +5,7 @@ import unittest
 from unittest.mock import patch
 
 from p4_run import GEMINI_BASE, GEMINI_MODEL, SeededClient
+from p4_summarize_gemini import confidence_for_event, paired_auc
 
 
 class FlashTest(unittest.TestCase):
@@ -49,6 +50,35 @@ class FlashTest(unittest.TestCase):
         self.assertTrue(payload["logprobs"])
         self.assertEqual(payload["seed"], 1)
         self.assertEqual(payload["temperature"], .7)
+
+
+class GeminiSummaryTest(unittest.TestCase):
+    def setUp(self):
+        self.run = {
+            "tool_events": [
+                {"step": 1, "tool_name": "python_exec", "returned_observation": "ERROR: fail", "was_poisoned": False},
+                {"step": 2, "tool_name": "python_exec", "returned_observation": "12", "was_poisoned": True},
+            ],
+            "completions": [
+                {"after_observation": {"tool": "python_exec", "step": 1}, "verbalized": {"confidence": 5}},
+                {"after_observation": {"tool": "python_exec", "step": 2}, "verbalized": {"confidence": 100}},
+            ],
+        }
+
+    def test_confidence_follows_selected_scalar_after_error(self):
+        self.assertEqual(confidence_for_event(self.run, True), 100)
+        self.run["completions"].pop()
+        self.assertIsNone(confidence_for_event(self.run, True))
+
+    def test_ties_and_missing_pairs(self):
+        tasks = [{"task_id": "a", "dataset": "table", "meta": {"severity_logratio": "subtle"}}]
+        result = paired_auc(tasks, {"a": self.run}, {"a": self.run}, {"subtle"})
+        self.assertEqual(result["within_table_auroc"], .5)
+        self.assertEqual(result["ci95"], [.5, .5])
+        self.run["completions"][1]["verbalized"]["confidence"] = None
+        result = paired_auc(tasks, {"a": self.run}, {"a": self.run}, {"subtle"})
+        self.assertEqual(result["paired_tasks"], 0)
+        self.assertIsNone(result["within_table_auroc"])
 
 
 if __name__ == "__main__":

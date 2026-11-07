@@ -1,0 +1,38 @@
+{
+  "rows": 630,
+  "missing_task_replicates": 0,
+  "duplicate_task_replicates": 0,
+  "recomputed_upstream_metric_mismatches": 0,
+  "tool_step_alignment_mismatches": 0,
+  "datasets_verified_against_provenance": 6,
+  "protocol_commit": "4fa7740",
+  "collection_code_commit": "f01f8bf",
+  "environment": {
+    "python": "3.11.13",
+    "numpy": "1.26.4",
+    "pandas": "2.2.3",
+    "scipy": "1.10.1",
+    "scikit-learn": "1.7.0"
+  },
+  "analysis_code_sha256": {
+    "experiments/p4_summarize_gemini.py": "e0cbdc43c6c6fed3a500409e4f84a8acafb443af72e65772e847500657b82465",
+    "experiments/p4_score_zeroparam.py": "d6915746e59d895cbcdf38aa381353ab2d5f9c15f9a33a1215738bddcdd3697e"
+  },
+  "trajectory_sha256": {
+    "clean_seed0.jsonl": "13991df60886b0a72663a56581258a037b1e1a590954c5e903e045f84032fbb1",
+    "toxic_seed0.jsonl": "bd160cc5c29afc0654d27394235161cfebf8f713da9884311ec76e9f13d0d757",
+    "clean_seed1.jsonl": "982e66483778019054085e835e613cc62c6171620fcf7db990f78e965fe04b6d"
+  },
+  "pilot_usage": {
+    "prompt_tokens": 32405,
+    "completion_tokens": 4815,
+    "total_tokens": 37220
+  },
+  "formal_estimated_usd": 1.41674775,
+  "pricing_basis": {
+    "input_per_million_usd": 0.75,
+    "output_per_million_usd": 3.75,
+    "source": "https://ai.google.dev/gemini-api/docs/pricing"
+  },
+  "sanity_control": "A dedicated obvious-corruption verbalized-confidence control was not collected. H5 is not confirmed."
+}

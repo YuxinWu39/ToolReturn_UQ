@@ -30,7 +30,7 @@ hypotheses:
   - {id: H2, statement: "A-P4: for 0d and 7 separately, AUROC minus prior (4): lower CI > 0.20 at T0_agent, upper CI < 0.10 at T1", status: pending, priority: high}
   - {id: H3, statement: "Clean-only scorer transfers to held-out corruption types (sign_flip, label_swap): drop < 0.05; BCE classifier drop > 0.15", status: pending, priority: medium}
   - {id: H4, statement: "Signal ranking is stable across open agents (Kendall tau > 0.7)", status: pending, priority: medium}
-  - {id: H5, statement: "Closed agents: verbalized subtle-tier AUROC < 0.60", status: pending, priority: medium}
+  - {id: H5, statement: "Closed agents: verbalized subtle-tier AUROC < 0.60", status: not-confirmed, priority: medium, result: "A-P4-Gemini: 630 runs; subtle paired scalar 7/73 tasks, 3 tables; AUROC 0.556 [0.500,0.667]. Upper CI misses 0.60; low coverage. See F9."}
   - {id: H6, statement: "Amended: consumed-observation-failure events have higher scorer surprise (7) and re-execution distance (0d) than capability-failure events (d > 0.5); intrinsic signals do not differ (|d| < 0.2). 0a arm removed. Exploratory if either class < 50 events", status: exploratory, priority: high, note: "25 observation-failure pairs at subtle/numerical (taxonomy 2026-10-31)"}
   - {id: G1, statement: "PILOT GATE: observation failures >= 15% of all failures in paired runs, else C2 is dropped", status: supported, priority: high, parent: H6, result: "A-P1: excess toxic-failure 18.7pp [15.1,22.3] overall, 22.4pp numerical; noise-corrected share 0.55 / 0.43"}
   - {id: G2, statement: "PILOT GATE: range check with min/max removed (head-5 tier) AUROC > 0.90 on aggregate_scale -> activate 'rules suffice' narrative fork and pull env-2 forward", status: expected-to-fail-by-bound, priority: high, parent: H2, result: "A-P3: hit-rate bound 0.5+0.5h = 0.84 at head-5 on plausible+subtle (< 0.90) and 0a covers 29% of tasks (< 50%); decided formally at P4"}
@@ -39,7 +39,7 @@ experiments:
   proxy_metric: "AUROC (pooled and within-table) + AUPRC on subtle+plausible tiers at the head-5-no-minmax context tier"
   baseline_value: null
   best_value: null
-  total_runs: 10
+  total_runs: 11
   trajectory:
     - {run_id: taxonomy_001, hypothesis: G1, metric_value: 0.6014, change_summary: "3633 pairs classified; silent override 8%", timestamp: "2026-10-31"}
     - {run_id: range_check_001, hypothesis: G2, metric_value: 0.9229, change_summary: "0a@T1 aggregate_scale; coverage 283/1153 poisoned; no subtle events in scope", timestamp: "2026-10-31"}
@@ -53,6 +53,8 @@ experiments:
     - {run_id: ksweep2_001, hypothesis: H2, metric_value: 0.173, change_summary: "A-P3c: 0o oracle 0.79@k5 vs 0d 0.62; 0o-0d CI [0.16,0.19] -> estimator (SUPERSEDED: 0o does not condition on the draw)", timestamp: "2026-10-31"}
     - {run_id: ksweep2_002, hypothesis: H2, metric_value: 0.111, change_summary: "A-P3d: 0o* draw-conditioned 0.73@k5 vs 0d 0.62; estimator loss CI [0.10,0.13] -> estimator loss; oracle knowledge 0o-0o* 0.06; unfiltered mean/median 0r_log 0.71 ~ 0o* 0.73", timestamp: "2026-10-31"}
     - {run_id: range_check_003, hypothesis: C3, metric_value: 0.446, change_summary: "A-P3d sum-type rule reclassifies 163/1568 events; 0d head-5 sanity now passes (0.95); 0d 0.83/0.71 at head-5", timestamp: "2026-10-31"}
+
+    - {run_id: gemini_flash_t1_001, hypothesis: H5, metric_value: 0.5555555555555555, change_summary: "630 Gemini Flash T1 trajectories; H5 not confirmed on 7/73 scalar pairs. 72/128 exposed adopt, 50 recover; scoped by output format and retries", timestamp: "2026-11-07"}
 
 outer_loop:
   cycle: 0

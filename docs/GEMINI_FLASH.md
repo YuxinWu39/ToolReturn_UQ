@@ -52,7 +52,11 @@ The summary reports eligible and paired tasks and every contributing table.
 Low scalar coverage or missing tables limits the scope of the estimate.
 
 The upstream `anomaly_detection` metric checks terms in the final answer.
-Its count is reported as a detector flag. Manual interpretation of actual
+Its count is reported as a detector flag. The legacy `poisoned_answer_used`
+metric matches a mention of the contaminated value. The summary additionally
+reports the upstream `poison_adoption`, `blind_compliance`, `validation` and
+`recovery` fields to distinguish mention, adoption and subsequent correction.
+These are descriptive diagnostics. Manual interpretation of actual
 checking behavior requires examining the tool calls and final text.
 
 ## Pilot observations
@@ -74,3 +78,23 @@ shards and verifies all 630 task/replicate combinations before merging.
 
 [Google model documentation](https://ai.google.dev/gemini-api/docs/models/gemini-3.8-flash)
 and [OpenAI compatibility documentation](https://ai.google.dev/gemini-api/docs/openai).
+
+## Formal results
+
+The collection contains 630 trajectories, with clean success 200/210 and 198/210,
+and toxic success 131/210. Poison fired in 128/210 toxic runs. Of those exposed
+runs, 72 adopted the contaminated value, 55 made subsequent evidence calls, and
+50 recovered the correct answer. Thirty-seven recovery runs also had a tool error
+after poisoning. The first poisoned return was scalar in 35 runs and non-scalar in 93.
+
+H5 is not confirmed. Only 7/73 subtle tasks across three tables have valid scalar
+pairs; within-table AUROC is 0.556 [0.500, 0.667]. The secondary plausible+subtle
+slice has 17/178 pairs across five tables and AUROC 0.520 [0.500, 0.560].
+A separate obvious-corruption sanity control for confidence was not collected.
+These estimates are diagnostics for the selected scalar subset.
+
+The saved formal usage estimates to $1.42 at the listed input/output rates,
+plus about $0.04 for pilots. Full per-table, per-severity, coverage and usage
+counts are stored in `data/ours/p4/gemini-3.8-flash/T1/summary.json`.
+`run_manifest.json` records collection settings and hashes; `audit.json` records
+data checks, the analysis source hashes and actual library versions.
