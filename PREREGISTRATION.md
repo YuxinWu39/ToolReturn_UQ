@@ -658,3 +658,19 @@ stopping or sample-size expansion. A promising context effect motivates a larger
 replication including Qwen and detector sanity controls; a null/negative effect or clean
 false alarms is equally reportable. This small, selected filtered-mean pilot cannot alone
 establish paper novelty, workshop acceptance, or general agent reliability.
+
+
+### A-CTX-PILOT implementation clarification (before collection, 2026-11-07)
+
+The independent pre-collection audit found no blocking pairing/leakage/scoring issue.
+The reused transport performs bounded retries internally without per-attempt telemetry.
+`transport_failures.jsonl` records only final failures after that retry policy, not each
+HTTP attempt; the number of internal retry attempts is unknown. Do not equate completed
+cells or failure-log lines with HTTP request attempts or total billable usage when an
+attempt times out. `packet_delivery.constructed` and `corrupted` are construction counts;
+report completed responses and their corrupted subset separately, especially for partial
+runs. Each condition has one frozen sample and one completion; the intervention includes
+the rows and their sampling-rule description. Severity is tied to query identity and
+perturbation direction to table identity; neither slice identifies a causal severity or
+direction effect. These clarifications precede all live A-CTX-PILOT calls and do not alter
+frozen messages or the 72-cell selection.
