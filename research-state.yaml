@@ -83,3 +83,16 @@ context_pilots:
     conclusion: no-stable-semantic-checking-benefit-established
     next: owner-runs-qwen-on-same-manifest
     report: docs/CONTEXT_PILOT_2026-11-07_gemini.md
+  - run_id: qwen3_8b_fixed_return_context_20261107
+    protocol: A-CTX-PILOT
+    status: exploratory-complete
+    feasibility_pass: true
+    queries: 12
+    table_clusters: 6
+    completed_cells: 72
+    schema_valid: 72
+    primary_contrast: matched20-minus-random20-clean-minus-corrupted-acceptance
+    estimate: 0.0
+    descriptive_ci95: [-0.3333333333333333, 0.3333333333333333]
+    conclusion: no-context-checking-benefit-does-not-replicate-gemini-direction-flips
+    report: findings.md#F10-addendum

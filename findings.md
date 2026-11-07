@@ -491,3 +491,38 @@ Primary matched20 minus random20 contrast in clean-minus-corrupted acceptance: +
 Strict counts include invalid outputs in denominators. Five invalids consist of three complete JSON replies wrapped in markdown fences and two length truncations; none was repaired or rerun. The main contrast includes format-related changes, not just semantic judgments. Ten valid reject replies still rate tool correctness at 95 or 98, suggesting confidence-scale noncompliance. No post-hoc score inversion. Confidence AUROC withheld: no live extreme-corruption sanity control. Some rationales quote standard-dataset population means; model priors/memorization cannot be ruled out. No claim that judgment uses only visible rows. Corrupted final answers never recover truth under the no-requery policy; rejecting replies abstain.
 
 All 72 packets were validated; 36 corrupted cells have completed responses. The 72 replies are repeated conditions of 12 queries, not 72 independent tasks. One sample and one completion per cell; severity and direction slices are descriptive. Independent protocol/results review: PASS-AS-EXPLORATORY. Full per-table/severity output, raw responses and Qwen reproduction command: [Chinese report](docs/CONTEXT_PILOT_2026-11-07_gemini.md).
+## F10 addendum — Qwen3-8B reproduction of the fixed-return context pilot (2026-11-07): the weak Gemini signal does NOT replicate
+
+Same frozen manifest (SHA d9c467df…, byte-identical to the Gemini run), same A-CTX-PILOT protocol, Qwen3-8B served
+locally via vLLM (temperature 0.7, seed 0), 72/72 cells completed, **72/72 strict-schema valid** (Gemini was 67/72).
+Run on an A10G GPU instance (24 GB), stopped after.
+
+| Context | Accept clean | Accept corrupted | Wrong scalar adopted |
+|---|---:|---:|---:|
+| head5 | 12/12 | 10/12 | 10 |
+| random20 | 10/12 | 9/12 | 9 |
+| matched20 | 12/12 | 11/12 | 11 |
+
+**Primary contrast matched20 − random20 (clean-minus-corrupted acceptance): 0.000, six-table bootstrap CI
+[-0.333, +0.333].** matched20 − head5 = -0.083; random20 − head5 = -0.083.
+
+**The context-checking benefit does not replicate and the direction flips.** Gemini rejected corrupted values
+*more* with matched rows (corrupted-accept 9→7→5 across head5/random20/matched20, contrast +0.083); Qwen3-8B
+accepts corrupted values at 9-11/12 in every context (contrast exactly 0.0), i.e. it accepts the poisoned scalar
+almost always regardless of what rows it is shown. Across the two models the matched20−random20 effect is
++0.083 (Gemini) vs 0.000 (Qwen) with CIs spanning zero in both — no stable, model-general evidence that showing
+more representative rows makes a prompted checker reject corrupted returns.
+
+**Consequences.**
+1. The "Gemini shows signs of improvement with more context" observation (F10) is now bounded: it did not hold in
+   Qwen and even reversed in direction. We do NOT claim a context-checking benefit. A-CTX-PILOT is reported as an
+   exploratory null across two models, consistent with the paper's descriptive framing of claim C3.
+2. This removes the motivation to spend the larger T_max free-running-agent run ($7, ~6 h) *to confirm a checker
+   benefit* — there is no replicated effect to confirm. T_max remains independently useful only for the different
+   question "does the free-running agent change behaviour with much more context" (C1 pressure test), not for C3.
+3. Confidence AUROC withheld for Qwen as for Gemini (no live extreme-corruption sanity arm; Qwen confidence means
+   83-90 on both clean and corrupted, same scale-noncompliance pattern).
+
+Data: `data/ours/context_pilot/20261107/qwen3-8b/{summary.json,scored_responses.json,config.json}` (72 raw
+responses retained on the instance disk). Independent recompute of the acceptance counts and primary contrast by
+the orchestrator matched the summarizer.
