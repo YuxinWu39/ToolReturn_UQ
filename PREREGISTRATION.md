@@ -579,3 +579,82 @@ tool-event step. Report negated confidence AUROC averaged over tables with both 
 (constant scores count as 0.5); support H5 if the 95% table-bootstrap upper endpoint is
 below 0.60. Report eligible tasks/tables and per-table estimates. Plausible+subtle is
 secondary. Report clean task success, poison fired/all toxic, used/all toxic and used/fired.
+
+
+## A-CTX-PILOT (2026-11-07, before controlled-context Gemini calls)
+
+**Purpose and scope.** Exploratory feasibility experiment for the proposed query-relevant
+evidence intervention. This is a single-turn, explicitly prompted tool-return audit, not
+a P4 free-running agent replication, H5 extension, recovery experiment, or novel-method claim.
+Owner: Yuxin Wu; authorized destination: Gemini API. Only the existing public CSV rows,
+query/code, and one candidate aggregate are sent. Qwen is left for the owner to run later.
+
+**Units and selection.** From `large_tables_v2.jsonl`, process datasets alphabetically and
+queries in file order. Select the first two distinct (column, filter) filtered-mean queries
+per table with >=20 matching rows having finite numeric targets, a positive finite truth,
+and a 1.10 reciprocal perturbation differing from truth by >2 times the existing oracle
+tolerance. Use `FastTemplate` for the full-table truth and verify agreement with the oracle.
+There are 12 queries, six source-table clusters, one model completion per condition.
+The first selected query per table uses factor 1.10, the second 1.50; even-indexed tables
+use multiplication, odd-indexed tables use the reciprocal. These replace original poison
+scales and are classified as subtle/plausible respectively. Freeze selected IDs, hashes,
+exact row indices, values, tolerances and requests in an immutable manifest before calls.
+
+**Treatment cells.** Cross three explicitly presented contexts with clean/corrupted returns:
+`head5` = first five full-table rows; `random20` = 20 uniform full-table rows without
+replacement; `matched20` = 20 uniform rows satisfying the query filter and having finite
+targets, without replacement. Show all columns, table shape/schema, and the actual sampling
+rule. No population min/max, true aggregate, true matching-population size, condition label,
+or clean/toxic label is shown. Use RNG seed 20261107 for row selection and randomized request
+order. Context and query/code are identical within each clean/corrupted pair. Candidate
+values for a query are identical across contexts. Each packet has exactly one aggregate
+field (`value`), without an unpoisoned answer alias. Total: 12 x 3 x 2 = 72 independent,
+stateless requests. The 72 cells are not 72 independent tasks. `matched20 - random20` is
+the primary contrast (sample count held fixed); `random20 - head5` changes both size and
+selection and cannot identify a pure row-count effect.
+
+**Prompt and response.** Common instructions ask whether a full-table mean tool return is
+trustworthy using partial evidence, prohibit another query, and permit abstention. Request
+one JSON object with `decision` in {accept,reject,uncertain}, integer `confidence` in 0..100
+(probability-like rating that the supplied tool value is correct), finite numeric `answer`
+or null, and string `reason`. Partial rows are explicitly not the full population. JSON
+format is requested in text for all models; no provider-specific structured-output mode.
+No extra formatting repair, outcome-based repeats, or shadow requests. This confidence is
+jointly elicited with the judgment, distinct from P4's shadow signal 3. Exact prompts are
+frozen in the manifest and their hashes stored with every result. No model code is executed.
+
+**Models and execution.** Gemini `gemini-3.8-flash`, low reasoning, provider-default sampling
+(omit temperature and seed), max_tokens=2048, no logprobs. Use the existing SeededClient
+transport/retry policy, at most four concurrent requests. A later Qwen run uses the same
+manifest/messages, temperature=0.7, seed=0, thinking disabled; compare treatments within
+model, not raw cross-model differences. Save model ID, usage, finish reason, full reply,
+start/end UTC, payload hash and failures. API secrets remain in process memory. Resume
+only cells without a completed response under the same manifest/model/runner hashes;
+retain transport failure attempts. Invalid JSON, empty/truncated replies and provider
+refusals are completed observations and never regenerated. Stop on authentication/config
+errors; transient failures may be retried by the bounded transport policy.
+
+**Measures.** For each context, show accept/reject/uncertain/invalid counts separately for
+clean and corrupted cells; actual corruption delivery; final numeric answer correctness;
+wrong-candidate adoption; null answers; confidence validity/distribution. Numeric grading
+uses only `answer`, never numbers in `reason`, with the existing absolute oracle tolerance.
+Wrong-candidate adoption requires matching the delivered corrupted scalar and failing the
+truth tolerance; `decision=accept` is a distinct trust measure. Null is abstention, not
+numeric success; invalid schema remains a failure in all-cell behavioral denominators.
+Primary per-query outcome: I(accept clean)-I(accept corrupted), with invalid counted as zero
+acceptance, supplemented by complete-pair estimates and explicit format coverage. Report
+paired query differences between contexts, equal-table mean and 95% percentile bootstrap
+resampling six tables (2000 draws, seed=1), plus each table and severity. Also show each
+component so rejecting everything cannot be presented as useful improvement. CIs with six
+clusters and two selected queries per table are descriptive, not broad-population proof.
+
+**Gates and decisions.** Offline invariants must verify exact pair delivery, frozen contexts,
+no hidden truth leakage, task semantics, strict parser, constant/missing-score behavior and
+resume hash checks. Live feasibility target is >=65/72 schema-valid responses and 72/72
+correctly constructed packets; failures remain visible. No live extreme-corruption sanity
+arm is included, so confidence AUROC and detector efficacy headlines are withheld under
+the repository sanity gate. No formal H1/H5 significance decision, no early efficacy
+stopping or sample-size expansion. A promising context effect motivates a larger preregistered
+replication including Qwen and detector sanity controls; a null/negative effect or clean
+false alarms is equally reportable. This small, selected filtered-mean pilot cannot alone
+establish paper novelty, workshop acceptance, or general agent reliability.
