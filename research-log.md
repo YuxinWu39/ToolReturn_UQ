@@ -331,3 +331,26 @@ Verdict: PASS for collection; H5 not confirmed and limited by scalar coverage.
 Recorded formal usage: 1,260,597 input / 125,680 output tokens.
 Estimated formal API usage cost: $1.42; pilot approximately $0.04.
 ```
+
+
+## 2026-11-07 — fixed-return context feasibility pilot
+
+```
+Step: A-CTX-PILOT, 12 queries x 3 contexts x 2 returns
+1 Protocol-before-results  bfaf713; request freeze 5da0d36 and clarification 41473be precede calls. [x]
+2 Hypothesis served        Query-relevant-evidence feasibility gate; does not amend H5. [x]
+3 Sanity check             Four new treatment/parser/resume/failure tests; four existing
+                           Gemini adapter tests. Frozen packets and hashes validated.
+                           Live extreme-corruption sanity absent; AUROC withheld. [x]
+4 Confirmatory/exploratory Exploratory selected-query pilot, one completion per cell. [x]
+5 Claim scope              Main contrast crosses zero and is format-sensitive. No stable
+                           semantic-checking benefit or free-agent recovery claim. [x]
+6 Reviewer objection       Six table clusters; fixed samples; standard-data priors;
+                           confidence semantics; invalids. Independent reviewer checked
+                           protocol and all replies; limitations and sensitivity added. [x]
+7 Workshop fitness         Tests a candidate intervention and exposes measurement issues;
+                           Qwen same-manifest reproduction left to owner. [x]
+Verdict: PASS-AS-EXPLORATORY; feasibility only, no detector efficacy headline.
+```
+
+Completed 72 cells, 67 schema-valid; primary effect +8.3pp [-16.7, +33.3]pp. Usage fields: prompt_tokens=101889, completion_tokens=5878, total_tokens=128020; fields do not sum, no price estimate. Internal transport retry count unknown; no final transport failures recorded. See F10 and docs/CONTEXT_PILOT_2026-11-07_gemini.md.

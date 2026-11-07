@@ -39,3 +39,8 @@
 4. **投稿。** 建议按 4 页 short paper 排版。主图呈现离线随机抽行曲线，实际 head-5 agent 点单独标注；主表比较 Qwen/Gemini。正文明确当前只观察一次工具返回与后续行动，跨任务持久状态、工具版本漂移及长期自我演化留作未测试范围。若仍有时间，优先评估预先锁定阈值的核验触发率、clean 误触发率与额外调用成本，披露 poison_once 下重查可恢复真实值。官方截止 2026-11-20 AoE，双盲、非归档，可投 4 页短文或 8 页全文。
 
 [Workshop 征稿](https://trust4rsi-agent.github.io/AAAI2027/) · [OpenReview](https://openreview.net/group?id=AAAI.org/2027/Workshop/Trust4RSI-Agent) · [Google Gemini OpenAI 兼容接口](https://ai.google.dev/gemini-api/docs/openai)
+
+
+## 后续实验记录（2026-11-07）
+
+新增固定返回、三种 context 的 Gemini pilot 已完成，独立于以上 P4 自由 agent 复现。结果、评分限制与 Qwen 复现命令见 [context pilot 报告](CONTEXT_PILOT_2026-11-07_gemini.md)。本条不替换以上历史审查。

@@ -474,3 +474,20 @@ scikit-learn 1.7.0, which differs from the original requirements file.
 The protocol, manifest, environment and trajectory hashes are recorded in the run directory.
 
 [Google pricing](https://ai.google.dev/gemini-api/docs/pricing).
+
+
+## F10 — Fixed-return context pilot, Gemini Flash (2026-11-07; exploratory)
+
+A-CTX-PILOT protocol `bfaf713`, collection code `7e5c662`, frozen requests `5da0d36`, pre-call clarification `41473be`. Completed 72/72 stateless audit responses, 67/72 strict-schema valid, across 12 selected filtered-mean queries and six tables. This is a prompted single-turn audit, not the free-running P4 agent.
+
+| Context | Accept clean | Accept corrupted | Wrong scalar adopted | Truth recovered from corrupted |
+|---|---:|---:|---:|---:|
+| head5 | 12/12 | 9/12 | 9/12 | 0/12 |
+| random20 | 12/12 | 7/12 | 7/12 | 0/12 |
+| matched20 | 11/12 | 5/12 | 5/12 | 0/12 |
+
+Primary matched20 minus random20 contrast in clean-minus-corrupted acceptance: +8.3pp, descriptive six-table bootstrap CI [-16.7, +33.3]pp. Not evidence of a stable benefit. Complete-valid-pair sensitivity: 8 queries/5 tables, +10.0pp [+0.0, +30.0]pp; selected support cannot remove missingness bias.
+
+Strict counts include invalid outputs in denominators. Five invalids consist of three complete JSON replies wrapped in markdown fences and two length truncations; none was repaired or rerun. The main contrast includes format-related changes, not just semantic judgments. Ten valid reject replies still rate tool correctness at 95 or 98, suggesting confidence-scale noncompliance. No post-hoc score inversion. Confidence AUROC withheld: no live extreme-corruption sanity control. Some rationales quote standard-dataset population means; model priors/memorization cannot be ruled out. No claim that judgment uses only visible rows. Corrupted final answers never recover truth under the no-requery policy; rejecting replies abstain.
+
+All 72 packets were validated; 36 corrupted cells have completed responses. The 72 replies are repeated conditions of 12 queries, not 72 independent tasks. One sample and one completion per cell; severity and direction slices are descriptive. Independent protocol/results review: PASS-AS-EXPLORATORY. Full per-table/severity output, raw responses and Qwen reproduction command: [Chinese report](docs/CONTEXT_PILOT_2026-11-07_gemini.md).
