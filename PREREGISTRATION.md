@@ -556,3 +556,26 @@ Slice (a) multi-number: not applicable to this scorer (scalar target); reported 
 [0.55, 0.70]; the scorer sees the same five rows as 0d but also the query and code, so it may exceed 0o* (0.58),
 which bounds checkers using only the template statistic. Above 0.70 would be a surprise and would be
 cross-checked for leakage (table identity memorised from column names).
+
+## A-P4-Gemini (2026-11-07, before live Gemini calls)
+
+Add an external replication on Google's stable `gemini-3.8-flash` at T1.
+Use the same 210 tasks, ReAct prompts, eight-step limit, and poison_once environment.
+Run clean replicates 0 and 1 and toxic replicate 0. Replicate IDs label independent requests.
+Use low reasoning effort and provider-default sampling for live and shadow requests
+because the 3.8 model deprecates custom temperature. Omit the API seed and token logprobs.
+Record response model, usage and finish reason separately for each live and shadow call.
+A strict 0–100 integer from the existing shadow prompt supplies signal 3. Invalid or
+missing confidences are missing observations. Keep the live trajectory independent of shadow answers.
+
+The integration check uses the runner's fixed 20 clean smoke tasks, followed by the first
+two tasks in file order in both environments. Keep these outputs separate from formal data.
+Inspect parseable nonempty final answers (target at least 18/20), step alignment, confidence
+coverage and poison delivery; exclude pilot results from H5. Report smoke failures and
+suspend full collection if the adapter fails. For the formal H5 test, use paired clean-0
+and toxic-0 tasks from the 73 subtle tasks with a valid score on both sides. Use the first
+clean scalar and the first poisoned scalar, matched to their following shadow requests by
+tool-event step. Report negated confidence AUROC averaged over tables with both classes
+(constant scores count as 0.5); support H5 if the 95% table-bootstrap upper endpoint is
+below 0.60. Report eligible tasks/tables and per-table estimates. Plausible+subtle is
+secondary. Report clean task success, poison fired/all toxic, used/all toxic and used/fired.
