@@ -361,3 +361,54 @@ estimate (residual on 0d) instead of the raw value, or evaluation on the random-
 of headroom. Paper consequence: the C3 column exists and is honest about failing; the paper's contribution
 rests on C1 (every signal, learned or not, is at chance under the default observation context, with the
 information-capacity curve explaining why) and C2.
+
+## F5/F6/F7 correction (2026-11-07) — three scoring defects fixed (p4_common.py); numbers re-derived on all six eval sets
+
+Source: external code review of the d0e7ba4 snapshot (collaborator, 2026-11-06). All three findings reproduced here and
+fixed; `experiments/test_p4_common.py` covers the fixed semantics. Raw before/after output: `data/ours/p4/_recheck/`.
+
+1. **Zero-parameter checks scored on the tier cap, not on what the agent saw.** `p4_score_zeroparam.py` took
+   `df.head(k)` from the tier. In Qwen3-4B runs the agent called `preview` before its first scalar `python_exec` in
+   only ~70% of runs (0 rows shown: 117/383 T0_agent, 115/386 T1, 117/390 T1r2); Qwen3-8B always previewed first
+   (0/393, 0/369). Fixed: rows and min/max are reconstructed from the preview events preceding the scored event
+   (`exposure_before`); 0 rows -> all row-based scores NA; 0a uses whole-column min/max only when the preview the
+   agent saw carried it (4B T0_agent: 266/383 events, not 383). `--exposure protocol` keeps the old reading.
+2. **Shadow-call misalignment.** `p4_score_intrinsic.py` zipped python_exec events with ERROR observations removed
+   against completions that kept them. Fixed: the i-th observation-following completion is matched to the i-th tool
+   event, ERROR included; tool-name mismatch -> missing. (`after_observation.n_tool_turns` is not a usable key: it
+   counts assistant turns, which parse-error retries inflate.) Affected runs: 4 in 4B T1r2, 0 in 8B.
+3. **Constant scores dropped instead of scored 0.5.** A table whose scores were all identical with both classes
+   present returned NA and left the within-table mean. Fixed: 0.5 (`auc_or_none`); NA only when a class is missing or
+   nothing is scored. Direction of this bug favoured us (dropped tables sit at 0.5).
+
+Also: the intrinsic scorer now checks the single-number condition on the scored event itself (previously only the
+zero-parameter scorer did), which removes 27-51 multi-value events per set; severity breakdowns use clean controls
+from the same tasks; a paired-task column (both labels scored) is reported alongside the all-events column.
+
+**Within-table AUROC, before -> after (actual exposure). Coverage in parentheses.**
+
+| set | 0a | 0d | 0o* | verbalized (P+S, H1) | mean entropy |
+|---|---|---|---|---|---|
+| 4B T0_agent | 0.571 (1.00) -> 0.579 [0.53,0.64] (0.69) | 0.546 (0.76) -> 0.562 [0.52,0.62] (0.52) | 0.582 (0.67) -> **0.612 [0.55,0.69]** (0.48) | -- | -- |
+| 4B T1 | 0.541 -> 0.544 (0.70) | 0.549 -> 0.554 (0.53) | 0.582 -> **0.611 [0.54,0.69]** (0.48) | -- | -- |
+| 4B T1r2 | (KeyError) -> 0.545 | -> 0.552 | -> **0.616 [0.55,0.69]** (0.48) | 0.549 [0.48,0.61] -> 0.554 [0.50,0.61] FAIL (unchanged) | 0.467 -> 0.455 |
+| 4B T3 | NA | NA | NA | -- | -- |
+| 8B T1 | 0.533 -> 0.533 | 0.534 -> 0.535 | 0.571 -> 0.565 [0.53,0.59] | 0.532 [0.48,0.57] -> 0.527 [0.48,0.56] PASS (unchanged) | 0.489 -> 0.488 |
+| 8B T0_agent | 0.532 -> 0.532 | 0.531 -> 0.525 | 0.495 -> 0.490 [0.39,0.56] (paired 0.544) | 0.558 [0.49,0.62] -> 0.558 [0.49,0.62] FAIL (unchanged) | 0.463 -> 0.464 |
+
+8B differences of <=0.006 are Monte-Carlo noise from a changed RNG consumption order (oracle_m=300, boot=50), not the fix.
+
+**What changes in the text.** (a) "no head-5 reference exceeds 0.58" (F5, F7, plan) is no longer true for Qwen3-4B:
+restricted to the ~48% of events where the agent had actually seen five rows, 0o* is 0.61-0.62 with CI up to 0.69.
+The restriction changes task composition, so the 0.03 shift is not a causal effect of seeing rows; report both the
+actual-exposure and protocol readings, with coverage. 8B is unchanged. The qualitative claim (all signals at or
+near chance on head-5; 0d and 0a <= 0.56 everywhere) stands. (b) "preview content has zero effect on agent
+behaviour" is now stratified: poisoned value used, conditional on poison firing, preview seen vs not --
+4B T0_agent 140/141 vs 55/58, T1 141/144 vs 55/58, T3 140/143 vs 54/57 (98-99% vs 95%); 8B always previewed
+(194/196, 175/176). The claim survives and is stronger when stated this way: agents that looked at the rows (and,
+at T0_agent, the min/max) complied at the same rate as agents that never looked. (c) All H1 verdicts are unchanged
+(4B T1r2 FAIL by 0.01, 8B T1 PASS, 8B T0_agent FAIL by 0.02). (d) Two denominators must be reported for compliance:
+used / all toxic runs and used / poison-fired runs (per the review: 91.3% vs 97.9% pooled).
+
+Not re-run: the k-sweep (unaffected), the scorer (its eval files are built by build_dataset.py from the same first
+scalar events; the exposure caveat applies to its head-5 interpretation and is noted, numbers unchanged at chance).

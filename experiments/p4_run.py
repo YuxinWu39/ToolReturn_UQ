@@ -93,7 +93,8 @@ class TieredEnv(tb_tools.DataToolEnv):
                 if base in files:
                     norm["read_csv_resolved"] = base
                     return files[base].copy()
-                return tb_tools.pd.read_csv(path, *a, **k)
+                # No fallback to the real filesystem: model-generated code may only read the declared dataset files.
+                raise FileNotFoundError(f"[sandbox] unknown dataset '{base}'; available: {sorted(files)}")
 
         table_namespace = {name: t.copy() for name, t in self.tables.items()}
         for name, fn in self.table_files.items():

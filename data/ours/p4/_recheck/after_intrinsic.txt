@@ -1,0 +1,30 @@
+### intrinsic qwen3-4b T1r2
+qwen3-4b T1r2: 390 events (pos 193); verbalized present 1.00; events preceded by an ERROR step 4; unscorable {'no_scalar_event': 30}
+verbalized confidence: clean mean 78.5, poisoned mean 76.7; distribution clean {85: 63, 80: 63, 75: 42, 70: 12} poisoned {80: 68, 85: 50, 75: 47, 70: 12}
+signal                     pooled  within [CI] (tables)   | paired within [CI] (n tasks) | plaus+subtle within [CI] -> H1 (upper < 0.60?)
+sig3_neg_conf              0.541   0.534 [0.47, 0.59] (6)   | 0.533 [0.48, 0.59] (192)   | 0.554 [0.50, 0.61]  H1 FAIL
+sig1_first_token_entropy   0.493   0.490 [0.46, 0.52] (6)   | 0.487 [0.46, 0.52] (192)   | 0.495 [0.46, 0.53]  H1 PASS
+sig1_mean_entropy          0.457   0.455 [0.42, 0.49] (6)   | 0.451 [0.41, 0.49] (192)   | 0.444 [0.40, 0.49]  H1 PASS
+sig1_max_entropy           0.497   0.494 [0.45, 0.54] (6)   | 0.492 [0.45, 0.54] (192)   | 0.490 [0.44, 0.53]  H1 PASS
+sig1_neg_sum_logprob       0.450   0.449 [0.41, 0.50] (6)   | 0.444 [0.40, 0.49] (192)   | 0.437 [0.38, 0.50]  H1 PASS
+by severity (sig3 / mean-entropy / n pos; clean controls = same tasks): {'obvious': ('0.408', '0.496', 30), 'plausible': ('0.579', '0.438', 97), 'subtle': ('0.533', '0.459', 66)}
+### intrinsic qwen3-8b T1
+qwen3-8b T1: 393 events (pos 196); verbalized present 1.00; events preceded by an ERROR step 0; unscorable {'no_scalar_event': 27}
+verbalized confidence: clean mean 92.9, poisoned mean 92.4; distribution clean {95: 156, 85: 41} poisoned {95: 145, 85: 51}
+signal                     pooled  within [CI] (tables)   | paired within [CI] (n tasks) | plaus+subtle within [CI] -> H1 (upper < 0.60?)
+sig3_neg_conf              0.526   0.523 [0.48, 0.56] (6)   | 0.528 [0.50, 0.56] (195)   | 0.527 [0.48, 0.56]  H1 PASS
+sig1_first_token_entropy   0.510   0.509 [0.48, 0.54] (6)   | 0.516 [0.50, 0.54] (195)   | 0.509 [0.47, 0.55]  H1 PASS
+sig1_mean_entropy          0.487   0.488 [0.47, 0.50] (6)   | 0.492 [0.47, 0.51] (195)   | 0.477 [0.45, 0.50]  H1 PASS
+sig1_max_entropy           0.524   0.523 [0.47, 0.56] (6)   | 0.528 [0.47, 0.57] (195)   | 0.519 [0.48, 0.55]  H1 PASS
+sig1_neg_sum_logprob       0.515   0.503 [0.47, 0.55] (6)   | 0.506 [0.47, 0.56] (195)   | 0.499 [0.46, 0.56]  H1 PASS
+by severity (sig3 / mean-entropy / n pos; clean controls = same tasks): {'obvious': ('0.500', '0.542', 31), 'plausible': ('0.541', '0.487', 97), 'subtle': ('0.528', '0.472', 68)}
+### intrinsic qwen3-8b T0_agent
+qwen3-8b T0_agent: 369 events (pos 176); verbalized present 0.91; events preceded by an ERROR step 0; unscorable {'no_scalar_event': 51}
+verbalized confidence: clean mean 91.5, poisoned mean 90.2; distribution clean {95.0: 110, 85.0: 59} poisoned {95.0: 87, 85.0: 80}
+signal                     pooled  within [CI] (tables)   | paired within [CI] (n tasks) | plaus+subtle within [CI] -> H1 (upper < 0.60?)
+sig3_neg_conf              0.565   0.563 [0.51, 0.61] (6)   | 0.580 [0.55, 0.61] (145)   | 0.558 [0.49, 0.62]  H1 FAIL
+sig1_first_token_entropy   0.491   0.488 [0.44, 0.53] (6)   | 0.534 [0.51, 0.56] (176)   | 0.490 [0.44, 0.53]  H1 PASS
+sig1_mean_entropy          0.469   0.464 [0.40, 0.52] (6)   | 0.495 [0.43, 0.55] (176)   | 0.476 [0.41, 0.55]  H1 PASS
+sig1_max_entropy           0.509   0.512 [0.47, 0.55] (6)   | 0.535 [0.49, 0.58] (176)   | 0.530 [0.48, 0.57]  H1 PASS
+sig1_neg_sum_logprob       0.507   0.507 [0.43, 0.59] (6)   | 0.539 [0.45, 0.63] (176)   | 0.529 [0.43, 0.61]  H1 FAIL
+by severity (sig3 / mean-entropy / n pos; clean controls = same tasks): {'obvious': ('0.595', '0.435', 26), 'plausible': ('0.592', '0.507', 88), 'subtle': ('0.600', '0.505', 62)}

@@ -1,0 +1,57 @@
+### zeroparam qwen3-4b T0_agent
+qwen3-4b T0_agent: events scored 383 (pos 191, neg 192)
+signal   coverage  pooled  within-table [CI]      | plausible+subtle pooled/within
+0a       1.00      0.571   0.571 ['0.53', '0.62']   | 0.559/0.560
+0d       0.76      0.538   0.546 ['0.51', '0.59']   | 0.536/0.547
+0o_star  0.67      0.574   0.582 ['0.56', '0.61']   | 0.584/0.595
+0r_log   0.18      0.567   0.581 ['0.51', '0.65']   | 0.566/0.581
+by template (0d / 0o*): {'filtered': (0.53, 0.62), 'grouped': (0.557, 0.595), 'unfiltered': (0.523, 0.532)}
+by severity (0d / 0o*): {'obvious': (0.589, 0.616), 'plausible': (0.547, 0.59), 'subtle': (0.501, 0.531)}
+### zeroparam qwen3-4b T1
+qwen3-4b T1: events scored 386 (pos 193, neg 193)
+signal   coverage  pooled  within-table [CI]      | plausible+subtle pooled/within
+0a       1.00      0.530   0.541 ['0.51', '0.58']   | 0.519/0.529
+0d       0.77      0.536   0.549 ['0.50', '0.61']   | 0.534/0.552
+0o_star  0.68      0.564   0.582 ['0.55', '0.61']   | 0.570/0.597
+0r_log   0.18      0.567   0.581 ['0.51', '0.65']   | 0.566/0.581
+by template (0d / 0o*): {'filtered': (0.544, 0.605), 'grouped': (0.536, 0.566), 'unfiltered': (0.525, 0.537)}
+by severity (0d / 0o*): {'obvious': (0.578, 0.615), 'plausible': (0.539, 0.58), 'subtle': (0.511, 0.517)}
+### zeroparam qwen3-4b T1r2
+Traceback (most recent call last):
+  File "experiments/p4_score_zeroparam.py", line 95, in <module>
+    main()
+  File "experiments/p4_score_zeroparam.py", line 52, in main
+    k = TIER_ROWS[a.tier]
+        ~~~~~~~~~^^^^^^^^
+KeyError: 'T1r2'
+### zeroparam qwen3-4b T3
+qwen3-4b T3: events scored 397 (pos 197, neg 200)
+signal   coverage  pooled  within-table [CI]      | plausible+subtle pooled/within
+0a       0.00        NA      NA     |   NA /  NA 
+0d       0.00        NA      NA     |   NA /  NA 
+0o_star  0.00        NA      NA     |   NA /  NA 
+0r_log   0.00        NA      NA     |   NA /  NA 
+by template (0d / 0o*): {'filtered': (None, None), 'grouped': (None, None), 'unfiltered': (None, None)}
+Traceback (most recent call last):
+  File "experiments/p4_score_zeroparam.py", line 95, in <module>
+    main()
+  File "experiments/p4_score_zeroparam.py", line 92, in main
+    print("by severity (0d / 0o*):", {sv: (round(auc(pd.concat([g, R[R.label==0]]),'0d'),3), round(auc(pd.concat([g, R[R.label==0]]),'0o_star'),3)) for sv, g in R[R.label==1].groupby("severity")})
+### zeroparam qwen3-8b T1
+qwen3-8b T1: events scored 393 (pos 196, neg 197)
+signal   coverage  pooled  within-table [CI]      | plausible+subtle pooled/within
+0a       1.00      0.527   0.533 ['0.51', '0.57']   | 0.518/0.524
+0d       0.78      0.522   0.534 ['0.50', '0.57']   | 0.520/0.536
+0o_star  0.69      0.562   0.571 ['0.54', '0.60']   | 0.571/0.584
+0r_log   0.17      0.567   0.581 ['0.51', '0.65']   | 0.566/0.581
+by template (0d / 0o*): {'filtered': (0.518, 0.597), 'grouped': (0.513, 0.564), 'unfiltered': (0.541, 0.535)}
+by severity (0d / 0o*): {'obvious': (0.595, 0.603), 'plausible': (0.511, 0.587), 'subtle': (0.505, 0.507)}
+### zeroparam qwen3-8b T0_agent
+qwen3-8b T0_agent: events scored 369 (pos 176, neg 193)
+signal   coverage  pooled  within-table [CI]      | plausible+subtle pooled/within
+0a       1.00      0.538   0.532 ['0.48', '0.58']   | 0.531/0.526
+0d       0.75      0.520   0.531 ['0.50', '0.57']   | 0.516/0.532
+0o_star  0.67      0.498   0.495 ['0.39', '0.57']   | 0.511/0.516
+0r_log   0.18      0.567   0.581 ['0.51', '0.65']   | 0.566/0.581
+by template (0d / 0o*): {'filtered': (0.523, 0.618), 'grouped': (0.503, 0.431), 'unfiltered': (0.52, 0.522)}
+by severity (0d / 0o*): {'obvious': (0.643, 0.54), 'plausible': (0.492, 0.516), 'subtle': (0.511, 0.454)}

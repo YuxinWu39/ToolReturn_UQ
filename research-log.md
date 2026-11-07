@@ -289,3 +289,21 @@ Step: C3 scorer train + eval on 6 P4 eval sets (P5)
 Verdict: PASS (negative result, pre-registered, honestly reported)
 Cost: GPU instance 20:03 -> 06:25 UTC (~10.4 h incl. 8B T0_agent + idle gaps) ~ $12.6; stopped 06:25.
 ```
+
+
+## 2026-11-07 — scoring fixes from the d0e7ba4 code review (no new runs; re-scored all six eval sets)
+Review (collaborator, 2026-11-06) found: zeroparam scored on tier cap not actual preview exposure; intrinsic
+misaligned shadow calls when an ERROR step preceded the scored event; constant-score tables dropped instead of 0.5;
+sandbox read_csv fell back to the real filesystem. All reproduced (4B: ~30% of scored events had seen 0 rows;
+lt_penguins_v3_unf_009 alignment confirmed) and fixed:
+  experiments/p4_common.py          shared: exposure_before, completion_after, auc_or_none, within_table, paired_tasks
+  experiments/p4_score_zeroparam.py --exposure actual|protocol; k and min/max per event; paired column; same-task severity controls
+  experiments/p4_score_intrinsic.py positional alignment incl. ERROR events; scalar check; paired column
+  experiments/p4_run.py             read_csv of an undeclared file -> FileNotFoundError (no filesystem fallback)
+  experiments/test_p4_common.py     unit tests for the four fixed behaviours (ALL PASS); test_zeroparam.py still ALL PASS
+Before/after table and text consequences: findings.md "F5/F6/F7 correction (2026-11-07)". Raw outputs in
+data/ours/p4/_recheck/{before,after}_{zeroparam,intrinsic}.txt. H1 verdicts unchanged; 4B head-5 0o* on
+actually-seen rows is 0.61-0.62 (was reported 0.58) with coverage 0.48 — "no head-5 reference above 0.58" must be
+reworded. Preview-seen vs not compliance: 98-99% vs 95%.
+Still open from the review (not done here): worker-process isolation for model code (SAFE_BUILTINS audit), the
+anomaly_detection flag definition in the paper, both compliance denominators in Table 1, Gemini protocol (collaborator).
