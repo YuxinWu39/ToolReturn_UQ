@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """P4 harness (PREREGISTRATION.md P4 / A-P4): run ToxicBench's ReAct agent on the P3 large-table tasks with the
 observation-context tier ENFORCED INSIDE THE ENVIRONMENT (the agent really sees the truncated preview), against
-an OpenAI-compatible endpoint (local vLLM for Qwen3-4B/8B; API for gpt-5.4-mini).
+an OpenAI-compatible endpoint (local vLLM, GPT API, or Gemini Flash).
 
 Tiers (A-P3/A-P4):
   T0_agent  ToxicBench's own preview: head (rows capped at 5) + whole-column numeric_min/max  (what the original data had)
@@ -10,6 +10,7 @@ Tiers (A-P3/A-P4):
   T3        schema only (columns, shape), no rows, no min/max
 Rows requested by the agent above the tier cap are capped; the cap and the rows actually exposed are logged per event.
 
+    python p4_run.py --smoke --tier T1 --agent gemini-3.8-flash   # reads GEMINI_API_KEY
     python p4_run.py --smoke --tier T1 --agent qwen3-4b --base-url http://127.0.0.1:8000/v1
     python p4_run.py --tier T1 --agent qwen3-4b --seeds 2            # clean x 2 seeds + toxic x 1 (A-P4)
 Outputs data/ours/p4/<agent>/<tier>/<env>_seed<k>.jsonl in ToxicBench's row format (+ tier, visible_rows, seed).
@@ -19,6 +20,8 @@ Resumable: tasks already present in the output file are skipped.
 import argparse
 import json
 import os
+import re
+import urllib.error
 import sys
 import time
 from pathlib import Path
@@ -34,7 +37,9 @@ from toxictool_bench.llm_client import ChatClient  # noqa: E402
 
 TIERS = {"T0_agent": {"rows": 5, "minmax": True}, "T1": {"rows": 5, "minmax": False},
          "T2": {"rows": 2, "minmax": False}, "T3": {"rows": 0, "minmax": False}}
-AGENTS = {"qwen3-4b": "qwen3-4b", "qwen3-8b": "qwen3-8b", "gpt-5.4-mini": "gpt-5.4-mini"}
+GEMINI_MODEL = "gemini-3.8-flash"
+GEMINI_BASE = "https://generativelanguage.googleapis.com/v1beta/openai"
+AGENTS = {GEMINI_MODEL: GEMINI_MODEL, "qwen3-4b": "qwen3-4b", "qwen3-8b": "qwen3-8b", "gpt-5.4-mini": "gpt-5.4-mini"}
 
 
 class TieredEnv(tb_tools.DataToolEnv):
@@ -69,6 +74,10 @@ class TieredEnv(tb_tools.DataToolEnv):
     # Neither is a tool-return error we want to study, so the sandbox resolves read_csv of a known table to that
     # table and strips the uniform stray indent. Both are recorded in the event so they can be excluded or audited.
     def python_exec(self, code: str) -> str:
+        if getattr(self, "macos_worker", False):
+            from macos_p4_worker import execute
+            value, self._last_exec_norm = execute(self.task, self.bench_dir, code)
+            return value
         import ast as _ast, contextlib as _ctx, io as _io, os as _os
         norm = {}
         lines = code.split("\n")
@@ -145,7 +154,12 @@ class SeededClient(ChatClient):
     call is a separate stateless request; the live trajectory is unchanged (A-P4)."""
 
     def __init__(self, base_url, api_key, model, temperature, max_tokens, seed, signals=True):
-        self.base_url, self.api_key, self.model = base_url.rstrip("/").removesuffix("/v1"), api_key, model
+        self.api_key, self.model = api_key, model
+        self.is_gemini = model == GEMINI_MODEL
+        if self.is_gemini:
+            self.endpoint = GEMINI_BASE + "/chat/completions"
+        else:
+            self.endpoint = base_url.rstrip("/").removesuffix("/v1") + "/v1/chat/completions"
         self.temperature, self.max_tokens, self.max_retries, self.seed = temperature, max_tokens, 6, seed
         self.signals, self.completions = signals, []
 
@@ -153,13 +167,29 @@ class SeededClient(ChatClient):
         import urllib.request
         if self.model.startswith("qwen3"):  # Qwen3 thinking mode off: the ReAct loop expects a JSON action, not a <think> block
             payload["chat_template_kwargs"] = {"enable_thinking": False}
-        req = urllib.request.Request(self.base_url + "/v1/chat/completions", data=json.dumps(payload).encode(),
+        if self.is_gemini:
+            payload.pop("seed", None)
+            payload.pop("temperature", None)
+            payload["reasoning_effort"] = "low"
+        req = urllib.request.Request(self.endpoint, data=json.dumps(payload).encode(),
                                      headers={"Authorization": f"Bearer {self.api_key}", "Content-Type": "application/json"}, method="POST")
         for attempt in range(self.max_retries + 1):
             try:
                 with urllib.request.urlopen(req, timeout=180) as r:
                     return json.loads(r.read())
-            except Exception as exc:  # noqa: BLE001
+            except urllib.error.HTTPError as exc:
+                if exc.code not in (408, 429, 500, 502, 503, 504) or attempt >= self.max_retries:
+                    detail = str(exc.reason)
+                    if self.is_gemini:
+                        try:
+                            error = json.loads(exc.read()).get("error", {})
+                            detail = str(error.get("message", detail)).replace(self.api_key, "[redacted]")[:500]
+                        except (ValueError, AttributeError):
+                            pass
+                    raise RuntimeError(f"LLM request failed with HTTP {exc.code}: {detail}") from exc
+                delay = exc.headers.get("Retry-After", "")
+                time.sleep(int(delay) if delay.isdigit() else 2 ** attempt)
+            except (TimeoutError, urllib.error.URLError) as exc:
                 if attempt >= self.max_retries:
                     raise RuntimeError(f"LLM request failed: {exc}") from exc
                 time.sleep(2 ** attempt)
@@ -174,19 +204,31 @@ class SeededClient(ChatClient):
                 rec["after_observation"] = {"tool": prev.get("tool"), "n_tool_turns": sum(1 for m in messages if m["role"] == "assistant")}
             except Exception:  # noqa: BLE001
                 rec["after_observation"] = {"tool": None}
+            rec["after_observation"]["step"] = sum(
+                m["role"] == "user" and m["content"].startswith("Observation:") for m in messages
+            )
             if self.signals and rec["after_observation"].get("tool") == "python_exec":  # shadow verbalized-confidence call
                 shadow = self._post({"model": self.model, "messages": messages + [{"role": "user", "content": VERBALIZED_PROMPT}],
-                                     "temperature": 0.0, "max_tokens": 8, "seed": self.seed})
-                txt = shadow["choices"][0]["message"]["content"].strip()
-                import re
-                m = re.search(r"\d{1,3}", txt)
-                rec["verbalized"] = {"raw": txt[:40], "confidence": int(m.group()) if m else None}
+                                     "temperature": 0.0, "max_tokens": 512 if self.is_gemini else 8, "seed": self.seed})
+                shadow_choice = shadow["choices"][0]
+                txt = (shadow_choice["message"].get("content") or "").strip()
+                if self.is_gemini:
+                    valid = re.fullmatch(r"(?:100|[1-9]?[0-9])", txt)
+                    rec["verbalized"] = {"raw": txt, "confidence": int(txt) if valid else None,
+                                         "finish_reason": shadow_choice.get("finish_reason"),
+                                         "model": shadow.get("model"), "usage": shadow.get("usage")}
+                else:
+                    m = re.search(r"\d{1,3}", txt)
+                    rec["verbalized"] = {"raw": txt[:40], "confidence": int(m.group()) if m else None}
         payload = {"model": self.model, "messages": messages, "temperature": self.temperature, "max_tokens": self.max_tokens, "seed": self.seed}
-        if self.signals:
+        if self.signals and not self.is_gemini:
             payload.update({"logprobs": True, "top_logprobs": 20})
         body = self._post(payload)
         choice = body["choices"][0]
-        content = choice["message"]["content"]
+        content = choice["message"].get("content") or ""
+        if self.is_gemini:
+            rec.update({"model": body.get("model"), "usage": body.get("usage"),
+                        "finish_reason": choice.get("finish_reason")})
         lp = (choice.get("logprobs") or {}).get("content") or []
         if lp:
             ents = [_entropy(t.get("top_logprobs") or [{"logprob": t["logprob"]}]) for t in lp]
@@ -203,9 +245,9 @@ def main():
     ap.add_argument("--bench-dir", type=Path, default=REPO / "data" / "ours", help="dir containing datasets/<task.dataset>")
     ap.add_argument("--tier", choices=list(TIERS), default="T1")
     ap.add_argument("--agent", choices=list(AGENTS), default="qwen3-4b")
-    ap.add_argument("--base-url", default="http://127.0.0.1:8000/v1")
-    ap.add_argument("--api-key", default=os.environ.get("OPENAI_API_KEY", "sk-local"),
-                    help="defaults to $OPENAI_API_KEY; any string works for a local vLLM server")
+    ap.add_argument("--base-url", default=None)
+    ap.add_argument("--api-key", default=None,
+                    help="defaults to $GEMINI_API_KEY for Flash or $OPENAI_API_KEY for other endpoints")
     ap.add_argument("--profile", default="react", help="ToxicBench agent profile (A-P4: react)")
     ap.add_argument("--temperature", type=float, default=0.7, help="A-P4: equal temperature for every run")
     ap.add_argument("--max-steps", type=int, default=8)
@@ -217,6 +259,19 @@ def main():
     ap.add_argument("--no-signals", action="store_true", help="skip logprobs + shadow verbalized call (first week-1 run had none)")
     ap.add_argument("--run-tag", default="", help="suffix for the tier output dir (e.g. r2)")
     args = ap.parse_args()
+
+    if args.agent == GEMINI_MODEL:
+        if args.base_url and args.base_url.rstrip("/") != GEMINI_BASE:
+            ap.error("Gemini uses Google's official OpenAI-compatible base URL")
+        args.base_url = GEMINI_BASE
+        args.api_key = args.api_key or os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY")
+        if not args.api_key:
+            ap.error("set GEMINI_API_KEY for the Gemini run")
+        if args.smoke and not args.run_tag:
+            args.run_tag = "_smoke"
+    else:
+        args.base_url = args.base_url or "http://127.0.0.1:8000/v1"
+        args.api_key = args.api_key or os.environ.get("OPENAI_API_KEY", "sk-local")
 
     tasks = [json.loads(l) for l in args.tasks.open() if l.strip()]
     if args.smoke:
@@ -241,6 +296,7 @@ def main():
                     continue
                 TieredEnv.tier = args.tier
                 env = TieredEnv(task=task, bench_dir=args.bench_dir, toxic=(env_name == "toxic"))
+                env.macos_worker = model == GEMINI_MODEL and sys.platform == "darwin"
                 t0 = time.time()
                 client.completions = []
                 run = run_llm_agent(client=client, env=env, task=task, profile=args.profile, max_steps=args.max_steps)
@@ -252,6 +308,10 @@ def main():
                        "tool_events": env.events, "final_answer": run.final_answer, "raw_actions": run.raw_actions,
                        "parse_errors": run.parse_errors, "metrics": metrics, "seconds": round(time.time() - t0, 1),
                        "completions": client.completions}
+                if model == GEMINI_MODEL:
+                    row["generation_config"] = {"reasoning_effort": "low", "sampling": "provider_default",
+                                                "api_seed": None, "shadow": not args.no_signals,
+                                                "token_logprobs": False}
                 f.write(json.dumps(row, ensure_ascii=False) + "\n"); f.flush()
                 totals["runs"] += 1
                 totals["parse_errors"] += int(bool(run.parse_errors))
@@ -264,8 +324,13 @@ def main():
                       f"parse_err={bool(run.parse_errors)} fired={bool(fired)} {row['seconds']}s", flush=True)
     print(json.dumps(totals))
     if args.smoke:
-        rate = 1 - totals["parse_errors"] / max(1, totals["runs"])
-        print(f"SMOKE parse-ok rate = {rate:.2f} (A-P4 adapter fallback triggers if < 0.90); clean success = {totals['success']}/{totals['runs']}")
+        smoke_ids = {t["task_id"] for t in tasks}
+        with (out_dir / "clean_seed0.jsonl").open() as saved:
+            smoke_rows = [r for r in map(json.loads, saved) if r["task_id"] in smoke_ids]
+        valid = sum(bool(r["final_answer"].strip()) and r["final_answer"] != "ERROR: max steps reached"
+                    for r in smoke_rows)
+        print(f"SMOKE parseable final answers = {valid}/{len(tasks)}; "
+              f"runs with an intermediate parse error = {sum(bool(r['parse_errors']) for r in smoke_rows)}")
 
 
 if __name__ == "__main__":
