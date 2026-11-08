@@ -130,5 +130,29 @@ context_evidence:
   denominator_per_label: 12
   new_model_calls: 0
   conclusion: fixed-matched-sample-contains-extractable-statistical-signal-mechanism-unidentified
-  next: preregister-independent-draws-and-fresh-table-raw-versus-statistical-summary-study
+  next: independent-draws-complete-prepare-fresh-table-raw-versus-statistical-summary-study
   report: docs/CONTEXT_EVIDENCE_2026-11-07.md
+
+context_evidence_resample:
+  run_id: matched20_row_draws_20261107
+  protocol: A-CTX-RESAMPLE
+  protocol_commit: 7f6400e
+  code_commit: 0494e7f
+  evidence_freeze: b192a58
+  status: exploratory-complete
+  independent_review: pass-as-exploratory
+  original_queries: 12
+  table_clusters: 6
+  draws_per_query: 20
+  query_draw_units: 240
+  events: 1920
+  primary_0d_sanity_auroc: 0.9959375
+  query_draw_mixture_within_table_auroc: 0.8184374999999999
+  descriptive_ci95: [0.7183333333333334, 0.9153125000000001]
+  clean_false_flags: 14
+  corrupted_flags: 161
+  denominator_per_label: 240
+  new_model_calls: 0
+  conclusion: selected-query-statistical-signal-persists-with-row-draw-and-task-heterogeneity
+  next: preregister-fresh-table-raw-versus-derived-summary-with-within-query-severity-crossing
+  report: docs/CONTEXT_EVIDENCE_RESAMPLING_2026-11-07.md

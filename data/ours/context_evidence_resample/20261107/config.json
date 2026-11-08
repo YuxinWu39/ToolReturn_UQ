@@ -1,0 +1,21 @@
+{
+  "bootstrap_draws": 2000,
+  "code_commit": "b192a5848647119e3f847af07c7e70b2903966d6",
+  "manifest_hash": "03001454308f2c8048a68e3dea49815e1279c7162020095ba68949512b6309b7",
+  "protocol_commit": "7f6400e",
+  "source_hashes": {
+    "context_evidence.py": "a27a05e0168e703c0d0e35891de3b2bacd65be5a71bc9a61ec65c41b1fa471ae",
+    "context_evidence_resample.py": "f297a197b35d13a33c545c4fd0a4498fad99f85dccbdd0ed7e6d716d413afe73",
+    "context_pilot.py": "c2fed770b386f3c234c7be55ea31355fad509cf8c022da22baf5d8f7aaf0e158",
+    "p4_common.py": "d7c1fc5ebad19534bb0fc04af3f9774e4205b4d8e4a58a07a1e45847b594728e",
+    "zeroparam.py": "2b3c470a0189d96a354b9879a9d3641cccbc2e98b0fc40e7c9a6cdc022a4ac96"
+  },
+  "started_utc": "2026-11-08T02:27:24.522846+00:00",
+  "threshold": 1e-09,
+  "versions": {
+    "numpy": "1.26.4",
+    "pandas": "2.2.3",
+    "python": "3.11.13",
+    "scikit-learn": "1.7.0"
+  }
+}

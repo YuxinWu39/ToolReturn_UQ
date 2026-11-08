@@ -188,7 +188,10 @@ def main():
         assert hashlib.sha256((mf/name/'scored_responses.json').read_bytes()).hexdigest()==expected
     models={n:json.loads((mf/n/'scored_responses.json').read_text()) for n in ('gemini-3.8-flash','qwen3-8b')}
     target=a.report or root/'docs/CONTEXT_EVIDENCE_2026-11-07.md'
-    target.write_text(report(s,features,events,models))
+    text=report(s,features,events,models)
+    if (root/'data/ours/context_evidence_resample/20261107/summary.json').exists():
+        text+='\n\n## 后续独立抽样阶段\n\n随后按单独协议完成二十次独立抽样检查，见 [稳健性报告](CONTEXT_EVIDENCE_RESAMPLING_2026-11-07.md)。两阶段估计对象不同，本报告的原始结果继续保留。\n'
+    target.write_text(text)
     if a.finding:a.finding.write_text(finding(s))
     if not a.no_plot:plot_intervals(m,features,folder)
     print(target)

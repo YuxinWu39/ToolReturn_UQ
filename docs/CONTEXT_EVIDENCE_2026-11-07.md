@@ -105,3 +105,8 @@ python experiments/report_context_evidence.py
 ```
 
 设计与审查使用 experimental-design / scientific-critical-thinking skills。方法资源：Kassis, T., Agarwal, V., He, Y., Patel, D., & Brueckner, A. M. (2026). *Scientific Agent Skills: A Library of Procedural Knowledge for Research Agents*. [arXiv:2609.00065](https://doi.org/10.48550/arXiv.2609.00065)。引用用于说明研究辅助工具，不为实验结论背书。
+
+
+## 后续独立抽样阶段
+
+随后按单独协议完成二十次独立抽样检查，见 [稳健性报告](CONTEXT_EVIDENCE_RESAMPLING_2026-11-07.md)。两阶段估计对象不同，本报告的原始结果继续保留。

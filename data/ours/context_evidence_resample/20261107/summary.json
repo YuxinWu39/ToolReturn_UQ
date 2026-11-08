@@ -1,0 +1,1994 @@
+{
+  "audit": {
+    "bootstrap_draws": 2000,
+    "code_commit": "b192a5848647119e3f847af07c7e70b2903966d6",
+    "finished_utc": "2026-11-08T02:28:01.837410+00:00",
+    "manifest_hash": "03001454308f2c8048a68e3dea49815e1279c7162020095ba68949512b6309b7",
+    "protocol_commit": "7f6400e",
+    "source_hashes": {
+      "context_evidence.py": "a27a05e0168e703c0d0e35891de3b2bacd65be5a71bc9a61ec65c41b1fa471ae",
+      "context_evidence_resample.py": "f297a197b35d13a33c545c4fd0a4498fad99f85dccbdd0ed7e6d716d413afe73",
+      "context_pilot.py": "c2fed770b386f3c234c7be55ea31355fad509cf8c022da22baf5d8f7aaf0e158",
+      "p4_common.py": "d7c1fc5ebad19534bb0fc04af3f9774e4205b4d8e4a58a07a1e45847b594728e",
+      "zeroparam.py": "2b3c470a0189d96a354b9879a9d3641cccbc2e98b0fc40e7c9a6cdc022a4ac96"
+    },
+    "started_utc": "2026-11-08T02:27:24.522846+00:00",
+    "threshold": 1e-09,
+    "versions": {
+      "numpy": "1.26.4",
+      "pandas": "2.2.3",
+      "python": "3.11.13",
+      "scikit-learn": "1.7.0"
+    }
+  },
+  "draws_per_query": 20,
+  "events": 1920,
+  "methods": {
+    "0a": {
+      "detection": {
+        "ci95": [
+          0.5291666666666667,
+          0.6979166666666666
+        ],
+        "paired_queries": 240,
+        "per_table": {
+          "public_abalone.csv": 0.5,
+          "public_auto_mpg_v4.csv": 0.75,
+          "public_bike_v4.csv": 0.675,
+          "public_penguins_v3.csv": 0.75,
+          "public_student.csv": 0.5125,
+          "public_wine_quality.csv": 0.5
+        },
+        "pooled": 0.6145833333333334,
+        "tables": 6,
+        "within_table": 0.6145833333333334
+      },
+      "flag_rates": {
+        "clean": {
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "draw_units": 240,
+          "flags": 0,
+          "mean": 0.0,
+          "per_table": {
+            "public_abalone.csv": 0.0,
+            "public_auto_mpg_v4.csv": 0.0,
+            "public_bike_v4.csv": 0.0,
+            "public_penguins_v3.csv": 0.0,
+            "public_student.csv": 0.0,
+            "public_wine_quality.csv": 0.0
+          },
+          "tables": 6,
+          "unscorable": 0
+        },
+        "corrupted": {
+          "ci95": [
+            0.05833333333333333,
+            0.3958333333333333
+          ],
+          "draw_units": 240,
+          "flags": 55,
+          "mean": 0.22916666666666666,
+          "per_table": {
+            "public_abalone.csv": 0.0,
+            "public_auto_mpg_v4.csv": 0.5,
+            "public_bike_v4.csv": 0.35,
+            "public_penguins_v3.csv": 0.5,
+            "public_student.csv": 0.025,
+            "public_wine_quality.csv": 0.0
+          },
+          "tables": 6,
+          "unscorable": 0
+        }
+      },
+      "local_sanity_pass": true,
+      "parent_context_sanity_pass": null,
+      "per_query": {
+        "lt_abalone_fil_016": {
+          "clean": {
+            "compatible": 20,
+            "flag": 0,
+            "n": 20,
+            "unscorable": 0
+          },
+          "corrupted": {
+            "compatible": 20,
+            "flag": 0,
+            "n": 20,
+            "unscorable": 0
+          }
+        },
+        "lt_abalone_fil_018": {
+          "clean": {
+            "compatible": 20,
+            "flag": 0,
+            "n": 20,
+            "unscorable": 0
+          },
+          "corrupted": {
+            "compatible": 20,
+            "flag": 0,
+            "n": 20,
+            "unscorable": 0
+          }
+        },
+        "lt_auto_mpg_v4_fil_013": {
+          "clean": {
+            "compatible": 20,
+            "flag": 0,
+            "n": 20,
+            "unscorable": 0
+          },
+          "corrupted": {
+            "compatible": 20,
+            "flag": 0,
+            "n": 20,
+            "unscorable": 0
+          }
+        },
+        "lt_auto_mpg_v4_fil_014": {
+          "clean": {
+            "compatible": 20,
+            "flag": 0,
+            "n": 20,
+            "unscorable": 0
+          },
+          "corrupted": {
+            "compatible": 0,
+            "flag": 20,
+            "n": 20,
+            "unscorable": 0
+          }
+        },
+        "lt_bike_v4_fil_011": {
+          "clean": {
+            "compatible": 20,
+            "flag": 0,
+            "n": 20,
+            "unscorable": 0
+          },
+          "corrupted": {
+            "compatible": 20,
+            "flag": 0,
+            "n": 20,
+            "unscorable": 0
+          }
+        },
+        "lt_bike_v4_fil_012": {
+          "clean": {
+            "compatible": 20,
+            "flag": 0,
+            "n": 20,
+            "unscorable": 0
+          },
+          "corrupted": {
+            "compatible": 6,
+            "flag": 14,
+            "n": 20,
+            "unscorable": 0
+          }
+        },
+        "lt_penguins_v3_fil_013": {
+          "clean": {
+            "compatible": 20,
+            "flag": 0,
+            "n": 20,
+            "unscorable": 0
+          },
+          "corrupted": {
+            "compatible": 20,
+            "flag": 0,
+            "n": 20,
+            "unscorable": 0
+          }
+        },
+        "lt_penguins_v3_fil_014": {
+          "clean": {
+            "compatible": 20,
+            "flag": 0,
+            "n": 20,
+            "unscorable": 0
+          },
+          "corrupted": {
+            "compatible": 0,
+            "flag": 20,
+            "n": 20,
+            "unscorable": 0
+          }
+        },
+        "lt_student_fil_012": {
+          "clean": {
+            "compatible": 20,
+            "flag": 0,
+            "n": 20,
+            "unscorable": 0
+          },
+          "corrupted": {
+            "compatible": 20,
+            "flag": 0,
+            "n": 20,
+            "unscorable": 0
+          }
+        },
+        "lt_student_fil_018": {
+          "clean": {
+            "compatible": 20,
+            "flag": 0,
+            "n": 20,
+            "unscorable": 0
+          },
+          "corrupted": {
+            "compatible": 19,
+            "flag": 1,
+            "n": 20,
+            "unscorable": 0
+          }
+        },
+        "lt_wine_quality_fil_012": {
+          "clean": {
+            "compatible": 20,
+            "flag": 0,
+            "n": 20,
+            "unscorable": 0
+          },
+          "corrupted": {
+            "compatible": 20,
+            "flag": 0,
+            "n": 20,
+            "unscorable": 0
+          }
+        },
+        "lt_wine_quality_fil_014": {
+          "clean": {
+            "compatible": 20,
+            "flag": 0,
+            "n": 20,
+            "unscorable": 0
+          },
+          "corrupted": {
+            "compatible": 20,
+            "flag": 0,
+            "n": 20,
+            "unscorable": 0
+          }
+        }
+      },
+      "per_severity": {
+        "plausible": {
+          "detection": {
+            "ci95": [
+              0.5583333333333333,
+              0.8958333333333334
+            ],
+            "paired_queries": 120,
+            "per_table": {
+              "public_abalone.csv": 0.5,
+              "public_auto_mpg_v4.csv": 1.0,
+              "public_bike_v4.csv": 0.85,
+              "public_penguins_v3.csv": 1.0,
+              "public_student.csv": 0.525,
+              "public_wine_quality.csv": 0.5
+            },
+            "pooled": 0.7291666666666666,
+            "tables": 6,
+            "within_table": 0.7291666666666666
+          },
+          "local_sanity_pass": true,
+          "parent_context_sanity_pass": true,
+          "per_table": {
+            "public_abalone.csv": {
+              "detection": {
+                "ci95": [
+                  0.5,
+                  0.5
+                ],
+                "paired_queries": 20,
+                "per_table": {
+                  "public_abalone.csv": 0.5
+                },
+                "pooled": 0.5,
+                "tables": 1,
+                "within_table": 0.5
+              },
+              "policy": {
+                "clean": {
+                  "compatible": 20,
+                  "flag": 0,
+                  "unscorable": 0
+                },
+                "corrupted": {
+                  "compatible": 20,
+                  "flag": 0,
+                  "unscorable": 0
+                }
+              }
+            },
+            "public_auto_mpg_v4.csv": {
+              "detection": {
+                "ci95": [
+                  1.0,
+                  1.0
+                ],
+                "paired_queries": 20,
+                "per_table": {
+                  "public_auto_mpg_v4.csv": 1.0
+                },
+                "pooled": 1.0,
+                "tables": 1,
+                "within_table": 1.0
+              },
+              "policy": {
+                "clean": {
+                  "compatible": 20,
+                  "flag": 0,
+                  "unscorable": 0
+                },
+                "corrupted": {
+                  "compatible": 0,
+                  "flag": 20,
+                  "unscorable": 0
+                }
+              }
+            },
+            "public_bike_v4.csv": {
+              "detection": {
+                "ci95": [
+                  0.85,
+                  0.85
+                ],
+                "paired_queries": 20,
+                "per_table": {
+                  "public_bike_v4.csv": 0.85
+                },
+                "pooled": 0.85,
+                "tables": 1,
+                "within_table": 0.85
+              },
+              "policy": {
+                "clean": {
+                  "compatible": 20,
+                  "flag": 0,
+                  "unscorable": 0
+                },
+                "corrupted": {
+                  "compatible": 6,
+                  "flag": 14,
+                  "unscorable": 0
+                }
+              }
+            },
+            "public_penguins_v3.csv": {
+              "detection": {
+                "ci95": [
+                  1.0,
+                  1.0
+                ],
+                "paired_queries": 20,
+                "per_table": {
+                  "public_penguins_v3.csv": 1.0
+                },
+                "pooled": 1.0,
+                "tables": 1,
+                "within_table": 1.0
+              },
+              "policy": {
+                "clean": {
+                  "compatible": 20,
+                  "flag": 0,
+                  "unscorable": 0
+                },
+                "corrupted": {
+                  "compatible": 0,
+                  "flag": 20,
+                  "unscorable": 0
+                }
+              }
+            },
+            "public_student.csv": {
+              "detection": {
+                "ci95": [
+                  0.525,
+                  0.525
+                ],
+                "paired_queries": 20,
+                "per_table": {
+                  "public_student.csv": 0.525
+                },
+                "pooled": 0.525,
+                "tables": 1,
+                "within_table": 0.525
+              },
+              "policy": {
+                "clean": {
+                  "compatible": 20,
+                  "flag": 0,
+                  "unscorable": 0
+                },
+                "corrupted": {
+                  "compatible": 19,
+                  "flag": 1,
+                  "unscorable": 0
+                }
+              }
+            },
+            "public_wine_quality.csv": {
+              "detection": {
+                "ci95": [
+                  0.5,
+                  0.5
+                ],
+                "paired_queries": 20,
+                "per_table": {
+                  "public_wine_quality.csv": 0.5
+                },
+                "pooled": 0.5,
+                "tables": 1,
+                "within_table": 0.5
+              },
+              "policy": {
+                "clean": {
+                  "compatible": 20,
+                  "flag": 0,
+                  "unscorable": 0
+                },
+                "corrupted": {
+                  "compatible": 20,
+                  "flag": 0,
+                  "unscorable": 0
+                }
+              }
+            }
+          },
+          "policy": {
+            "clean": {
+              "compatible": 120,
+              "flag": 0,
+              "n": 120,
+              "unscorable": 0
+            },
+            "corrupted": {
+              "compatible": 65,
+              "flag": 55,
+              "n": 120,
+              "unscorable": 0
+            }
+          },
+          "policy_status": "descriptive, sanity passed",
+          "sanity": {
+            "ci95": [
+              0.8729166666666667,
+              1.0
+            ],
+            "paired_queries": 120,
+            "per_table": {
+              "public_abalone.csv": 1.0,
+              "public_auto_mpg_v4.csv": 1.0,
+              "public_bike_v4.csv": 1.0,
+              "public_penguins_v3.csv": 1.0,
+              "public_student.csv": 0.75,
+              "public_wine_quality.csv": 0.9875
+            },
+            "pooled": 0.95625,
+            "tables": 6,
+            "within_table": 0.9562499999999999
+          },
+          "sanity_high_only": {
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "paired_queries": 120,
+            "per_table": {
+              "public_abalone.csv": 1.0,
+              "public_auto_mpg_v4.csv": 1.0,
+              "public_bike_v4.csv": 1.0,
+              "public_penguins_v3.csv": 1.0,
+              "public_student.csv": 1.0,
+              "public_wine_quality.csv": 1.0
+            },
+            "pooled": 1.0,
+            "tables": 6,
+            "within_table": 1.0
+          },
+          "sanity_low_only": {
+            "ci95": [
+              0.7458333333333332,
+              1.0
+            ],
+            "paired_queries": 120,
+            "per_table": {
+              "public_abalone.csv": 1.0,
+              "public_auto_mpg_v4.csv": 1.0,
+              "public_bike_v4.csv": 1.0,
+              "public_penguins_v3.csv": 1.0,
+              "public_student.csv": 0.5,
+              "public_wine_quality.csv": 0.975
+            },
+            "pooled": 0.9125,
+            "tables": 6,
+            "within_table": 0.9125
+          },
+          "sanity_pass": true
+        },
+        "subtle": {
+          "detection": {
+            "ci95": [
+              0.5,
+              0.5
+            ],
+            "paired_queries": 120,
+            "per_table": {
+              "public_abalone.csv": 0.5,
+              "public_auto_mpg_v4.csv": 0.5,
+              "public_bike_v4.csv": 0.5,
+              "public_penguins_v3.csv": 0.5,
+              "public_student.csv": 0.5,
+              "public_wine_quality.csv": 0.5
+            },
+            "pooled": 0.5,
+            "tables": 6,
+            "within_table": 0.5
+          },
+          "local_sanity_pass": true,
+          "parent_context_sanity_pass": true,
+          "per_table": {
+            "public_abalone.csv": {
+              "detection": {
+                "ci95": [
+                  0.5,
+                  0.5
+                ],
+                "paired_queries": 20,
+                "per_table": {
+                  "public_abalone.csv": 0.5
+                },
+                "pooled": 0.5,
+                "tables": 1,
+                "within_table": 0.5
+              },
+              "policy": {
+                "clean": {
+                  "compatible": 20,
+                  "flag": 0,
+                  "unscorable": 0
+                },
+                "corrupted": {
+                  "compatible": 20,
+                  "flag": 0,
+                  "unscorable": 0
+                }
+              }
+            },
+            "public_auto_mpg_v4.csv": {
+              "detection": {
+                "ci95": [
+                  0.5,
+                  0.5
+                ],
+                "paired_queries": 20,
+                "per_table": {
+                  "public_auto_mpg_v4.csv": 0.5
+                },
+                "pooled": 0.5,
+                "tables": 1,
+                "within_table": 0.5
+              },
+              "policy": {
+                "clean": {
+                  "compatible": 20,
+                  "flag": 0,
+                  "unscorable": 0
+                },
+                "corrupted": {
+                  "compatible": 20,
+                  "flag": 0,
+                  "unscorable": 0
+                }
+              }
+            },
+            "public_bike_v4.csv": {
+              "detection": {
+                "ci95": [
+                  0.5,
+                  0.5
+                ],
+                "paired_queries": 20,
+                "per_table": {
+                  "public_bike_v4.csv": 0.5
+                },
+                "pooled": 0.5,
+                "tables": 1,
+                "within_table": 0.5
+              },
+              "policy": {
+                "clean": {
+                  "compatible": 20,
+                  "flag": 0,
+                  "unscorable": 0
+                },
+                "corrupted": {
+                  "compatible": 20,
+                  "flag": 0,
+                  "unscorable": 0
+                }
+              }
+            },
+            "public_penguins_v3.csv": {
+              "detection": {
+                "ci95": [
+                  0.5,
+                  0.5
+                ],
+                "paired_queries": 20,
+                "per_table": {
+                  "public_penguins_v3.csv": 0.5
+                },
+                "pooled": 0.5,
+                "tables": 1,
+                "within_table": 0.5
+              },
+              "policy": {
+                "clean": {
+                  "compatible": 20,
+                  "flag": 0,
+                  "unscorable": 0
+                },
+                "corrupted": {
+                  "compatible": 20,
+                  "flag": 0,
+                  "unscorable": 0
+                }
+              }
+            },
+            "public_student.csv": {
+              "detection": {
+                "ci95": [
+                  0.5,
+                  0.5
+                ],
+                "paired_queries": 20,
+                "per_table": {
+                  "public_student.csv": 0.5
+                },
+                "pooled": 0.5,
+                "tables": 1,
+                "within_table": 0.5
+              },
+              "policy": {
+                "clean": {
+                  "compatible": 20,
+                  "flag": 0,
+                  "unscorable": 0
+                },
+                "corrupted": {
+                  "compatible": 20,
+                  "flag": 0,
+                  "unscorable": 0
+                }
+              }
+            },
+            "public_wine_quality.csv": {
+              "detection": {
+                "ci95": [
+                  0.5,
+                  0.5
+                ],
+                "paired_queries": 20,
+                "per_table": {
+                  "public_wine_quality.csv": 0.5
+                },
+                "pooled": 0.5,
+                "tables": 1,
+                "within_table": 0.5
+              },
+              "policy": {
+                "clean": {
+                  "compatible": 20,
+                  "flag": 0,
+                  "unscorable": 0
+                },
+                "corrupted": {
+                  "compatible": 20,
+                  "flag": 0,
+                  "unscorable": 0
+                }
+              }
+            }
+          },
+          "policy": {
+            "clean": {
+              "compatible": 120,
+              "flag": 0,
+              "n": 120,
+              "unscorable": 0
+            },
+            "corrupted": {
+              "compatible": 120,
+              "flag": 0,
+              "n": 120,
+              "unscorable": 0
+            }
+          },
+          "policy_status": "descriptive, sanity passed",
+          "sanity": {
+            "ci95": [
+              0.8729166666666667,
+              1.0
+            ],
+            "paired_queries": 120,
+            "per_table": {
+              "public_abalone.csv": 1.0,
+              "public_auto_mpg_v4.csv": 1.0,
+              "public_bike_v4.csv": 0.9875,
+              "public_penguins_v3.csv": 1.0,
+              "public_student.csv": 0.75,
+              "public_wine_quality.csv": 1.0
+            },
+            "pooled": 0.95625,
+            "tables": 6,
+            "within_table": 0.9562499999999999
+          },
+          "sanity_high_only": {
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "paired_queries": 120,
+            "per_table": {
+              "public_abalone.csv": 1.0,
+              "public_auto_mpg_v4.csv": 1.0,
+              "public_bike_v4.csv": 1.0,
+              "public_penguins_v3.csv": 1.0,
+              "public_student.csv": 1.0,
+              "public_wine_quality.csv": 1.0
+            },
+            "pooled": 1.0,
+            "tables": 6,
+            "within_table": 1.0
+          },
+          "sanity_low_only": {
+            "ci95": [
+              0.7458333333333332,
+              1.0
+            ],
+            "paired_queries": 120,
+            "per_table": {
+              "public_abalone.csv": 1.0,
+              "public_auto_mpg_v4.csv": 1.0,
+              "public_bike_v4.csv": 0.975,
+              "public_penguins_v3.csv": 1.0,
+              "public_student.csv": 0.5,
+              "public_wine_quality.csv": 1.0
+            },
+            "pooled": 0.9125,
+            "tables": 6,
+            "within_table": 0.9125
+          },
+          "sanity_pass": true
+        }
+      },
+      "per_table": {
+        "public_abalone.csv": {
+          "detection": {
+            "ci95": [
+              0.5,
+              0.5
+            ],
+            "paired_queries": 40,
+            "per_table": {
+              "public_abalone.csv": 0.5
+            },
+            "pooled": 0.5,
+            "tables": 1,
+            "within_table": 0.5
+          },
+          "policy": {
+            "clean": {
+              "compatible": 40,
+              "flag": 0,
+              "unscorable": 0
+            },
+            "corrupted": {
+              "compatible": 40,
+              "flag": 0,
+              "unscorable": 0
+            }
+          }
+        },
+        "public_auto_mpg_v4.csv": {
+          "detection": {
+            "ci95": [
+              0.75,
+              0.75
+            ],
+            "paired_queries": 40,
+            "per_table": {
+              "public_auto_mpg_v4.csv": 0.75
+            },
+            "pooled": 0.75,
+            "tables": 1,
+            "within_table": 0.75
+          },
+          "policy": {
+            "clean": {
+              "compatible": 40,
+              "flag": 0,
+              "unscorable": 0
+            },
+            "corrupted": {
+              "compatible": 20,
+              "flag": 20,
+              "unscorable": 0
+            }
+          }
+        },
+        "public_bike_v4.csv": {
+          "detection": {
+            "ci95": [
+              0.675,
+              0.675
+            ],
+            "paired_queries": 40,
+            "per_table": {
+              "public_bike_v4.csv": 0.675
+            },
+            "pooled": 0.675,
+            "tables": 1,
+            "within_table": 0.675
+          },
+          "policy": {
+            "clean": {
+              "compatible": 40,
+              "flag": 0,
+              "unscorable": 0
+            },
+            "corrupted": {
+              "compatible": 26,
+              "flag": 14,
+              "unscorable": 0
+            }
+          }
+        },
+        "public_penguins_v3.csv": {
+          "detection": {
+            "ci95": [
+              0.75,
+              0.75
+            ],
+            "paired_queries": 40,
+            "per_table": {
+              "public_penguins_v3.csv": 0.75
+            },
+            "pooled": 0.75,
+            "tables": 1,
+            "within_table": 0.75
+          },
+          "policy": {
+            "clean": {
+              "compatible": 40,
+              "flag": 0,
+              "unscorable": 0
+            },
+            "corrupted": {
+              "compatible": 20,
+              "flag": 20,
+              "unscorable": 0
+            }
+          }
+        },
+        "public_student.csv": {
+          "detection": {
+            "ci95": [
+              0.5125,
+              0.5125
+            ],
+            "paired_queries": 40,
+            "per_table": {
+              "public_student.csv": 0.5125
+            },
+            "pooled": 0.5125,
+            "tables": 1,
+            "within_table": 0.5125
+          },
+          "policy": {
+            "clean": {
+              "compatible": 40,
+              "flag": 0,
+              "unscorable": 0
+            },
+            "corrupted": {
+              "compatible": 39,
+              "flag": 1,
+              "unscorable": 0
+            }
+          }
+        },
+        "public_wine_quality.csv": {
+          "detection": {
+            "ci95": [
+              0.5,
+              0.5
+            ],
+            "paired_queries": 40,
+            "per_table": {
+              "public_wine_quality.csv": 0.5
+            },
+            "pooled": 0.5,
+            "tables": 1,
+            "within_table": 0.5
+          },
+          "policy": {
+            "clean": {
+              "compatible": 40,
+              "flag": 0,
+              "unscorable": 0
+            },
+            "corrupted": {
+              "compatible": 40,
+              "flag": 0,
+              "unscorable": 0
+            }
+          }
+        }
+      },
+      "policy": {
+        "clean": {
+          "compatible": 240,
+          "flag": 0,
+          "n": 240,
+          "unscorable": 0
+        },
+        "corrupted": {
+          "compatible": 185,
+          "flag": 55,
+          "n": 240,
+          "unscorable": 0
+        }
+      },
+      "policy_status": "descriptive, sanity passed",
+      "sanity": {
+        "ci95": [
+          0.8729166666666667,
+          0.9989583333333334
+        ],
+        "paired_queries": 240,
+        "per_table": {
+          "public_abalone.csv": 1.0,
+          "public_auto_mpg_v4.csv": 1.0,
+          "public_bike_v4.csv": 0.99375,
+          "public_penguins_v3.csv": 1.0,
+          "public_student.csv": 0.75,
+          "public_wine_quality.csv": 0.99375
+        },
+        "pooled": 0.95625,
+        "tables": 6,
+        "within_table": 0.9562500000000002
+      },
+      "sanity_high_only": {
+        "ci95": [
+          1.0,
+          1.0
+        ],
+        "paired_queries": 240,
+        "per_table": {
+          "public_abalone.csv": 1.0,
+          "public_auto_mpg_v4.csv": 1.0,
+          "public_bike_v4.csv": 1.0,
+          "public_penguins_v3.csv": 1.0,
+          "public_student.csv": 1.0,
+          "public_wine_quality.csv": 1.0
+        },
+        "pooled": 1.0,
+        "tables": 6,
+        "within_table": 1.0
+      },
+      "sanity_low_only": {
+        "ci95": [
+          0.7458333333333332,
+          0.9979166666666667
+        ],
+        "paired_queries": 240,
+        "per_table": {
+          "public_abalone.csv": 1.0,
+          "public_auto_mpg_v4.csv": 1.0,
+          "public_bike_v4.csv": 0.9875,
+          "public_penguins_v3.csv": 1.0,
+          "public_student.csv": 0.5,
+          "public_wine_quality.csv": 0.9875
+        },
+        "pooled": 0.9125,
+        "tables": 6,
+        "within_table": 0.9125
+      },
+      "sanity_pass": true
+    },
+    "0d": {
+      "detection": {
+        "ci95": [
+          0.7183333333333334,
+          0.9153125000000001
+        ],
+        "paired_queries": 240,
+        "per_table": {
+          "public_abalone.csv": 0.7875,
+          "public_auto_mpg_v4.csv": 0.95,
+          "public_bike_v4.csv": 0.7568750000000001,
+          "public_penguins_v3.csv": 0.99875,
+          "public_student.csv": 0.6106250000000001,
+          "public_wine_quality.csv": 0.8068749999999999
+        },
+        "pooled": 0.8200173611111111,
+        "tables": 6,
+        "within_table": 0.8184374999999999
+      },
+      "flag_rates": {
+        "clean": {
+          "ci95": [
+            0.024999999999999998,
+            0.09166666666666667
+          ],
+          "draw_units": 240,
+          "flags": 14,
+          "mean": 0.05833333333333334,
+          "per_table": {
+            "public_abalone.csv": 0.0,
+            "public_auto_mpg_v4.csv": 0.0,
+            "public_bike_v4.csv": 0.075,
+            "public_penguins_v3.csv": 0.075,
+            "public_student.csv": 0.125,
+            "public_wine_quality.csv": 0.075
+          },
+          "tables": 6,
+          "unscorable": 0
+        },
+        "corrupted": {
+          "ci95": [
+            0.4998958333333333,
+            0.8375
+          ],
+          "draw_units": 240,
+          "flags": 161,
+          "mean": 0.6708333333333334,
+          "per_table": {
+            "public_abalone.csv": 0.575,
+            "public_auto_mpg_v4.csv": 0.9,
+            "public_bike_v4.csv": 0.55,
+            "public_penguins_v3.csv": 1.0,
+            "public_student.csv": 0.35,
+            "public_wine_quality.csv": 0.65
+          },
+          "tables": 6,
+          "unscorable": 0
+        }
+      },
+      "local_sanity_pass": true,
+      "parent_context_sanity_pass": null,
+      "per_query": {
+        "lt_abalone_fil_016": {
+          "clean": {
+            "compatible": 20,
+            "flag": 0,
+            "n": 20,
+            "unscorable": 0
+          },
+          "corrupted": {
+            "compatible": 17,
+            "flag": 3,
+            "n": 20,
+            "unscorable": 0
+          }
+        },
+        "lt_abalone_fil_018": {
+          "clean": {
+            "compatible": 20,
+            "flag": 0,
+            "n": 20,
+            "unscorable": 0
+          },
+          "corrupted": {
+            "compatible": 0,
+            "flag": 20,
+            "n": 20,
+            "unscorable": 0
+          }
+        },
+        "lt_auto_mpg_v4_fil_013": {
+          "clean": {
+            "compatible": 20,
+            "flag": 0,
+            "n": 20,
+            "unscorable": 0
+          },
+          "corrupted": {
+            "compatible": 4,
+            "flag": 16,
+            "n": 20,
+            "unscorable": 0
+          }
+        },
+        "lt_auto_mpg_v4_fil_014": {
+          "clean": {
+            "compatible": 20,
+            "flag": 0,
+            "n": 20,
+            "unscorable": 0
+          },
+          "corrupted": {
+            "compatible": 0,
+            "flag": 20,
+            "n": 20,
+            "unscorable": 0
+          }
+        },
+        "lt_bike_v4_fil_011": {
+          "clean": {
+            "compatible": 19,
+            "flag": 1,
+            "n": 20,
+            "unscorable": 0
+          },
+          "corrupted": {
+            "compatible": 18,
+            "flag": 2,
+            "n": 20,
+            "unscorable": 0
+          }
+        },
+        "lt_bike_v4_fil_012": {
+          "clean": {
+            "compatible": 18,
+            "flag": 2,
+            "n": 20,
+            "unscorable": 0
+          },
+          "corrupted": {
+            "compatible": 0,
+            "flag": 20,
+            "n": 20,
+            "unscorable": 0
+          }
+        },
+        "lt_penguins_v3_fil_013": {
+          "clean": {
+            "compatible": 19,
+            "flag": 1,
+            "n": 20,
+            "unscorable": 0
+          },
+          "corrupted": {
+            "compatible": 0,
+            "flag": 20,
+            "n": 20,
+            "unscorable": 0
+          }
+        },
+        "lt_penguins_v3_fil_014": {
+          "clean": {
+            "compatible": 18,
+            "flag": 2,
+            "n": 20,
+            "unscorable": 0
+          },
+          "corrupted": {
+            "compatible": 0,
+            "flag": 20,
+            "n": 20,
+            "unscorable": 0
+          }
+        },
+        "lt_student_fil_012": {
+          "clean": {
+            "compatible": 18,
+            "flag": 2,
+            "n": 20,
+            "unscorable": 0
+          },
+          "corrupted": {
+            "compatible": 17,
+            "flag": 3,
+            "n": 20,
+            "unscorable": 0
+          }
+        },
+        "lt_student_fil_018": {
+          "clean": {
+            "compatible": 17,
+            "flag": 3,
+            "n": 20,
+            "unscorable": 0
+          },
+          "corrupted": {
+            "compatible": 9,
+            "flag": 11,
+            "n": 20,
+            "unscorable": 0
+          }
+        },
+        "lt_wine_quality_fil_012": {
+          "clean": {
+            "compatible": 19,
+            "flag": 1,
+            "n": 20,
+            "unscorable": 0
+          },
+          "corrupted": {
+            "compatible": 14,
+            "flag": 6,
+            "n": 20,
+            "unscorable": 0
+          }
+        },
+        "lt_wine_quality_fil_014": {
+          "clean": {
+            "compatible": 18,
+            "flag": 2,
+            "n": 20,
+            "unscorable": 0
+          },
+          "corrupted": {
+            "compatible": 0,
+            "flag": 20,
+            "n": 20,
+            "unscorable": 0
+          }
+        }
+      },
+      "per_severity": {
+        "plausible": {
+          "detection": {
+            "ci95": [
+              0.845625,
+              1.0
+            ],
+            "paired_queries": 120,
+            "per_table": {
+              "public_abalone.csv": 1.0,
+              "public_auto_mpg_v4.csv": 1.0,
+              "public_bike_v4.csv": 1.0,
+              "public_penguins_v3.csv": 1.0,
+              "public_student.csv": 0.6912499999999999,
+              "public_wine_quality.csv": 1.0
+            },
+            "pooled": 0.9558680555555557,
+            "tables": 6,
+            "within_table": 0.9485416666666667
+          },
+          "local_sanity_pass": true,
+          "parent_context_sanity_pass": true,
+          "per_table": {
+            "public_abalone.csv": {
+              "detection": {
+                "ci95": [
+                  1.0,
+                  1.0
+                ],
+                "paired_queries": 20,
+                "per_table": {
+                  "public_abalone.csv": 1.0
+                },
+                "pooled": 1.0,
+                "tables": 1,
+                "within_table": 1.0
+              },
+              "policy": {
+                "clean": {
+                  "compatible": 20,
+                  "flag": 0,
+                  "unscorable": 0
+                },
+                "corrupted": {
+                  "compatible": 0,
+                  "flag": 20,
+                  "unscorable": 0
+                }
+              }
+            },
+            "public_auto_mpg_v4.csv": {
+              "detection": {
+                "ci95": [
+                  1.0,
+                  1.0
+                ],
+                "paired_queries": 20,
+                "per_table": {
+                  "public_auto_mpg_v4.csv": 1.0
+                },
+                "pooled": 1.0,
+                "tables": 1,
+                "within_table": 1.0
+              },
+              "policy": {
+                "clean": {
+                  "compatible": 20,
+                  "flag": 0,
+                  "unscorable": 0
+                },
+                "corrupted": {
+                  "compatible": 0,
+                  "flag": 20,
+                  "unscorable": 0
+                }
+              }
+            },
+            "public_bike_v4.csv": {
+              "detection": {
+                "ci95": [
+                  1.0,
+                  1.0
+                ],
+                "paired_queries": 20,
+                "per_table": {
+                  "public_bike_v4.csv": 1.0
+                },
+                "pooled": 1.0,
+                "tables": 1,
+                "within_table": 1.0
+              },
+              "policy": {
+                "clean": {
+                  "compatible": 18,
+                  "flag": 2,
+                  "unscorable": 0
+                },
+                "corrupted": {
+                  "compatible": 0,
+                  "flag": 20,
+                  "unscorable": 0
+                }
+              }
+            },
+            "public_penguins_v3.csv": {
+              "detection": {
+                "ci95": [
+                  1.0,
+                  1.0
+                ],
+                "paired_queries": 20,
+                "per_table": {
+                  "public_penguins_v3.csv": 1.0
+                },
+                "pooled": 1.0,
+                "tables": 1,
+                "within_table": 1.0
+              },
+              "policy": {
+                "clean": {
+                  "compatible": 18,
+                  "flag": 2,
+                  "unscorable": 0
+                },
+                "corrupted": {
+                  "compatible": 0,
+                  "flag": 20,
+                  "unscorable": 0
+                }
+              }
+            },
+            "public_student.csv": {
+              "detection": {
+                "ci95": [
+                  0.6912499999999999,
+                  0.6912499999999999
+                ],
+                "paired_queries": 20,
+                "per_table": {
+                  "public_student.csv": 0.6912499999999999
+                },
+                "pooled": 0.6912499999999999,
+                "tables": 1,
+                "within_table": 0.6912499999999999
+              },
+              "policy": {
+                "clean": {
+                  "compatible": 17,
+                  "flag": 3,
+                  "unscorable": 0
+                },
+                "corrupted": {
+                  "compatible": 9,
+                  "flag": 11,
+                  "unscorable": 0
+                }
+              }
+            },
+            "public_wine_quality.csv": {
+              "detection": {
+                "ci95": [
+                  1.0,
+                  1.0
+                ],
+                "paired_queries": 20,
+                "per_table": {
+                  "public_wine_quality.csv": 1.0
+                },
+                "pooled": 1.0,
+                "tables": 1,
+                "within_table": 1.0
+              },
+              "policy": {
+                "clean": {
+                  "compatible": 18,
+                  "flag": 2,
+                  "unscorable": 0
+                },
+                "corrupted": {
+                  "compatible": 0,
+                  "flag": 20,
+                  "unscorable": 0
+                }
+              }
+            }
+          },
+          "policy": {
+            "clean": {
+              "compatible": 111,
+              "flag": 9,
+              "n": 120,
+              "unscorable": 0
+            },
+            "corrupted": {
+              "compatible": 9,
+              "flag": 111,
+              "n": 120,
+              "unscorable": 0
+            }
+          },
+          "policy_status": "descriptive, sanity passed",
+          "sanity": {
+            "ci95": [
+              0.9781249999999999,
+              1.0
+            ],
+            "paired_queries": 120,
+            "per_table": {
+              "public_abalone.csv": 1.0,
+              "public_auto_mpg_v4.csv": 1.0,
+              "public_bike_v4.csv": 1.0,
+              "public_penguins_v3.csv": 1.0,
+              "public_student.csv": 0.9562499999999999,
+              "public_wine_quality.csv": 1.0
+            },
+            "pooled": 0.99875,
+            "tables": 6,
+            "within_table": 0.9927083333333333
+          },
+          "sanity_high_only": {
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "paired_queries": 120,
+            "per_table": {
+              "public_abalone.csv": 1.0,
+              "public_auto_mpg_v4.csv": 1.0,
+              "public_bike_v4.csv": 1.0,
+              "public_penguins_v3.csv": 1.0,
+              "public_student.csv": 1.0,
+              "public_wine_quality.csv": 1.0
+            },
+            "pooled": 1.0,
+            "tables": 6,
+            "within_table": 1.0
+          },
+          "sanity_low_only": {
+            "ci95": [
+              0.9562499999999999,
+              1.0
+            ],
+            "paired_queries": 120,
+            "per_table": {
+              "public_abalone.csv": 1.0,
+              "public_auto_mpg_v4.csv": 1.0,
+              "public_bike_v4.csv": 1.0,
+              "public_penguins_v3.csv": 1.0,
+              "public_student.csv": 0.9125,
+              "public_wine_quality.csv": 1.0
+            },
+            "pooled": 0.9975,
+            "tables": 6,
+            "within_table": 0.9854166666666666
+          },
+          "sanity_pass": true
+        },
+        "subtle": {
+          "detection": {
+            "ci95": [
+              0.5512499999999999,
+              0.8412499999999999
+            ],
+            "paired_queries": 120,
+            "per_table": {
+              "public_abalone.csv": 0.575,
+              "public_auto_mpg_v4.csv": 0.9,
+              "public_bike_v4.csv": 0.5249999999999999,
+              "public_penguins_v3.csv": 0.9974999999999999,
+              "public_student.csv": 0.5275,
+              "public_wine_quality.csv": 0.6275
+            },
+            "pooled": 0.6909027777777779,
+            "tables": 6,
+            "within_table": 0.6920833333333333
+          },
+          "local_sanity_pass": true,
+          "parent_context_sanity_pass": true,
+          "per_table": {
+            "public_abalone.csv": {
+              "detection": {
+                "ci95": [
+                  0.575,
+                  0.575
+                ],
+                "paired_queries": 20,
+                "per_table": {
+                  "public_abalone.csv": 0.575
+                },
+                "pooled": 0.575,
+                "tables": 1,
+                "within_table": 0.575
+              },
+              "policy": {
+                "clean": {
+                  "compatible": 20,
+                  "flag": 0,
+                  "unscorable": 0
+                },
+                "corrupted": {
+                  "compatible": 17,
+                  "flag": 3,
+                  "unscorable": 0
+                }
+              }
+            },
+            "public_auto_mpg_v4.csv": {
+              "detection": {
+                "ci95": [
+                  0.9,
+                  0.9
+                ],
+                "paired_queries": 20,
+                "per_table": {
+                  "public_auto_mpg_v4.csv": 0.9
+                },
+                "pooled": 0.9,
+                "tables": 1,
+                "within_table": 0.9
+              },
+              "policy": {
+                "clean": {
+                  "compatible": 20,
+                  "flag": 0,
+                  "unscorable": 0
+                },
+                "corrupted": {
+                  "compatible": 4,
+                  "flag": 16,
+                  "unscorable": 0
+                }
+              }
+            },
+            "public_bike_v4.csv": {
+              "detection": {
+                "ci95": [
+                  0.5249999999999999,
+                  0.5249999999999999
+                ],
+                "paired_queries": 20,
+                "per_table": {
+                  "public_bike_v4.csv": 0.5249999999999999
+                },
+                "pooled": 0.5249999999999999,
+                "tables": 1,
+                "within_table": 0.5249999999999999
+              },
+              "policy": {
+                "clean": {
+                  "compatible": 19,
+                  "flag": 1,
+                  "unscorable": 0
+                },
+                "corrupted": {
+                  "compatible": 18,
+                  "flag": 2,
+                  "unscorable": 0
+                }
+              }
+            },
+            "public_penguins_v3.csv": {
+              "detection": {
+                "ci95": [
+                  0.9974999999999999,
+                  0.9974999999999999
+                ],
+                "paired_queries": 20,
+                "per_table": {
+                  "public_penguins_v3.csv": 0.9974999999999999
+                },
+                "pooled": 0.9974999999999999,
+                "tables": 1,
+                "within_table": 0.9974999999999999
+              },
+              "policy": {
+                "clean": {
+                  "compatible": 19,
+                  "flag": 1,
+                  "unscorable": 0
+                },
+                "corrupted": {
+                  "compatible": 0,
+                  "flag": 20,
+                  "unscorable": 0
+                }
+              }
+            },
+            "public_student.csv": {
+              "detection": {
+                "ci95": [
+                  0.5275,
+                  0.5275
+                ],
+                "paired_queries": 20,
+                "per_table": {
+                  "public_student.csv": 0.5275
+                },
+                "pooled": 0.5275,
+                "tables": 1,
+                "within_table": 0.5275
+              },
+              "policy": {
+                "clean": {
+                  "compatible": 18,
+                  "flag": 2,
+                  "unscorable": 0
+                },
+                "corrupted": {
+                  "compatible": 17,
+                  "flag": 3,
+                  "unscorable": 0
+                }
+              }
+            },
+            "public_wine_quality.csv": {
+              "detection": {
+                "ci95": [
+                  0.6275,
+                  0.6275
+                ],
+                "paired_queries": 20,
+                "per_table": {
+                  "public_wine_quality.csv": 0.6275
+                },
+                "pooled": 0.6275,
+                "tables": 1,
+                "within_table": 0.6275
+              },
+              "policy": {
+                "clean": {
+                  "compatible": 19,
+                  "flag": 1,
+                  "unscorable": 0
+                },
+                "corrupted": {
+                  "compatible": 14,
+                  "flag": 6,
+                  "unscorable": 0
+                }
+              }
+            }
+          },
+          "policy": {
+            "clean": {
+              "compatible": 115,
+              "flag": 5,
+              "n": 120,
+              "unscorable": 0
+            },
+            "corrupted": {
+              "compatible": 70,
+              "flag": 50,
+              "n": 120,
+              "unscorable": 0
+            }
+          },
+          "policy_status": "descriptive, sanity passed",
+          "sanity": {
+            "ci95": [
+              0.990625,
+              1.0
+            ],
+            "paired_queries": 120,
+            "per_table": {
+              "public_abalone.csv": 1.0,
+              "public_auto_mpg_v4.csv": 1.0,
+              "public_bike_v4.csv": 0.98125,
+              "public_penguins_v3.csv": 1.0,
+              "public_student.csv": 1.0,
+              "public_wine_quality.csv": 1.0
+            },
+            "pooled": 0.9987847222222223,
+            "tables": 6,
+            "within_table": 0.9968750000000001
+          },
+          "sanity_high_only": {
+            "ci95": [
+              1.0,
+              1.0
+            ],
+            "paired_queries": 120,
+            "per_table": {
+              "public_abalone.csv": 1.0,
+              "public_auto_mpg_v4.csv": 1.0,
+              "public_bike_v4.csv": 1.0,
+              "public_penguins_v3.csv": 1.0,
+              "public_student.csv": 1.0,
+              "public_wine_quality.csv": 1.0
+            },
+            "pooled": 1.0,
+            "tables": 6,
+            "within_table": 1.0
+          },
+          "sanity_low_only": {
+            "ci95": [
+              0.9812499999999998,
+              1.0
+            ],
+            "paired_queries": 120,
+            "per_table": {
+              "public_abalone.csv": 1.0,
+              "public_auto_mpg_v4.csv": 1.0,
+              "public_bike_v4.csv": 0.9624999999999999,
+              "public_penguins_v3.csv": 1.0,
+              "public_student.csv": 1.0,
+              "public_wine_quality.csv": 1.0
+            },
+            "pooled": 0.9975694444444445,
+            "tables": 6,
+            "within_table": 0.99375
+          },
+          "sanity_pass": true
+        }
+      },
+      "per_table": {
+        "public_abalone.csv": {
+          "detection": {
+            "ci95": [
+              0.7875,
+              0.7875
+            ],
+            "paired_queries": 40,
+            "per_table": {
+              "public_abalone.csv": 0.7875
+            },
+            "pooled": 0.7875,
+            "tables": 1,
+            "within_table": 0.7875
+          },
+          "policy": {
+            "clean": {
+              "compatible": 40,
+              "flag": 0,
+              "unscorable": 0
+            },
+            "corrupted": {
+              "compatible": 17,
+              "flag": 23,
+              "unscorable": 0
+            }
+          }
+        },
+        "public_auto_mpg_v4.csv": {
+          "detection": {
+            "ci95": [
+              0.95,
+              0.95
+            ],
+            "paired_queries": 40,
+            "per_table": {
+              "public_auto_mpg_v4.csv": 0.95
+            },
+            "pooled": 0.95,
+            "tables": 1,
+            "within_table": 0.95
+          },
+          "policy": {
+            "clean": {
+              "compatible": 40,
+              "flag": 0,
+              "unscorable": 0
+            },
+            "corrupted": {
+              "compatible": 4,
+              "flag": 36,
+              "unscorable": 0
+            }
+          }
+        },
+        "public_bike_v4.csv": {
+          "detection": {
+            "ci95": [
+              0.7568750000000001,
+              0.7568750000000001
+            ],
+            "paired_queries": 40,
+            "per_table": {
+              "public_bike_v4.csv": 0.7568750000000001
+            },
+            "pooled": 0.7568750000000001,
+            "tables": 1,
+            "within_table": 0.7568750000000001
+          },
+          "policy": {
+            "clean": {
+              "compatible": 37,
+              "flag": 3,
+              "unscorable": 0
+            },
+            "corrupted": {
+              "compatible": 18,
+              "flag": 22,
+              "unscorable": 0
+            }
+          }
+        },
+        "public_penguins_v3.csv": {
+          "detection": {
+            "ci95": [
+              0.99875,
+              0.99875
+            ],
+            "paired_queries": 40,
+            "per_table": {
+              "public_penguins_v3.csv": 0.99875
+            },
+            "pooled": 0.99875,
+            "tables": 1,
+            "within_table": 0.99875
+          },
+          "policy": {
+            "clean": {
+              "compatible": 37,
+              "flag": 3,
+              "unscorable": 0
+            },
+            "corrupted": {
+              "compatible": 0,
+              "flag": 40,
+              "unscorable": 0
+            }
+          }
+        },
+        "public_student.csv": {
+          "detection": {
+            "ci95": [
+              0.6106250000000001,
+              0.6106250000000001
+            ],
+            "paired_queries": 40,
+            "per_table": {
+              "public_student.csv": 0.6106250000000001
+            },
+            "pooled": 0.6106250000000001,
+            "tables": 1,
+            "within_table": 0.6106250000000001
+          },
+          "policy": {
+            "clean": {
+              "compatible": 35,
+              "flag": 5,
+              "unscorable": 0
+            },
+            "corrupted": {
+              "compatible": 26,
+              "flag": 14,
+              "unscorable": 0
+            }
+          }
+        },
+        "public_wine_quality.csv": {
+          "detection": {
+            "ci95": [
+              0.8068749999999999,
+              0.8068749999999999
+            ],
+            "paired_queries": 40,
+            "per_table": {
+              "public_wine_quality.csv": 0.8068749999999999
+            },
+            "pooled": 0.8068749999999999,
+            "tables": 1,
+            "within_table": 0.8068749999999999
+          },
+          "policy": {
+            "clean": {
+              "compatible": 37,
+              "flag": 3,
+              "unscorable": 0
+            },
+            "corrupted": {
+              "compatible": 14,
+              "flag": 26,
+              "unscorable": 0
+            }
+          }
+        }
+      },
+      "policy": {
+        "clean": {
+          "compatible": 226,
+          "flag": 14,
+          "n": 240,
+          "unscorable": 0
+        },
+        "corrupted": {
+          "compatible": 79,
+          "flag": 161,
+          "n": 240,
+          "unscorable": 0
+        }
+      },
+      "policy_status": "descriptive, sanity passed",
+      "sanity": {
+        "ci95": [
+          0.989375,
+          1.0
+        ],
+        "paired_queries": 240,
+        "per_table": {
+          "public_abalone.csv": 1.0,
+          "public_auto_mpg_v4.csv": 1.0,
+          "public_bike_v4.csv": 0.9953125,
+          "public_penguins_v3.csv": 1.0,
+          "public_student.csv": 0.9803125,
+          "public_wine_quality.csv": 1.0
+        },
+        "pooled": 0.9988975694444443,
+        "tables": 6,
+        "within_table": 0.9959375
+      },
+      "sanity_high_only": {
+        "ci95": [
+          1.0,
+          1.0
+        ],
+        "paired_queries": 240,
+        "per_table": {
+          "public_abalone.csv": 1.0,
+          "public_auto_mpg_v4.csv": 1.0,
+          "public_bike_v4.csv": 1.0,
+          "public_penguins_v3.csv": 1.0,
+          "public_student.csv": 1.0,
+          "public_wine_quality.csv": 1.0
+        },
+        "pooled": 1.0,
+        "tables": 6,
+        "within_table": 1.0
+      },
+      "sanity_low_only": {
+        "ci95": [
+          0.9787500000000001,
+          1.0
+        ],
+        "paired_queries": 240,
+        "per_table": {
+          "public_abalone.csv": 1.0,
+          "public_auto_mpg_v4.csv": 1.0,
+          "public_bike_v4.csv": 0.9906250000000001,
+          "public_penguins_v3.csv": 1.0,
+          "public_student.csv": 0.960625,
+          "public_wine_quality.csv": 1.0
+        },
+        "pooled": 0.9977951388888888,
+        "tables": 6,
+        "within_table": 0.991875
+      },
+      "sanity_pass": true
+    }
+  },
+  "model_comparison": null,
+  "model_comparison_status": "No new model replies to these rows; old replies not reused.",
+  "original_queries": 12,
+  "protocol": "A-CTX-RESAMPLE",
+  "query_draw_units": 240,
+  "table_clusters": 6
+}

@@ -418,3 +418,39 @@ compare raw rows against statistics from the identical rows, retaining 0d and cl
 controls. No next-stage collection started, no data replaced. Existing workshop CFP was
 checked: negative results and four-page short papers welcome, but this single-return study
 must not be framed as an evaluated long-horizon evolution system.
+
+
+## 2026-11-07 — independent matched-row draws, F12
+
+```
+Step: A-CTX-RESAMPLE, 12 original queries x 20 independent matched20 draws
+1 Protocol-before-results  7f6400e precedes code 0494e7f, evidence freeze b192a58 and checks. [x]
+2 Hypothesis served        Row-sampling stability, not new-task/model confirmation. [x]
+3 Sanity check             Two provider/cluster tests; original checker unchanged.
+                           Primary sanity 0.995938; 1920 unique events,
+                           240 features. No missing matched scores. [x]
+4 Confirmatory/exploratory Known queries/initial outcomes; separate exploratory study,
+                           original pilot retained, not expanded for significance. [x]
+5 Claim scope              Query/draw mixture estimand, six parent-table clusters.
+                           No comparison to models on these new rows, no 5% guarantee. [x]
+6 Reviewer objection       Independent cached-formula and pairwise-AUROC recompute
+                           agrees. Severity tied to query, zero-error CI degeneracy,
+                           single-draw versus mixture distinction disclosed. [x]
+7 Workshop fitness         Adds stability/error-trade-off evidence; motivates new-table
+                           raw-versus-derived-statistics intervention. [x]
+Verdict: PASS-AS-EXPLORATORY.
+```
+
+Primary within-table mixture AUROC=0.818437, descriptive CI=[0.7183333333333334, 0.9153125000000001].
+Flags 161/240 corruptions and 14/240 clean values.
+No new API calls; 240 draws are not 240 independent queries. All model comparisons remain
+restricted to their original frozen evidence. Generated report/per-query frequencies:
+docs/CONTEXT_EVIDENCE_RESAMPLING_2026-11-07.md.
+
+research(reflect): signal exists beyond the single initial sample, but weak subtle-query
+performance and heterogeneous false flags remain. New table and query generation is now
+more useful than more draws of this fixed set. Next proposed protocol compares raw rows
+against same-row summaries, crosses severity within each query, retains direct statistics,
+clean and sanity, and controls added prompt/compute information. No new-table model run
+started in these two offline steps. Workshop short-paper relevance is plausible; acceptance
+and new-algorithm novelty are not inferred from pilot statistics.

@@ -584,3 +584,21 @@ raw rows versus summaries derived from the identical rows, retaining 0d, clean a
 controls. Each new study gets its own protocol; no outcome-driven expansion of this run.
 Full generated tables, plot, exceptions and paper implications:
 [report](docs/CONTEXT_EVIDENCE_2026-11-07.md).
+
+
+## F12 — Independent row-draw robustness, selected queries (2026-11-07, exploratory)
+
+A-CTX-RESAMPLE protocol 7f6400e, code 0494e7f, evidence freeze b192a58. Twenty new matched20 draws per each of twelve original queries: 240 query/draw units, still six tables. No new LLM replies or reuse of old replies on new rows.
+
+0d sanity 0.995938 passes. Query/draw-mixture within-table AUROC 0.818437, descriptive six-table CI [0.718333, 0.915313]. Flags 161/240 corruptions (67.1%) and 14/240 clean values (5.8%); no missing scores. Observed rates are not calibration guarantees.
+
+| 0d slice | Corrupted flags | Clean false flags |
+|---|---:|---:|
+| plausible | 111/120 | 9/120 |
+| subtle | 50/120 | 5/120 |
+
+Severity is tied to query. Secondary 0a passes sanity, real AUROC 0.614583; zero observed clean flags are not a zero-population-error guarantee.
+
+Signal persists across sampling for these selected queries, with task heterogeneity and missed subtle cases. Single-draw 0.917 and mixture 0.818 estimate different targets; their difference does not prove initial luck/bias. No new table/task generalization, model-gap replication, identified internal mechanism or new algorithm. Independent artifact/ranking review: PASS-AS-EXPLORATORY.
+
+Next: preregister fresh-table raw-rows versus same-row-statistics controls, crossing severity within each query and retaining 0d/clean/sanity. [Generated report](docs/CONTEXT_EVIDENCE_RESAMPLING_2026-11-07.md).
