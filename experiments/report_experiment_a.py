@@ -58,27 +58,33 @@ def analyze(output):
     missing=[]
     for u in manifest['units']:
         path=output/'responses'/(u['unit_id']+'.json')
-        if not path.exists() or load(path)['status']!='completed':
+        if not path.exists():
             missing.append(u['unit_id']);continue
         r=load(path)
         assert r['unit_id']==u['unit_id'] and r['manifest_hash']==mh and r['initial_messages_hash']==u['messages_hash']
         assert len(r['calls']) <= (4 if u['arm']=='code' else 1)
         assert len(r['tools']) <= (3 if u['arm']=='code' else 0)
-        c=costs[u['arm']];c['completed_trajectories']+=1
+        c=costs[u['arm']]
+        c['completed_trajectories']+=int(r['status']=='completed')
         c['python_calls']+=len(r['tools']);c['python_errors']+=sum(t['result']['error'] for t in r['tools'])
         c['tool_seconds']+=sum(t.get('elapsed_seconds',0) for t in r['tools'])
+        for call in r['calls']:
+            c['logical_requests']+=int(bool(call['attempts']))
+            c['http_attempts']+=len(call['attempts'])
+            c['failed_http_attempts']+=sum(x['status']!='success' for x in call['attempts'])
+            c['http_seconds']+=sum(x.get('elapsed_seconds',0) for x in call['attempts'])
+            for key in ('prompt_tokens','completion_tokens','total_tokens'):
+                c[key]+=(call.get('provider_response',{}).get('usage') or {}).get(key,0) or 0
+        if r['status']!='completed':
+            c['incomplete_trajectories']=c.get('incomplete_trajectories',0)+1
+            missing.append(u['unit_id']);continue
         expected_messages=u['messages']
         for index,call in enumerate(r['calls']):
             assert call['messages']==expected_messages
             payload={'model':manifest.get('model','gemini-3.8-flash'),'messages':expected_messages,'max_tokens':1536,'reasoning_effort':'low'}
             assert call['payload_hash']==digest(payload)
             assert len(call['attempts'])<=3
-            provider=call['provider_response'];choice=provider['choices'][0]
-            c['logical_requests']+=1;c['http_attempts']+=len(call['attempts'])
-            c['failed_http_attempts']+=sum(x['status']!='success' for x in call['attempts'])
-            c['http_seconds']+=sum(x.get('elapsed_seconds',0) for x in call['attempts'])
-            for key in ('prompt_tokens','completion_tokens','total_tokens'):
-                c[key]+=(provider.get('usage') or {}).get(key,0) or 0
+            provider=call['provider_response'];choice=(provider.get('choices') or [{}])[0]
             raw=(choice.get('message') or {}).get('content') or ''
             if index<len(r['tools']):
                 t=r['tools'][index]
@@ -86,7 +92,7 @@ def analyze(output):
                 expected_messages=expected_messages+[{'role':'assistant','content':raw},
                        {'role':'user','content':'VISIBLE-ROWS PYTHON RESULT\n'+t['result']['output']+
                         ('\nTool budget exhausted. Give the final four-field JSON now.' if index==2 else '')}]
-        choice=r['calls'][-1]['provider_response']['choices'][0]
+        choice=(r['calls'][-1]['provider_response'].get('choices') or [{}])[0]
         raw=(choice.get('message') or {}).get('content') or ''
         parsed=parse_reply(raw)
         if choice.get('finish_reason') in ('length','content_filter') or (choice.get('message') or {}).get('refusal'):
@@ -103,6 +109,10 @@ def analyze(output):
     if missing:
         progress={'status':'incomplete-no-primary-efficacy-analysis','completed':len(rows),
                   'expected':manifest['expected'],'missing_unit_ids':missing,'costs_so_far':costs}
+        lookup={(r['evidence_unit'],r['arm'],r['level']):r for r in rows}
+        ids={r['evidence_unit'] for r in rows if all((r['evidence_unit'],a,l) in lookup for a in ('raw','check') for l,_ in LEVELS)}
+        common=[r for r in rows if r['evidence_unit'] in ids and r['arm'] in ('raw','check')]
+        progress['interim_completed_common_cell_sensitivity']=effect(common,'check','raw') if common else {'status':'no-completed-common-evidence-units'}
         save(output/'analysis_status.json',progress)
         print(json.dumps({'status':progress['status'],'completed':len(rows),'expected':manifest['expected']}))
         return progress

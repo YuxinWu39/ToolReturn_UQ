@@ -29,6 +29,7 @@ MODEL = 'gemini-3.8-flash'
 ENDPOINT = 'https://generativelanguage.googleapis.com/v1beta/openai/chat/completions'
 PROTOCOL = 'A-MONITOR-INTERVENTION'
 PROTOCOL_COMMIT = '89734f4'
+ENGINEERING_AMENDMENT = '9ccf2bd'
 FILES = ('experiment_a.py', 'experiment_a_python.py', 'context_evidence.py', 'context_pilot.py', 'zeroparam.py', 'p4_common.py')
 ARMS = ('raw', 'check', 'code')
 LEVELS = (('clean', 1.0), ('scale110', 1.1), ('scale150', 1.5))
@@ -151,7 +152,7 @@ def prepare(output):
     save(output/'features.json', feats)
     if sanity['paired_queries'] != 90 or not ce.passes_sanity(sanity['within_table']):
         raise ValueError('registered monitor sanity gate failed; main collection blocked')
-    manifest = {'protocol': PROTOCOL, 'protocol_commit': PROTOCOL_COMMIT, 'model': MODEL,
+    manifest = {'protocol': PROTOCOL, 'protocol_commit': PROTOCOL_COMMIT, 'engineering_amendment': ENGINEERING_AMENDMENT, 'model': MODEL,
                 'source_hashes': hashes(), 'task_file_sha256': hashlib.sha256(task_path.read_bytes()).hexdigest(),
                 'dataset_sha256': datasets, 'queries': queries, 'evidence_units': evidence_units,
                 'units': make_units(queries, evidence_units, feats), 'sanity': sanity,
@@ -184,16 +185,20 @@ class TransportFailure(RuntimeError):
 
 
 def request(payload, key, call, checkpoint):
+    for old in call['attempts']:
+        if old['status'] == 'in_flight':
+            old['status'] = 'unknown-after-interruption'
     for attempt in range(len(call['attempts']), 3):
         started = time.monotonic()
-        row = {'started_utc': utc(), 'attempt': attempt}
+        row = {'started_utc': utc(), 'attempt': attempt, 'status': 'in_flight'}
+        call['attempts'].append(row)
+        checkpoint()
         try:
             req = urllib.request.Request(ENDPOINT, data=json.dumps(payload).encode(),
                                          headers={'Authorization': 'Bearer '+key, 'Content-Type': 'application/json'})
             with urllib.request.urlopen(req, timeout=120) as response:
                 body = json.load(response)
             row.update(status='success', elapsed_seconds=time.monotonic()-started)
-            call['attempts'].append(row)
             call['provider_response'] = body
             checkpoint()
             return body
@@ -208,7 +213,6 @@ def request(payload, key, call, checkpoint):
             row.update(status='transport_error', message=str(exc).replace(key, '[redacted]')[:600])
             retry = True
         row['elapsed_seconds'] = time.monotonic()-started
-        call['attempts'].append(row)
         checkpoint()
         if not retry:
             raise TransportFailure(f"provider rejected request: {row.get('http_status')}")
@@ -278,7 +282,7 @@ def run_unit(unit, manifest, output, key, stop=None, manifest_hash=None):
     return record
 
 
-def run(output, workers=2):
+def run(output, workers=4):
     manifest = load(output/'manifest.json')
     validate_manifest(manifest)
     if manifest['source_hashes'] != hashes():
@@ -359,7 +363,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('action', choices=('prepare', 'run', 'smoke'))
     parser.add_argument('--output', type=Path, default=DEFAULT)
-    parser.add_argument('--workers', type=int, choices=(1, 2), default=2)
+    parser.add_argument('--workers', type=int, choices=(1, 2, 4), default=4)
     args = parser.parse_args()
     if args.action == 'prepare':
         prepare(args.output)

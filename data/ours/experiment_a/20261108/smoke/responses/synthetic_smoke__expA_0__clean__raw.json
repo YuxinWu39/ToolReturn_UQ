@@ -1,0 +1,67 @@
+{
+  "calls": [
+    {
+      "attempts": [
+        {
+          "attempt": 0,
+          "elapsed_seconds": 3.4383732499554753,
+          "started_utc": "2026-11-08T09:16:21.360735+00:00",
+          "status": "success"
+        }
+      ],
+      "messages": [
+        {
+          "content": "You are auditing a scalar returned by a data-analysis tool. Assess the candidate using the query, code and partial table evidence. The rows shown are a sample, not the full population. The query asks for the full-table mean, not just the sample mean. You cannot access the population table or ground truth. Do not assume that a candidate is correct or incorrect. You may accept, reject or remain uncertain and may abstain from a final numeric answer. Return exactly one JSON object, no markdown, with decision (accept/reject/uncertain), confidence (integer 0..100 in correctness of the candidate), answer (finite numeric answer to the full-table query, or null), and reason (a brief string). No other fields.",
+          "role": "system"
+        },
+        {
+          "content": "QUERY\nWhat is the mean value for group a over all matching rows in the full table?\nTOOL CODE\ndf[df['group']=='a']['value'].mean()\nPARTIAL TABLE EVIDENCE\n{\"columns\": [\"group\", \"value\"], \"dtypes\": {\"group\": \"object\", \"value\": \"float64\"}, \"rows_csv\": \"group,value\\na,99.0\\na,101.0\\na,99.0\\na,101.0\\na,99.0\\na,101.0\\na,99.0\\na,101.0\\na,99.0\\na,101.0\\na,99.0\\na,101.0\\na,99.0\\na,101.0\\na,99.0\\na,101.0\\na,99.0\\na,101.0\\na,99.0\\na,101.0\\n\", \"sampling_rule\": \"20 matching rows from synthetic test table\", \"shape\": [200, 2]}\nTOOL RESULT\n{\"value\": 100.0}",
+          "role": "user"
+        }
+      ],
+      "payload_hash": "84da1493cd39610d464e14ce607a3ff52f215d95abb701d2779bac75a6abf471",
+      "provider_response": {
+        "choices": [
+          {
+            "finish_reason": "stop",
+            "index": 0,
+            "message": {
+              "content": "{\"decision\": \"accept\", \"confidence\": 100, \"answer\": 100.0, \"reason\": \"The tool code calculates the exact mean of group a on the full dataset, which aligns with the sample evidence.\"}",
+              "extra_content": {
+                "google": {
+                  "thought_signature": "EtwECtkEAWkUfRP4JF33GUS0S+JTbEVRg6+1lXXfto6sSUE88ZhS3hBChQ9onfC5idfLqhReFbS/X9rXdjuR0C4SYZIF5icMby5zFZeovngO0r3ssdgTWfp62cJWRCBShYG9x53emclw8rI3ADlbLNbwkS+nh7bBJLCVlBzR4il8zsTNwmGGqiyv+mTch6GjzEH+n/q36yohfiDwa54ghuF120hwCel6wpfxP2xbfYF2yhCiP1WR8zuMjwC+Nqc7SipfyzrKGLOIQPMYOmc0iYR5dMsq3WU5R0XQC2KpdRw/kBVlhYcHs+L68TaL6stZlNr5+//dqlOr49TB4yKYIaT3DMPZyFMvuCiJi71zljeeNtfakvn9iLPqzIWgsL5lN8bJliYS+aqopMMlxn8HPef9Se7ncxw5Jssyqe8aY8gF6JGTlEadgEzDuh5Xr3zEY1W0YG5pUXFh0eWFOBEPx0vxVIqSs31f81jdwj0cBaCRFdZWxMPs3F/SSB9C1zIH8y4czt2Z0Ha+/7A8bYjwcP+Kdn11sVMyQZZvsKgyjakdzTQ42NkLHvj8EkeqTN1TypO/Smodr/ifSzzHxlBpAO2Si3zMRppbMDwyZbZaPf2M8pt3NpD54Wo3PiMaooykOsHq6Jme3mlYb00LP4lHmTc2RaV0JbphWjChXb28LKh5IjqF67r4GEWKFGzVZALW4y5q39fN9HRXXA9B6TP21bQ1kFBsWgcbxIC6eMoEvaLVMjn5JmPSXGVbbsVCwZ709eKwePknfOBqOfFrS8RNu6jFyJhSBImFI3KQ0jeW1A=="
+                }
+              },
+              "role": "assistant"
+            }
+          }
+        ],
+        "created": 1794129384,
+        "id": "5T3wasL6J-aq6dkPtp3K-AU",
+        "model": "gemini-3.8-flash",
+        "object": "chat.completion",
+        "usage": {
+          "completion_tokens": 51,
+          "prompt_tokens": 423,
+          "total_tokens": 614
+        }
+      }
+    }
+  ],
+  "elapsed_seconds": 3.440392541931942,
+  "ended_utc": "2026-11-08T09:16:24.800258+00:00",
+  "initial_messages_hash": "f5c0cb0296a485c2a26b7fb1bca293e82f4d1b8b8eb00eb437125bd1e1a8e604",
+  "manifest_hash": "96c871feedbdeac1b3cdfb6624c25270564969d6799c477042fee6d98ae3a453",
+  "parsed": {
+    "answer": 100.0,
+    "confidence": 100,
+    "decision": "accept",
+    "reason": "The tool code calculates the exact mean of group a on the full dataset, which aligns with the sample evidence."
+  },
+  "raw": "{\"decision\": \"accept\", \"confidence\": 100, \"answer\": 100.0, \"reason\": \"The tool code calculates the exact mean of group a on the full dataset, which aligns with the sample evidence.\"}",
+  "started_utc": "2026-11-08T09:16:21.359924+00:00",
+  "status": "completed",
+  "tools": [],
+  "unit_id": "synthetic_smoke__expA_0__clean__raw",
+  "valid": true
+}

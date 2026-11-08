@@ -1,4 +1,6 @@
 import json
+import contextlib
+import io
 from pathlib import Path
 import tempfile
 import unittest
@@ -91,6 +93,33 @@ class ExperimentTests(unittest.TestCase):
         self.assertEqual(r['discrimination']['mean'],1.)
         self.assertEqual(r['discrimination']['ci95'],[1.,1.])
         self.assertEqual(r['clean_acceptance']['mean'],0.)
+
+    def test_empty_choices_are_completed_invalid_and_reportable(self):
+        from report_experiment_a import analyze
+        units,m=fixtures();m['protocol']='synthetic-report-test'
+        def empty(payload,key,call,checkpoint):
+            call['provider_response']={};call['attempts']=[{'status':'success','elapsed_seconds':0.}];checkpoint();return {}
+        with tempfile.TemporaryDirectory() as d:
+            output=Path(d);exp.save(output/'manifest.json',m)
+            with patch.object(exp,'request',side_effect=empty):
+                for u in units: exp.run_unit(u,m,output,'fake')
+            with contextlib.redirect_stdout(io.StringIO()): report=analyze(output)
+            self.assertEqual(report['completed'],9)
+            self.assertEqual(report['cells']['raw']['clean']['invalid'],1)
+            self.assertEqual(report['costs']['raw']['http_attempts'],3)
+
+    def test_partial_failure_cost_is_not_dropped(self):
+        from report_experiment_a import analyze
+        units,m=fixtures();m['protocol']='synthetic-partial-test';u=units[0]
+        with tempfile.TemporaryDirectory() as d:
+            output=Path(d);exp.save(output/'manifest.json',m)
+            r={'unit_id':u['unit_id'],'manifest_hash':exp.digest(m),'initial_messages_hash':u['messages_hash'],
+               'status':'transport_failure','calls':[{'attempts':[{'status':'http_error','elapsed_seconds':.2}]}],'tools':[]}
+            exp.save(output/'responses'/(u['unit_id']+'.json'),r)
+            with contextlib.redirect_stdout(io.StringIO()): report=analyze(output)
+            self.assertEqual(report['costs_so_far'][u['arm']]['http_attempts'],1)
+            self.assertEqual(report['completed'],0)
+            self.assertIn('interim_completed_common_cell_sensitivity',report)
 
     def test_python_import_and_introspection_rejected(self):
         for code in ['import os', 'df.__class__', "__import__('os')"]:
