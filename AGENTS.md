@@ -160,3 +160,7 @@ filter, group, log2_scale, severity_logratio, code}`. Score files: one row per s
 ## 8. Current revision / cached analysis
 
 `experiments/audit_cached_revision.py` reads cached intrinsic/scorer/baseline files, validates support and writes a separate audit. `experiments/cached_metrics.py` carries same-task finite pairing and gate-aware reporting. `scorer/score_scorer.py --cached PATH` needs no torch/model weights. Intrinsic H1/H5 efficacy is withheld without live sanity; no global H1-confirmed label is valid across conflicting protocol versions. All six cached P5 configurations fail their own gates. Qwen context-pilot raw archive recovered in e9e3577: 72/72 original replies verified against requests, provider metadata and saved scores; see docs/QWEN_RAW_ARCHIVE_2026-11-07.md. No fresh model calls are required for these revisions.
+
+## 9. Working manuscript
+
+`paper/manuscript.md` is a venue-neutral author draft, not a final submission PDF. `experiments/export_paper_evidence.py` exports existing result fields/JSON pointers and seven manuscript tables, with `--check` detecting drift. It performs no fitting, new bootstrap estimates or API requests. Do not hand-edit the generated table blocks. `paper/README.md` records remaining writing/formatting work; `paper/WRITING_AUDIT.md` distinguishes a narrow read-only check from a formal panel re-review.

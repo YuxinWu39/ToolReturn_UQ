@@ -290,7 +290,7 @@ author_revision:
   status: cached-analysis-and-claim-revision-complete
   new_model_calls: 0
   new_training_runs: 0
-  complete_manuscript_present: false
+  complete_manuscript_present: true
   formal_rereview: not-performed
   conclusions: docs/CURRENT_CONCLUSIONS.md
   hypothesis_ledger: docs/HYPOTHESIS_LEDGER_2026-11-07.md
@@ -302,3 +302,30 @@ author_revision:
     full_summary_regeneration_matches: true
     report: docs/QWEN_RAW_ARCHIVE_2026-11-07.md
     new_model_calls: 0
+manuscript:
+  date: '2026-11-08'
+  evidence_cutoff: '2026-11-07'
+  status: full-structure-author-draft-not-submission-ready
+  path: paper/manuscript.md
+  evidence: paper/evidence.json
+  writing_audit: paper/WRITING_AUDIT.md
+  references: paper/references.bib
+  existing_evidence_entries: 18
+  hashed_input_files: 7
+  generated_tables: 7
+  new_evaluation_model_calls: 0
+  new_training_runs: 0
+  formal_rereview: not-performed
+  narrow_read_only_verification: no-blocking-or-major-factual-method-defect-found
+  pending:
+  - author verification and authorship
+  - short-paper compression and official-template PDF
+  - final-page anonymity/layout and reference check
+  - final manuscript review
+  target_under_consideration:
+    name: Trust4RSI-Agent @ AAAI 2027
+    url: https://trust4rsi-agent.github.io/AAAI2027/
+    checked: '2026-11-08'
+    deadline: 2026-11-20 AoE
+    formats: 4-page short/position or 8-page full; non-archival; double-blind
+    fit_limit: runtime evidence/checking audit; no long-horizon evolution experiment

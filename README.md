@@ -6,7 +6,7 @@ We study scalar pandas-tool returns on six public tables. Corruption multiplies 
 
 ## Current findings and limits
 
-The current interpretation is in [CURRENT_CONCLUSIONS.md](docs/CURRENT_CONCLUSIONS.md). It supersedes stronger historical claims in the append-only findings log.
+The current interpretation is in [CURRENT_CONCLUSIONS.md](docs/CURRENT_CONCLUSIONS.md). A full-structure [working manuscript](paper/manuscript.md) and [writing status](paper/README.md) now organize the existing evidence; this is an author draft, not a submission PDF. It supersedes stronger historical claims in the append-only findings log.
 
 | Evidence | Result | Scope |
 |---|---|---|

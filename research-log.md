@@ -514,3 +514,44 @@ range-diff confirmed all three rebased commits were equivalent, deleted only the
 temporary backup/author-revision-before-qwen-raw-b4d3ef9 branch. Main retains all
 changes; no remote branch was created or rewritten.
 Context-pilot regression: 4 tests pass; git diff --check passes.
+
+
+## Step: organize existing evidence into a manuscript — 2026-11-08
+
+1. Protocol-before-results: reporting-only step; no new measurements, fits, bootstrap
+   estimates, model requests or training. Existing F11/F12 and cached-audit protocols
+   govern their own numbers. No confirmatory status is upgraded by writing.
+2. Purpose: a complete-structure English author draft grounded in bounded current
+   conclusions, with methods, results, limitations, nearest-work comparison, data/AI
+   assistance disclosure and appendices. No theory or new detector contribution.
+3. Validation: export_paper_evidence.py --check verifies 18 evidence entries, 7 hashed
+   input files and 7 generated manuscript tables. Inputs/review/history preserved;
+   exact JSON pointers support the report fields. Prose requires human checking.
+4. Claim scope: distinguish prompted acceptance contrast from gated AUROC and clean
+   flags; 240 row draws still only 12 queries/6 tables, with no new model replies;
+   failed scorer/sanity and H1 version limits remain. Formula matches shared code.
+5. Reviewer objection: limited selected tasks and unequal representation/computation
+   restrict novelty/mechanism/generalization. Explicit scope and no internal-causal,
+   information-bound, new-algorithm or deployed-benefit claim.
+6. program.md writing-milestone read-only subagent revision_check found no blocking
+   or major factual/method defect in the draft and original 17/6/6 exported entries/
+   sources/tables; root subsequently added verified dataset provenance (18/7/7).
+   This is not a new formal five-seat review or independent human endorsement.
+7. Workshop fitness: official Trust4RSI-Agent CFP checked, 2026-11-20 AoE, 4-page
+   short/8-page full, non-archival and double-blind. Runtime audit relevance is
+   plausible; long-horizon evolution is not tested. No acceptance probability.
+Verdict: PASS-AS-AUTHOR-DRAFT; author review, compression, template/PDF/layout and
+final manuscript review remain. Work stays on main; no publication or push.
+
+Skills: scientific-critical-thinking (evidence/claim appraisal) and anti-ai-writing
+(citation/strength/prose checks); Kassis et al. resource citation checked against
+current official arXiv and included as development resource, not empirical support.
+Only the focused four method/nearby/development references and six dataset citations
+were independently source-checked for this draft; older bibliography not imported.
+
+Final reporting validation: isolated-copy checks show exporter --check detects
+both a changed manuscript table cell and changed source provenance; valid copies
+pass. Seven source hashes match and their original files are unchanged. Historical
+prefixes, original five-seat review and all data/ours artifacts remain unchanged.
+Manuscript has no em dash; focused bibliography contains 10 verified entries.
+No new statistical tests were added for prose edits. git diff --check passed.
