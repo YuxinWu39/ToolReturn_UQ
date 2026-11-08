@@ -583,3 +583,32 @@ actual request/cost accounting, and no recovered-truth claim from a flag alone.
 No API requests, new training, publication, manuscript rewrite or push.
 Verdict: reframe direction supported; empirical and system-claim corrections
 required before final manuscript / new-experiment implementation.
+
+
+## Step: Experiment A registration, engineering smoke and input freeze — 2026-11-08
+
+User explicitly authorized Gemini Experiment A using their key. Protocol 89734f4
+precedes smoke/new outcomes; engineering amendment9ccf2bd precedes main input
+freeze; numeric-scale amendment880084a precedes successful preparation and every
+main model request. First preparation stopped without a main manifest because
+legacy absolute tolerance overlaps small-value 10% corruption. New audit tolerance
+min(legacy,2%*abs(truth)) is locked before outcomes and legacy tolerance retained.
+Main decision-based estimand unchanged; no numerical-score pooling with P4.
+
+Nine tests pass, including paired evidence/candidates, completed-invalid reuse,
+length-terminated complete JSON rejection, empty-envelope analysis, partial costs,
+primary synthetic contrast, allowed code, and real source-file denial under Seatbelt.
+Independent read-only reviewer found and rechecked truncation/cache-hash issues;
+report empty-choice/partial-cost/common-cell items fixed before main collection.
+Synthetic engineering smoke: six strict-valid cells, eight model requests/attempts,
+two isolated Python executions, no HTTP errors; excluded from efficacy. Its original
+source hashes/raw outputs are preserved. Key was hidden-input/process-memory only.
+
+Successful freeze: 30 unique selected queries (five/table), 90 row draws, 810 cells;
+all corrupted candidates separated from clean by >2 audit tolerance. Frozen 0d
+sanity equal-table AUROC1.0, all90 units finite/six tables. This is an extreme-value
+engineering gate, not a coverage guarantee. No main query sent before freeze commit.
+Manifest350f5a3b18b97b434b517e9b08011f19c6c92c682e71abebde214ef66dcc6a07.
+Main runner code1be20ce, strict request/call limits and per-attempt checkpoints.
+Collection starts with four workers as registered; main efficacy only after810 cells.
+Verdict: PASS precollection engineering/sanity; selected-query effect remains exploratory.

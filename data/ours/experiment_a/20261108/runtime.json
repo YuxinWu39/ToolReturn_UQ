@@ -1,0 +1,7 @@
+{
+  "python": "3.11.13",
+  "numpy": "1.26.4",
+  "pandas": "2.2.3",
+  "scikit-learn": "1.7.0",
+  "analysis_source_sha256": "516687b1e1d5097acb7c974e2db2b7bec560d6a19d72ef10e2982f03ff309d56"
+}

@@ -1,0 +1,18 @@
+{
+  "ci95": [
+    1.0,
+    1.0
+  ],
+  "paired_queries": 90,
+  "per_table": {
+    "public_abalone.csv": 1.0,
+    "public_auto_mpg_v4.csv": 1.0,
+    "public_bike_v4.csv": 1.0,
+    "public_penguins_v3.csv": 1.0,
+    "public_student.csv": 1.0,
+    "public_wine_quality.csv": 1.0
+  },
+  "pooled": 0.9999382716049383,
+  "tables": 6,
+  "within_table": 1.0
+}
