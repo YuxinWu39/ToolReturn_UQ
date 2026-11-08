@@ -1,7 +1,7 @@
 {
   "kind": "author-revision-resolution",
-  "source_review_commit": "89361ee",
-  "protocol_commit": "27ab078",
+  "source_review_commit": "ce7d907",
+  "protocol_commit": "e7f319d",
   "formal_rereview": false,
   "new_model_calls": 0,
   "items": [
@@ -49,12 +49,12 @@
     },
     {
       "id": "REV-EIC-W5",
-      "status": "addressed-by-narrowing-archive-still-missing",
-      "action": "Qwen pilot auxiliary scored records only; no raw-response claims. Original raw recovery remains open; no regeneration.",
+      "status": "addressed-raw-archive-recovered-and-verified",
+      "action": "Recovered original 72 Qwen replies from e9e3577; verified manifest/messages/payload hashes, provider metadata and strict parsing. Full summary and 72 scored rows regenerated identically; no new model calls.",
       "evidence": [
-        "README.md",
-        "docs/CURRENT_CONCLUSIONS.md",
-        "research-state.yaml"
+        "docs/QWEN_RAW_ARCHIVE_2026-11-07.md",
+        "data/ours/context_pilot/20261107/raw_archive_audit.json",
+        "data/ours/context_pilot/20261107/qwen3-8b/responses/"
       ]
     },
     {
@@ -112,12 +112,12 @@
     },
     {
       "id": "REV-R1-W5",
-      "status": "addressed-by-narrowing-archive-still-missing",
-      "action": "Qwen pilot auxiliary scored records only; no raw-response claims. Original raw recovery remains open; no regeneration.",
+      "status": "addressed-raw-archive-recovered-and-verified",
+      "action": "Recovered original 72 Qwen replies from e9e3577; verified manifest/messages/payload hashes, provider metadata and strict parsing. Full summary and 72 scored rows regenerated identically; no new model calls.",
       "evidence": [
-        "README.md",
-        "docs/CURRENT_CONCLUSIONS.md",
-        "research-state.yaml"
+        "docs/QWEN_RAW_ARCHIVE_2026-11-07.md",
+        "data/ours/context_pilot/20261107/raw_archive_audit.json",
+        "data/ours/context_pilot/20261107/qwen3-8b/responses/"
       ]
     },
     {
@@ -186,12 +186,12 @@
     },
     {
       "id": "REV-R3-W2",
-      "status": "addressed-by-narrowing-archive-still-missing",
-      "action": "Qwen pilot auxiliary scored records only; no raw-response claims. Original raw recovery remains open; no regeneration.",
+      "status": "addressed-raw-archive-recovered-and-verified",
+      "action": "Recovered original 72 Qwen replies from e9e3577; verified manifest/messages/payload hashes, provider metadata and strict parsing. Full summary and 72 scored rows regenerated identically; no new model calls.",
       "evidence": [
-        "README.md",
-        "docs/CURRENT_CONCLUSIONS.md",
-        "research-state.yaml"
+        "docs/QWEN_RAW_ARCHIVE_2026-11-07.md",
+        "data/ours/context_pilot/20261107/raw_archive_audit.json",
+        "data/ours/context_pilot/20261107/qwen3-8b/responses/"
       ]
     },
     {
@@ -241,6 +241,17 @@
     "hashed_inputs": 17,
     "original_inputs_preserved": true,
     "narrow_read_only_subagent": "no-blocking-defect",
-    "formal_five_seat_rereview": false
+    "formal_five_seat_rereview": false,
+    "qwen_raw_archive": {
+      "verified": 72,
+      "full_summary_and_scored_regeneration_match": true,
+      "source_commit": "e9e3577",
+      "audit": "data/ours/context_pilot/20261107/raw_archive_audit.json"
+    }
+  },
+  "pre_rebase_commits": {
+    "source_review_commit": "89361ee",
+    "protocol_commit": "27ab078",
+    "revision_commit": "b4d3ef9"
   }
 }

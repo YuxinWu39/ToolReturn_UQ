@@ -56,7 +56,7 @@ def audit(root):
         assert config['manifest_hash']==summary['manifest_hash']==digest(m)
         assert config['source_hashes']==m['source_hashes']
         assert len(rows)==72 and {r['unit_id'] for r in rows}==set(units)
-        raw_verified, cells = 0, {}
+        raw_verified, cells, raw_hashes, fingerprints = 0, {}, {}, set()
         for r in rows:
             u = units[r['unit_id']]
             for key in ('task_id','dataset','context','label','severity'):
@@ -68,7 +68,26 @@ def audit(root):
             if rawfile.exists():
                 raw = json.loads(rawfile.read_text())
                 assert raw['manifest_hash']==digest(m) and raw['messages_hash']==u['messages_hash']
+                assert raw['unit_id']==u['unit_id'] and raw['status']=='completed'
+                payload = {'model':config['model'], 'messages':u['messages'], 'max_tokens':config['max_tokens']}
+                if model=='gemini-3.8-flash':
+                    payload['reasoning_effort']='low'
+                else:
+                    payload.update(temperature=.7, seed=0)
+                if model.startswith('qwen3'):
+                    payload['chat_template_kwargs']={'enable_thinking':False}
+                assert raw['payload_hash']==digest(payload), (model,u['unit_id'],'payload hash')
+                provider = raw['provider_response']
+                choice = provider['choices'][0]
+                assert raw['raw']==(choice['message'].get('content') or '')
+                assert raw['finish_reason']==r['finish_reason']==choice['finish_reason']
+                assert raw['response_model']==r['response_model']==provider['model']
+                assert raw['usage']==r['usage']==provider['usage']
+                if provider.get('system_fingerprint'):
+                    fingerprints.add(provider['system_fingerprint'])
+                raw_hashes[rawfile.name]=hashlib.sha256(rawfile.read_bytes()).hexdigest()
                 parsed = parse_reply(raw['raw'])
+                assert raw['parsed']==parsed
                 assert r['valid']==(parsed is not None)
                 for key in ('decision','confidence','answer'):
                     expected = parsed[key] if parsed else ('invalid' if key=='decision' else None)
@@ -96,6 +115,8 @@ def audit(root):
         uncertain = [r for r in rows if r['valid'] and r['decision']=='uncertain']
         output['models'][model] = {'n':len(rows),'valid':sum(r['valid'] for r in rows),
             'raw_responses_verified':raw_verified,'raw_responses_missing':72-raw_verified,
+            'raw_file_sha256':raw_hashes,'provider_fingerprints':sorted(fingerprints),
+            'raw_payload_and_provider_metadata_verified':raw_verified,
             'configuration_hashes_match':True,'scored_counts_and_contrasts_match':True,
             'cells':cells,'contrasts':results,
             'reject_confidences':[r['confidence'] for r in rejects],

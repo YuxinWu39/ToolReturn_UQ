@@ -34,7 +34,7 @@ Historical protocols are preserved in [PREREGISTRATION.md](PREREGISTRATION.md), 
 
 ## Archive and licenses
 
-Main P4 trajectories and scores are committed under `data/ours/`. The Qwen fixed-return pilot currently has configuration and scored records but lacks its 72 raw replies in this checkout; its behavior result is auxiliary and cannot support a raw-response audit. Fresh generations cannot replace the missing originals. Gemini instructions: [GEMINI_FLASH.md](docs/GEMINI_FLASH.md). Pipeline guide: [AGENTS.md](AGENTS.md).
+Main P4 trajectories and scores are committed under `data/ours/`. Both fixed-return pilots now archive all 72 original replies per model. The Qwen originals were recovered in `e9e3577`; manifest/request hashes, provider metadata, strict parsing and saved scoring were verified, and its full summary was regenerated without model calls. See the [raw archive audit](docs/QWEN_RAW_ARCHIVE_2026-11-07.md). The 12-query/six-table exploratory scope and absent live sanity controls remain. Gemini instructions: [GEMINI_FLASH.md](docs/GEMINI_FLASH.md). Pipeline guide: [AGENTS.md](AGENTS.md).
 
 - ToxicBench dependency: MIT code, CC BY 4.0 data; cloned rather than redistributed, except derived scorer events.
 - Six public tables: Palmer Penguins CC0; UCI Auto MPG, Bike Sharing, Wine Quality, Abalone and Student Performance CC BY 4.0. [Sources, licenses and hashes](data/ours/datasets/PROVENANCE.json).

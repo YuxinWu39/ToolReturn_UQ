@@ -1,0 +1,458 @@
+{
+  "kind": "verification of already collected results; no new experiment",
+  "manifest_canonical_hash": "7263b5dcd25ccf3c4463ffe6778243a3f953a153c55f0c493d9714cd0dc99983",
+  "manifest_file_hash": "d9c467dfb860fe37ae315708b2a49733f9c0bf84ec304ab140e4b67ce094999d",
+  "models": {
+    "gemini-3.8-flash": {
+      "cells": {
+        "head5": {
+          "0": {
+            "accept": 12,
+            "adopted_wrong": 0,
+            "correct": 12,
+            "invalid": 0,
+            "n": 12,
+            "reject": 0,
+            "uncertain": 0,
+            "valid_null_answers": 0
+          },
+          "1": {
+            "accept": 9,
+            "adopted_wrong": 9,
+            "correct": 0,
+            "invalid": 1,
+            "n": 12,
+            "reject": 2,
+            "uncertain": 0,
+            "valid_null_answers": 2
+          }
+        },
+        "matched20": {
+          "0": {
+            "accept": 11,
+            "adopted_wrong": 0,
+            "correct": 11,
+            "invalid": 1,
+            "n": 12,
+            "reject": 0,
+            "uncertain": 0,
+            "valid_null_answers": 0
+          },
+          "1": {
+            "accept": 5,
+            "adopted_wrong": 5,
+            "correct": 0,
+            "invalid": 2,
+            "n": 12,
+            "reject": 5,
+            "uncertain": 0,
+            "valid_null_answers": 5
+          }
+        },
+        "random20": {
+          "0": {
+            "accept": 12,
+            "adopted_wrong": 0,
+            "correct": 12,
+            "invalid": 0,
+            "n": 12,
+            "reject": 0,
+            "uncertain": 0,
+            "valid_null_answers": 0
+          },
+          "1": {
+            "accept": 7,
+            "adopted_wrong": 7,
+            "correct": 0,
+            "invalid": 1,
+            "n": 12,
+            "reject": 3,
+            "uncertain": 1,
+            "valid_null_answers": 4
+          }
+        }
+      },
+      "claim_limits": [
+        "No live signal sanity arm; confidence AUROC withheld.",
+        "Twelve selected queries and six tables; one sample/completion per cell.",
+        "No equivalence claim or cross-model robustness ranking."
+      ],
+      "configuration_hashes_match": true,
+      "contrasts": {
+        "matched20_minus_head5": {
+          "ci95": [
+            0.08333333333333333,
+            0.4166666666666667
+          ],
+          "mean": 0.25,
+          "per_table": {
+            "public_abalone.csv": 0.0,
+            "public_auto_mpg_v4.csv": 0.5,
+            "public_bike_v4.csv": 0.0,
+            "public_penguins_v3.csv": 0.5,
+            "public_student.csv": 0.0,
+            "public_wine_quality.csv": 0.5
+          },
+          "queries": 12,
+          "tables": 6
+        },
+        "matched20_minus_random20": {
+          "ci95": [
+            -0.16666666666666666,
+            0.3333333333333333
+          ],
+          "mean": 0.08333333333333333,
+          "per_table": {
+            "public_abalone.csv": 0.5,
+            "public_auto_mpg_v4.csv": 0.0,
+            "public_bike_v4.csv": 0.0,
+            "public_penguins_v3.csv": 0.5,
+            "public_student.csv": -0.5,
+            "public_wine_quality.csv": 0.0
+          },
+          "queries": 12,
+          "tables": 6
+        },
+        "random20_minus_head5": {
+          "ci95": [
+            -0.16666666666666666,
+            0.4166666666666667
+          ],
+          "mean": 0.16666666666666666,
+          "per_table": {
+            "public_abalone.csv": -0.5,
+            "public_auto_mpg_v4.csv": 0.5,
+            "public_bike_v4.csv": 0.0,
+            "public_penguins_v3.csv": 0.0,
+            "public_student.csv": 0.5,
+            "public_wine_quality.csv": 0.5
+          },
+          "queries": 12,
+          "tables": 6
+        }
+      },
+      "n": 72,
+      "provider_fingerprints": [],
+      "raw_file_sha256": {
+        "lt_abalone_fil_016__head5__0.json": "79710a3b7f16a12c553606bcd34c66b0c014eb6e9db198fc3758e97d6871e35f",
+        "lt_abalone_fil_016__head5__1.json": "275a0aa1e1481c312350803aa8b89236908f5603b518ab9a217334933ecc7d06",
+        "lt_abalone_fil_016__matched20__0.json": "b351b9ae936e6a74fa326ba1e8b0e25cdf88c0db17c3406fdf1d472d34de449d",
+        "lt_abalone_fil_016__matched20__1.json": "2d68458f7310d2367acab1b8318dac3f7285ae583d6c6040b9a8476fc1f19182",
+        "lt_abalone_fil_016__random20__0.json": "0f5acb751f0948d9eae31cbab8cc43e19ce4e2bd216afd11bde9477deb87800d",
+        "lt_abalone_fil_016__random20__1.json": "04c27ea8302aedd939c4b76d0102a15785c907d83ce698edf682a875263d2cfb",
+        "lt_abalone_fil_018__head5__0.json": "924c98359b477b438ed169cb6ebfcd588049a47aadc52bae5425a04c6f67078d",
+        "lt_abalone_fil_018__head5__1.json": "37cd132a0d28c149cacab5210cae1b5aebb2e3104c1f35c41f2d8490c8a13225",
+        "lt_abalone_fil_018__matched20__0.json": "9b9f475405b7a535f2dee2da6afcfe170adc526af1886261b5c254bf934faa0c",
+        "lt_abalone_fil_018__matched20__1.json": "cc54d080df705dd3e6efd0ce571dd30988be776bd50b7fd827493a5efbe3a823",
+        "lt_abalone_fil_018__random20__0.json": "e401193a6c876b417599155471bc6d0e3e918a89c723ba51e2e7a65c3e25fa1a",
+        "lt_abalone_fil_018__random20__1.json": "fcab295e3ec9b97c5129a53f5c6d52f54e1276e8353f7b2acbd5d1c8c5ddaa50",
+        "lt_auto_mpg_v4_fil_013__head5__0.json": "e61bb4522c92183ea0cc79d9c34211a83daa5c8958d83a0b98b8c96050203634",
+        "lt_auto_mpg_v4_fil_013__head5__1.json": "b52f39313f2d6c7bd83e739cb9e69b0202335e0ee85d3fc9094a863db88e4ccb",
+        "lt_auto_mpg_v4_fil_013__matched20__0.json": "914a723c30b0a1d52681cdb751f6856d02d3c67ba68b32de6f3efb49de6c8644",
+        "lt_auto_mpg_v4_fil_013__matched20__1.json": "bcb539e6dd63b606c5798002f7a44520e65bfbe9e19e4cf56a24556f4604afcb",
+        "lt_auto_mpg_v4_fil_013__random20__0.json": "cc34d8b380ef7b30f0008734b2521a8d872bf7ec4b194fd99a102276cef48b0d",
+        "lt_auto_mpg_v4_fil_013__random20__1.json": "8ec3786cb476bbf0f9584ddd9127246032c5970f317584ca27a4b4f0e8f40307",
+        "lt_auto_mpg_v4_fil_014__head5__0.json": "ad403b07629072635ce83f1d100151fc72620058d6cd4aecb960a73eb610c00b",
+        "lt_auto_mpg_v4_fil_014__head5__1.json": "aa36900bc985aefa8bff54c53a6fd4f237f3eaca0a99a8e91326f60e3a847b03",
+        "lt_auto_mpg_v4_fil_014__matched20__0.json": "703fc53f46bc1cd4aaba5666b6e8cd0cdc65f138773945bbf91cc4a029cbd224",
+        "lt_auto_mpg_v4_fil_014__matched20__1.json": "f7196a2222d7982337dfe1a7a2fb732bacddc38742cbd8a70e9d3f572730b8d7",
+        "lt_auto_mpg_v4_fil_014__random20__0.json": "24dfbd959bc40b7c15e6ab630585046642b7fd890b0dfeb33662e8b424520cc8",
+        "lt_auto_mpg_v4_fil_014__random20__1.json": "0edcad4760e69f33cb2a858ac0f58927c291a687495298be6a41a7fda0da6961",
+        "lt_bike_v4_fil_011__head5__0.json": "4d1b1194f79a6f2acfb402d6709fddc0c0db9b9314543f7c798c1fde50499450",
+        "lt_bike_v4_fil_011__head5__1.json": "522bfbec901b864aa3ef25075c60f18ab3baf141b85a20da35ca36a2361ccc62",
+        "lt_bike_v4_fil_011__matched20__0.json": "9ed344d803c48b7bf0682e6d4f6ed324542befd45d0991fa0181b5c3b082859e",
+        "lt_bike_v4_fil_011__matched20__1.json": "929ee0779f0eaaacbbf7c84fbb7ae4de6bbed5ecf0718a165ad27f491f6c6137",
+        "lt_bike_v4_fil_011__random20__0.json": "08d43adb23ba4a55c13395c8bd3bb87056372169754d3dd3801064082e358efb",
+        "lt_bike_v4_fil_011__random20__1.json": "515ac644e67926a78bca1fb168d3af26e3e3f028b3fc1a3c06e89119160d6d0b",
+        "lt_bike_v4_fil_012__head5__0.json": "8da73283611930a6643c127d2129d454c898adc1b846b3b5ec036d72cf988836",
+        "lt_bike_v4_fil_012__head5__1.json": "0fbbce07b5badacd18a45492ed240c4dfc2c7cdc06628ca061533e06cd3a9f2b",
+        "lt_bike_v4_fil_012__matched20__0.json": "b65a15b7554b142da9ecdd5d51792506a9eb1e0967425ebee4050a0331587c8f",
+        "lt_bike_v4_fil_012__matched20__1.json": "cda97a20d08af7b133720416c4bf9ac181d817e0e886f5a3db0fcd233be2644d",
+        "lt_bike_v4_fil_012__random20__0.json": "6bfe713588c2fe09cea880a2e56d3fc3dda9020efc0899899fd6cd0958ecdb81",
+        "lt_bike_v4_fil_012__random20__1.json": "ee9246433d0806a827ef12f4ba8fa46b060ec99a0e1b1606f171bdc46ecab4c5",
+        "lt_penguins_v3_fil_013__head5__0.json": "43104d1e7f09c8a1ef968dff1f36ea0d90ea01dd544528747b3f730686ed611a",
+        "lt_penguins_v3_fil_013__head5__1.json": "bdf22c10fe4d0d0ba969cdd43c475625f14273e759cc438aed986cb841dc9566",
+        "lt_penguins_v3_fil_013__matched20__0.json": "d74fe78ae5b23b4e69ca739f073d335415bf449a9513c9e5925a87fdc616dd82",
+        "lt_penguins_v3_fil_013__matched20__1.json": "3cbd88a0f1de5b8398625c3c417b711336eded7cb867ec07e52d86b29c3de031",
+        "lt_penguins_v3_fil_013__random20__0.json": "b645d40bb88eaab81df1edfb5c9b9f3b6fbbb9255bd23dc120f6f4096c97a59e",
+        "lt_penguins_v3_fil_013__random20__1.json": "3b4b9a476db919a6f6a651c8ea408b111ddfbe00c2c23fc906f787c00b1540aa",
+        "lt_penguins_v3_fil_014__head5__0.json": "da54b0f66d3cdde73e8c888d12e478d6d61a8e3aafd4489bc068423d12e5ebab",
+        "lt_penguins_v3_fil_014__head5__1.json": "1b7e0fb1d3b7a4491d3bd636186dfab714ecae15f919c68e18a9812e7a749c63",
+        "lt_penguins_v3_fil_014__matched20__0.json": "2c70272fbe1fc26c4c2a7046bc9c94e8c6bbff88465c976d9a4ef06c80fc60de",
+        "lt_penguins_v3_fil_014__matched20__1.json": "ab981a814f0e4c2512a0645dfc0bd1be9092fad66188beb8a549adf6775a4f3f",
+        "lt_penguins_v3_fil_014__random20__0.json": "abdd6e834ec7f397a77d3fce5b6fac329043e8d5890404f9de4f498cf748ee1b",
+        "lt_penguins_v3_fil_014__random20__1.json": "4d885c44aa592273cee3676429102ee0693f15f3c90cedafcce046e2b1b66b4c",
+        "lt_student_fil_012__head5__0.json": "255672e7e2f299c41df928e607510d9c7c1624566a4ff89b976ad506b2310c8e",
+        "lt_student_fil_012__head5__1.json": "e342b5d07381b9de3d3f39052a9b99a4a23662fc1e15958329ff9bfc1420ceb1",
+        "lt_student_fil_012__matched20__0.json": "ed09391cffc5c06dd3d7ad814f190f36794a77bd117721778570e8a713d61ff8",
+        "lt_student_fil_012__matched20__1.json": "0eb55ec018d4f806d7e7359646fa15bf79ab7f449e8935032c6ef64746431735",
+        "lt_student_fil_012__random20__0.json": "115ad89343f325f39a65d0ad1ab419379b674aee590f9787077a8d90bbb68120",
+        "lt_student_fil_012__random20__1.json": "b9c2c877967c3748a3ffb4a4f7b09bc0000ed9a123c28d371749973f2b008aee",
+        "lt_student_fil_018__head5__0.json": "d69d34469c3fdc6361bba45c3a4ed6989e42f2b78f353075525548291935f616",
+        "lt_student_fil_018__head5__1.json": "80c1c25b89bcd1d01dbc49ee0ec952b181d8200d707224eb4d9b23a9525e8427",
+        "lt_student_fil_018__matched20__0.json": "f2e3a1810641c4936ceae2c5b9f199c2c71abda4a6e2a8f369822595c1a9c68b",
+        "lt_student_fil_018__matched20__1.json": "a812c2f30725eaf4260059ad0718c9d75e9807bd4aecaba67a82c8544bf0a1f2",
+        "lt_student_fil_018__random20__0.json": "5c17399ce0240ff27d6c6856fcccde352d087dd785920f6ff1f3a984606b52f5",
+        "lt_student_fil_018__random20__1.json": "d95212f935ef878f338f8f20c8e9e90172b43717a25fc9884943be49954b276a",
+        "lt_wine_quality_fil_012__head5__0.json": "2e130d6f01b731062c64c66360c9343ac11ca1898cd0c9b8beb1b0e50b2f948d",
+        "lt_wine_quality_fil_012__head5__1.json": "5989fa025299066d53862d1984f21685dc5d8fc36831c5698640e1ffe57f4536",
+        "lt_wine_quality_fil_012__matched20__0.json": "1132d6fddf07c6b143a7e07ea9a0d0ba545d18086785909dda97993bd932fe4f",
+        "lt_wine_quality_fil_012__matched20__1.json": "3772485ac5ec204301c8f9842ae0ce0b22ccf9b63ab6caf4dff032b0a595469c",
+        "lt_wine_quality_fil_012__random20__0.json": "f6ccc13c5bc56e4f228f19d9b072b97b640dbd7ed72cd9f92a471bb240df994f",
+        "lt_wine_quality_fil_012__random20__1.json": "979564cc9d8a6f3cd35f0ff5cc904bfc160abbe750f10bd2382e20783bf24880",
+        "lt_wine_quality_fil_014__head5__0.json": "1365b06d2b7b5e1ab61ddd8836074b6a4773a6a165d085d96ba32370cd0fe827",
+        "lt_wine_quality_fil_014__head5__1.json": "7b8b382248ead06738cf171ec06d17d7de48c8dbd3b946df470a893c1c3b107e",
+        "lt_wine_quality_fil_014__matched20__0.json": "9aac91df81ddeec1aad814c892a30becaf2966d40ff03cf1c876229817c9f011",
+        "lt_wine_quality_fil_014__matched20__1.json": "8556d7cc55e5b44eb0b6d4a5e82caa4b2d85b1d0926002d3a39cd081722e477f",
+        "lt_wine_quality_fil_014__random20__0.json": "3d68b9bf85c7ad3b26b9fe3967efc0432fc323b822da1993490cfc11deb11f8c",
+        "lt_wine_quality_fil_014__random20__1.json": "a449b407d7fb7d86b1cf1d1f98ee23b3171102aa6aa51dee77559f6b9d91363d"
+      },
+      "raw_payload_and_provider_metadata_verified": 72,
+      "raw_responses_missing": 0,
+      "raw_responses_verified": 72,
+      "reject_confidences": [
+        95,
+        95,
+        98,
+        95,
+        98,
+        95,
+        95,
+        95,
+        95,
+        95
+      ],
+      "scored_counts_and_contrasts_match": true,
+      "uncertain_confidences": [
+        40
+      ],
+      "valid": 67
+    },
+    "qwen3-8b": {
+      "cells": {
+        "head5": {
+          "0": {
+            "accept": 12,
+            "adopted_wrong": 0,
+            "correct": 12,
+            "invalid": 0,
+            "n": 12,
+            "reject": 0,
+            "uncertain": 0,
+            "valid_null_answers": 0
+          },
+          "1": {
+            "accept": 10,
+            "adopted_wrong": 10,
+            "correct": 0,
+            "invalid": 0,
+            "n": 12,
+            "reject": 0,
+            "uncertain": 2,
+            "valid_null_answers": 2
+          }
+        },
+        "matched20": {
+          "0": {
+            "accept": 12,
+            "adopted_wrong": 0,
+            "correct": 12,
+            "invalid": 0,
+            "n": 12,
+            "reject": 0,
+            "uncertain": 0,
+            "valid_null_answers": 0
+          },
+          "1": {
+            "accept": 11,
+            "adopted_wrong": 11,
+            "correct": 0,
+            "invalid": 0,
+            "n": 12,
+            "reject": 0,
+            "uncertain": 1,
+            "valid_null_answers": 1
+          }
+        },
+        "random20": {
+          "0": {
+            "accept": 10,
+            "adopted_wrong": 0,
+            "correct": 10,
+            "invalid": 0,
+            "n": 12,
+            "reject": 0,
+            "uncertain": 2,
+            "valid_null_answers": 2
+          },
+          "1": {
+            "accept": 9,
+            "adopted_wrong": 9,
+            "correct": 0,
+            "invalid": 0,
+            "n": 12,
+            "reject": 0,
+            "uncertain": 3,
+            "valid_null_answers": 3
+          }
+        }
+      },
+      "claim_limits": [
+        "No live signal sanity arm; confidence AUROC withheld.",
+        "Twelve selected queries and six tables; one sample/completion per cell.",
+        "No equivalence claim or cross-model robustness ranking."
+      ],
+      "configuration_hashes_match": true,
+      "contrasts": {
+        "matched20_minus_head5": {
+          "ci95": [
+            -0.3333333333333333,
+            0.16666666666666666
+          ],
+          "mean": -0.08333333333333333,
+          "per_table": {
+            "public_abalone.csv": 0.0,
+            "public_auto_mpg_v4.csv": 0.5,
+            "public_bike_v4.csv": 0.0,
+            "public_penguins_v3.csv": -0.5,
+            "public_student.csv": 0.0,
+            "public_wine_quality.csv": -0.5
+          },
+          "queries": 12,
+          "tables": 6
+        },
+        "matched20_minus_random20": {
+          "ci95": [
+            -0.3333333333333333,
+            0.3333333333333333
+          ],
+          "mean": 0.0,
+          "per_table": {
+            "public_abalone.csv": 0.5,
+            "public_auto_mpg_v4.csv": 0.5,
+            "public_bike_v4.csv": -0.5,
+            "public_penguins_v3.csv": -0.5,
+            "public_student.csv": 0.0,
+            "public_wine_quality.csv": 0.0
+          },
+          "queries": 12,
+          "tables": 6
+        },
+        "random20_minus_head5": {
+          "ci95": [
+            -0.3333333333333333,
+            0.16666666666666666
+          ],
+          "mean": -0.08333333333333333,
+          "per_table": {
+            "public_abalone.csv": -0.5,
+            "public_auto_mpg_v4.csv": 0.0,
+            "public_bike_v4.csv": 0.5,
+            "public_penguins_v3.csv": 0.0,
+            "public_student.csv": 0.0,
+            "public_wine_quality.csv": -0.5
+          },
+          "queries": 12,
+          "tables": 6
+        }
+      },
+      "n": 72,
+      "provider_fingerprints": [
+        "vllm-0.31.0-a5cbd462"
+      ],
+      "raw_file_sha256": {
+        "lt_abalone_fil_016__head5__0.json": "b40d7a344758cd24a7821441fe2cd41e9442712bd2d35b5a546c48f3fa0776a4",
+        "lt_abalone_fil_016__head5__1.json": "94506ef9e6a0fcce43675a317ead2c9403a75aa92b95c70cd08b5634f55118ae",
+        "lt_abalone_fil_016__matched20__0.json": "0531974f60007cbb3dfbbb97edad9a5a08d0a936d965b034cc2d921999fba3a5",
+        "lt_abalone_fil_016__matched20__1.json": "6cf99e661b113aa5f01bfbda9412c9d667790250d4e93691ead514e19118da7d",
+        "lt_abalone_fil_016__random20__0.json": "fc7777a99ab231261500de07ff2ae706256362d67120c462449c1105fb1566d5",
+        "lt_abalone_fil_016__random20__1.json": "4383cf7c451183bbcf9215d649385aa86271cca30c60fa383b245bd6e36f2081",
+        "lt_abalone_fil_018__head5__0.json": "8f5e956e19cad7a38b27d24b47262e2069eaaa2036e38b9d964e915bd7ac906d",
+        "lt_abalone_fil_018__head5__1.json": "50bdf9cb701a8b8f8fab5c27974b0f7d94a89074931ddedd3581723c2a485c6b",
+        "lt_abalone_fil_018__matched20__0.json": "0811a5e0f1344cb58854bbbb0313c8dca81d32e359e61fa7c4028a31fe73a973",
+        "lt_abalone_fil_018__matched20__1.json": "a935e9ca35b36d6d94bea260802fcd945c5656f0456cbf16f9981259eebd3cc5",
+        "lt_abalone_fil_018__random20__0.json": "38fa43b0e9344dec92c1163c5a193cf7dccad391474203bae866332dae900a3c",
+        "lt_abalone_fil_018__random20__1.json": "240dfaf0ab62a8d4875227b40e97eb6ac3a9227cb906e92d5aa852694546919e",
+        "lt_auto_mpg_v4_fil_013__head5__0.json": "1491c6ebaf3a13e9b97975b80598eb00195c976649a02a27be118bfe0473ea2e",
+        "lt_auto_mpg_v4_fil_013__head5__1.json": "d81c753884dd84afefc3f6195deaad0b9c48f1f7b837078d68e3e6e0cabaff3c",
+        "lt_auto_mpg_v4_fil_013__matched20__0.json": "bee223c8905aa6c0be8076d33e224ba633f06dda1171e5fd972b0247244cc942",
+        "lt_auto_mpg_v4_fil_013__matched20__1.json": "5684ff1d01aa272ac7e452eb79f0a5ed3a02dea96554d5a14c39f131f5d43697",
+        "lt_auto_mpg_v4_fil_013__random20__0.json": "b5ac1eaec9ce544877b444ca9c1177b193e131faf5d9b4f729f44023a0aebb6c",
+        "lt_auto_mpg_v4_fil_013__random20__1.json": "fcf1808b59632a30b6a49b998310c028aff51fdc1068a359ee5a5f07b82618ae",
+        "lt_auto_mpg_v4_fil_014__head5__0.json": "74dec522be31ec54b1bfeeb58f6911f634492c7ab185e848513f8a778970a395",
+        "lt_auto_mpg_v4_fil_014__head5__1.json": "8c7554d2abe48f6d0cc61e1840a579d627dda13c766ee275cb43e4d1e0afea67",
+        "lt_auto_mpg_v4_fil_014__matched20__0.json": "7d147eaa1ecc970303c185256ff8fa8124b2645405ab60251502f24721b5618c",
+        "lt_auto_mpg_v4_fil_014__matched20__1.json": "a1be3b75a5979fedac0fdee9e51647eb5db172afc497c0e66fc5df71175ef4dc",
+        "lt_auto_mpg_v4_fil_014__random20__0.json": "cd7028f2ef0eaf51230f3c9f0f980f674f5a66e31e7a2676aa525a36bfd2d2d9",
+        "lt_auto_mpg_v4_fil_014__random20__1.json": "e4553e15cf9bc3a5ad245dbb4af21a1a2bcd64857e652818fce8093ebec4ae96",
+        "lt_bike_v4_fil_011__head5__0.json": "23ccceb6b8f4f6c381739f1fe799a794034c75fbd4f3796f7b77dd0ef8ad4249",
+        "lt_bike_v4_fil_011__head5__1.json": "938209a4b3da0896d25637606fa5f28b24d994996585aaae075162557954e52d",
+        "lt_bike_v4_fil_011__matched20__0.json": "647fd1170d85dcdb9fa14a62000e42593ea86d8251dfe1f8d12f65de7eb2a730",
+        "lt_bike_v4_fil_011__matched20__1.json": "45dc1abac26b990ee3b20da9da533cb5b0f7bb2c8f779893b3c4c813facb8e69",
+        "lt_bike_v4_fil_011__random20__0.json": "588d50e656c9e78d302a9735628ae3a7dd72e51fbead9b1989244fcf18a0a558",
+        "lt_bike_v4_fil_011__random20__1.json": "4e629bb0513f46bdcb1c5df15c49463a66b0c33c17c779ab07c67b38d4e646c5",
+        "lt_bike_v4_fil_012__head5__0.json": "46e92bd0392537190a124e7ccd30fab3d9b0d8349fc211f51b81713d5cff827b",
+        "lt_bike_v4_fil_012__head5__1.json": "a04f67bfbe4aa0749c1b665b53829b5db1fda5c88928c050bbbcb2df6be2d11d",
+        "lt_bike_v4_fil_012__matched20__0.json": "7b3719af54e5b5569b9274a0007f956c37788837ef2105f146e6aff42c25d2e6",
+        "lt_bike_v4_fil_012__matched20__1.json": "718a5dd522aae809c286df8fc5a76e891936c470d13f4eed99cf7d76005ecf44",
+        "lt_bike_v4_fil_012__random20__0.json": "13d8729846d39784abf7272cec19b6402b3db2c227de94162abbd7f16bdf283a",
+        "lt_bike_v4_fil_012__random20__1.json": "7c7952dbf533941f043d49b7f0a03889902e659d46998789489a1d31554a0684",
+        "lt_penguins_v3_fil_013__head5__0.json": "122c34ad01e228f27fc8d2de540f7e1b61bd80d9eb8062b90e0b2ea28c80c35c",
+        "lt_penguins_v3_fil_013__head5__1.json": "9d828cc702c0b4fe45d133fde0c94265ed7a6d91fbc6149ccb8f75f406e3acd5",
+        "lt_penguins_v3_fil_013__matched20__0.json": "387f0936f13b8018f3e6b63e0dffefa7a5465366d0313398915478affd8da205",
+        "lt_penguins_v3_fil_013__matched20__1.json": "c21c67edbfb4912236bb248d211aec24ebbc3ae60e354449cc2443083c8ab770",
+        "lt_penguins_v3_fil_013__random20__0.json": "94408417eb339210ed22be595c82ae1d76da2ebe6e81be1b65017a2d8d0f0dd7",
+        "lt_penguins_v3_fil_013__random20__1.json": "1271fcf5784839f97e3e59ee80e5b452006bfa27434ba363095f650eeb9364f8",
+        "lt_penguins_v3_fil_014__head5__0.json": "7e2f8c21c78e4c36b33682a017825bcb3790561ab19422295ff96aa72adec6a4",
+        "lt_penguins_v3_fil_014__head5__1.json": "b7e8497ad76844314d1a85b6fddc9a65866d1ecdcb25ebb069e1fb3c4976029d",
+        "lt_penguins_v3_fil_014__matched20__0.json": "e9488fa020e61d696c53256f86734f732812efd0828c7635d897295bcfb2e317",
+        "lt_penguins_v3_fil_014__matched20__1.json": "88c8a1fc7c3ad044aa192f42436320d3fe3911a47ffa58137891a5c193cefe4d",
+        "lt_penguins_v3_fil_014__random20__0.json": "8e372a67b74cf0958c3af147b5a22da297e8df079fa0f7c705d833c45f84905c",
+        "lt_penguins_v3_fil_014__random20__1.json": "33990ffc674e6e4a62b13bed3c9913d54aac1d86d72a4e2f1a92e98aaf86408e",
+        "lt_student_fil_012__head5__0.json": "f7c162fd66b2a5baf8277bd9950d63fb4b8a3a4aa6753051e26c1326b589f0b3",
+        "lt_student_fil_012__head5__1.json": "6785855b1067c43912cfd501857196b014939199449fc93fe1ac7529d92954f9",
+        "lt_student_fil_012__matched20__0.json": "a6944fec11dfa76b3f5db351ce8b682667d932b4cffd29cc4965d67bb0dab1c5",
+        "lt_student_fil_012__matched20__1.json": "4de9010caca356d921903a2f9a6d42e90c55f9ba62780943afeb4b315a6353b7",
+        "lt_student_fil_012__random20__0.json": "0508d959a72ce27aeca0045b8a1040719e10857034825ff132d8869d32332bc2",
+        "lt_student_fil_012__random20__1.json": "4053ba17ba23a9ddd24f2fe3bd898ce52cb992c4477d85e67282ec86a3f688da",
+        "lt_student_fil_018__head5__0.json": "24acce2b206426b98bd33f6e2b0fbfbb5e0f29894ebb0f288e841c243ed2a492",
+        "lt_student_fil_018__head5__1.json": "74d8a4fc5ca9cee7013903fd52f4437317956d70a9ec795e0d7aca25c8f5024b",
+        "lt_student_fil_018__matched20__0.json": "070786ac3e7050cd602f5c390e7ea7847586e88fed1b484d011a9b52798bf554",
+        "lt_student_fil_018__matched20__1.json": "35877915104a5cf16220a2f37c763e394631f8e1800d6414eb1343db6edea5df",
+        "lt_student_fil_018__random20__0.json": "3543439284cecc0be981bffea096023d94b060b4e848e8339e9752747bdd0139",
+        "lt_student_fil_018__random20__1.json": "ffea32d9915bd54762c6bb19cd7d4a05803d2125b094e0a9517a3f4c6318fd62",
+        "lt_wine_quality_fil_012__head5__0.json": "95b383357f13c3d0272ad2091f26f327d03b6d86d7300052db42cc75c0ba86b5",
+        "lt_wine_quality_fil_012__head5__1.json": "b58380f213947effe51c13079296ac502cf540121df75d0462e9b4b0fb0fa9e7",
+        "lt_wine_quality_fil_012__matched20__0.json": "414727206ee0ad3f46102b6dceb01c266566505fad0c2e6effe1a6f0eb86ee5e",
+        "lt_wine_quality_fil_012__matched20__1.json": "c3d6e0a09420bcb6e2541b469fe4ef90fca19c94ba6612fab214c7c58d848b2c",
+        "lt_wine_quality_fil_012__random20__0.json": "a6ab000b08454c279871c4c7cd8fef4bea35089010f1d1425854abcc315c375c",
+        "lt_wine_quality_fil_012__random20__1.json": "8094e5b6f2f6a7b51cfc1a972c01d5276388b27c5b407b1d299a227d0cd5a35b",
+        "lt_wine_quality_fil_014__head5__0.json": "676c6f37c40367ebf43c94423f0b81919ae5c16219328be3efefbb0108b2159d",
+        "lt_wine_quality_fil_014__head5__1.json": "cb092bca1722f53d27919119f5f8e561821a304ab4c4b162bf5c0b33be3e8b38",
+        "lt_wine_quality_fil_014__matched20__0.json": "33a479d20699e268a51b0f3fa387213e9ea7a9d20f3a746d0ad7e8055731c35e",
+        "lt_wine_quality_fil_014__matched20__1.json": "b2ea4849715962aebbfda54abf4da9b4e0495d59348008b30f4bb5082ae76d2c",
+        "lt_wine_quality_fil_014__random20__0.json": "bb13b6453dfa41545df800ffbcd283d093e73c74b4f0b29f014a5c350102c7e3",
+        "lt_wine_quality_fil_014__random20__1.json": "eb645abb44037208cab96c3ba6f97ff388b0a2404013baa7dc78407131022637"
+      },
+      "raw_payload_and_provider_metadata_verified": 72,
+      "raw_responses_missing": 0,
+      "raw_responses_verified": 72,
+      "reject_confidences": [],
+      "scored_counts_and_contrasts_match": true,
+      "uncertain_confidences": [
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50
+      ],
+      "valid": 72
+    }
+  },
+  "new_model_calls": 0,
+  "qwen_full_summary_and_scored_regeneration_match": true,
+  "raw_archive_source_commit": "e9e3577"
+}

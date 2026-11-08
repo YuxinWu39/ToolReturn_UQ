@@ -667,3 +667,17 @@ and return-boundary signals have prior art. Current evidence concerns selected s
 tasks and tested procedures; no algorithm novelty, internal mechanism, general
 information bound, latency benefit or deployed accept/retry/abstain policy is established.
 F11/F12 remain exploratory with six table clusters. No new model calls or training.
+
+
+## F13 archive addendum (2026-11-07) — Qwen originals recovered
+
+Remote e9e3577 supplies the missing 72 original Qwen fixed-return replies. After a
+conflict-free rebase, audit_context_replication.py verifies all manifest/messages/
+payload hashes, strict parsed fields and provider metadata against saved scoring.
+A temporary-directory re-summarization reproduces the complete saved summary and
+72 scored records exactly. Both pilots now have 72/72 raw replies verified.
+The missing-archive limitation in F10/F13 and older reviews is superseded, not
+rewritten. The selected-query behavior contrast remains 0 [-0.333,0.333].
+This resolves an archive gap, not the absent live sanity or small-sample limits.
+No model calls. See docs/QWEN_RAW_ARCHIVE_2026-11-07.md and the separate
+data/ours/context_pilot/20261107/raw_archive_audit.json; historical audits retained.

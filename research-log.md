@@ -491,3 +491,26 @@ current conclusions docs/CURRENT_CONCLUSIONS.md; version ledger and 22-item auth
 resolution in docs/HYPOTHESIS_LEDGER_2026-11-07.md and REVISION_2026-11-07.{json,md}.
 Actual analysis environment recorded in summary.json (Python 3.11.13, numpy 1.26.4,
 pandas 2.2.3, sklearn 1.7.0); not represented as the historical pinned environment.
+
+
+## Step: resolve divergent pull and verify recovered raw archive — 2026-11-07
+
+User supplied the remote-raw update and authorized pull/rebase. Working tree was
+clean; backup/author-revision-before-qwen-raw-b4d3ef9 preserves the prior tip.
+git pull --rebase origin main completed without conflicts atop e9e3577.
+Commit mapping: 89361ee->ce7d907; 27ab078->e7f319d; b4d3ef9->d985a00.
+Repository-local pull.rebase=true; no global configuration or remote rewrite.
+This is verification of already collected records under A-CTX-PILOT, not a new
+measurement protocol or experiment. All 72 original Qwen responses match frozen
+requests, raw provider metadata and saved scoring. Temporary re-summarization
+reproduces the complete original summary/scored records, without changing inputs.
+Primary behavioral results unchanged; missing-archive limitation removed from
+current author-facing materials. Historical review and audit files remain intact.
+New model calls/training: 0. Verdict: PASS archival verification; existing signal
+sanity and selected-task limitations remain. Details: docs/QWEN_RAW_ARCHIVE_2026-11-07.md.
+
+User clarification: keep this workflow on main without an extra branch. After
+range-diff confirmed all three rebased commits were equivalent, deleted only the
+temporary backup/author-revision-before-qwen-raw-b4d3ef9 branch. Main retains all
+changes; no remote branch was created or rewritten.
+Context-pilot regression: 4 tests pass; git diff --check passes.

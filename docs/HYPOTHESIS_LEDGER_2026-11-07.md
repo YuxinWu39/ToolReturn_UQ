@@ -1,6 +1,6 @@
 # Hypothesis and protocol version ledger — 2026-11-07
 
-This ledger preserves protocol differences; it does not retrospectively create a unique confirmatory rule. All newly computed cached metrics are retrospective diagnostics (A-REVISION-CACHED, commit 27ab078).
+This ledger preserves protocol differences; it does not retrospectively create a unique confirmatory rule. All newly computed cached metrics are retrospective diagnostics (A-REVISION-CACHED, commit e7f319d; pre-rebase 27ab078).
 
 | Item / version | Population, statistic and rule | Current status |
 |---|---|---|

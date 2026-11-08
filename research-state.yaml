@@ -38,7 +38,6 @@ literature:
   - Whether structured summaries derived from identical rows improve model evidence use on fresh queries (not yet
     tested)
   evidence_gaps:
-  - Qwen context pilot lacks 72 original raw replies in this checkout; auxiliary scored-record evidence only
   - Intrinsic signals lack live sanity controls; H1 protocol slice/AP versions conflict
   - P5 scorer configurations fail sanity/coverage; registered real-corruption gain withheld
   - 0o/0o* are finite Monte Carlo privileged references; no optimality bound or information decomposition
@@ -219,18 +218,22 @@ context_pilots:
   - 0.3333333333333333
   conclusion: no-stable-cross-model-benefit-established-primary-zero-not-reversal
   confidence_auroc: withheld-no-live-sanity
-  raw_archive_status: missing-from-repository
-  next: archive-raw-and-prepare-fresh-controls
+  raw_archive_status: complete-72-original-replies-verified
+  next: prepare-fresh-controls-only-for-new-claims
   report: findings.md#F10-addendum
+  raw_archive_source_commit: e9e3577
+  raw_archive_audit: data/ours/context_pilot/20261107/raw_archive_audit.json
 context_replication_review:
   date: '2026-11-07'
   snapshot: feeda57
-  status: verified-scored-results-raw-qwen-audit-incomplete
+  status: scored-results-and-both-raw-archives-verified
   report: docs/REVIEW_2026-11-07_qwen_context_next.md
   audit: data/ours/context_pilot/20261107/replication_audit.json
   independent_reviewer: completed-read-only
   new_model_calls: 0
   proposed_offline_study: completed-see-context_evidence
+  archive_audit: data/ours/context_pilot/20261107/raw_archive_audit.json
+  raw_replies_per_model_verified: 72
 context_evidence:
   run_id: same_evidence_statistics_20261107
   protocol: A-CTX-EVIDENCE
@@ -283,7 +286,7 @@ context_evidence_resample:
 author_revision:
   date: '2026-11-07'
   protocol: A-REVISION-CACHED
-  protocol_commit: 27ab078
+  protocol_commit: e7f319d
   status: cached-analysis-and-claim-revision-complete
   new_model_calls: 0
   new_training_runs: 0
@@ -292,4 +295,10 @@ author_revision:
   conclusions: docs/CURRENT_CONCLUSIONS.md
   hypothesis_ledger: docs/HYPOTHESIS_LEDGER_2026-11-07.md
   audit: data/ours/revision_cached/20261107/summary.json
-  unresolved_archive: Qwen context-pilot original raw replies; claim scoped to auxiliary scored records
+  unresolved_archive: null
+  archive_followup:
+    source_commit: e9e3577
+    qwen_original_replies_verified: 72
+    full_summary_regeneration_matches: true
+    report: docs/QWEN_RAW_ARCHIVE_2026-11-07.md
+    new_model_calls: 0
