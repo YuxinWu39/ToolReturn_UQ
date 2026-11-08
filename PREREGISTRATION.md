@@ -806,3 +806,68 @@ both reports, not selecting the better result. If signal/clean-error trade-off p
 prepare a fresh-table raw-rows versus same-row-statistics intervention; if not, prioritize
 sampling/calibration before making an evidence-use claim. In either case this step creates
 no new LLM behavior evidence and no new algorithm claim.
+
+
+## Amendment A-REVISION-CACHED (2026-11-07; author revision after five-seat review)
+
+This amendment specifies a **retrospective audit of already inspected, cached outputs**.
+The protocol commit precedes these new calculations, but does not make the reused data
+confirmatory. No model inference, regeneration of missing replies, or retraining is authorized
+by this audit. Existing response, prediction, and score files remain unchanged.
+
+**Binding interpretation correction.** 0o and 0o* are task-specific, privileged
+Monte Carlo reference scores based on finite full-table resampling, not exact sampling
+laws or proven optimal detectors. Their AUROC differences from 0d are descriptive
+method differences, not identified estimator loss, irrecoverable information, or an
+achievable ceiling. This supersedes those interpretations in A-P3c/d and historical
+findings without changing their recorded measurements. A scorer failing sanity or
+held-out coverage supplies an implementation/configuration failure, not evidence that
+learned UQ generally fails or that the visible evidence contains no usable information.
+
+**H1 version ledger.** A-P4 specifies subtle/T1 and both AUROC and AUPRC, while
+A-P4b replaces first-token entropy with mean-token entropy and describes a different
+plausible+subtle, bootstrap-upper-CI rule as unchanged. It is not unchanged. Preserve
+both versions, withdraw an unqualified global H1-confirmed label, and tabulate both
+slices for every cached agent/tier. Mean entropy on 4B remains exploratory; the
+A-P4b later-agent chronology is the documented protocol history, not newly verified
+external timestamps. Report first-token entropy only as a diagnostic. No live
+extreme-corruption sanity was collected for intrinsic signals: detector efficacy
+and confirmatory H1/H5 decisions remain withheld. Recalculated metrics are diagnostics.
+
+**Cached intrinsic analysis.** Inputs: every committed P4 intrinsic_scores.jsonl.
+Reject duplicate (task_id,label) keys or contradictory dataset/template/severity
+metadata within a task. For each score separately retain finite scores for BOTH
+labels of a task; report eligible task count, finite paired coverage, table count,
+per-table values, equal-table AUROC with 2,000 table-bootstrap draws (seed 1),
+pooled AUROC, and average precision (AP, the stated AUPRC convention) with base
+rate, both equal-table and pooled. Slice clean and corrupted records by the same
+task metadata. Report all/subtle/plausible+subtle and per severity/template. The
+original AP integration/aggregation was underspecified; this retrospective AP
+convention cannot resolve that protocol ambiguity. AP < 2*base is non-discriminating
+for balanced pairs (2*base=1); report it without treating it as a strong null test.
+
+**Cached P5 analysis / scorer repair.** Inputs: six saved eval_*_scorer.jsonl
+prediction files and matching zeroparam_scores.jsonl. Both-class constant scores
+have AUROC 0.5; exclude a table only if a class is absent after finite-score and
+same-task support selection. Report coverage and paired task/table denominators.
+Recompute clean [q05,q95] coverage (finite predictions only, coverage denominator
+shown), clean-vs-high and clean-vs-low sanity (within-table primary, pooled
+secondary); require BOTH within-table sanity AUROCs strictly >0.95 and coverage
+in [0.80,0.98]. Missing rows are disclosed rather than counted as calibrated.
+For the registered P5 gain, use plausible+subtle tasks finite for surprise, 0d,
+and 0r_log for BOTH labels. Join on task_id,label only after uniqueness, metadata,
+and numeric-y consistency checks; disclose absent baseline event identity beyond
+this cache-level validation. Compute the paired table-bootstrap distribution of
+mean(AUC7)-max(mean(AUC0d),mean(AUC0r_log)), recomputing the maximum in every
+bootstrap draw. Do not compare estimates from different support. If the scorer
+gate fails, withhold the real-corruption gain and state that P5 value is not
+established; do not use ungated metrics to reject the learned-method family.
+Audit the number of dual-class constant tables affected by the old exclusion.
+All uncertainty here is descriptive with only six table clusters.
+
+**Revision outputs.** Hash every cached input, save a separate JSON/Markdown audit,
+update current README/state/glossary, and append a binding correction to findings
+and the research log. Preserve the original reviewer reports/roadmap unchanged.
+Qwen pilot without raw replies remains an auxiliary scored-record result; missing
+original replies are not replaced by fresh model samples. Offline flags do not
+establish a deployed retry/abstain policy or latency/cost benefit.
