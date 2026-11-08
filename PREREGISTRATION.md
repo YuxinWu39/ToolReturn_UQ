@@ -981,3 +981,24 @@ state on resume and count the attempt, rather than imply it never happened. Exis
 max-three-attempt limit applies across resume. Report partial/failed records' costs
 separately and retain a clearly interim completed-common-cell sensitivity if collection
 is incomplete; no final primary decision until the entire roster is completed.
+
+
+### A-MONITOR-INTERVENTION numeric-scale amendment (2026-11-08; before any main model request or successful main freeze)
+
+The first preparation attempt stopped at Abalone eligibility: the legacy absolute
+tolerance 0.01 overlaps a 10% perturbation on small target means, leaving three
+queries rather than the required five. It wrote no main manifest and sent no main
+model request. The existing task/row/source files and excluded synthetic smoke remain
+unchanged. This feasibility discovery concerns scale, not new model efficacy.
+
+For this new audit, define numeric answer tolerance = min(legacy task tolerance,
+0.02*abs(truth)), with positive finite truth as already required. Retain legacy
+tolerance in frozen query metadata for audit. This caps relative error at 2% and
+ensures clean and 10% wrong candidates have nonoverlapping scoring neighborhoods.
+The prompt requests a numeric value without a specified rounding precision. Query
+selection remains the first five distinct qualifying filtered means in original
+task order per table, using this audit tolerance; no outcome-based replacement.
+All candidate pairing, row sampling, primary decision-based B-A effect, clean guard,
+secondary comparisons, stopping and request budget remain unchanged. Do not merge
+these numeric-answer scores with the legacy P4 tolerance-based scores. Record this
+amendment and updated runner hashes before successful main evidence freeze.
