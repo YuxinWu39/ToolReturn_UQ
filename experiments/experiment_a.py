@@ -30,6 +30,7 @@ ENDPOINT = 'https://generativelanguage.googleapis.com/v1beta/openai/chat/complet
 PROTOCOL = 'A-MONITOR-INTERVENTION'
 PROTOCOL_COMMIT = '89734f4'
 ENGINEERING_AMENDMENT = '9ccf2bd'
+NUMERIC_SCALE_AMENDMENT = '880084a'
 FILES = ('experiment_a.py', 'experiment_a_python.py', 'context_evidence.py', 'context_pilot.py', 'zeroparam.py', 'p4_common.py')
 ARMS = ('raw', 'check', 'code')
 LEVELS = (('clean', 1.0), ('scale110', 1.1), ('scale150', 1.5))
@@ -110,12 +111,13 @@ def prepare(output):
             fast = FastTemplate(df, 'mean', m['column'], m['filter'], None)
             eligible = np.flatnonzero(fast.mask & np.isfinite(fast.vals))
             truth = fast.on_subset(np.arange(len(df)))
-            tolerance = t['oracle']['tolerance']
+            legacy_tolerance = t['oracle']['tolerance']
+            tolerance = min(legacy_tolerance, .02*abs(truth)) if truth is not None and math.isfinite(truth) else legacy_tolerance
             if len(eligible) < 20 or truth is None or not math.isfinite(truth) or truth <= 0 or truth*.1 <= 2*tolerance:
                 continue
             chosen.add(key)
             q = {'task_id': t['task_id'], 'dataset': dataset, 'query': t['user_query'], 'code': m['code'],
-                 'column': m['column'], 'filter': m['filter'], 'truth': float(truth), 'tolerance': tolerance}
+                 'column': m['column'], 'filter': m['filter'], 'truth': float(truth), 'tolerance': tolerance, 'legacy_tolerance': legacy_tolerance}
             queries.append(q)
             for draw in range(3):
                 seed = 20261108+int(hashlib.sha256(f"expA|{q['task_id']}|{draw}".encode()).hexdigest()[:8], 16)
@@ -152,7 +154,7 @@ def prepare(output):
     save(output/'features.json', feats)
     if sanity['paired_queries'] != 90 or not ce.passes_sanity(sanity['within_table']):
         raise ValueError('registered monitor sanity gate failed; main collection blocked')
-    manifest = {'protocol': PROTOCOL, 'protocol_commit': PROTOCOL_COMMIT, 'engineering_amendment': ENGINEERING_AMENDMENT, 'model': MODEL,
+    manifest = {'protocol': PROTOCOL, 'protocol_commit': PROTOCOL_COMMIT, 'engineering_amendment': ENGINEERING_AMENDMENT, 'numeric_scale_amendment': NUMERIC_SCALE_AMENDMENT, 'model': MODEL,
                 'source_hashes': hashes(), 'task_file_sha256': hashlib.sha256(task_path.read_bytes()).hexdigest(),
                 'dataset_sha256': datasets, 'queries': queries, 'evidence_units': evidence_units,
                 'units': make_units(queries, evidence_units, feats), 'sanity': sanity,
