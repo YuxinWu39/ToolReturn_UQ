@@ -674,3 +674,86 @@ the rows and their sampling-rule description. Severity is tied to query identity
 perturbation direction to table identity; neither slice identifies a causal severity or
 direction effect. These clarifications precede all live A-CTX-PILOT calls and do not alter
 frozen messages or the 72-cell selection.
+
+
+## A-CTX-EVIDENCE (2026-11-07, before computing same-evidence statistical baselines)
+
+**Scope and prior knowledge.** Exploratory follow-up to A-CTX-PILOT and its Qwen
+replication. Existing model decisions and the twelve selected queries are already known;
+this is a prospectively locked analysis of a reused pilot, not an independent confirmatory
+sample. Question: can registered statistical checks extract useful evidence from the exact
+rows shown to the two models? No new API requests or free-running trajectories in this step.
+
+**Fixed units.** Reuse the immutable `data/ours/context_pilot/20261107/manifest.json`
+(canonical SHA256 7263b5dcd25ccf3c4463ffe6778243a3f953a153c55f0c493d9714cd0dc99983).
+Twelve filtered-mean queries from six tables, three contexts, clean/corrupted paired values.
+Do not select tasks using baseline outcomes. Template is filtered throughout; severity is
+subtle/plausible, already tied to query. Same context and cached statistics for all values
+of a query/context pair. Table is the cluster; there are only six clusters, not 72 units.
+
+**Information boundary.** Parse the exact evidence JSON and CSV embedded in frozen messages,
+verify context and message hashes. Computation receives only shown rows, query filter/target
+and displayed shape. It must not load the full CSVs or use full-table truth, min/max,
+matching-population size, contamination labels or model decisions as features. Truth and
+labels are used only by evaluation and to construct synthetic sanity candidates. Public
+schema/filter strings are preserved; pandas CSV parsing of visible values is recorded.
+Record shown rows, matching rows, finite target rows and sample mean per query/context.
+
+**Methods.** (1) 0a sample range check via `zeroparam.rule_0a('mean', ...)` on finite
+query-matching target values. This is an empirical sample range, NOT a valid full-population
+bound. (2) Primary 0d via shared `template_stat('mean', column, filter, None)`, then
+`bootstrap_0d` on the exact shown row frame, n=displayed table row count, B=2000,
+scale_sum=False; use `interval_score`. Keep the established >20% failed resample rule.
+For each pair, seed = 20261107 plus integer formed by the first eight SHA256 hex digits
+of `task_id + '|' + context`. Cache its interval independent of candidate value/label.
+No changes to zeroparam.py and no replacement analytic signal in this step.
+
+**Operational decisions.** A missing/nonfinite score means unscorable, never silently
+normal. A score >1e-9 flags the candidate; otherwise it is compatible. The floor only
+avoids floating-point boundary noise and is fixed for both methods. Compatibility is
+not proof that the return is correct. No learned threshold, no outcome-driven reruns or
+parameter tuning. Clean false flags, corrupted flags/compatibility, and unscorable counts
+use all twelve queries as denominators; also give scored-only denominators. Model accept
+is compared descriptively to compatibility, without assuming equivalent probability or
+uncertainty semantics. Invalid model JSON remains a separate category, not detection.
+
+**Sanity gate.** For each query/context add candidates truth*1000 and truth/1000. Use the
+same cached features as clean/corrupted. Compute within-table AUROC comparing those two
+extremes with clean on tasks for which all three scores exist. Gate per method/context:
+within-table sanity AUROC >0.95, strictly. Coverage and table counts always reported;
+missing or failing gates withhold real corruption AUROC and its CI, rather than dropping
+the condition. Also report high-only and low-only sanity diagnostics. Passing sanity is
+necessary, not sufficient: it does not establish calibration or valid confidence intervals.
+Behavioral counts from failed conditions are marked gate-failed diagnostics, not headline
+performance. No AUROC is assigned to unscorable events.
+
+**Analysis.** Primary: sanity-gated, equal-table AUROC for 0d on matched20. Report the other
+contexts and 0a as secondary. Use same-query clean/corrupted complete-score pairs. Compute
+95% descriptive percentile bootstrap CIs over represented tables, 2000 draws, seed=1;
+constant scores in a two-class table give AUROC=0.5. Pooled AUROC is secondary. Give per-table
+and per-severity results and coverage; an omitted table is never counted as observed.
+Report effective sample counts and raw clean false-flag/corrupted-flag counts regardless
+of gate status with proper diagnostic labels. Compare compatible-clean minus compatible-
+corrupted to the models' accept-clean minus accept-corrupted on common eligible queries,
+retaining each model's invalid/uncertain counts. Gemini comparisons are secondary and
+include valid-pair sensitivity, because its formatting failures affect this measure.
+Cross-context policy differences are available only where both methods/contexts pass
+the sanity gate; otherwise withhold them and report the failure. No equivalence,
+information-theoretic impossibility, or statistically established model superiority claim.
+
+**Validation and stopping.** Offline tests before running real cases: visible-only parsing,
+paired interval reuse, undefined/empty filters, constant scores, known synthetic corruption,
+strict sanity gate including exactly 0.95, no full-table feature access, missing-support
+and format-failure comparisons. Generate hashes/version audit, events and summaries under
+`data/ours/context_evidence/20261107/`. Run the fixed set once. Preserve failures and do not
+expand the sample in response to efficacy. An independent milestone review checks the
+interpretation. Numerical tables in findings/report must come from generated summaries.
+
+**Research decisions.** Inspect discrimination jointly with clean false flags, sample/score
+coverage and sanity. Useful separation with low clean false flags motivates a fresh-table
+experiment comparing raw rows with summaries computed from those same rows. Weak separation
+or high clean false flags motivates sampling/budget and calibration work before new LLM calls.
+Failure of the gate motivates instrument checks, not detector-quality headlines. Neither
+failure of these two methods nor success on selected tasks proves a universal evidence limit
+or a new algorithm. New table/model experiments require their own protocol; this step stops
+after the offline experiment and its reviewed implications.
