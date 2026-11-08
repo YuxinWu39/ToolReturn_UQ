@@ -871,3 +871,94 @@ and the research log. Preserve the original reviewer reports/roadmap unchanged.
 Qwen pilot without raw replies remains an auxiliary scored-record result; missing
 original replies are not replaced by fresh model samples. Offline flags do not
 establish a deployed retry/abstain policy or latency/cost benefit.
+
+
+## A-MONITOR-INTERVENTION (2026-11-08; before new Experiment A responses)
+
+**Authorization and scope.** User authorized Experiment A with their Gemini key.
+Use stable gemini-3.8-flash, verified in the authenticated model catalog, low
+reasoning/provider-default sampling, no API seed or token logprobs. Existing public
+tables and prior model outcomes have been inspected; this is a prospective,
+feasibility-constrained intervention on reused tasks, not fresh-table confirmation.
+No Qwen runs, provider substitution, new method or deployment/optimal-placement claim.
+
+**Selection and evidence.** From large_tables_v2.jsonl, independently per sorted
+dataset, keep the first five distinct (target column, equality filter) mean queries
+in original task order. Require >=20 matching finite targets, positive finite truth,
+and clean / x1.10 / x1.50 separated by >2*existing oracle tolerance. Exactly 30 queries
+in six tables or fail preparation; no outcome-based replacement. Freeze three fresh
+independent matched20 row draws per query (without replacement within draw; overlap
+allowed between draws) using seed 20261108 plus first 8 SHA256 hex digits of
+'expA|task_id|draw'. Frozen rows/schema/shape, query/code and candidate scalar are
+identical across arms for each task/draw/candidate. Severity is crossed within query;
+only upward multiplicative errors, no direction-generalization claim. Truth/labels
+remain evaluator/provider data, never checker/model feature fields.
+
+**Arms.** A raw: fixed query/code, twenty matching rows, candidate. B check: A plus
+0d cached percentile interval, finite matching sample size, candidate score and flag,
+explicitly described as sample evidence rather than proof of correctness. Features
+use context_evidence.features and shared zeroparam.py, B=2000, flag >1e-9. Interval
+is cached once per query/draw and reused for all candidates. C code: A plus optional
+Python on those exact visible rows only, no source table or population truth. Common
+final schema is decision (accept/reject/uncertain), confidence integer0..100, answer
+finite number or null, reason string; confidence is logged, not a detection metric.
+C may instead request {"python":"code"}. At most three tool executions and four
+model requests per trajectory; after the third tool, request a final answer. Each
+model request permits 1536 output tokens. A/B have one request; C has additional
+computation by design. Separate stateless sessions; no sharing answers across arms.
+
+**Isolation.** C executes in a credential-free subprocess given only visible CSV
+and generated code. Preload pandas/numpy/math/statistics, install macOS Seatbelt
+file/network/write restrictions, bound CPU/wall time and output. Model code may
+not obtain other tables, parent process environment, host files or network. Reject
+unsupported imports/private attributes. Isolation failure is an engineering failure,
+not a model score; do not silently run outside isolation. Log code, returns and errors.
+
+**Schedule and budget.** 30 queries x3 independent row draws x3 candidates x3 arms
+=810 planned completed trajectories; one completion sequence per cell, not three
+independent tasks. Interleave cells in a frozen seed-shuffled order; start concurrency
+2, reducible on rate errors without outcome-based reruns. A/B <=540 logical requests
+and C <=1080, total <=1620 logical successful requests, plus bounded HTTP attempts
+(max3 per logical request). Resume checkpointed requests/completed cells exactly;
+never regenerate completed invalid/refused/truncated answers or tools for score.
+Save per-attempt status/duration, raw provider replies, payload/message hashes,
+model, usage, finish reason and UTC times. Secrets in process memory only.
+
+**Before main collection.** Run synthetic/unit tests and engineering smoke on a
+separate synthetic table, one clean/corrupt packet per arm (6 trajectories), excluded
+from efficacy. Verify provider transport, strict schema and restricted Python path;
+if isolation/transport/format engineering fails, fix disclosed code and refreeze before
+main outcomes. Refuse wholesale retries based on smoke correctness. Save smoke usage
+and use it only as engineering information, not a guaranteed bill/time estimate.
+Verify 0d clean-vs-extreme (truth*x1000,/1000) sanity on frozen evidence before main
+model responses: equal-table AUROC >0.95, strictly, finite same-query/draw roles.
+Missing evidence or failed gate blocks the registered eligible-monitor collection;
+report failure and amend before changing the study. Do not select easy query/draws.
+No live confidence AUROC claims; synthetic sanity is a CPU checker validation, not
+additional unseen-model efficacy cases.
+
+**Analysis.** Primary is B-A in acceptance discrimination. For each query/draw/arm,
+D=I(accept clean)-mean[I(accept x1.10),I(accept x1.50)]. Average draws within query,
+queries within table, then equal-weight six tables. Invalid, refused, exhausted and
+truncated final outputs count as nonacceptance and stay in scheduled denominators.
+Explicit transport-incomplete cells stay missing, do not silently convert to rejection;
+show completion counts and a completed-common-cell sensitivity if partial. Final full
+primary estimate only at 810 completed cells; partial estimates clearly interim.
+2,000 paired table bootstrap draws, seed1; paired table CIs descriptive with six
+clusters. The same pairing estimates B-A clean acceptance. Support for the joint
+"better discrimination without >5pp clean-acceptance loss" rule requires lower
+D-difference CI>0 AND lower clean-difference CI>=-0.05; otherwise do not claim joint
+benefit. This empirical decision is not a powered population noninferiority test.
+C-A/C-B, per severity/table and flag-following analyses are predeclared secondary/
+exploratory, not additional confirmatory wins. No generic-warning arm: B-A identifies
+the full check-aid package, not unique numerical-content or warning mechanisms.
+
+Always report accept/reject/uncertain/invalid, clean acceptance, corrupted acceptance/
+adoption, final numeric correctness, wrong numeric answers, abstention/null and answer
+coverage; null/invalid are not correct answers. Report direct 0d flags/coverage/gate,
+model tool use/errors, requests, token fields and elapsed time (including transport
+failures separately). Per arm/table/severity denominators remain visible; no flags are
+truth guarantees. Repeats are not extra queries/tables. No interim efficacy stopping
+or sample expansion; stop on auth, invalid config, isolation failure or persistent
+transport failure, preserving all records. Results do not identify verification intent,
+internal mechanism, superiority of runtime placement or end-to-end recovery benefit.
