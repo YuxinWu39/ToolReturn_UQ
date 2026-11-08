@@ -354,3 +354,30 @@ Verdict: PASS-AS-EXPLORATORY; feasibility only, no detector efficacy headline.
 ```
 
 Completed 72 cells, 67 schema-valid; primary effect +8.3pp [-16.7, +33.3]pp. Usage fields: prompt_tokens=101889, completion_tokens=5878, total_tokens=128020; fields do not sum, no price estimate. Internal transport retry count unknown; no final transport failures recorded. See F10 and docs/CONTEXT_PILOT_2026-11-07_gemini.md.
+
+
+## 2026-11-07 — Qwen context replication verification and research reflection
+
+```
+Step: Verify A-CTX-PILOT paired-model matrix at feeda57
+1 Protocol-before-results  Recompute only: existing A-CTX-PILOT protocol, no new collection. [x]
+2 Hypothesis served        Query-relevant-evidence feasibility; primary not reproduced. [x]
+3 Sanity check             Unique 72-cell IDs, manifest/config/source hashes, answer grading,
+                           counts, all contrasts and valid-pair sensitivity match.
+                           Gemini raw re-parsed; Qwen raw not archived locally. [x]
+4 Confirmatory/exploratory Existing exploratory pilot; verification does not upgrade evidence. [x]
+5 Claim scope              Primary +8.3pp versus 0.0pp is not a direction reversal or proof
+                           of no effect. Qwen confidence semantic violation unsupported. [x]
+6 Reviewer objection       Independent reviewer confirms two overstatements and raw gap;
+                           append-only findings clarification, current state corrected. [x]
+7 Workshop fitness         Distinguish evidence sufficiency from model evidence extraction
+                           before more API collection. No acceptance probability asserted. [x]
+Verdict: PASS-AS-EXPLORATORY at scored layer; Qwen raw-response audit pending archive.
+```
+
+research(reflect): prioritize a separately preregistered offline same-sample statistical
+baseline with sanity, clean false alarms and missing-score coverage. If it extracts useful
+signal, test raw rows versus same-row statistical summaries on fresh generated/transformed
+tables; otherwise investigate sampling/budget first. This is a proposed plan, not a newly
+registered or executed experiment. No new API calls. Methods citation for Scientific Agent
+Skills is in docs/REVIEW_2026-11-07_qwen_context_next.md.

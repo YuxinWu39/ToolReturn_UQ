@@ -1,0 +1,301 @@
+{
+  "kind": "verification of already collected results; no new experiment",
+  "manifest_canonical_hash": "7263b5dcd25ccf3c4463ffe6778243a3f953a153c55f0c493d9714cd0dc99983",
+  "manifest_file_hash": "d9c467dfb860fe37ae315708b2a49733f9c0bf84ec304ab140e4b67ce094999d",
+  "models": {
+    "gemini-3.8-flash": {
+      "cells": {
+        "head5": {
+          "0": {
+            "accept": 12,
+            "adopted_wrong": 0,
+            "correct": 12,
+            "invalid": 0,
+            "n": 12,
+            "reject": 0,
+            "uncertain": 0,
+            "valid_null_answers": 0
+          },
+          "1": {
+            "accept": 9,
+            "adopted_wrong": 9,
+            "correct": 0,
+            "invalid": 1,
+            "n": 12,
+            "reject": 2,
+            "uncertain": 0,
+            "valid_null_answers": 2
+          }
+        },
+        "matched20": {
+          "0": {
+            "accept": 11,
+            "adopted_wrong": 0,
+            "correct": 11,
+            "invalid": 1,
+            "n": 12,
+            "reject": 0,
+            "uncertain": 0,
+            "valid_null_answers": 0
+          },
+          "1": {
+            "accept": 5,
+            "adopted_wrong": 5,
+            "correct": 0,
+            "invalid": 2,
+            "n": 12,
+            "reject": 5,
+            "uncertain": 0,
+            "valid_null_answers": 5
+          }
+        },
+        "random20": {
+          "0": {
+            "accept": 12,
+            "adopted_wrong": 0,
+            "correct": 12,
+            "invalid": 0,
+            "n": 12,
+            "reject": 0,
+            "uncertain": 0,
+            "valid_null_answers": 0
+          },
+          "1": {
+            "accept": 7,
+            "adopted_wrong": 7,
+            "correct": 0,
+            "invalid": 1,
+            "n": 12,
+            "reject": 3,
+            "uncertain": 1,
+            "valid_null_answers": 4
+          }
+        }
+      },
+      "claim_limits": [
+        "No live signal sanity arm; confidence AUROC withheld.",
+        "Twelve selected queries and six tables; one sample/completion per cell.",
+        "No equivalence claim or cross-model robustness ranking."
+      ],
+      "configuration_hashes_match": true,
+      "contrasts": {
+        "matched20_minus_head5": {
+          "ci95": [
+            0.08333333333333333,
+            0.4166666666666667
+          ],
+          "mean": 0.25,
+          "per_table": {
+            "public_abalone.csv": 0.0,
+            "public_auto_mpg_v4.csv": 0.5,
+            "public_bike_v4.csv": 0.0,
+            "public_penguins_v3.csv": 0.5,
+            "public_student.csv": 0.0,
+            "public_wine_quality.csv": 0.5
+          },
+          "queries": 12,
+          "tables": 6
+        },
+        "matched20_minus_random20": {
+          "ci95": [
+            -0.16666666666666666,
+            0.3333333333333333
+          ],
+          "mean": 0.08333333333333333,
+          "per_table": {
+            "public_abalone.csv": 0.5,
+            "public_auto_mpg_v4.csv": 0.0,
+            "public_bike_v4.csv": 0.0,
+            "public_penguins_v3.csv": 0.5,
+            "public_student.csv": -0.5,
+            "public_wine_quality.csv": 0.0
+          },
+          "queries": 12,
+          "tables": 6
+        },
+        "random20_minus_head5": {
+          "ci95": [
+            -0.16666666666666666,
+            0.4166666666666667
+          ],
+          "mean": 0.16666666666666666,
+          "per_table": {
+            "public_abalone.csv": -0.5,
+            "public_auto_mpg_v4.csv": 0.5,
+            "public_bike_v4.csv": 0.0,
+            "public_penguins_v3.csv": 0.0,
+            "public_student.csv": 0.5,
+            "public_wine_quality.csv": 0.5
+          },
+          "queries": 12,
+          "tables": 6
+        }
+      },
+      "n": 72,
+      "raw_responses_missing": 0,
+      "raw_responses_verified": 72,
+      "reject_confidences": [
+        95,
+        95,
+        98,
+        95,
+        98,
+        95,
+        95,
+        95,
+        95,
+        95
+      ],
+      "scored_counts_and_contrasts_match": true,
+      "uncertain_confidences": [
+        40
+      ],
+      "valid": 67
+    },
+    "qwen3-8b": {
+      "cells": {
+        "head5": {
+          "0": {
+            "accept": 12,
+            "adopted_wrong": 0,
+            "correct": 12,
+            "invalid": 0,
+            "n": 12,
+            "reject": 0,
+            "uncertain": 0,
+            "valid_null_answers": 0
+          },
+          "1": {
+            "accept": 10,
+            "adopted_wrong": 10,
+            "correct": 0,
+            "invalid": 0,
+            "n": 12,
+            "reject": 0,
+            "uncertain": 2,
+            "valid_null_answers": 2
+          }
+        },
+        "matched20": {
+          "0": {
+            "accept": 12,
+            "adopted_wrong": 0,
+            "correct": 12,
+            "invalid": 0,
+            "n": 12,
+            "reject": 0,
+            "uncertain": 0,
+            "valid_null_answers": 0
+          },
+          "1": {
+            "accept": 11,
+            "adopted_wrong": 11,
+            "correct": 0,
+            "invalid": 0,
+            "n": 12,
+            "reject": 0,
+            "uncertain": 1,
+            "valid_null_answers": 1
+          }
+        },
+        "random20": {
+          "0": {
+            "accept": 10,
+            "adopted_wrong": 0,
+            "correct": 10,
+            "invalid": 0,
+            "n": 12,
+            "reject": 0,
+            "uncertain": 2,
+            "valid_null_answers": 2
+          },
+          "1": {
+            "accept": 9,
+            "adopted_wrong": 9,
+            "correct": 0,
+            "invalid": 0,
+            "n": 12,
+            "reject": 0,
+            "uncertain": 3,
+            "valid_null_answers": 3
+          }
+        }
+      },
+      "claim_limits": [
+        "No live signal sanity arm; confidence AUROC withheld.",
+        "Twelve selected queries and six tables; one sample/completion per cell.",
+        "No equivalence claim or cross-model robustness ranking."
+      ],
+      "configuration_hashes_match": true,
+      "contrasts": {
+        "matched20_minus_head5": {
+          "ci95": [
+            -0.3333333333333333,
+            0.16666666666666666
+          ],
+          "mean": -0.08333333333333333,
+          "per_table": {
+            "public_abalone.csv": 0.0,
+            "public_auto_mpg_v4.csv": 0.5,
+            "public_bike_v4.csv": 0.0,
+            "public_penguins_v3.csv": -0.5,
+            "public_student.csv": 0.0,
+            "public_wine_quality.csv": -0.5
+          },
+          "queries": 12,
+          "tables": 6
+        },
+        "matched20_minus_random20": {
+          "ci95": [
+            -0.3333333333333333,
+            0.3333333333333333
+          ],
+          "mean": 0.0,
+          "per_table": {
+            "public_abalone.csv": 0.5,
+            "public_auto_mpg_v4.csv": 0.5,
+            "public_bike_v4.csv": -0.5,
+            "public_penguins_v3.csv": -0.5,
+            "public_student.csv": 0.0,
+            "public_wine_quality.csv": 0.0
+          },
+          "queries": 12,
+          "tables": 6
+        },
+        "random20_minus_head5": {
+          "ci95": [
+            -0.3333333333333333,
+            0.16666666666666666
+          ],
+          "mean": -0.08333333333333333,
+          "per_table": {
+            "public_abalone.csv": -0.5,
+            "public_auto_mpg_v4.csv": 0.0,
+            "public_bike_v4.csv": 0.5,
+            "public_penguins_v3.csv": 0.0,
+            "public_student.csv": 0.0,
+            "public_wine_quality.csv": -0.5
+          },
+          "queries": 12,
+          "tables": 6
+        }
+      },
+      "n": 72,
+      "raw_responses_missing": 72,
+      "raw_responses_verified": 0,
+      "reject_confidences": [],
+      "scored_counts_and_contrasts_match": true,
+      "uncertain_confidences": [
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50
+      ],
+      "valid": 72
+    }
+  }
+}

@@ -81,7 +81,7 @@ context_pilots:
     descriptive_ci95: [-0.16666666666666666, 0.3333333333333333]
     confidence_auroc: withheld-no-live-sanity-and-scale-noncompliance
     conclusion: no-stable-semantic-checking-benefit-established
-    next: owner-runs-qwen-on-same-manifest
+    next: paired-qwen-review-complete-prepare-offline-evidence-audit
     report: docs/CONTEXT_PILOT_2026-11-07_gemini.md
   - run_id: qwen3_8b_fixed_return_context_20261107
     protocol: A-CTX-PILOT
@@ -94,5 +94,18 @@ context_pilots:
     primary_contrast: matched20-minus-random20-clean-minus-corrupted-acceptance
     estimate: 0.0
     descriptive_ci95: [-0.3333333333333333, 0.3333333333333333]
-    conclusion: no-context-checking-benefit-does-not-replicate-gemini-direction-flips
+    conclusion: no-stable-cross-model-benefit-established-primary-zero-not-reversal
+    confidence_auroc: withheld-no-live-sanity
+    raw_archive_status: missing-from-repository
+    next: archive-raw-and-preregister-offline-evidence-audit
     report: findings.md#F10-addendum
+
+context_replication_review:
+  date: "2026-11-07"
+  snapshot: feeda57
+  status: verified-scored-results-raw-qwen-audit-incomplete
+  report: docs/REVIEW_2026-11-07_qwen_context_next.md
+  audit: data/ours/context_pilot/20261107/replication_audit.json
+  independent_reviewer: completed-read-only
+  new_model_calls: 0
+  proposed_offline_study: not-yet-preregistered-or-run

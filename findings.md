@@ -526,3 +526,21 @@ more representative rows makes a prompted checker reject corrupted returns.
 Data: `data/ours/context_pilot/20261107/qwen3-8b/{summary.json,scored_responses.json,config.json}` (72 raw
 responses retained on the instance disk). Independent recompute of the acceptance counts and primary contrast by
 the orchestrator matched the summarizer.
+
+
+### F10 addendum clarification — verified primary contrast and confidence scope (2026-11-07)
+
+Independent recomputation from both scored files agrees with the existing counts and all registered contrasts. Configs use the same canonical manifest and source hashes. This is verification of existing results, not a new experiment.
+
+| Model | head5 wrong adoption | random20 wrong adoption | matched20 wrong adoption | Primary matched20 - random20 |
+|---|---:|---:|---:|---:|
+| gemini-3.8-flash | 9/12 | 7/12 | 5/12 | +8.3pp [-16.7, +33.3] |
+| qwen3-8b | 10/12 | 9/12 | 11/12 | +0.0pp [-33.3, +33.3] |
+
+The earlier phrase "direction flips" does not describe the primary contrast: Qwen's estimate is zero, not negative. Some secondary point estimates and raw acceptance counts move oppositely. Both primary intervals span zero; this pilot establishes neither equivalence nor a general lack of context benefit. Qwen random20 also makes two clean uncertain decisions, so the context effect on corrupted acceptance alone is not the registered discrimination effect.
+
+The earlier "same scale-noncompliance pattern" is unsupported for Qwen. Its scored records contain 64 accept/confidence=90 and eight uncertain/confidence=50, with zero reject. These do not exhibit Gemini's reject/high-tool-correctness-confidence contradiction. Confidence calibration remains untested and AUROC remains withheld for the missing live sanity arm, without inventing a semantic violation.
+
+Audit scope: Gemini 72/72 raw replies re-parsed; Qwen 0/72 raw replies present in this repository. Qwen schema validity and rationale cannot yet be independently checked beyond scored/config records. Archive raw responses and runtime versions; do not rerun merely to fill this audit gap.
+
+Next priority: preregister an offline same-evidence statistical-checker feasibility study to distinguish limited evidence from inadequate evidence extraction. No new API run or this proposed study was executed in this review. Full scope, independent reviewer conclusions and decision branches: [Qwen review and next steps](docs/REVIEW_2026-11-07_qwen_context_next.md).
