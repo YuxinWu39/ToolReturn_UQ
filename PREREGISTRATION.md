@@ -757,3 +757,52 @@ Failure of the gate motivates instrument checks, not detector-quality headlines.
 failure of these two methods nor success on selected tasks proves a universal evidence limit
 or a new algorithm. New table/model experiments require their own protocol; this step stops
 after the offline experiment and its reviewed implications.
+
+
+## A-CTX-RESAMPLE (2026-11-07, before independent-draw statistical robustness checks)
+
+**Motivation/prior knowledge.** A-CTX-EVIDENCE is complete: on one frozen matched20 sample,
+0d flagged 10/12 corruptions and 1/12 clean returns. This new, separate exploratory study
+checks sensitivity to row sampling, rather than replacing that pilot or expanding it for
+significance. Selected queries and initial outcomes are known; there are no new tasks,
+no new models, no held-out confirmation set and no API calls.
+
+**Design.** Reuse all twelve original filtered-mean queries, original truths and scales.
+For every query draw twenty independent uniform subsets of twenty finite-target rows
+satisfying its filter, without replacement within a draw. Across draws overlap/repetition
+is allowed; never resample based on an outcome. Sampling seed for draw d in 0..19 is
+20261108 plus integer from the first eight SHA256 hex digits of task_id+'|draw|'+str(d).
+240 query/draw units from six source tables, not 240 independent queries or tables. No
+additional sample sizes or stopping rules. Read full public tables only in the evidence
+provider to sample rows and verify their frozen SHA256; never pass full frames or hidden
+population quantities to the checker. Freeze the new evidence manifest before computing
+any baseline feature. Same query/draw evidence supplies clean, corruption and both sanity
+values; no original frozen model responses are relabelled as responses to new rows.
+
+**Method.** Reuse the exact context_evidence.features, score and events_for_query functions
+and zeroparam.py unchanged. Bootstrap B=2000, threshold >1e-9, no sum scaling. Augment
+query IDs with __draw_d for unique pairing; the inherited bootstrap seed uses that ID
+and 'matched20'. Preserve original_task_id and draw ID. Test provider determinism,
+filter/finite-target eligibility, no hidden truth in evidence and exact 20-row exposure
+using synthetic data before real sampling.
+
+**Analysis.** Primary is 0d, 0a secondary. Sanity gate strictly >0.95 within-table AUROC
+on same query/draw clean versus both extreme candidates, exactly as the previous study.
+If gate fails, withhold real AUROC even if some severity slices pass; retain diagnostic
+counts and unscorable coverage. For passing methods, AUROC describes the mixture of
+selected queries and independently sampled rows: combine all paired draw scores within
+each parent table, then average tables equally. Report descriptive 2000-replicate bootstrap
+CI over six parent tables (seed=1), never bootstrap 240 units as independent tables.
+Report clean false flags and corruption flags over all 240 draws, and per-query frequencies
+out of twenty and severity/table slices. Also give equal-table descriptive CIs for both
+flag rates, keeping score coverage separate. This is a stability description, not a
+coverage theorem, hypothesis confirmation or distribution-free false-alarm guarantee.
+
+**Execution/reporting.** New output under data/ours/context_evidence_resample/20261107/;
+original pilot untouched. One fixed run, at most four CPU workers. Archive evidence indices,
+row CSVs, data/source hashes, versions, timings, features/events and summaries. Independently
+review generated statistics. Compare qualitatively with the initial sample while retaining
+both reports, not selecting the better result. If signal/clean-error trade-off persists,
+prepare a fresh-table raw-rows versus same-row-statistics intervention; if not, prioritize
+sampling/calibration before making an evidence-use claim. In either case this step creates
+no new LLM behavior evidence and no new algorithm claim.
