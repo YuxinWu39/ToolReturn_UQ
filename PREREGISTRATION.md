@@ -1002,3 +1002,36 @@ All candidate pairing, row sampling, primary decision-based B-A effect, clean gu
 secondary comparisons, stopping and request budget remain unchanged. Do not merge
 these numeric-answer scores with the legacy P4 tolerance-based scores. Record this
 amendment and updated runner hashes before successful main evidence freeze.
+
+
+### A-MONITOR-INTERVENTION runtime repair deviation (2026-11-08; after 554 completed cells, before effect analysis)
+
+An additional synthetic test (not a main response inspection) found that a legitimate
+NumPy ndarray operation invokes numpy.core._methods through the restricted import
+hook. The exact-root allowlist rejected this internal submodule, potentially impairing
+C arithmetic/bootstrap. The initial mean-only synthetic/smoke coverage missed this.
+Collection was interrupted and in-flight cells allowed to finish, yielding554 completed
+files and no partial/transport-failure files. No main acceptance/correctness effects
+have been computed. Preserve those554 response files byte-for-byte in a hashed
+pre_runtime_patch_snapshot; do not regenerate any completed response.
+
+Repair only the worker's internal import hook to delegate legitimate descendants of
+pandas/numpy/math/statistics to Python's import mechanism; generated code's AST
+import/private-attribute checks and OS file/network/credential restrictions remain.
+Add actual seeded/unseeded NumPy bootstrap and source-file-denial regressions. Keep
+the810 frozen inputs, model payloads, sampling, pairing, main estimand, numeric grading,
+request/tool limits and budget unchanged. Resume only the256 pending cells under an
+explicit, separately committed runtime-patch sidecar binding original manifest hash,
+old/new source hashes, repair/amendment commits and the pre-repair response hashes.
+Never bypass hash validation or rewrite the original manifest/config. New records
+identify runtime segments; old records retain their original source provenance.
+
+Primary B-A uses no optional Python and is unchanged. Complete all810 and keep its
+registered paired analysis/clean guard; disclose the pause and runtime change. The
+C arm spans impaired and repaired runtimes and is not a uniform computation-control
+intervention: withhold any confirmatory/fair-C-comparison claim, label full C contrasts
+diagnostic only, and show code use/errors by runtime phase. Do not claim the model
+failed to compute because of harness-induced errors. Phase contrasts are descriptive
+and time-confounded, not a randomized repair effect. No extra model samples or
+replacement of old C replies is authorized by this repair. A future uniform C study
+would require a separately registered replication, not concealed reruns.

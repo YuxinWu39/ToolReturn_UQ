@@ -1,0 +1,206 @@
+{
+  "calls": [
+    {
+      "attempts": [
+        {
+          "attempt": 0,
+          "elapsed_seconds": 15.944227166939527,
+          "started_utc": "2026-11-08T09:36:03.550337+00:00",
+          "status": "success"
+        }
+      ],
+      "messages": [
+        {
+          "content": "You are auditing a scalar returned by a data-analysis tool. Assess the candidate using the query, code and partial table evidence. The rows shown are a sample, not the full population. The query asks for the full-table mean, not just the sample mean. You cannot access the population table or ground truth. Do not assume that a candidate is correct or incorrect. You may accept, reject or remain uncertain and may abstain from a final numeric answer. Return exactly one JSON object, no markdown, with decision (accept/reject/uncertain), confidence (integer 0..100 in correctness of the candidate), answer (finite numeric answer to the full-table query, or null), and reason (a brief string). No other fields.\nYou may optionally execute Python against exactly the displayed rows. The sandbox provides df (only these rows), pd, np, math and statistics. No files, network, full table or other source are available. Request a computation as exactly {\"python\":\"your code\"}; imports are limited to pandas, numpy, math and statistics. At most three executions are available, followed by a final answer in the common four-field JSON format. Do not execute code to access hidden data. You may also answer immediately without using Python.",
+          "role": "system"
+        },
+        {
+          "content": "QUERY\nCompute the average of `bill_depth_mm` for rows where `sex` equals `male` in the dataset. Report the numeric value and briefly explain how you computed it.\nTOOL CODE\ndf[df['sex'].astype(str) == 'male']['bill_depth_mm'].mean()\nPARTIAL TABLE EVIDENCE\n{\"columns\": [\"species\", \"island\", \"bill_length_mm\", \"bill_depth_mm\", \"flipper_length_mm\", \"body_mass_g\", \"sex\", \"year\"], \"dtypes\": {\"bill_depth_mm\": \"float64\", \"bill_length_mm\": \"float64\", \"body_mass_g\": \"float64\", \"flipper_length_mm\": \"float64\", \"island\": \"object\", \"sex\": \"object\", \"species\": \"object\", \"year\": \"int64\"}, \"rows_csv\": \"species,island,bill_length_mm,bill_depth_mm,flipper_length_mm,body_mass_g,sex,year\\nAdelie,Dream,44.1,19.7,196.0,4400.0,male,2007\\nAdelie,Dream,39.6,18.8,190.0,4600.0,male,2007\\nGentoo,Biscoe,52.2,17.1,228.0,5400.0,male,2009\\nGentoo,Biscoe,45.2,16.4,223.0,5950.0,male,2008\\nGentoo,Biscoe,50.0,15.3,220.0,5550.0,male,2007\\nChinstrap,Dream,49.5,19.0,200.0,3800.0,male,2008\\nGentoo,Biscoe,47.3,15.3,222.0,5250.0,male,2007\\nGentoo,Biscoe,45.2,15.8,215.0,5300.0,male,2008\\nAdelie,Torgersen,41.1,18.6,189.0,3325.0,male,2009\\nAdelie,Biscoe,37.6,19.1,194.0,3750.0,male,2008\\nAdelie,Dream,41.5,18.5,201.0,4000.0,male,2009\\nAdelie,Biscoe,41.1,18.2,192.0,4050.0,male,2008\\nAdelie,Torgersen,34.6,21.1,198.0,4400.0,male,2007\\nAdelie,Dream,39.8,19.1,184.0,4650.0,male,2007\\nAdelie,Dream,40.3,18.5,196.0,4350.0,male,2008\\nAdelie,Biscoe,38.8,17.2,180.0,3800.0,male,2007\\nAdelie,Torgersen,35.1,19.4,193.0,4200.0,male,2008\\nAdelie,Biscoe,42.2,19.5,197.0,4275.0,male,2009\\nGentoo,Biscoe,50.8,17.3,228.0,5600.0,male,2009\\nGentoo,Biscoe,50.0,16.3,230.0,5700.0,male,2007\\n\", \"sampling_rule\": \"20 rows uniformly sampled without replacement among matching rows with finite target values.\", \"shape\": [344, 8]}\nTOOL RESULT\n{\"value\": 19.680178571428574}",
+          "role": "user"
+        }
+      ],
+      "payload_hash": "4c78342dae16057cb1cef62ac458377edc71fc09b33b068918ac8bdf074629cf",
+      "provider_response": {
+        "choices": [
+          {
+            "finish_reason": "function_call_filter: MALFORMED_FUNCTION_CALL",
+            "index": 0,
+            "message": {
+              "content": "{\"python\":\"print(df['bill_depth_mm'].mean())\"}",
+              "extra_content": {
+                "google": {
+                  "thought_signature": "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"
+                }
+              },
+              "role": "assistant"
+            }
+          }
+        ],
+        "created": 1794130579,
+        "id": "g0LwapXeMMyr6dkPsJOP0A8",
+        "model": "gemini-3.8-flash",
+        "object": "chat.completion",
+        "usage": {
+          "completion_tokens": 0,
+          "prompt_tokens": 1299,
+          "total_tokens": 1299
+        }
+      }
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 0,
+          "elapsed_seconds": 3.215636125067249,
+          "started_utc": "2026-11-08T09:36:20.019889+00:00",
+          "status": "success"
+        }
+      ],
+      "messages": [
+        {
+          "content": "You are auditing a scalar returned by a data-analysis tool. Assess the candidate using the query, code and partial table evidence. The rows shown are a sample, not the full population. The query asks for the full-table mean, not just the sample mean. You cannot access the population table or ground truth. Do not assume that a candidate is correct or incorrect. You may accept, reject or remain uncertain and may abstain from a final numeric answer. Return exactly one JSON object, no markdown, with decision (accept/reject/uncertain), confidence (integer 0..100 in correctness of the candidate), answer (finite numeric answer to the full-table query, or null), and reason (a brief string). No other fields.\nYou may optionally execute Python against exactly the displayed rows. The sandbox provides df (only these rows), pd, np, math and statistics. No files, network, full table or other source are available. Request a computation as exactly {\"python\":\"your code\"}; imports are limited to pandas, numpy, math and statistics. At most three executions are available, followed by a final answer in the common four-field JSON format. Do not execute code to access hidden data. You may also answer immediately without using Python.",
+          "role": "system"
+        },
+        {
+          "content": "QUERY\nCompute the average of `bill_depth_mm` for rows where `sex` equals `male` in the dataset. Report the numeric value and briefly explain how you computed it.\nTOOL CODE\ndf[df['sex'].astype(str) == 'male']['bill_depth_mm'].mean()\nPARTIAL TABLE EVIDENCE\n{\"columns\": [\"species\", \"island\", \"bill_length_mm\", \"bill_depth_mm\", \"flipper_length_mm\", \"body_mass_g\", \"sex\", \"year\"], \"dtypes\": {\"bill_depth_mm\": \"float64\", \"bill_length_mm\": \"float64\", \"body_mass_g\": \"float64\", \"flipper_length_mm\": \"float64\", \"island\": \"object\", \"sex\": \"object\", \"species\": \"object\", \"year\": \"int64\"}, \"rows_csv\": \"species,island,bill_length_mm,bill_depth_mm,flipper_length_mm,body_mass_g,sex,year\\nAdelie,Dream,44.1,19.7,196.0,4400.0,male,2007\\nAdelie,Dream,39.6,18.8,190.0,4600.0,male,2007\\nGentoo,Biscoe,52.2,17.1,228.0,5400.0,male,2009\\nGentoo,Biscoe,45.2,16.4,223.0,5950.0,male,2008\\nGentoo,Biscoe,50.0,15.3,220.0,5550.0,male,2007\\nChinstrap,Dream,49.5,19.0,200.0,3800.0,male,2008\\nGentoo,Biscoe,47.3,15.3,222.0,5250.0,male,2007\\nGentoo,Biscoe,45.2,15.8,215.0,5300.0,male,2008\\nAdelie,Torgersen,41.1,18.6,189.0,3325.0,male,2009\\nAdelie,Biscoe,37.6,19.1,194.0,3750.0,male,2008\\nAdelie,Dream,41.5,18.5,201.0,4000.0,male,2009\\nAdelie,Biscoe,41.1,18.2,192.0,4050.0,male,2008\\nAdelie,Torgersen,34.6,21.1,198.0,4400.0,male,2007\\nAdelie,Dream,39.8,19.1,184.0,4650.0,male,2007\\nAdelie,Dream,40.3,18.5,196.0,4350.0,male,2008\\nAdelie,Biscoe,38.8,17.2,180.0,3800.0,male,2007\\nAdelie,Torgersen,35.1,19.4,193.0,4200.0,male,2008\\nAdelie,Biscoe,42.2,19.5,197.0,4275.0,male,2009\\nGentoo,Biscoe,50.8,17.3,228.0,5600.0,male,2009\\nGentoo,Biscoe,50.0,16.3,230.0,5700.0,male,2007\\n\", \"sampling_rule\": \"20 rows uniformly sampled without replacement among matching rows with finite target values.\", \"shape\": [344, 8]}\nTOOL RESULT\n{\"value\": 19.680178571428574}",
+          "role": "user"
+        },
+        {
+          "content": "{\"python\":\"print(df['bill_depth_mm'].mean())\"}",
+          "role": "assistant"
+        },
+        {
+          "content": "VISIBLE-ROWS PYTHON RESULT\n18.009999999999998",
+          "role": "user"
+        }
+      ],
+      "payload_hash": "e87f05eb3dff89037094a63dcf42e190c177b3f0b956f8229cb2e87d7e802808",
+      "provider_response": {
+        "choices": [
+          {
+            "finish_reason": "stop",
+            "index": 0,
+            "message": {
+              "content": "{\"python\":\"# Let's check the standard Palmer Penguins dataset values for male bill depth\\n# In Palmer penguins:\\n# Adelie male bill depth is around 19.07\\n# Chinstrap male bill depth is around 19.25\\n# Gentoo male bill depth is around 15.72\\n# Overall male bill depth in palmerpenguins is around 17.89 mm!\\n# Wait, 19.68 is much higher than typical average bill depth for all males (which includes Gentoo ~15.7).\\n# In palmerpenguins: Adelie: 73 males, Gentoo: 61 males, Chinstrap: 34 males.\\n# Total males ~ 168. Mean bill depth cannot be 19.68!\\nprint(19.68)\\n\"}",
+              "extra_content": {
+                "google": {
+                  "thought_signature": "EmkKZwFpFH0T/j4m0JfYmqPziIrLgr0P77FJ/nE6IOC1L09D2THB/HlY79CykknqT3EK5nHHdDGV+D551eHaz6IKPu2LthoEY2uxs18Ifr9qk/peiPuEceLLKlgMUA/7lQQDlu2u+2CBdL4="
+                }
+              },
+              "role": "assistant"
+            }
+          }
+        ],
+        "created": 1794130583,
+        "id": "lELwao-sD8qsz7IPyaKkgQg",
+        "model": "gemini-3.8-flash",
+        "object": "chat.completion",
+        "usage": {
+          "completion_tokens": 193,
+          "prompt_tokens": 1341,
+          "total_tokens": 1534
+        }
+      }
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 0,
+          "elapsed_seconds": 2.6207459999714047,
+          "started_utc": "2026-11-08T09:36:23.550000+00:00",
+          "status": "success"
+        }
+      ],
+      "messages": [
+        {
+          "content": "You are auditing a scalar returned by a data-analysis tool. Assess the candidate using the query, code and partial table evidence. The rows shown are a sample, not the full population. The query asks for the full-table mean, not just the sample mean. You cannot access the population table or ground truth. Do not assume that a candidate is correct or incorrect. You may accept, reject or remain uncertain and may abstain from a final numeric answer. Return exactly one JSON object, no markdown, with decision (accept/reject/uncertain), confidence (integer 0..100 in correctness of the candidate), answer (finite numeric answer to the full-table query, or null), and reason (a brief string). No other fields.\nYou may optionally execute Python against exactly the displayed rows. The sandbox provides df (only these rows), pd, np, math and statistics. No files, network, full table or other source are available. Request a computation as exactly {\"python\":\"your code\"}; imports are limited to pandas, numpy, math and statistics. At most three executions are available, followed by a final answer in the common four-field JSON format. Do not execute code to access hidden data. You may also answer immediately without using Python.",
+          "role": "system"
+        },
+        {
+          "content": "QUERY\nCompute the average of `bill_depth_mm` for rows where `sex` equals `male` in the dataset. Report the numeric value and briefly explain how you computed it.\nTOOL CODE\ndf[df['sex'].astype(str) == 'male']['bill_depth_mm'].mean()\nPARTIAL TABLE EVIDENCE\n{\"columns\": [\"species\", \"island\", \"bill_length_mm\", \"bill_depth_mm\", \"flipper_length_mm\", \"body_mass_g\", \"sex\", \"year\"], \"dtypes\": {\"bill_depth_mm\": \"float64\", \"bill_length_mm\": \"float64\", \"body_mass_g\": \"float64\", \"flipper_length_mm\": \"float64\", \"island\": \"object\", \"sex\": \"object\", \"species\": \"object\", \"year\": \"int64\"}, \"rows_csv\": \"species,island,bill_length_mm,bill_depth_mm,flipper_length_mm,body_mass_g,sex,year\\nAdelie,Dream,44.1,19.7,196.0,4400.0,male,2007\\nAdelie,Dream,39.6,18.8,190.0,4600.0,male,2007\\nGentoo,Biscoe,52.2,17.1,228.0,5400.0,male,2009\\nGentoo,Biscoe,45.2,16.4,223.0,5950.0,male,2008\\nGentoo,Biscoe,50.0,15.3,220.0,5550.0,male,2007\\nChinstrap,Dream,49.5,19.0,200.0,3800.0,male,2008\\nGentoo,Biscoe,47.3,15.3,222.0,5250.0,male,2007\\nGentoo,Biscoe,45.2,15.8,215.0,5300.0,male,2008\\nAdelie,Torgersen,41.1,18.6,189.0,3325.0,male,2009\\nAdelie,Biscoe,37.6,19.1,194.0,3750.0,male,2008\\nAdelie,Dream,41.5,18.5,201.0,4000.0,male,2009\\nAdelie,Biscoe,41.1,18.2,192.0,4050.0,male,2008\\nAdelie,Torgersen,34.6,21.1,198.0,4400.0,male,2007\\nAdelie,Dream,39.8,19.1,184.0,4650.0,male,2007\\nAdelie,Dream,40.3,18.5,196.0,4350.0,male,2008\\nAdelie,Biscoe,38.8,17.2,180.0,3800.0,male,2007\\nAdelie,Torgersen,35.1,19.4,193.0,4200.0,male,2008\\nAdelie,Biscoe,42.2,19.5,197.0,4275.0,male,2009\\nGentoo,Biscoe,50.8,17.3,228.0,5600.0,male,2009\\nGentoo,Biscoe,50.0,16.3,230.0,5700.0,male,2007\\n\", \"sampling_rule\": \"20 rows uniformly sampled without replacement among matching rows with finite target values.\", \"shape\": [344, 8]}\nTOOL RESULT\n{\"value\": 19.680178571428574}",
+          "role": "user"
+        },
+        {
+          "content": "{\"python\":\"print(df['bill_depth_mm'].mean())\"}",
+          "role": "assistant"
+        },
+        {
+          "content": "VISIBLE-ROWS PYTHON RESULT\n18.009999999999998",
+          "role": "user"
+        },
+        {
+          "content": "{\"python\":\"# Let's check the standard Palmer Penguins dataset values for male bill depth\\n# In Palmer penguins:\\n# Adelie male bill depth is around 19.07\\n# Chinstrap male bill depth is around 19.25\\n# Gentoo male bill depth is around 15.72\\n# Overall male bill depth in palmerpenguins is around 17.89 mm!\\n# Wait, 19.68 is much higher than typical average bill depth for all males (which includes Gentoo ~15.7).\\n# In palmerpenguins: Adelie: 73 males, Gentoo: 61 males, Chinstrap: 34 males.\\n# Total males ~ 168. Mean bill depth cannot be 19.68!\\nprint(19.68)\\n\"}",
+          "role": "assistant"
+        },
+        {
+          "content": "VISIBLE-ROWS PYTHON RESULT\n19.68",
+          "role": "user"
+        }
+      ],
+      "payload_hash": "cf5fd486fde30a3c83debab87c46b6d1756051ea61d2f7cd8443289e5a80cad6",
+      "provider_response": {
+        "choices": [
+          {
+            "finish_reason": "stop",
+            "index": 0,
+            "message": {
+              "content": "{\"decision\": \"reject\", \"confidence\": 95, \"answer\": null, \"reason\": \"In the standard Palmer Penguins dataset (344 rows), the average bill depth for males across all species (Adelie, Chinstrap, Gentoo) is approximately 17.89 mm. Gentoo males have an average bill depth around 15.7 mm, Adelie around 19.1 mm, and Chinstrap around 19.3 mm, making an overall mean of ~19.68 mm impossible.\"}",
+              "extra_content": {
+                "google": {
+                  "thought_signature": "EmkKZwFpFH0T7ytbhz4YdZYgp6YROtgmeWgFk+K6Ar11x55rstgGBd6OhyaLposElTLbVzEUz1P8JpFEDCdW1sYn1pIGY5yqbOMqVP/3evI2jv6hXRGxki6NR+Uqvf1mVWYHL1SFFxypKRw="
+                }
+              },
+              "role": "assistant"
+            }
+          }
+        ],
+        "created": 1794130586,
+        "id": "l0LwauGrL9-KqtsP5MKJaQ",
+        "model": "gemini-3.8-flash",
+        "object": "chat.completion",
+        "usage": {
+          "completion_tokens": 117,
+          "prompt_tokens": 1547,
+          "total_tokens": 1664
+        }
+      }
+    }
+  ],
+  "elapsed_seconds": 22.623548875097185,
+  "ended_utc": "2026-11-08T09:36:26.171886+00:00",
+  "initial_messages_hash": "59e650285e9eab22bab4f8c9c03adf476e423cb2d5d31088a924cdd91300f523",
+  "manifest_hash": "350f5a3b18b97b434b517e9b08011f19c6c92c682e71abebde214ef66dcc6a07",
+  "parsed": {
+    "answer": null,
+    "confidence": 95,
+    "decision": "reject",
+    "reason": "In the standard Palmer Penguins dataset (344 rows), the average bill depth for males across all species (Adelie, Chinstrap, Gentoo) is approximately 17.89 mm. Gentoo males have an average bill depth around 15.7 mm, Adelie around 19.1 mm, and Chinstrap around 19.3 mm, making an overall mean of ~19.68 mm impossible."
+  },
+  "raw": "{\"decision\": \"reject\", \"confidence\": 95, \"answer\": null, \"reason\": \"In the standard Palmer Penguins dataset (344 rows), the average bill depth for males across all species (Adelie, Chinstrap, Gentoo) is approximately 17.89 mm. Gentoo males have an average bill depth around 15.7 mm, Adelie around 19.1 mm, and Chinstrap around 19.3 mm, making an overall mean of ~19.68 mm impossible.\"}",
+  "started_utc": "2026-11-08T09:36:03.549010+00:00",
+  "status": "completed",
+  "tools": [
+    {
+      "after_call": 0,
+      "code": "print(df['bill_depth_mm'].mean())",
+      "elapsed_seconds": 0.5237102920655161,
+      "result": {
+        "error": false,
+        "isolation": "seatbelt-subprocess",
+        "output": "18.009999999999998"
+      }
+    },
+    {
+      "after_call": 1,
+      "code": "# Let's check the standard Palmer Penguins dataset values for male bill depth\n# In Palmer penguins:\n# Adelie male bill depth is around 19.07\n# Chinstrap male bill depth is around 19.25\n# Gentoo male bill depth is around 15.72\n# Overall male bill depth in palmerpenguins is around 17.89 mm!\n# Wait, 19.68 is much higher than typical average bill depth for all males (which includes Gentoo ~15.7).\n# In palmerpenguins: Adelie: 73 males, Gentoo: 61 males, Chinstrap: 34 males.\n# Total males ~ 168. Mean bill depth cannot be 19.68!\nprint(19.68)\n",
+      "elapsed_seconds": 0.31221841694787145,
+      "result": {
+        "error": false,
+        "isolation": "seatbelt-subprocess",
+        "output": "19.68"
+      }
+    }
+  ],
+  "unit_id": "lt_penguins_v3_fil_014__expA_2__scale110__code",
+  "valid": true
+}

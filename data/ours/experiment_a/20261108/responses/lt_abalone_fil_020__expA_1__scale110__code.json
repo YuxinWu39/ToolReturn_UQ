@@ -1,0 +1,202 @@
+{
+  "calls": [
+    {
+      "attempts": [
+        {
+          "attempt": 0,
+          "elapsed_seconds": 4.160498833982274,
+          "started_utc": "2026-11-08T09:32:37.834935+00:00",
+          "status": "success"
+        }
+      ],
+      "messages": [
+        {
+          "content": "You are auditing a scalar returned by a data-analysis tool. Assess the candidate using the query, code and partial table evidence. The rows shown are a sample, not the full population. The query asks for the full-table mean, not just the sample mean. You cannot access the population table or ground truth. Do not assume that a candidate is correct or incorrect. You may accept, reject or remain uncertain and may abstain from a final numeric answer. Return exactly one JSON object, no markdown, with decision (accept/reject/uncertain), confidence (integer 0..100 in correctness of the candidate), answer (finite numeric answer to the full-table query, or null), and reason (a brief string). No other fields.\nYou may optionally execute Python against exactly the displayed rows. The sandbox provides df (only these rows), pd, np, math and statistics. No files, network, full table or other source are available. Request a computation as exactly {\"python\":\"your code\"}; imports are limited to pandas, numpy, math and statistics. At most three executions are available, followed by a final answer in the common four-field JSON format. Do not execute code to access hidden data. You may also answer immediately without using Python.",
+          "role": "system"
+        },
+        {
+          "content": "QUERY\nCompute the average of `Diameter` for rows where `Rings` equals `14` in the dataset. Report the numeric value and briefly explain how you computed it.\nTOOL CODE\ndf[df['Rings'].astype(str) == '14']['Diameter'].mean()\nPARTIAL TABLE EVIDENCE\n{\"columns\": [\"Sex\", \"Length\", \"Diameter\", \"Height\", \"Whole_weight\", \"Shucked_weight\", \"Viscera_weight\", \"Shell_weight\", \"Rings\"], \"dtypes\": {\"Diameter\": \"float64\", \"Height\": \"float64\", \"Length\": \"float64\", \"Rings\": \"int64\", \"Sex\": \"object\", \"Shell_weight\": \"float64\", \"Shucked_weight\": \"float64\", \"Viscera_weight\": \"float64\", \"Whole_weight\": \"float64\"}, \"rows_csv\": \"Sex,Length,Diameter,Height,Whole_weight,Shucked_weight,Viscera_weight,Shell_weight,Rings\\nI,0.59,0.45,0.16,0.893,0.2745,0.2185,0.345,14\\nF,0.555,0.455,0.18,0.958,0.296,0.195,0.39,14\\nF,0.465,0.38,0.135,0.579,0.208,0.1095,0.22,14\\nM,0.64,0.51,0.19,1.613,0.6215,0.361,0.47,14\\nF,0.525,0.38,0.14,0.6065,0.194,0.1475,0.21,14\\nM,0.665,0.535,0.195,1.606,0.5755,0.388,0.48,14\\nM,0.615,0.495,0.2,1.304,0.5795,0.3115,0.371,14\\nF,0.685,0.54,0.215,1.7025,0.664,0.3655,0.4735,14\\nF,0.57,0.495,0.16,1.0915,0.452,0.275,0.315,14\\nI,0.5,0.385,0.155,0.762,0.3795,0.161,0.19,14\\nF,0.46,0.365,0.115,0.4485,0.165,0.083,0.17,14\\nF,0.52,0.41,0.17,0.8705,0.3735,0.219,0.25,14\\nM,0.535,0.41,0.135,0.862,0.2855,0.1525,0.32,14\\nF,0.57,0.45,0.165,0.903,0.3305,0.1845,0.295,14\\nF,0.54,0.415,0.175,0.8975,0.275,0.241,0.275,14\\nI,0.385,0.305,0.095,0.252,0.0915,0.055,0.09,14\\nM,0.45,0.335,0.14,0.4625,0.164,0.076,0.15,14\\nF,0.655,0.51,0.16,1.092,0.396,0.2825,0.37,14\\nM,0.645,0.515,0.175,1.6115,0.6745,0.384,0.385,14\\nF,0.645,0.55,0.175,1.2915,0.57,0.3045,0.33,14\\n\", \"sampling_rule\": \"20 rows uniformly sampled without replacement among matching rows with finite target values.\", \"shape\": [4177, 9]}\nTOOL RESULT\n{\"value\": 0.504123015873016}",
+          "role": "user"
+        }
+      ],
+      "payload_hash": "fc53084cea14bf50a8a3353bacbf9a3c38e665ec1c7d570d164d8e08a6ed99f1",
+      "provider_response": {
+        "choices": [
+          {
+            "finish_reason": "function_call_filter: MALFORMED_FUNCTION_CALL",
+            "index": 0,
+            "message": {
+              "content": "{\"python\":\"print(df['Diameter'].mean())\"}",
+              "extra_content": {
+                "google": {
+                  "thought_signature": "EmkKZwFpFH0TqKGhmbntd477M+mlbh4x9uYbGCmtM1w4QD5wmah7df4v2vr6jWD70d7+dsTVnY9AtZXqal9xCXrFNOQDqP6F8bkQJhWiZ27YUSjiPgz0b0WdvVgFhM7JWU09xXKa6ybibRU="
+                }
+              },
+              "role": "assistant"
+            }
+          }
+        ],
+        "created": 1794130362,
+        "id": "tkHwav_PBKLXz7IPkfXUsQY",
+        "model": "gemini-3.8-flash",
+        "object": "chat.completion",
+        "usage": {
+          "completion_tokens": 0,
+          "prompt_tokens": 1487,
+          "total_tokens": 1487
+        }
+      }
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 0,
+          "elapsed_seconds": 6.626234333962202,
+          "started_utc": "2026-11-08T09:32:42.386930+00:00",
+          "status": "success"
+        }
+      ],
+      "messages": [
+        {
+          "content": "You are auditing a scalar returned by a data-analysis tool. Assess the candidate using the query, code and partial table evidence. The rows shown are a sample, not the full population. The query asks for the full-table mean, not just the sample mean. You cannot access the population table or ground truth. Do not assume that a candidate is correct or incorrect. You may accept, reject or remain uncertain and may abstain from a final numeric answer. Return exactly one JSON object, no markdown, with decision (accept/reject/uncertain), confidence (integer 0..100 in correctness of the candidate), answer (finite numeric answer to the full-table query, or null), and reason (a brief string). No other fields.\nYou may optionally execute Python against exactly the displayed rows. The sandbox provides df (only these rows), pd, np, math and statistics. No files, network, full table or other source are available. Request a computation as exactly {\"python\":\"your code\"}; imports are limited to pandas, numpy, math and statistics. At most three executions are available, followed by a final answer in the common four-field JSON format. Do not execute code to access hidden data. You may also answer immediately without using Python.",
+          "role": "system"
+        },
+        {
+          "content": "QUERY\nCompute the average of `Diameter` for rows where `Rings` equals `14` in the dataset. Report the numeric value and briefly explain how you computed it.\nTOOL CODE\ndf[df['Rings'].astype(str) == '14']['Diameter'].mean()\nPARTIAL TABLE EVIDENCE\n{\"columns\": [\"Sex\", \"Length\", \"Diameter\", \"Height\", \"Whole_weight\", \"Shucked_weight\", \"Viscera_weight\", \"Shell_weight\", \"Rings\"], \"dtypes\": {\"Diameter\": \"float64\", \"Height\": \"float64\", \"Length\": \"float64\", \"Rings\": \"int64\", \"Sex\": \"object\", \"Shell_weight\": \"float64\", \"Shucked_weight\": \"float64\", \"Viscera_weight\": \"float64\", \"Whole_weight\": \"float64\"}, \"rows_csv\": \"Sex,Length,Diameter,Height,Whole_weight,Shucked_weight,Viscera_weight,Shell_weight,Rings\\nI,0.59,0.45,0.16,0.893,0.2745,0.2185,0.345,14\\nF,0.555,0.455,0.18,0.958,0.296,0.195,0.39,14\\nF,0.465,0.38,0.135,0.579,0.208,0.1095,0.22,14\\nM,0.64,0.51,0.19,1.613,0.6215,0.361,0.47,14\\nF,0.525,0.38,0.14,0.6065,0.194,0.1475,0.21,14\\nM,0.665,0.535,0.195,1.606,0.5755,0.388,0.48,14\\nM,0.615,0.495,0.2,1.304,0.5795,0.3115,0.371,14\\nF,0.685,0.54,0.215,1.7025,0.664,0.3655,0.4735,14\\nF,0.57,0.495,0.16,1.0915,0.452,0.275,0.315,14\\nI,0.5,0.385,0.155,0.762,0.3795,0.161,0.19,14\\nF,0.46,0.365,0.115,0.4485,0.165,0.083,0.17,14\\nF,0.52,0.41,0.17,0.8705,0.3735,0.219,0.25,14\\nM,0.535,0.41,0.135,0.862,0.2855,0.1525,0.32,14\\nF,0.57,0.45,0.165,0.903,0.3305,0.1845,0.295,14\\nF,0.54,0.415,0.175,0.8975,0.275,0.241,0.275,14\\nI,0.385,0.305,0.095,0.252,0.0915,0.055,0.09,14\\nM,0.45,0.335,0.14,0.4625,0.164,0.076,0.15,14\\nF,0.655,0.51,0.16,1.092,0.396,0.2825,0.37,14\\nM,0.645,0.515,0.175,1.6115,0.6745,0.384,0.385,14\\nF,0.645,0.55,0.175,1.2915,0.57,0.3045,0.33,14\\n\", \"sampling_rule\": \"20 rows uniformly sampled without replacement among matching rows with finite target values.\", \"shape\": [4177, 9]}\nTOOL RESULT\n{\"value\": 0.504123015873016}",
+          "role": "user"
+        },
+        {
+          "content": "{\"python\":\"print(df['Diameter'].mean())\"}",
+          "role": "assistant"
+        },
+        {
+          "content": "VISIBLE-ROWS PYTHON RESULT\n0.4445",
+          "role": "user"
+        }
+      ],
+      "payload_hash": "b993211c84867c81233e3df5aca48a3658fedaae06108532e4adf8c6591023dd",
+      "provider_response": {
+        "choices": [
+          {
+            "finish_reason": "stop",
+            "index": 0,
+            "message": {
+              "content": "{\"python\":\"print(df[['Length', 'Diameter']].describe())\"}",
+              "extra_content": {
+                "google": {
+                  "thought_signature": "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"
+                }
+              },
+              "role": "assistant"
+            }
+          }
+        ],
+        "created": 1794130369,
+        "id": "ukHwasbBJIyIqtsPjdvx-AQ",
+        "model": "gemini-3.8-flash",
+        "object": "chat.completion",
+        "usage": {
+          "completion_tokens": 15,
+          "prompt_tokens": 1513,
+          "total_tokens": 2231
+        }
+      }
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 0,
+          "elapsed_seconds": 2.3790590420830995,
+          "started_utc": "2026-11-08T09:32:49.381261+00:00",
+          "status": "success"
+        }
+      ],
+      "messages": [
+        {
+          "content": "You are auditing a scalar returned by a data-analysis tool. Assess the candidate using the query, code and partial table evidence. The rows shown are a sample, not the full population. The query asks for the full-table mean, not just the sample mean. You cannot access the population table or ground truth. Do not assume that a candidate is correct or incorrect. You may accept, reject or remain uncertain and may abstain from a final numeric answer. Return exactly one JSON object, no markdown, with decision (accept/reject/uncertain), confidence (integer 0..100 in correctness of the candidate), answer (finite numeric answer to the full-table query, or null), and reason (a brief string). No other fields.\nYou may optionally execute Python against exactly the displayed rows. The sandbox provides df (only these rows), pd, np, math and statistics. No files, network, full table or other source are available. Request a computation as exactly {\"python\":\"your code\"}; imports are limited to pandas, numpy, math and statistics. At most three executions are available, followed by a final answer in the common four-field JSON format. Do not execute code to access hidden data. You may also answer immediately without using Python.",
+          "role": "system"
+        },
+        {
+          "content": "QUERY\nCompute the average of `Diameter` for rows where `Rings` equals `14` in the dataset. Report the numeric value and briefly explain how you computed it.\nTOOL CODE\ndf[df['Rings'].astype(str) == '14']['Diameter'].mean()\nPARTIAL TABLE EVIDENCE\n{\"columns\": [\"Sex\", \"Length\", \"Diameter\", \"Height\", \"Whole_weight\", \"Shucked_weight\", \"Viscera_weight\", \"Shell_weight\", \"Rings\"], \"dtypes\": {\"Diameter\": \"float64\", \"Height\": \"float64\", \"Length\": \"float64\", \"Rings\": \"int64\", \"Sex\": \"object\", \"Shell_weight\": \"float64\", \"Shucked_weight\": \"float64\", \"Viscera_weight\": \"float64\", \"Whole_weight\": \"float64\"}, \"rows_csv\": \"Sex,Length,Diameter,Height,Whole_weight,Shucked_weight,Viscera_weight,Shell_weight,Rings\\nI,0.59,0.45,0.16,0.893,0.2745,0.2185,0.345,14\\nF,0.555,0.455,0.18,0.958,0.296,0.195,0.39,14\\nF,0.465,0.38,0.135,0.579,0.208,0.1095,0.22,14\\nM,0.64,0.51,0.19,1.613,0.6215,0.361,0.47,14\\nF,0.525,0.38,0.14,0.6065,0.194,0.1475,0.21,14\\nM,0.665,0.535,0.195,1.606,0.5755,0.388,0.48,14\\nM,0.615,0.495,0.2,1.304,0.5795,0.3115,0.371,14\\nF,0.685,0.54,0.215,1.7025,0.664,0.3655,0.4735,14\\nF,0.57,0.495,0.16,1.0915,0.452,0.275,0.315,14\\nI,0.5,0.385,0.155,0.762,0.3795,0.161,0.19,14\\nF,0.46,0.365,0.115,0.4485,0.165,0.083,0.17,14\\nF,0.52,0.41,0.17,0.8705,0.3735,0.219,0.25,14\\nM,0.535,0.41,0.135,0.862,0.2855,0.1525,0.32,14\\nF,0.57,0.45,0.165,0.903,0.3305,0.1845,0.295,14\\nF,0.54,0.415,0.175,0.8975,0.275,0.241,0.275,14\\nI,0.385,0.305,0.095,0.252,0.0915,0.055,0.09,14\\nM,0.45,0.335,0.14,0.4625,0.164,0.076,0.15,14\\nF,0.655,0.51,0.16,1.092,0.396,0.2825,0.37,14\\nM,0.645,0.515,0.175,1.6115,0.6745,0.384,0.385,14\\nF,0.645,0.55,0.175,1.2915,0.57,0.3045,0.33,14\\n\", \"sampling_rule\": \"20 rows uniformly sampled without replacement among matching rows with finite target values.\", \"shape\": [4177, 9]}\nTOOL RESULT\n{\"value\": 0.504123015873016}",
+          "role": "user"
+        },
+        {
+          "content": "{\"python\":\"print(df['Diameter'].mean())\"}",
+          "role": "assistant"
+        },
+        {
+          "content": "VISIBLE-ROWS PYTHON RESULT\n0.4445",
+          "role": "user"
+        },
+        {
+          "content": "{\"python\":\"print(df[['Length', 'Diameter']].describe())\"}",
+          "role": "assistant"
+        },
+        {
+          "content": "VISIBLE-ROWS PYTHON RESULT\nLength  Diameter\ncount  20.000000  20.00000\nmean    0.560750   0.44450\nstd     0.082674   0.07260\nmin     0.385000   0.30500\n25%     0.515000   0.38375\n50%     0.562500   0.45000\n75%     0.641250   0.51000\nmax     0.685000   0.55000",
+          "role": "user"
+        }
+      ],
+      "payload_hash": "5360fe2eb6e1e0b9fe2ab82b528c3215a67edcadb210d6df7746de7aacca7a64",
+      "provider_response": {
+        "choices": [
+          {
+            "finish_reason": "stop",
+            "index": 0,
+            "message": {
+              "content": "{\"python\":\"# Is 0.504123015873016 actually the mean of Length or something else?\n# Let's check:\nprint('Length mean:', df['Length'].mean())\n# Notice df has 20 sample rows out of all rings=14 rows in the dataset (4177 total rows in abalone dataset).\n# In abalone dataset, let's see how many rings=14 rows there are or what the mean of diameter is.\n# Wait, the tool code is: df[df['Rings'].astype(str) == '14']['Diameter'].mean() executed on the full table!\n# The tool code directly executes on the full table `df` in the data-analysis tool environment.\n# And the tool code correctly answers the query: average of Diameter where Rings == 14!\n\"}",
+              "extra_content": {
+                "google": {
+                  "thought_signature": "EmkKZwFpFH0TWukVehQdieVWakwzfbz1oVFiCXDxvTcGYiE+u+RWrMg1+nTT9wC42//1ulkT47o8rZbG9xbhwWodsErG2JzLM7vticxZ/swDFFxCW2DFMxL1g4Srd58+IhHLJx7DYRyPaTQ="
+                }
+              },
+              "role": "assistant"
+            }
+          }
+        ],
+        "created": 1794130371,
+        "id": "wUHwarrTJJ_nqtsP8sCggAY",
+        "model": "gemini-3.8-flash",
+        "object": "chat.completion",
+        "usage": {
+          "completion_tokens": 192,
+          "prompt_tokens": 1699,
+          "total_tokens": 1891
+        }
+      }
+    }
+  ],
+  "elapsed_seconds": 13.929310083854944,
+  "ended_utc": "2026-11-08T09:32:51.763259+00:00",
+  "initial_messages_hash": "f25d6cf1086788712073c861227112a53d61217b5558a585845de278e167fa57",
+  "manifest_hash": "350f5a3b18b97b434b517e9b08011f19c6c92c682e71abebde214ef66dcc6a07",
+  "parsed": null,
+  "raw": "{\"python\":\"# Is 0.504123015873016 actually the mean of Length or something else?\n# Let's check:\nprint('Length mean:', df['Length'].mean())\n# Notice df has 20 sample rows out of all rings=14 rows in the dataset (4177 total rows in abalone dataset).\n# In abalone dataset, let's see how many rings=14 rows there are or what the mean of diameter is.\n# Wait, the tool code is: df[df['Rings'].astype(str) == '14']['Diameter'].mean() executed on the full table!\n# The tool code directly executes on the full table `df` in the data-analysis tool environment.\n# And the tool code correctly answers the query: average of Diameter where Rings == 14!\n\"}",
+  "started_utc": "2026-11-08T09:32:37.834407+00:00",
+  "status": "completed",
+  "terminal_reason": "invalid-final-or-budget-exhausted",
+  "tools": [
+    {
+      "after_call": 0,
+      "code": "print(df['Diameter'].mean())",
+      "elapsed_seconds": 0.3887944999150932,
+      "result": {
+        "error": false,
+        "isolation": "seatbelt-subprocess",
+        "output": "0.4445"
+      }
+    },
+    {
+      "after_call": 1,
+      "code": "print(df[['Length', 'Diameter']].describe())",
+      "elapsed_seconds": 0.36202600016258657,
+      "result": {
+        "error": false,
+        "isolation": "seatbelt-subprocess",
+        "output": "Length  Diameter\ncount  20.000000  20.00000\nmean    0.560750   0.44450\nstd     0.082674   0.07260\nmin     0.385000   0.30500\n25%     0.515000   0.38375\n50%     0.562500   0.45000\n75%     0.641250   0.51000\nmax     0.685000   0.55000"
+      }
+    }
+  ],
+  "unit_id": "lt_abalone_fil_020__expA_1__scale110__code",
+  "valid": false
+}
