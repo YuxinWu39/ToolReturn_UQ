@@ -1,0 +1,24 @@
+{
+  "bootstrap_draws": 2000,
+  "code_commit": "a5b6e0705be1c8e81a9e947cc1648cd36770ba09",
+  "manifest_hash": "7263b5dcd25ccf3c4463ffe6778243a3f953a153c55f0c493d9714cd0dc99983",
+  "model_scored_hashes": {
+    "gemini-3.8-flash": "882a2e078223936c962e3130b3a12bfabb8ecedc68212df79f6df8f5dd142b8b",
+    "qwen3-8b": "36bd8348d782e7858b9c15b07d58f7db44c7af25cad85fd4938b8ce38a2b4942"
+  },
+  "protocol_commit": "f94ffbb",
+  "source_hashes": {
+    "context_evidence.py": "a27a05e0168e703c0d0e35891de3b2bacd65be5a71bc9a61ec65c41b1fa471ae",
+    "context_pilot.py": "c2fed770b386f3c234c7be55ea31355fad509cf8c022da22baf5d8f7aaf0e158",
+    "p4_common.py": "d7c1fc5ebad19534bb0fc04af3f9774e4205b4d8e4a58a07a1e45847b594728e",
+    "zeroparam.py": "2b3c470a0189d96a354b9879a9d3641cccbc2e98b0fc40e7c9a6cdc022a4ac96"
+  },
+  "started_utc": "2026-11-08T02:14:09.105476+00:00",
+  "threshold": 1e-09,
+  "versions": {
+    "numpy": "1.26.4",
+    "pandas": "2.2.3",
+    "python": "3.11.13",
+    "scikit-learn": "1.7.0"
+  }
+}

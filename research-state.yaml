@@ -81,7 +81,7 @@ context_pilots:
     descriptive_ci95: [-0.16666666666666666, 0.3333333333333333]
     confidence_auroc: withheld-no-live-sanity-and-scale-noncompliance
     conclusion: no-stable-semantic-checking-benefit-established
-    next: paired-qwen-review-complete-prepare-offline-evidence-audit
+    next: offline-evidence-complete-prepare-fresh-controls
     report: docs/CONTEXT_PILOT_2026-11-07_gemini.md
   - run_id: qwen3_8b_fixed_return_context_20261107
     protocol: A-CTX-PILOT
@@ -97,7 +97,7 @@ context_pilots:
     conclusion: no-stable-cross-model-benefit-established-primary-zero-not-reversal
     confidence_auroc: withheld-no-live-sanity
     raw_archive_status: missing-from-repository
-    next: archive-raw-and-preregister-offline-evidence-audit
+    next: archive-raw-and-prepare-fresh-controls
     report: findings.md#F10-addendum
 
 context_replication_review:
@@ -108,4 +108,27 @@ context_replication_review:
   audit: data/ours/context_pilot/20261107/replication_audit.json
   independent_reviewer: completed-read-only
   new_model_calls: 0
-  proposed_offline_study: not-yet-preregistered-or-run
+  proposed_offline_study: completed-see-context_evidence
+
+context_evidence:
+  run_id: same_evidence_statistics_20261107
+  protocol: A-CTX-EVIDENCE
+  protocol_commit: f94ffbb
+  code_commit: a5b6e07
+  status: exploratory-complete
+  independent_review: pass-as-exploratory
+  queries: 12
+  table_clusters: 6
+  query_contexts: 36
+  scored_events: 288
+  primary: 0d-matched20
+  sanity_auroc: 1.0
+  within_table_auroc: 0.9166666666666666
+  descriptive_ci95: [0.8333333333333334, 1.0]
+  clean_false_flags: 1
+  corrupted_flags: 10
+  denominator_per_label: 12
+  new_model_calls: 0
+  conclusion: fixed-matched-sample-contains-extractable-statistical-signal-mechanism-unidentified
+  next: preregister-independent-draws-and-fresh-table-raw-versus-statistical-summary-study
+  report: docs/CONTEXT_EVIDENCE_2026-11-07.md

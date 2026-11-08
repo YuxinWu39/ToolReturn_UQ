@@ -544,3 +544,43 @@ The earlier "same scale-noncompliance pattern" is unsupported for Qwen. Its scor
 Audit scope: Gemini 72/72 raw replies re-parsed; Qwen 0/72 raw replies present in this repository. Qwen schema validity and rationale cannot yet be independently checked beyond scored/config records. Archive raw responses and runtime versions; do not rerun merely to fill this audit gap.
 
 Next priority: preregister an offline same-evidence statistical-checker feasibility study to distinguish limited evidence from inadequate evidence extraction. No new API run or this proposed study was executed in this review. Full scope, independent reviewer conclusions and decision branches: [Qwen review and next steps](docs/REVIEW_2026-11-07_qwen_context_next.md).
+
+
+## F11 — Same-evidence statistical feasibility (2026-11-07, exploratory)
+
+A-CTX-EVIDENCE protocol `f94ffbb`, frozen analysis code `a5b6e07`.
+No new LLM calls. Existing twelve filtered-mean queries, six tables, one frozen sample per
+query/context; features parsed only from the exact CSV evidence shown to models.
+
+Primary 0d matched20 passes sanity AUROC 1.000, with
+12 paired queries/6 tables. Actual within-table AUROC
+0.917, descriptive six-table bootstrap CI [0.833, 1.000];
+pooled AUROC 0.882 is secondary. Fixed compatibility policy flags
+10/12 corrupted returns and 1/12 clean returns;
+2/12 corruptions remain compatible. No unscorable matched20 cases.
+
+On the identical matched20 data evidence, Qwen accepts 11/12 corrupted returns and
+12/12 clean returns; Gemini accepts 5/12 corrupted and 11/12 clean, with 2 corrupted and
+1 clean invalid response(s). These are prompted model judgments versus a structured-query
+statistical procedure, not equivalent representations, computation, cost, or calibrated
+probabilities. Gemini valid-pair sensitivity has only nine queries/five tables. No claim
+of generally superior model performance or identified internal mechanism.
+
+0a matched20 passes sanity but has actual within-table AUROC
+0.583. Both methods at head5/random20
+fail sanity; their real AUROCs and all cross-context policy contrasts are withheld, not
+used as evidence of a quantified context benefit. Counts for failed conditions remain
+gate-failed diagnostics. Bootstrap intervals have no asserted finite-population 95% guarantee.
+
+Interpretation: this fixed matched20 sample contains statistical signal accessible to an
+existing checker. Insufficient displayed data alone cannot summarize all model failures
+here. Extraction/representation/use of evidence are candidates for a fresh intervention,
+not proven mechanisms. Selected reused tasks, six clusters, one sample/completion, public
+data priors and missing Qwen raw responses limit scope. No new algorithm or universal bound.
+Independent event/formula/ranking review: PASS-AS-EXPLORATORY.
+
+Next: independent row-draw robustness and fresh generated/transformed-table controls, then
+raw rows versus summaries derived from the identical rows, retaining 0d, clean and sanity
+controls. Each new study gets its own protocol; no outcome-driven expansion of this run.
+Full generated tables, plot, exceptions and paper implications:
+[report](docs/CONTEXT_EVIDENCE_2026-11-07.md).

@@ -381,3 +381,40 @@ signal, test raw rows versus same-row statistical summaries on fresh generated/t
 tables; otherwise investigate sampling/budget first. This is a proposed plan, not a newly
 registered or executed experiment. No new API calls. Methods citation for Scientific Agent
 Skills is in docs/REVIEW_2026-11-07_qwen_context_next.md.
+
+
+## 2026-11-07 — same-evidence statistical feasibility, F11
+
+```
+Step: A-CTX-EVIDENCE, exact displayed rows only
+1 Protocol-before-results  f94ffbb precedes code a5b6e07 and all baseline measurements. [x]
+2 Hypothesis served        Evidence adequacy versus extraction/use feasibility. [x]
+3 Sanity check             Nine synthetic tests; shared helper's three groups ALL PASS.
+                           Primary sanity 1.000, 12 queries/6 tables.
+                           Four failing method/context cells and all cross-context
+                           comparisons withheld, including inherited severity gates. [x]
+4 Confirmatory/exploratory Reused selected pilot; prospectively locked new analysis,
+                           not a fresh confirmatory task sample. [x]
+5 Claim scope              Accessible signal in this matched20 sample; no identified
+                           internal mechanism, universal bound, new method or 95% guarantee. [x]
+6 Reviewer objection       Independent reader recomputed all 288 score formulas and
+                           paired-ranking AUROCs from stored artifacts. Query structure,
+                           computation/cost differ from model audit; disclosed. [x]
+7 Workshop fitness         Adds same-evidence statistical counterpoint to F10, motivating
+                           fresh-table raw-versus-derived-summary controls. [x]
+Verdict: PASS-AS-EXPLORATORY.
+```
+
+Primary within-table AUROC=0.916667, descriptive CI=[0.8333333333333334, 1.0];
+clean false flags=1/12, corruption flags=10/12.
+No API calls, no outcome-driven sample expansion. Shared zeroparam.py unchanged.
+CPU-only run, B=2000 per each of 36 query/context pairs. Events, feature cache, source/input
+hashes, environment versions and timestamps archived. Generated report and PNG/PDF diagnostic:
+docs/CONTEXT_EVIDENCE_2026-11-07.md. Methods skill citation included there.
+
+research(reflect): the fixed matched20 sample supports further evidence-extraction work.
+First check independent row-draw robustness and fresh generated/transformed tables; then
+compare raw rows against statistics from the identical rows, retaining 0d and clean/sanity
+controls. No next-stage collection started, no data replaced. Existing workshop CFP was
+checked: negative results and four-page short papers welcome, but this single-return study
+must not be framed as an evaluated long-horizon evolution system.

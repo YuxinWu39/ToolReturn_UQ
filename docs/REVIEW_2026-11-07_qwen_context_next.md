@@ -78,3 +78,8 @@ python experiments/audit_context_replication.py --root .
 ```
 
 审查使用 `scientific-critical-thinking` skill 的问题—单位—证据—混杂—主张范围流程。方法资源引用：Kassis, T., Agarwal, V., He, Y., Patel, D., & Brueckner, A. M. (2026). *Scientific Agent Skills: A Library of Procedural Knowledge for Research Agents*. [arXiv:2609.00065](https://doi.org/10.48550/arXiv.2609.00065)。已于 2026-11-07 核验作者与当前记录；该引用用于说明审查工具，不为本项目实验结论背书。
+
+
+## 执行更新：离线对照已完成
+
+以上拟议 A-CTX-EVIDENCE 已在独立协议和代码提交后执行，结论见 [相同样本统计核验报告](CONTEXT_EVIDENCE_2026-11-07.md)。本更新不替换原始 Qwen 复核，也不把复用样本当独立确认集。
