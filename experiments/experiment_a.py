@@ -223,7 +223,7 @@ def request(payload, key, call, checkpoint):
     raise TransportFailure('persistent transport failure after bounded attempts')
 
 
-def run_unit(unit, manifest, output, key, stop=None, manifest_hash=None):
+def run_unit(unit, manifest, output, key, stop=None, manifest_hash=None, runtime_identity=None):
     manifest_hash = manifest_hash or digest(manifest)
     path = output/'responses'/(unit['unit_id']+'.json')
     record = load(path) if path.exists() else {'unit_id': unit['unit_id'], 'manifest_hash': manifest_hash,
@@ -231,6 +231,10 @@ def run_unit(unit, manifest, output, key, stop=None, manifest_hash=None):
     assert record['manifest_hash'] == manifest_hash and record['initial_messages_hash'] == unit['messages_hash']
     if record['status'] == 'completed':
         return record
+    if runtime_identity is not None:
+        segments = record.setdefault('runtime_segments', [])
+        if not segments or segments[-1]['source_hashes'] != runtime_identity['source_hashes']:
+            segments.append({**runtime_identity, 'started_utc': utc()})
     start = time.monotonic()
     checkpoint = lambda: save(path, record)
     messages = list(unit['messages'])
@@ -265,7 +269,7 @@ def run_unit(unit, manifest, output, key, stop=None, manifest_hash=None):
             if len(record['tools']) <= index:
                 tool_start = time.monotonic()
                 result = execute(unit['rows_csv'], action['python'])
-                record['tools'].append({'after_call': index, 'code': action['python'], 'result': result, 'elapsed_seconds': time.monotonic()-tool_start})
+                record['tools'].append({'after_call': index, 'code': action['python'], 'result': result, 'runtime_phase': (runtime_identity or {}).get('phase', 'initial'), 'elapsed_seconds': time.monotonic()-tool_start})
                 checkpoint()
             result = record['tools'][index]['result']
             messages = messages+[{'role': 'assistant', 'content': raw},
@@ -284,19 +288,33 @@ def run_unit(unit, manifest, output, key, stop=None, manifest_hash=None):
     return record
 
 
-def run(output, workers=4):
+def run(output, workers=4, runtime_patch=None):
     manifest = load(output/'manifest.json')
     validate_manifest(manifest)
-    if manifest['source_hashes'] != hashes():
-        raise ValueError('runner changed since freeze; do not mix code versions')
+    current_hashes = hashes()
+    runtime_identity = {'phase': 'initial', 'source_hashes': current_hashes}
+    if manifest['source_hashes'] != current_hashes:
+        if runtime_patch is None:
+            raise ValueError('runner changed since freeze; an explicit registered runtime-patch binding is required')
+        patch = load(runtime_patch)
+        assert patch['original_manifest_hash'] == digest(manifest)
+        assert patch['old_source_hashes'] == manifest['source_hashes']
+        assert patch['new_source_hashes'] == current_hashes
+        for name, sha in patch['preserved_completed_files'].items():
+            assert hashlib.sha256((output/'responses'/name).read_bytes()).hexdigest() == sha, 'pre-repair record changed'
+        runtime_identity = {'phase': 'numpy-internal-import-repair', 'source_hashes': current_hashes,
+                            'runtime_patch_sha256': hashlib.sha256(runtime_patch.read_bytes()).hexdigest()}
     key = os.environ.get('GEMINI_API_KEY') or getpass.getpass('Gemini key (hidden): ')
     if not key:
         raise ValueError('API key required')
-    config = {'manifest_hash': digest(manifest), 'source_hashes': hashes(), 'model': MODEL,
+    config = {'manifest_hash': digest(manifest), 'source_hashes': manifest['source_hashes'], 'model': MODEL,
               'endpoint': ENDPOINT, 'reasoning_effort': 'low', 'max_tokens': 1536}
     if (output/'config.json').exists() and load(output/'config.json') != config:
         raise ValueError('resume config mismatch')
-    save(output/'config.json', config)
+    if runtime_patch is None:
+        save(output/'config.json', config)
+    else:
+        save(output/'runtime_config_phase2.json', {**config, **runtime_identity})
     todo, completed = [], 0
     for unit in manifest['units']:
         path = output/'responses'/(unit['unit_id']+'.json')
@@ -314,7 +332,7 @@ def run(output, workers=4):
         for _ in range(workers):
             unit = next(cursor, None)
             if unit:
-                pending[pool.submit(run_unit, unit, manifest, output, key, stop, config['manifest_hash'])] = unit
+                pending[pool.submit(run_unit, unit, manifest, output, key, stop, config['manifest_hash'], runtime_identity)] = unit
         while pending:
             done, _ = wait(pending, return_when=FIRST_COMPLETED)
             for future in done:
@@ -335,7 +353,7 @@ def run(output, workers=4):
                     print(json.dumps(progress), flush=True)
                 unit = next(cursor, None)
                 if unit:
-                    pending[pool.submit(run_unit, unit, manifest, output, key, stop, config['manifest_hash'])] = unit
+                    pending[pool.submit(run_unit, unit, manifest, output, key, stop, config['manifest_hash'], runtime_identity)] = unit
     print('Collection complete; run summarize for final paired analysis', flush=True)
 
 
@@ -366,13 +384,14 @@ def main():
     parser.add_argument('action', choices=('prepare', 'run', 'smoke'))
     parser.add_argument('--output', type=Path, default=DEFAULT)
     parser.add_argument('--workers', type=int, choices=(1, 2, 4), default=4)
+    parser.add_argument('--runtime-patch', type=Path, help='explicit registered source-hash binding for pending-only runtime repair')
     args = parser.parse_args()
     if args.action == 'prepare':
         prepare(args.output)
     elif args.action == 'smoke':
         smoke(args.output)
     else:
-        run(args.output, args.workers)
+        run(args.output, args.workers, args.runtime_patch)
 
 
 if __name__ == '__main__':

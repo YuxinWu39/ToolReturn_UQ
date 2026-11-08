@@ -21,6 +21,8 @@ def validate(code):
             raise ValueError('only pandas/numpy/math/statistics imports are available')
         if isinstance(node, ast.ImportFrom) and (node.level or node.module not in ALLOWED):
             raise ValueError('unsupported import')
+        if isinstance(node, (ast.Import, ast.ImportFrom)) and any(x.name.startswith('_') or (x.asname or '').startswith('__') for x in node.names):
+            raise ValueError('private import aliases are unavailable')
         if isinstance(node, ast.Attribute) and node.attr.startswith('_'):
             raise ValueError('private attributes are unavailable')
         if isinstance(node, ast.Name) and node.id.startswith('__'):
@@ -63,10 +65,12 @@ def worker():
     tree = validate(packet['code'])
     resource.setrlimit(resource.RLIMIT_CPU, (10, 10))
     restrict()
-    def importer(name, *args, **kwargs):
-        if name not in ALLOWED:
+    def importer(name, globals=None, locals=None, fromlist=(), level=0):
+        if level or name.split('.')[0] not in ALLOWED:
             raise ImportError('unsupported module')
-        return {'pandas': pd, 'numpy': np, 'math': math, 'statistics': statistics}[name]
+        # ndarray reductions legitimately import numpy.core._methods via this hook.
+        # Model AST imports remain root-only; Seatbelt still denies source/network access.
+        return __import__(name, globals, locals, fromlist, level)
     safe = {name: getattr(__import__('builtins'), name) for name in
             ('abs', 'all', 'any', 'bool', 'dict', 'enumerate', 'float', 'int', 'len', 'list',
              'max', 'min', 'print', 'range', 'reversed', 'round', 'set', 'sorted', 'str',

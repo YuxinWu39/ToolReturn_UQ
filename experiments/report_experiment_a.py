@@ -104,7 +104,8 @@ def analyze(output):
         rows.append({k:u[k] for k in ('unit_id','evidence_unit','task_id','dataset','draw','arm','level')} |
                     {'valid':parsed is not None,'decision':parsed['decision'] if parsed else 'invalid',
                      'answer':answer,'correct':correct,'adopted_wrong':adopted,
-                     'candidate_flag':u['check']['flag'],'finish_reason':choice.get('finish_reason')})
+                     'candidate_flag':u['check']['flag'],'finish_reason':choice.get('finish_reason'),
+                     'runtime_phase':(r.get('runtime_segments') or [{'phase':'initial'}])[-1]['phase']})
         responses.append(r)
     if missing:
         progress={'status':'incomplete-no-primary-efficacy-analysis','completed':len(rows),
@@ -134,6 +135,20 @@ def analyze(output):
     summary['direct_monitor']={'sanity':manifest['sanity'], 'detection':ce.auc_summary(direct,tuple(x[0] for x in LEVELS)),
                               'flag_counts':{l:{'n':sum(u['arm']=='check' and u['level']==l for u in manifest['units']),
                                                'flag':sum(u['arm']=='check' and u['level']==l and u['check']['flag'] for u in manifest['units'])} for l,_ in LEVELS}}
+    if (output/'runtime_patch_1.json').exists():
+        patch=load(output/'runtime_patch_1.json')
+        summary['runtime_repair']={'protocol_amendment':patch['protocol_amendment'],'preserved_original_responses':len(patch['preserved_completed_files']),
+                                   'C_control_status':'runtime-mixed; descriptive diagnostics only, not a fair uniform code-access comparison'}
+        for result in summary['secondary'].values():
+            result['status']='diagnostic-only-runtime-patched-C-control'
+        summary['code_runtime_phases']={}
+        for phase in sorted({r['runtime_phase'] for r in rows if r['arm']=='code'}):
+            sub=[(r,t) for r,t in zip(rows,responses) if r['arm']=='code' and r['runtime_phase']==phase]
+            tools=[tool for _,trace in sub for tool in trace['tools']]
+            summary['code_runtime_phases'][phase]={'trajectories':len(sub),'python_calls':len(tools),
+                    'python_errors':sum(t['result']['error'] for t in tools),
+                    'internal_import_errors':sum(t['result']['isolation']=='seatbelt-subprocess' and 'ImportError: unsupported module' in t['result']['output'] for t in tools),
+                    'cells':{l:cell([r for r,_ in sub if r['level']==l]) for l,_ in LEVELS}}
     b=[r for r in rows if r['arm']=='check']
     summary['flag_following']={'accepted_flagged':sum(r['candidate_flag'] and r['decision']=='accept' for r in b),
                                'flagged':sum(r['candidate_flag'] for r in b),
@@ -144,6 +159,8 @@ def analyze(output):
                       'C has extra computation and requests; no equal-cost or placement-superiority claim.',
                       'No end-to-end recovery policy evaluated; null is not correct; confidence efficacy withheld.',
                       'Six-table bootstrap intervals are descriptive; no calibrated noninferiority or acceptance probability.']
+    if 'runtime_repair' in summary:
+        summary['limits'].append('C includes pre-repair internal-import failures and repaired runtime; do not infer model computation limits or fair C superiority. All pre-repair replies retained byte-for-byte.')
     save(output/'scored.json',rows);save(output/'summary.json',summary)
     def fmt(x):return f'{x:.3f}'
     lines=['# Gemini Experiment A: paired monitor intervention','','Final analysis of 810 completed trajectories; 30 selected queries, three row draws, six tables.','',

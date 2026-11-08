@@ -122,8 +122,15 @@ class ExperimentTests(unittest.TestCase):
             self.assertIn('interim_completed_common_cell_sensitivity',report)
 
     def test_python_import_and_introspection_rejected(self):
-        for code in ['import os', 'df.__class__', "__import__('os')"]:
+        for code in ['import os', 'df.__class__', "__import__('os')", 'from numpy import __builtins__ as b']:
             with self.assertRaises(ValueError): validate(code)
+
+    def test_real_sandbox_numpy_internal_imports_and_bootstrap(self):
+        units,_=fixtures();rows=units[0]['rows_csv']
+        for seed in ['0','']:
+            r=execute(rows, f"rng=np.random.default_rng({seed})\na=rng.choice(df['value'].to_numpy(),size=(2000,20),replace=True).mean(axis=1)\nprint(np.percentile(a,[2.5,97.5]))")
+            self.assertFalse(r['error'],r['output'])
+            self.assertIn('[',r['output'])
 
     def test_real_sandbox_mean_and_source_file_denial(self):
         u,_ = fixtures()
