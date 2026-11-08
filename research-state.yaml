@@ -331,7 +331,7 @@ manuscript:
     fit_limit: runtime evidence/checking audit; no long-horizon evolution experiment
 experiment_a:
   date: '2026-11-08'
-  status: frozen-ready-for-main-collection
+  status: collecting-frozen-roster
   protocol: A-MONITOR-INTERVENTION
   protocol_commits:
   - 89734f4
@@ -351,7 +351,6 @@ experiment_a:
   - check
   - code
   planned_trajectories: 810
-  main_model_requests_so_far: 0
   engineering_smoke_trajectories: 6
   engineering_smoke_requests: 8
   main_monitor_sanity_within_table: 1.0
@@ -359,3 +358,14 @@ experiment_a:
   output: data/ours/experiment_a/20261108
   source_inputs_frozen: true
   new_training_runs: 0
+  input_freeze_commit: 0a8877b
+  concurrency: 4
+  numeric_answer_tolerance: min(legacy,0.02*abs(truth)); legacy retained
+  main_requests_at_initial_freeze: 0
+  runtime_repair:
+    protocol_commit: '5101177'
+    preserved_completed: 554
+    pending_only_resume: 256
+    sidecar: data/ours/experiment_a/20261108/runtime_patch_1.json
+    C_status: mixed-runtime diagnostic only
+    primary_raw_check: unchanged

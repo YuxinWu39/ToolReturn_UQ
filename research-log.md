@@ -612,3 +612,31 @@ Manifest350f5a3b18b97b434b517e9b08011f19c6c92c682e71abebde214ef66dcc6a07.
 Main runner code1be20ce, strict request/call limits and per-attempt checkpoints.
 Collection starts with four workers as registered; main efficacy only after810 cells.
 Verdict: PASS precollection engineering/sanity; selected-query effect remains exploratory.
+
+
+## Step: disclosed Experiment A visible-row runtime repair — 2026-11-08
+
+During collection, a separate synthetic seeded/unseeded NumPy bootstrap diagnostic
+revealed overly strict internal import filtering (numpy.core._methods). Initial
+mean-only tests and six-cell smoke had missed it. This should have been covered
+before main collection. Paused, allowed in-flight units to complete, and preserved
+554 completed records with no partials. No main decision/correctness effect had
+been analyzed; discovery was based on the isolated synthetic worker.
+
+Amendment/snapshot5101177 precedes the repair and resumed requests. All554 original
+response byte hashes and original manifest/config are immutable. Explicit committed
+runtime_patch_1.json binds original manifest, old/new source hashes, repair commit
+and preserved records; no hash check is bypassed. Resume only256 pending cases,
+no extra model samples and no regenerated completed C responses. Primary raw/check
+inputs, payloads, model, estimand and grading unchanged; C full contrasts now
+diagnostic-only due mixed runtime. Do not claim a uniform fair computation control.
+
+Root escalated ten tests pass, including real NumPy bootstrap, both RNG seed modes,
+source-file denial and private import alias rejection. Independent source/AST/hash
+audit confirms all554 files, original config/manifest, request constants, model,
+budget and query selection unchanged. Its restricted nested sandbox test did not
+install; only root escalated tests/smoke establish actual isolation here.
+
+Reporter records runtime phase, tool errors and final analysis hash. Original runtime
+metadata remains an initial-freeze snapshot. No primary efficacy peeking/stopping.
+Verdict: continue fixed810 roster for intact B-A primary; C only engineering diagnostic.

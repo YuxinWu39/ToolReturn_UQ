@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """Protocol-faithful final analysis of completed Experiment A records; no model requests."""
 import argparse
+import hashlib
+import platform
 import json
 import math
 from pathlib import Path
@@ -119,7 +121,7 @@ def analyze(output):
         return progress
     summary={'protocol':manifest['protocol'],'manifest_hash':mh,'completed':len(rows),'expected':manifest['expected'],
              'cells':{a:{l:cell([r for r in rows if r['arm']==a and r['level']==l]) for l,_ in LEVELS} for a in ARMS},
-             'costs':costs,'new_queries':False,'confidence_auroc':'not-estimated','primary':None}
+             'costs':costs,'analysis_provenance':{'script_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),'python':platform.python_version(),'numpy':np.__version__,'pandas':pd.__version__},'new_queries':False,'confidence_auroc':'not-estimated','primary':None}
     if manifest['expected']!=810:
         summary['status']='engineering-smoke-excluded-from-efficacy'
         save(output/'summary.json',summary)
@@ -168,7 +170,8 @@ def analyze(output):
     for a in ARMS:
         for l,_ in LEVELS:
             x=summary['cells'][a][l]
-            lines.append(f"| {a} | {l} | {x['accept']}/{x['n']} | {x['reject']} | {x['uncertain']} | {x['invalid']} | {x['correct_numeric']} | {x['null']} |")
+            display=a+' (runtime-mixed diagnostic)' if a=='code' and 'runtime_repair' in summary else a
+            lines.append(f"| {display} | {l} | {x['accept']}/{x['n']} | {x['reject']} | {x['uncertain']} | {x['invalid']} | {x['correct_numeric']} | {x['null']} |")
     lines+=['','## Registered primary: check minus raw','']
     for key in ('discrimination','clean_acceptance'):
         x=primary[key];lines.append(f"- {key}: {fmt(x['mean'])}, descriptive interval {x['ci95']}.")
