@@ -164,6 +164,49 @@ def export(root):
         fmt(min(sanity[k]['sanity']['0d']['s_hi'], sanity[k]['sanity']['0d']['s_lo'])) for k in ks) + ' |')
     tables['ksweep'] = '\n'.join(lines)
 
+    # Experiment A (A-MONITOR-INTERVENTION, Gemini) and its Qwen3-8B raw/check replication (A-MONITOR-QWEN).
+    expa = {}
+    for model, folder in (('gemini-3.8-flash', 'data/ours/experiment_a/20261108'),
+                          ('qwen3-8b', 'data/ours/experiment_a/20261108_qwen3-8b')):
+        cells, primary, direct, follow = claim(
+            'monitor:' + model,
+            'Paired check-aid intervention on 30 reused queries x 3 matched20 draws; primary check-minus-raw acceptance discrimination.',
+            'Six descriptive table clusters; reused queries; upward corruption only; abstention is not correction; no deployment claim.',
+            [(f'{folder}/summary.json', '/cells'), (f'{folder}/summary.json', '/primary'),
+             ('data/ours/experiment_a/20261108/summary.json', '/direct_monitor/flag_counts'),
+             (f'{folder}/summary.json', '/flag_following')])
+        expa[model] = dict(cells=cells, primary=primary, flags=direct, follow=follow)
+    flag_only, = claim('monitor:flag-only',
+                       'Exploratory flag-only policy (accept iff 0d flag absent) versus each model with the check aid.',
+                       'Registered in A-MONITOR-QWEN after Gemini results were seen; exploratory, descriptive.',
+                       [('data/ours/experiment_a/20261108_qwen3-8b/summary.json', '/exploratory_flag_only')])
+
+    def acc(c, levels):
+        return sum(c[l]['accept'] for l in levels), sum(c[l]['n'] for l in levels)
+
+    lines = ['| Decision maker | Clean accepted | x1.10 accepted | x1.50 accepted | Discrimination change [95% interval] |',
+             '|---|---:|---:|---:|---|']
+    for model, e in expa.items():
+        for arm in ('raw', 'check'):
+            c = e['cells'][arm]
+            change = 'reference' if arm == 'raw' else \
+                f"{fmt(e['primary']['discrimination']['mean'])} {ci(e['primary']['discrimination']['ci95'])} vs raw"
+            lines.append(f"| {model}, {'rows only' if arm == 'raw' else 'rows + check'} | {'/'.join(map(str, acc(c, ['clean'])))} | "
+                         f"{'/'.join(map(str, acc(c, ['scale110'])))} | {'/'.join(map(str, acc(c, ['scale150'])))} | {change} |")
+    f = expa['gemini-3.8-flash']['flags']
+    lines.append(f"| 0d flag alone (no model) | {f['clean']['n'] - f['clean']['flag']}/{f['clean']['n']} | "
+                 f"{f['scale110']['n'] - f['scale110']['flag']}/{f['scale110']['n']} | {f['scale150']['n'] - f['scale150']['flag']}/{f['scale150']['n']} | "
+                 + '; '.join(f"{fmt(flag_only[m]['flag_only_minus_raw']['discrimination']['mean'])} "
+                             f"{ci(flag_only[m]['flag_only_minus_raw']['discrimination']['ci95'])} vs {m} raw" for m in expa) + ' |')
+    tables['monitor'] = '\n'.join(lines)
+    lines = ['| Model | Rows + check minus flag alone [95% interval] | Flagged candidates accepted | Compatible candidates rejected |',
+             '|---|---|---:|---:|']
+    for model in expa:
+        d = flag_only[model]['check_minus_flag_only']['discrimination']
+        ff, n = expa[model]['follow'], sum(c['n'] for c in expa[model]['cells']['check'].values())
+        lines.append(f"| {model} | {fmt(d['mean'])} {ci(d['ci95'])} | {ff['accepted_flagged']}/{ff['flagged']} | {ff['rejected_compatible']}/{n - ff['flagged']} |")
+    tables['flagonly'] = '\n'.join(lines)
+
     provenance, = claim('datasets', 'Versioned source exports, counts, licenses and hashes are documented.',
                          'These describe the saved exports, not arbitrary later upstream dataset versions.',
                          [('data/ours/datasets/PROVENANCE.json', '')])

@@ -1,33 +1,43 @@
-# Agents See the Rows but Accept the Number: The Case for Runtime Checks on Silently Corrupted Tool Returns
+# Agents See the Rows but Accept the Number: Runtime Checks for Silently Corrupted Tool Returns
 
-*Working manuscript, November 8, 2026 (revision 2: reframed for Trust4RSI-Agent @ AAAI 2027, 4-page short paper). Evidence cutoff: November 7, 2026. Anonymous submission draft. All reported outcomes already exist in the repository; generated tables are produced by `experiments/export_paper_evidence.py`.*
+*Working manuscript, November 8, 2026 (revision 3: adds the Experiment A monitor intervention for Gemini Flash and Qwen3-8B). Anonymous submission draft for Trust4RSI-Agent @ AAAI 2027, 4-page short paper. Generated tables are produced by `experiments/export_paper_evidence.py` from saved results.*
 
 ## Abstract
 
-When an agent's tools and skills are updated, regressed, or swapped in a registry, a call can return a well-formed but wrong number. Because nothing raises an error, nothing triggers a retry. We ask where a check for such returns should sit in the agent stack. On 210 scalar queries over six public tables, the first numeric return is silently multiplied by a factor between 1.05 and 2 (or its reciprocal). Across 4,410 ReAct trajectories, Qwen3-4B and Qwen3-8B report the corrupted value in 97–99% of the runs where the corruption fired. They adopt it at the same rate whether or not they had previewed table rows. Gemini Flash adopts it in 56%. An offline sweep shows that default five-row previews are a weak basis for any checker: a bootstrap check that uses only the visible rows reaches within-table AUROC 0.62 at five random rows and 0.84 at two hundred. When the evidence is adequate, the remaining gap is in how it is used. On twelve audit queries shown with twenty query-matched rows, the same check flags 10/12 corrupted and 1/12 clean returns (AUROC 0.917; 0.818 over 240 fresh row draws). Prompted models shown the identical rows show no stable gain in accept/reject discrimination: +0.083 and 0.000, with both 95% intervals including zero. We argue that return verification belongs in the runtime. The system should supply query-relevant evidence and run an explicit check rather than rely on the model to verify itself.
+When an agent's tools are updated, regressed, or swapped, a call can return a well-formed but wrong number. No error is raised, so the agent gets no explicit signal to retry. We ask where a check for such returns should sit. On 210 scalar queries over six public tables, the first numeric return is silently multiplied by 1.05 to 2 (or its reciprocal). In free-running ReAct trajectories, Qwen3-4B and Qwen3-8B report the corrupted value in 97–99% of the runs where the corruption fired, and Gemini Flash in 56%. Qwen adopts it at similarly high rates whether or not it had previewed table rows. With five random rows, a bootstrap check that uses only the visible rows reaches within-table AUROC 0.62; with two hundred, 0.84. We then intervene on 30 queries shown with twenty query-matched rows. Supplying the check's interval and flag to the model raises clean-versus-corrupted acceptance discrimination by +0.094 [0.050, 0.133] for Gemini and +0.550 [0.306, 0.756] for Qwen3-8B. For Qwen this comes at a cost of 6.7 points of clean acceptance, so its registered joint benefit rule fails. In both models the aided decision converges to the flag. It does not exceed simply acting on the flag: the differences are −0.017 and −0.028. These results suggest that numeric return checks can be a runtime service whose output drives the accept or reject decision, rather than something left to the model's own judgment.
 
 ## 1. Introduction
 
-Agents that evolve gain and replace tools, rewrite skills, and depend on registries they do not control. Every such change can introduce a *quiet* failure: an analysis tool that returns a plausible scalar that is off by 10% or 50%. Unlike a crash or a schema error, a quiet numeric failure produces no signal that an agent's retry logic can act on. Recent audits find that tool-using agents largely accept such outputs [Tao and Yin, 2026]. The open systems question is who should catch them: the model reading the return, or a check in the layer that delivers it.
+Agents that evolve gain and replace tools, rewrite skills, and depend on registries they do not control. Each change can introduce a *quiet* failure, such as an analysis tool that returns a plausible scalar that is off by 10% or 50%. Unlike a crash or a schema error, a quiet numeric failure does not expose an error to the agent's retry logic. Recent audits find that tool-using agents largely accept such outputs [Tao and Yin, 2026; Yang et al., 2026; Kraishan, 2026]. The systems question is who should catch them: the model reading the return, or a check in the layer that delivers it.
 
-We study this question at the narrowest useful boundary, a single scalar returned by a pandas tool. We separate three things that are often conflated: (i) what the agent *does* with a corrupted return, (ii) how much *evidence* the agent's observation context actually contains, and (iii) whether a model *uses* that evidence when it is sufficient. Our contributions are:
+We study this at a narrow boundary: a single scalar returned by a pandas tool. We separate four quantities: what agents *do* with a corrupted return; how much *evidence* the visible rows hold for a tested check; whether a model *uses* a check's output when it is given; and how the aided model compares with the check alone. Our contributions:
 
-1. **Behavior across preview tiers.** Across three models and four observation-context tiers (4,410 trajectories), agents adopt a silently corrupted scalar in 97–99% (Qwen) and 56% (Gemini) of fired runs. Previewing rows does not lower Qwen's adoption.
-2. **Evidence budget.** An offline sweep over the number of visible rows k shows that a check using only the visible rows improves steadily from k=5 to k=200. Default head-five previews give any checker, human, model, or program, little to work with.
-3. **Same-evidence gap.** With twenty query-matched rows, a twenty-line bootstrap check separates clean from corrupted returns well, but prompted models shown the same rows do not reliably improve.
-4. **Runtime implication and negative instrument results.** We outline a return-monitor interface for the agent runtime. We also report that the agent-intrinsic signals we tried (verbalized confidence, token entropy) and a small learned scorer did not pass their own eligibility gates.
+1. **Behavior across preview tiers.** Across three preview tiers and three models (seven configurations, including a T1 replicate), Qwen adopts a silently corrupted scalar in 97–99% of fired runs and Gemini in 56%. Qwen's adoption is high whether or not it had previewed rows.
+2. **Evidence budget.** Under the tested bootstrap check, signal grows with the number of visible rows k, from 0.62 at k=5 to 0.84 at k=200.
+3. **Monitor intervention.** In a frozen paired experiment, giving the model the check's output improves acceptance discrimination for both models. Qwen's clean acceptance falls, failing the registered joint rule, and neither aided model exceeds the flag alone.
+4. **Negative instrument results.** Verbalized confidence and token entropy lack live sanity controls, so we make no detector claim for them. A small learned scorer failed its own eligibility gates.
 
 ## 2. Setup
 
-**Tasks and corruption.** We generate 210 scalar queries (unfiltered, filtered, and grouped aggregates) over six public tables of 344–17,379 rows (Appendix D). In a corrupted run the environment multiplies the first scalar return by s ∈ {1.05, 1.10, 1.20, 1.35, 1.50, 2.00} or 1/s. This is *poison-once*: re-issuing the call returns the true value. Source data is never modified.
+**Tasks and corruption.** We generate 210 scalar queries (unfiltered, filtered, and grouped aggregates) over six public tables with 344–17,379 rows (Appendix D). In a corrupted run the environment multiplies the first scalar return by s ∈ {1.05, 1.10, 1.20, 1.35, 1.50, 2.00} or 1/s. It does so once (*poison-once*): re-issuing the call returns the true value. Source data is never modified.
 
-**Agents and observation tiers.** A ReAct agent from ToxicBench [Tao and Yin, 2026] answers each query with a `python_exec` tool and an optional `preview` tool. The harness fixes what `preview` reveals: **T0** shows the first five rows plus whole-column min/max; **T1** shows the first five rows; **T3** shows the schema only. We run Qwen3-4B (T0, T1, a T1 replicate, T3) and Qwen3-8B (T0, T1) on vLLM at temperature 0.7, and Gemini 3.8 Flash at T1 with low reasoning effort. Each configuration has two clean seeds and one corrupted run per task. Adoption is the automatic `poisoned_answer_used` metric over runs where the corruption fired. For each run we reconstruct from the logs which rows the agent had actually seen before the corrupted call.
+**Agents and preview tiers.** A ReAct agent from ToxicBench [Tao and Yin, 2026] answers each query with a `python_exec` tool and an optional `preview` tool. The harness fixes what `preview` reveals:
 
-**Checks restricted to visible evidence.** Our threat model lets a checker use only what the agent saw plus the returned value; re-querying is excluded because under poison-once it trivially wins. The main check, **0d**, re-executes the agent's own statistic on bootstrap resamples of the visible rows and scores how far the return lies outside the 2.5–97.5% percentile interval (sums and counts are rescaled by n/k). **0a** is a range check. Two *privileged* references are computed from the full table by Monte Carlo: **0o\*** knows the sampling law of the k-row statistic but centers on the observed draw, and **0o** knows the population answer. They are reference scores for interpretation, not proven optimal detectors or information bounds. A method's real-corruption AUROC is reported only if it passes a sanity gate: AUROC above 0.95 against ×1000 and ÷1000 corruptions. The primary metric is within-table AUROC with a six-table bootstrap interval.
+- **T0:** the first five rows plus whole-column min/max.
+- **T1:** the first five rows.
+- **T3:** schema only.
+
+We run Qwen3-4B (T0, T1, T3, plus a T1 replicate) and Qwen3-8B (T0, T1) on vLLM at temperature 0.7, and Gemini 3.8 Flash at T1 with low reasoning effort. Each configuration has two clean runs and one corrupted run per task, giving 4,410 trajectories. Adoption is the automatic `poisoned_answer_used` metric, counted over runs where the corruption fired. From the logs we reconstruct which rows the agent had actually seen before the corrupted call.
+
+**Visible-row checks.** A checker may use only what the agent saw plus the returned value. We exclude re-querying, which trivially wins under poison-once. The main check, **0d**, re-executes the query statistic on bootstrap resamples of the visible rows and scores how far the return lies outside the 2.5–97.5% percentile interval. Sums and counts are rescaled by n/k. It flags any return outside the interval.
+
+Two *privileged* references use the full table by Monte Carlo. **0o\*** knows the sampling law of the k-row statistic and centers on the observed draw; **0o** knows the population answer. They aid interpretation; they are not proven optimal detectors or information bounds.
+
+Real-corruption AUROC is reported only for checks that pass a sanity gate (AUROC above 0.95 against ×1000 and ÷1000 corruptions). The primary metric is within-table AUROC with a six-table bootstrap interval.
 
 ## 3. Results
 
-### 3.1 Agents adopt corrupted scalars, with or without having seen the rows
+### 3.1 Agents adopt corrupted scalars, with or without having seen rows
 
 <!-- BEGIN GENERATED:adoption -->
 | Agent | Preview tier | Poison fired / runs | Corrupted value used | Used, rows previewed | Used, no rows previewed |
@@ -40,13 +50,13 @@ We study this question at the narrowest useful boundary, a single scalar returne
 | gemini-3.8-flash | T1 | 128/210 | 72/128 (56%) | 26/50 (52%) | 46/78 (59%) |
 <!-- END GENERATED:adoption -->
 
-**Table 1.** Adoption of the corrupted value among toxic runs where the corruption fired. "Rows previewed" means at least one data row was shown before the corrupted call.
+**Table 1.** Adoption among toxic runs where the corruption fired. "Rows previewed" means at least one data row was shown before the corrupted call. The Qwen3-4B T1 replicate (196/202) is omitted here but included in the 4,410 total.
 
-Qwen adopts the corrupted value in nearly every fired run at every tier (Table 1). Seeing rows did not help. At T1, Qwen3-4B adopted it in 141/144 runs where it had previewed five rows and in 55/58 where it never previewed. At T0, where whole-column min/max were also shown, it adopted it in 140/141 previewed runs. Qwen3-8B always previewed and still adopted in 99% of runs. This is a stratification, not a randomized effect of previewing. Clean success was 182–204 of 210 per seed, so the failure is specific to the corrupted return, not general incompetence.
+Qwen adopts the corrupted value in 97–99% of fired runs at every tier (Table 1). At T1, Qwen3-4B adopted it in 141/144 runs where it had previewed five rows and in 55/58 where it had not. At T0, where whole-column min/max were also shown, the figure was 140/141. Qwen3-8B always previewed. These are stratified observations of self-selected preview behavior, not a causal effect of previewing. Clean success was 182–204 of 210 per run, so the failure is specific to the corrupted return.
 
-Gemini adopts less often (72/128). Two features of its runs limit the comparison. First, 93 of its 128 first corrupted outputs were not single scalars, so our scalar checks cannot score them. Second, 37 of its 50 recoveries had a later Python error, so some recoveries may come from retrying rather than from verification. Under poison-once, any retry returns the true value. We therefore treat Gemini as an external replication with a different evaluation unit, not as a stronger checker.
+Gemini adopts less often (72/128), but its runs differ in two ways. First, 93 of its 128 first corrupted outputs were not single scalars, which our checks cannot score. Second, of its 50 recoveries, the first subsequent Python call succeeded in 23 and errored in 27. A recovery may therefore come from a retry, which under poison-once returns the true value, rather than from verification. We treat Gemini as a replication with a different evaluation unit.
 
-### 3.2 Default previews carry little evidence for any checker
+### 3.2 Signal in the visible rows grows with the row budget
 
 <!-- BEGIN GENERATED:ksweep -->
 | Check (within-table AUROC) | k=5 | k=10 | k=20 | k=50 | k=100 | k=200 |
@@ -57,61 +67,64 @@ Gemini adopts less often (72/128). Two features of its runs limit the comparison
 | min sanity AUROC (0d, high/low) | 0.976 | 0.988 | 0.995 | 0.998 | 1.000 | 1.000 |
 <!-- END GENERATED:ksweep -->
 
-**Table 2.** Offline sweep on the 168 tasks computable at every k, with k random rows and 20 draws per task. 0d passes the sanity gate at every k. The privileged rows use full-table information that no visible-row checker has.
+**Table 2.** Offline sweep over k random rows (20 draws per task), on the 168 tasks computable at every k. The sanity row is the pooled per-k gate on all computable events. The privileged rows use full-table information that no visible-row checker has.
 
-With k random rows, 0d rises steadily from 0.62 to 0.84 (Table 2). On the rows the Qwen agents actually saw in their trajectories, the head five, all visible-row checks stay between 0.53 and 0.62 (Appendix C). Head rows are also not a random sample. Default previews therefore leave little for *any* checker to work with, and weak detection under them does not show that agents ignore usable evidence. The gap between 0d and the 0o\* reference (0.11 at k=5) is a descriptive difference between two specified scores, not a decomposition into recoverable and unrecoverable information.
+Under 0d, signal rises from 0.62 at k=5 to 0.84 at k=200 (Table 2). On the head-five rows the Qwen agents actually saw, the tested visible-row checks score 0.53–0.62 (Appendix C). Head rows are not a random sample, either. Weak detection on default previews therefore does not by itself show that agents ignore usable evidence. The 0d–0o\* gap is a descriptive difference between two specified scores, not an information decomposition.
 
-### 3.3 With adequate evidence, a program uses it and prompted models do not reliably
+### 3.3 A monitor intervention: the aided model converges to the flag
 
-To isolate evidence *use*, we froze an audit set before collecting any responses. It has two filtered-mean queries per table (twelve in total), three displayed-evidence conditions (head5; random20, twenty random rows; matched20, twenty rows that satisfy the query filter), and a clean and a corrupted candidate for each. The two queries in each table use factors 1.10 and 1.50, respectively. Each model receives the query, the code, the displayed CSV, and the candidate, and must return a strict JSON accept/reject/uncertain decision without further tool calls. That gives 72 responses per model. The behavioral outcome is acceptance discrimination: the clean acceptance rate minus the corrupted acceptance rate, averaged within tables. The 0d check reads the exact CSV embedded in each frozen message.
+We froze a paired experiment before collecting any responses. Its 30 filtered-mean queries are five per table, chosen by a fixed rule. Each query has three independent draws of twenty query-matched rows, and each draw is crossed with a clean, a ×1.10 and a ×1.50 candidate. In the **rows only** arm, the model receives the query, code, rows, and candidate. In the **rows + check** arm, it also receives 0d's interval, score, and flag computed from those same rows. The model returns a strict JSON accept/reject/uncertain decision with no tool calls; there is one completion per cell. The registered primary outcome is the change in acceptance discrimination (clean acceptance minus mean corrupted acceptance), averaged over draws, queries, and tables. Its joint rule also requires that clean acceptance not fall by more than 5 points, judged by the lower interval bound. Gemini ran first; the Qwen3-8B replication reused the identical frozen inputs under a protocol committed beforehand.
 
-<!-- BEGIN GENERATED:contrasts -->
-| Model | Matched20 minus random20 | Descriptive 95% interval | Queries / tables |
-|---|---:|---|---|
-| gemini-3.8-flash | 0.083 | [-0.167, 0.333] | 12 / 6 |
-| qwen3-8b | 0.000 | [-0.333, 0.333] | 12 / 6 |
-<!-- END GENERATED:contrasts -->
+<!-- BEGIN GENERATED:monitor -->
+| Decision maker | Clean accepted | x1.10 accepted | x1.50 accepted | Discrimination change [95% interval] |
+|---|---:|---:|---:|---|
+| gemini-3.8-flash, rows only | 88/90 | 60/90 | 25/90 | reference |
+| gemini-3.8-flash, rows + check | 90/90 | 52/90 | 20/90 | 0.094 [0.050, 0.133] vs raw |
+| qwen3-8b, rows only | 90/90 | 90/90 | 83/90 | reference |
+| qwen3-8b, rows + check | 84/90 | 49/90 | 13/90 | 0.550 [0.306, 0.756] vs raw |
+| 0d flag alone (no model) | 87/90 | 50/90 | 13/90 | 0.111 [0.078, 0.156] vs gemini-3.8-flash raw; 0.578 [0.367, 0.756] vs qwen3-8b raw |
+<!-- END GENERATED:monitor -->
 
-<!-- BEGIN GENERATED:statistics -->
-| Evidence | Check | Sanity AUROC | Within-table AUROC [95% interval] | Pooled AUROC | Corrupt flags | Clean flags | Unscorable (clean / corrupt) |
-|---|---|---:|---|---:|---|---|---|
-| Original matched20 | 0a | 0.958 | 0.583 [0.500, 0.667] | 0.583 | 2/12 | 0/12 | 0 / 0 |
-| Original matched20 | 0d | 1.000 | 0.917 [0.833, 1.000] | 0.882 | 10/12 | 1/12 | 0 / 0 |
-| 20 draws/query | 0a | 0.956 | 0.615 [0.529, 0.698] | 0.615 | 55/240 | 0/240 | 0 / 0 |
-| 20 draws/query | 0d | 0.996 | 0.818 [0.718, 0.915] | 0.820 | 161/240 | 14/240 | 0 / 0 |
-<!-- END GENERATED:statistics -->
+<!-- BEGIN GENERATED:flagonly -->
+| Model | Rows + check minus flag alone [95% interval] | Flagged candidates accepted | Compatible candidates rejected |
+|---|---|---:|---:|
+| gemini-3.8-flash | -0.017 [-0.078, 0.039] | 17/120 | 0/150 |
+| qwen3-8b | -0.028 [-0.061, 0.000] | 0/120 | 0/150 |
+<!-- END GENERATED:flagonly -->
 
-**Table 3.** Top: change in prompted acceptance discrimination from random20 to matched20 (Appendix A gives per-cell decisions). Bottom: visible-row checks on the matched20 evidence, on the original frozen packets and over 20 fresh draws per query. Only the matched20 checks pass the sanity gate; the head5 and random20 checks fail it, and their efficacy is withheld (Appendix A).
+**Table 3.** Top: acceptances out of 90 per candidate type, with the change in acceptance discrimination relative to each model's rows-only arm. The "0d flag alone" row accepts exactly the unflagged candidates. Bottom: exploratory comparison of the aided model with the flag alone, together with how often the model overrode the flag. This comparison was registered after the Gemini results were seen.
 
-Query-matched rows give the bootstrap check usable signal. On the frozen packets it flags 10/12 corrupted and 1/12 clean candidates. Over fresh draws, it flags 161/240 corrupted and 14/240 clean candidates, with per-query corrupted flag rates from 2/20 to 20/20. The prompted models do not convert the same rows into reliably better decisions. Gemini rejects more corrupted candidates under matched20 (5/12 accepted vs 7/12 under random20). Qwen does not: it accepts 11/12 under matched20 vs 9/12 under random20. Neither contrast excludes zero.
+The check helps both models, in different ways (Table 3). Gemini rejects some large errors unaided. With the check, its corrupted acceptance falls from 85/180 to 72/180 while clean acceptance holds (88→90/90), so the joint rule is met. Qwen3-8B accepts nearly everything unaided (173/180 corrupted candidates). With the check, it follows the flag exactly: it accepts 0 of 120 flagged candidates and rejects 0 of 150 unflagged ones. Its discrimination gain is large, but so is its clean cost: it rejects the 3/90 clean candidates that 0d falsely flags and is uncertain on 3 more. Its clean-acceptance change is −0.067 [−0.111, −0.022], so its joint rule fails. Neither model ever rejected an unflagged candidate, and neither aided model beat acting on the flag directly. The aided decision therefore adds no detection beyond the flag in this setting. Gemini also overrides 17 of 120 flags, 14 of them on corrupted values.
 
-These measurements compare a structured program with a prompted model on identical rows, not at equal computational budget. 0d receives the parsed filter and performs 2,000 resamples, and the models answer in a single pass without code. That asymmetry is the point for system design: computation the runtime can run cheaply, with no model call, should not be delegated to the model's judgment.
+The gains come from rejection and abstention, not correction: no aided model produced the true value for a corrupted candidate. Even with the check, 72/180 (Gemini) and 62/180 (Qwen) corrupted candidates were accepted. The flag itself misses 63/180, mostly at ×1.10, where 0d flags only 40/90. Gemini's count is higher because it overrides 14 flags on corrupted values.
 
 ## 4. Implications for the agent runtime
 
-The results point to a division of labor in which return checking is a runtime service:
+These results support a division of labor, which we state as a design hypothesis rather than a deployed system.
 
-- **Evidence provisioning.** A checker can only be as good as its evidence (Table 2). The runtime, which already parses the tool call, can attach a query-matched row sample to each numeric return. Our matched20 condition does exactly this. A default head preview does not.
-- **Explicit checks with a flag.** A cheap, interpretable check (here, bootstrap re-execution of the agent's own code) yields a per-return flag. This is a trigger for an action such as re-query, abstain, or escalate, not a correction.
-- **Observability across tool evolution.** Logging the flag with the tool version lets operators attribute a shift in flag rates to a tool update, which fits continuous monitoring of evolving tool registries.
+- **Provision evidence.** Within the tested check, signal depends on the row budget and its relevance (Table 2, Appendix A). The runtime already parses the tool call, so it could attach a query-matched sample to numeric returns.
+- **Let the check drive the decision.** Given the check, both models converged to it, and neither exceeded it. An explicit policy on the flag makes the trade-off visible and tunable: re-query, abstain, or escalate on a flag. The clean cost is the flag's false-positive rate (3/90 here; 14/240 in Appendix A), and a model in the loop does not remove it.
+- **Log for observability.** Recording flags with tool versions would let operators track flag rates across tool updates. We have not tested whether this attributes failures correctly.
 
-We have not deployed such a monitor end to end. Its benefit depends on the response policy. Under poison-once, a flag followed by a re-query would recover the answer. Under persistent corruption, only the evidence check remains. Its false-positive cost also matters: 14/240 clean flags in Table 3.
+End-to-end benefit depends on the response policy and on the threat. Under poison-once, a re-query after a flag would recover the answer; under persistent corruption, only the evidence check remains. We measured neither cost nor latency.
 
 ## 5. Limitations
 
-The scope is scalar aggregates over six public tables, with one multiplicative corruption family that fires once. The audit set has twelve deterministically selected queries, with one response per model and cell. In it, severity is tied to query identity and direction to table, so neither has a causal reading. The six-table bootstrap intervals are descriptive. The two models also use different sampling settings. Public tables may appear in pretraining. Agent-intrinsic signals (verbalized confidence, mean action-token entropy) scored 0.46–0.56 within-table but lack live sanity controls, so their efficacy is withheld. A clean-trained 0.5B quantile scorer failed its sanity and coverage gates (Appendix C). These results concern the instruments we built, not uncertainty quantification in general.
+The scope is scalar aggregates over six public tables, with one multiplicative corruption family that fires once. The intervention reuses 30 selected queries from the task pool. It tests upward errors only, with one completion per cell. Its three draws per query are not additional tasks, and its intervals rest on six table clusters. The two models use different sampling settings, so we make no model-comparison test. The intervention tests the whole check package; it cannot separate the warning text from the statistical content.
+
+Public tables may appear in pretraining. Agent-intrinsic signals (verbalized confidence, mean token entropy) scored 0.46–0.56 within-table but lack live sanity controls. A clean-trained 0.5B scorer failed its gates (Appendix C). These results concern the instruments we built, not uncertainty quantification in general. A code-execution arm run for Gemini spans two sandbox versions, so it is excluded as a uniform comparison.
 
 ## 6. Related work
 
-**Adoption of unreliable tool outputs.** ToxicBench [Tao and Yin, 2026] introduces corrupted-evidence adoption and recovery for data agents, including public-table evidence controls. Yang et al. [2026] find that many LLMs adopt plausible but incorrect outputs from search, sub-agent, and code tools. Kraishan [2026] finds that agents react to explicit errors far more than to plausible wrong values, and that a "check each result" prompt does not close the gap. Our results agree with theirs and add the observation-tier axis, actual-exposure accounting, and an evidence-budget sweep.
+**Adoption of unreliable tool outputs.** ToxicBench [Tao and Yin, 2026] introduces corrupted-evidence adoption and recovery for data agents, including public-table evidence controls. Yang et al. [2026] find that many LLMs adopt plausible but incorrect outputs from search, sub-agent, and code tools. Kraishan [2026] finds that agents react to explicit errors more than to plausible wrong values, and that a "check each result" prompt does not close that gap. We add preview tiers with actual-exposure accounting, an evidence-budget sweep, and a monitor intervention.
 
-**Runtime checks.** Outcome Monitors [Panthi and Abdelfattah, 2026] flag outputs that violate mined outcome contracts. Kekatos et al. [2026] replay trajectories through a temporal-logic monitor for security policies. Jegatheesan and Lihinikaduarachchi [2026] intercept math-tool results and compare verification designs. None of these judges a returned number against the data the agent actually saw, which is the check we measure.
+**Runtime checks.** Outcome Monitors [Panthi and Abdelfattah, 2026] flag outputs that violate mined outcome contracts and report recovery gains. Kekatos et al. [2026] replay trajectories through a temporal-logic security monitor. Jegatheesan and Lihinikaduarachchi [2026] intercept math-tool results and compare verification designs. Among the methods we compared, none judges a returned number against the rows the agent saw, which is the check we measure.
 
-**Intrinsic signals.** Xu et al. [2026] score inconsistent tool responses with content likelihood and action-distribution entropy for Qwen3-8B in a retail domain. Their action entropy differs from our token entropy, so our weak intrinsic results do not bear on theirs. Bootstrap resampling is standard [Efron, 1979]. We introduce no new algorithm; the contribution is the measurement and the systems argument it supports.
+**Intrinsic signals.** Xu et al. [2026] score inconsistent tool responses with content likelihood and action-distribution entropy for Qwen3-8B in a retail domain. That entropy differs from ours, so our weak intrinsic results do not bear on theirs. Bootstrap resampling is standard [Efron, 1979]; our contribution is the measurement, not a new algorithm.
 
 ## 7. Conclusion
 
-Agents accept silently corrupted numeric returns almost always, and previewing rows does not change that. Default previews contain too little evidence for any checker. When query-relevant evidence is present, a simple program extracts it, but prompted models do not reliably do so. For trustworthy evolution of tool-using agents, numeric return verification should be a runtime responsibility that combines evidence provisioning with an explicit, logged check.
+Qwen adopts silently corrupted numeric returns in 97–99% of fired runs, and Gemini in 56%. Under the tested check, signal in the visible rows grows with the number of rows. When the check's output is given to the model, both models move toward it, and neither does better than acting on it directly; for Qwen, the gain also costs clean acceptance. For tool-using agents whose tools evolve, this points to numeric return verification as a runtime service whose explicit, logged flag drives the decision.
 
 ## References
 
@@ -133,9 +146,25 @@ Xu, J., Pedersen, T. B., Yao, Z., Zhang, X., and Li, Y. (2026). Robustness Analy
 
 Dataset citations: Cortez (2008), Student Performance, doi:10.24432/C5TG7T; Cortez et al. (2009), Wine Quality, doi:10.24432/C56S3T; Fanaee-T (2013), Bike Sharing, doi:10.24432/C5W894; Horst et al. (2020), palmerpenguins, doi:10.5281/zenodo.3960218; Nash et al. (1994), Abalone, doi:10.24432/C55C7W; Quinlan (1993), Auto MPG, doi:10.24432/C5859H.
 
-## Appendix A. Audit-set decisions and sanity gates
+## Appendix A. Earlier twelve-query audit (fixed-return pilot)
 
-Gemini produced 67/72 strictly valid replies and Qwen 72/72. Invalid replies count as non-acceptances in the primary analysis. Of Gemini's five invalid replies, three were complete JSON inside Markdown fences and two hit the length limit. None were repaired.
+Before Experiment A, a frozen pilot used twelve filtered-mean queries, two per table, under head5, random20 and matched20 evidence. Each query had one clean and one corrupted candidate, giving 72 responses per model. The two queries in each table used ×1.10 and ×1.50, so severity was tied to query. Changing from random20 to matched20 produced no stable gain in prompted acceptance discrimination. On the matched20 packets, 0d flagged 10/12 corrupted and 1/12 clean candidates. Over 20 fresh draws per query it flagged 161/240 corrupted and 14/240 clean. Gemini produced 67/72 strictly valid replies and Qwen 72/72. Invalid replies count as non-acceptances, and none were repaired.
+
+<!-- BEGIN GENERATED:contrasts -->
+| Model | Matched20 minus random20 | Descriptive 95% interval | Queries / tables |
+|---|---:|---|---|
+| gemini-3.8-flash | 0.083 | [-0.167, 0.333] | 12 / 6 |
+| qwen3-8b | 0.000 | [-0.333, 0.333] | 12 / 6 |
+<!-- END GENERATED:contrasts -->
+
+<!-- BEGIN GENERATED:statistics -->
+| Evidence | Check | Sanity AUROC | Within-table AUROC [95% interval] | Pooled AUROC | Corrupt flags | Clean flags | Unscorable (clean / corrupt) |
+|---|---|---:|---|---:|---|---|---|
+| Original matched20 | 0a | 0.958 | 0.583 [0.500, 0.667] | 0.583 | 2/12 | 0/12 | 0 / 0 |
+| Original matched20 | 0d | 1.000 | 0.917 [0.833, 1.000] | 0.882 | 10/12 | 1/12 | 0 / 0 |
+| 20 draws/query | 0a | 0.956 | 0.615 [0.529, 0.698] | 0.615 | 55/240 | 0/240 | 0 / 0 |
+| 20 draws/query | 0d | 0.996 | 0.818 [0.718, 0.915] | 0.820 | 161/240 | 14/240 | 0 / 0 |
+<!-- END GENERATED:statistics -->
 
 <!-- BEGIN GENERATED:pilot -->
 | Model | Context | Clean accept / 12 | Corrupted accept / 12 | Uncertain (clean / corrupt) | Invalid (clean / corrupt) |
@@ -210,4 +239,4 @@ The clean-only quantile scorer (Qwen2.5-0.5B + LoRA, table-held-out) failed its 
 
 ## Data, code, and disclosure
 
-Protocols and dated amendments, raw trajectories, frozen audit requests with all 72 raw replies per model, scores, and generation scripts will be released in an anonymized artifact. Palmer Penguins is CC0; the five UCI tables are CC BY 4.0. AI coding assistants helped with code, evidence checks, and drafting; the authors verified all reported numbers against script output.
+Protocols and dated amendments, raw trajectories, frozen pilot and Experiment A requests with all raw replies, scores, and generation scripts will be released in an anonymized artifact. Palmer Penguins is CC0; the five UCI tables are CC BY 4.0. AI coding assistants helped with code, evidence checks, and drafting; the authors verified all reported numbers against script output.
