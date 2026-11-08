@@ -1035,3 +1035,44 @@ failed to compute because of harness-induced errors. Phase contrasts are descrip
 and time-confounded, not a randomized repair effect. No extra model samples or
 replacement of old C replies is authorized by this repair. A future uniform C study
 would require a separately registered replication, not concealed reruns.
+
+## A-MONITOR-QWEN (2026-11-08; before any Qwen3-8B Experiment A request)
+
+**Authorization and scope.** User authorized a Qwen3-8B replication of the Experiment A
+raw and check arms on their own GPU instance. Gemini Experiment A results (including the
+flag-following crosstab) have been seen; this is a prospective second-model replication
+of the registered B-A contrast on the same frozen inputs, not fresh-query confirmation.
+No code arm (C was runtime-mixed for Gemini; a uniform C study needs its own protocol).
+
+**Inputs.** Reuse the frozen Gemini manifest (canonical digest
+350f5a3b18b97b434b517e9b08011f19c6c92c682e71abebde214ef66dcc6a07) unchanged: the 540
+raw/check units (30 queries, 6 tables, 3 matched20 draws, clean/x1.10/x1.50), the same
+system/user messages and messages_hash, the same cached 0d interval/score/flag and the
+same frozen shuffled order. No re-sampling, re-selection or edits to prompts.
+
+**Model and sampling.** Qwen/Qwen3-8B served by vLLM bound to 127.0.0.1 on the private
+SSM-only instance, reached through an SSM port-forward to local loopback. Served name
+qwen3-8b. Per request: max_tokens 1536 (as Gemini), temperature 0.7, seed 0, chat
+template enable_thinking=false, matching the earlier Qwen context pilot. One request per
+cell; up to three bounded HTTP attempts on transport errors only. Concurrency up to 8.
+Never regenerate completed invalid/truncated replies. Save raw provider responses,
+payload hashes, usage, finish reason and UTC times. Output directory
+data/ours/experiment_a/20261108_qwen3-8b/.
+
+**Engineering smoke (excluded).** Before main requests, send the four raw/check units of
+the existing synthetic smoke manifest to a separate smoke directory to verify transport
+and strict JSON parsing. Smoke is engineering-only and excluded from efficacy.
+
+**Analysis.** Identical to A-MONITOR-INTERVENTION: primary B-A acceptance discrimination
+(draws within query, queries within table, six tables equal weight), 2,000 paired table
+bootstrap draws seed 1, descriptive intervals; the same joint rule (discrimination lower
+CI>0 and clean-acceptance lower CI>=-0.05); invalid counts as nonacceptance; valid-triplet
+sensitivity; per-severity/table cells; flag-following counts (accepted flagged, rejected
+compatible). Exploratory secondary, conceived after seeing Gemini: the flag-only policy
+(accept iff the 0d flag is absent) scored with the same discrimination aggregation, and
+check-arm minus flag-only, for both models. Gemini-vs-Qwen differences are descriptive;
+sampling settings differ and no model-comparison test is made.
+
+**Claims.** As before: no fresh-table generalization, no end-to-end recovery or cost
+benefit, no runtime-placement necessity, no mechanism distinction between warning text
+and statistical content. Null and abstention are not correct answers.
