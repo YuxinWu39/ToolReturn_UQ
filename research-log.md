@@ -688,3 +688,16 @@ Verdict: PASS scoped B-A primary; C not eligible as uniform computation control.
 7 Scope: reused queries, six table clusters, upward errors only, one completion/cell;
   no recovery/cost/placement claim. Verdict: primary discrimination gain replicates
   with a failed clean guard; aided models do not exceed the flag policy.
+
+
+## 2026-11-08 — paper revision 4 and anonymous AAAI layout
+
+Step: claim repair and submission layout (no new model calls or estimates).
+1 Protocol-before-results: not a new measurement; existing frozen results preserved.
+2 Hypothesis served: manuscript monitor intervention and evidence-budget claims.
+3 Sanity/checks: evidence export and derived-source checks PASS; official style unmodified; PDF compiled without overflow/missing citations and five pages visually inspected.
+4 Confirmatory/exploratory: original classifications preserved; Qwen joint failure and exploratory flag-only limits retained.
+5 Claim scope: repaired exact flag-following, no-extra-value and unavoidable clean-cost overstatements; runtime remains a design hypothesis.
+6 Reviewer objection: independent milestone context updated_paper_rigor verified the three repairs and table presentation, with no new substantive numerical issue; not a full panel decision.
+7 Workshop fitness: four-page main-content boundary, references/appendices extend total to five pages; anonymous reproduction artifact remains a submission preparation item.
+Verdict: PASS-AS-EDITORIAL-REVISION; no new efficacy claim or acceptance prediction.

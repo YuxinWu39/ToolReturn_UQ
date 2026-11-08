@@ -1,0 +1,64 @@
+{
+  "reviewed_base_commit": "2cf023c4e982ed5f60b3f0d01d08344429683d01",
+  "calibration_status": "NOT_CALIBRATED",
+  "scope": "editorial revision, deterministic typesetting, bounded evidence validation; not formal panel clearance",
+  "pdf": {
+    "pages": 5,
+    "page_size_points": [
+      612,
+      792
+    ],
+    "last_main_table_page": 4,
+    "font_types": [
+      "Type1"
+    ],
+    "fonts_embedded": true,
+    "embedded_files": 0,
+    "uri_annotations": 0,
+    "identity_scan": {
+      "yuxinwu": 0,
+      "YuxinWu39": 0,
+      "ToolReturn_UQ": 0,
+      "/Users/": 0,
+      "/private/": 0,
+      "QZX": 0,
+      "??": 0
+    },
+    "visual_pages_inspected": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
+  },
+  "build_checks": {
+    "evidence": "PASS: 28 evidence entries, 16 hashed inputs, 11 manuscript tables",
+    "source_drift": "PASS",
+    "overfull_boxes": 0,
+    "missing_glyphs": 0,
+    "undefined_citations": 0
+  },
+  "source_sha256": {
+    "manuscript.md": "ce76682091e9c63a6ffdc9fa2678e3fce23dbac4098484f0930f86f5d9fab22a",
+    "references.bib": "00d21e025614f21a05d97ffe43685356434874154c79a6d43916ee8686a4510b",
+    "build_submission.py": "54254d2d75b598f1b3da997710ada54c35a494275df22c8d89d7add8874b5c76",
+    "submission.tex": "8e7884e6a24d9d1150c82770eac9a8abec1a182d6e7d1e21218d755a22e4c120",
+    "aaai2027.sty": "01990f8d3716f8e39c5b28a7478f3ac6e28630d1161de6105a7217f5e7f60e43",
+    "aaai2027.bst": "5db7765ba99de5c1e4686f9b3940a0add9c5e702f2164514462bec130ccb6e3c",
+    "output/pdf/submission.pdf": "1c76bddfe278a22669e753be3653fb346488b0a9073d6628789707378c50fe8e",
+    "SUBMISSION_CHECKS.md": "cd8e80b588b17c70cd11dd4fa51172328fbf11d1c79faaaee751866f662033c0"
+  },
+  "template_source": {
+    "url": "https://aaai.org/authorkit27/",
+    "archive_sha256": "9406a545d5d213757245eb37118fe652b2fccf64f555aff28b49ebe2a780c960",
+    "style_unchanged": true,
+    "bst_unchanged": true
+  },
+  "pending": [
+    "external anonymous reproduction artifact",
+    "author-facing authorship and declarations",
+    "final upload and venue-specific page-limit confirmation"
+  ],
+  "model_calls": 0
+}

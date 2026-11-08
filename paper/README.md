@@ -1,40 +1,33 @@
-# 论文初稿与写作状态（2026-11-08）
+# 论文与排版状态（2026-11-08，revision 4）
 
-英文稿：[manuscript.md](manuscript.md)。2026-11-08 第三版：加入实验 A（Gemini 810 条、Qwen3-8B raw/check 540 条复现）作为 3.3 节核心；原 12 查询 pilot 移到附录 A。正文约 2,250 词加 3 张表，尚未套 AAAI 模板。
+英文主稿：[manuscript.md](manuscript.md)。本轮按 [更新后复核](../docs/REVIEW_UPDATED_PAPER_2026-11-08.md) 修订摘要、结果、系统启示及结论；已包含 Gemini 实验 A 和 Qwen3-8B raw/check 复现，旧 12 查询 pilot 位于附录。
 
-中心论点：agent 几乎总是采纳被静默篡改的数值返回，看过 preview 行也一样（Qwen 97–99%，Gemini 56%）；默认 head-5 预览对任何检查器证据都太少（0d 在 k=5 时 0.62，k=200 时 0.84）；证据充分时，简单程序能利用它（matched20 0d 0.917 / 重抽样 0.818），提示式模型却不能稳定利用（+0.083、0.000，区间含 0）。实验 A：给模型 0d 检查结果后，区分度 Gemini +0.094、Qwen +0.550，但 Qwen 的 clean 接受率下降 6.7pp，联合规则未通过；两个模型加了 check 都没超过直接按 flag 决策（−0.017、−0.028，探索性）。因此建议把数值返回核验做成 runtime 服务、由显式 flag 驱动决策（设计假设，未部署）。0o/0o* 仍只是特权参考分数，不是信息上界；不声称新算法或部署收益。
+当前结论：Qwen 在 fired 轨迹中的错误采纳率为 97–99%；Gemini 为 56%，但其输出单位不同，不能据此排名。指定 bootstrap 检查的 AUROC 随随机可见行预算增加而上升。实验 A 的 check 信息包改善两模型的接受区分度，但 Qwen 同时损失正确值接受率，未通过注册联合规则。Gemini 能救回误标的正确值，也放过更多被标记的错误值；模型参与改变了误伤与漏检的权衡。探索性的 flag-only 对照没有显示 aided 模型更高的观察区分度，也没有证明等价。Runtime 服务是待验证设计方向，尚未测部署收益或长期演化。
 
-## 文件与复核
+## 文件与复现
 
-| 文件 | 用途 |
-|---|---|
-| `manuscript.md` | 作者可直接阅读和编辑的稿件；生成表区段由脚本管理 |
-| `evidence.json` | 18 项证据条目及来源 JSON pointer，7 个输入文件的 SHA-256；约束每个论点能支持到哪里 |
-| `references.bib` | 从官方记录核对的四篇方法/近邻/开发资源文献及六项数据集引用 |
-| `WRITING_AUDIT.md` | 事实、统计口径、引用和措辞核验；未声称正式五席复审通过 |
+- `manuscript.md`：完整英文稿。十一张生成表由 `experiments/export_paper_evidence.py` 管理，不能手改生成区段。
+- `evidence.json`：28 项证据、16 个输入文件哈希与来源 JSON pointer；不等于全部叙述已经自动验证。
+- `references.bib`：方法、近邻工作及源数据的参考文献。开发辅助资源保留在内部记录，排版稿不把它当作实证贡献。
+- `build_submission.py`：从英文稿及生成表构建匿名 LaTeX，检查派生源文件漂移；正文和附录不重新估计结果。
+- `submission.tex`、`aaai2027.sty`、`aaai2027.bst`：排版源文件及未经修改的官方样式。
+- `output/pdf/submission.pdf`：编译后的匿名稿；共五页；正文和核心表在前四页，检查结果见 `SUBMISSION_CHECKS.md`。
 
 在仓库根目录运行：
 
 ```bash
-python experiments/export_paper_evidence.py
 python experiments/export_paper_evidence.py --check
+python paper/build_submission.py --check
+# 安装 pdfLaTeX/BibTeX 后：
+python paper/build_submission.py --compile
 ```
 
-脚本只导出已报告结果，不重跑 bootstrap、不拟合模型、不调用 API。它生成九张正文/附录表（第二版新增 P4 采纳率表与 k-sweep 表，采纳率仅为轨迹计数），并检查 `<!-- BEGIN GENERATED:... -->` 区段和 evidence.json 的漂移。正文其他文字可手改；请勿手改生成表中的数字。叙述段数字仍需要人工核验，脚本不假装能证明全部科学论断。
+本轮是证据范围修订和格式转换，无新估计、模型请求或补样。数值主张来自现有保存结果；保留原始数据、旧评审及历史 findings。Qwen 的 540 条和 Gemini 的 810 条原始记录齐全；Gemini code arm 跨运行时版本，只用于诊断。
 
-统计主张来自 F11/F12 及缓存审计；原始 Qwen 回复已补齐。初稿不引入新测量，不需要新预注册，也不把回顾性分析改成确认性结果。所有实验源文件、原审稿和既有评分保持原样。
+## 场馆要求与仍需作者处理的事项
 
-## 目标 workshop 与剩余工作
+[官方 workshop 征稿](https://trust4rsi-agent.github.io/AAAI2027/)列出 2026-11-20 AoE 截止、四页短文/八页全文、AAAI 2027 格式、双盲及 non-archival。参考文献和附录通常不计页数，最终仍以投稿页面为准。本稿按四页正文准备。
 
-截至 2026-11-08，[Trust4RSI-Agent 官方征稿](https://trust4rsi-agent.github.io/AAAI2027/)列出 2026-11-20 AoE 截止，支持四页短文/立场论文及八页全文，要求 AAAI 2027 格式、单个 PDF、双盲；页面称参考文献与附录通常不计页数，最终适配时应以最新规则为准。它是 non-archival workshop，欢迎负结果。以上是投稿条件，不是录用判断。
+匿名稿不包含作者、个人仓库链接或本机路径。尚未创建或发布外部匿名 artifact；正文使用中性的数据可用性说明，不虚构匿名链接。投稿前需由作者确认署名和 AI 辅助披露、准备可供评审访问的匿名复现材料，并在 OpenReview 上传。此次工作不执行公开发布或投稿。
 
-当前研究与工具接口核验、观测和审计相关，尚未测试长期自演化。按现有规模，优先压缩为四页实证短文是合理写作选择：正文保留 Table 1–3，H1/P5 和全部门槛切片放附录。完整结构稿没有经过模板排版，不能凭字数保证页数。
-
-下一步是作者核对论点与署名、压缩正文、套官方模板并检查匿名性；随后可对实际排版稿正式复审。初稿没有对模型训练来源或数值先验作额外认证。无需为写作重跑 Gemini/Qwen；若要增加“同样原始行的派生摘要改善模型核验”这一主张，再独立锁新表/查询、严重度交叉、sanity、预算和分析协议，进行新模型实验。
-
-使用了 scientific-critical-thinking 与 anti-ai-writing skills，开发辅助披露及 Kassis et al. 的正式引用已写进初稿。AI 辅助文本仍需作者负责核对，具体披露格式留待目标场馆适配。
-
-
-## 新实验已完成（2026-11-08）
-
-[Gemini实验A报告](../docs/EXPERIMENT_A_RESULTS_2026-11-08.md)：810条轨迹、30查询。注册check−raw区分度+9.4pp [5.0,13.3]，clean接受88/90到90/90；主要收益为拒绝/弃答，没有把错值修正成真值。C混合运行时只作诊断。当前manuscript尚未整合这项新结果，不应直接以旧稿替代新数据报告；并须修正REVIEW_REFRAME指出的过强句。
+修订内容和格式/匿名性核验记录见 `SUBMISSION_CHECKS.md`。原正式五席评审的状态不会因本轮写作自动改成通过。
