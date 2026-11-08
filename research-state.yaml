@@ -391,3 +391,19 @@ experiment_a:
   summary: data/ours/experiment_a/20261108/summary.json
   raw_accept_wrong: 85
   check_accept_wrong: 72
+experiment_a_qwen:
+  date: '2026-11-08'
+  status: complete-final-analysis
+  protocol: A-MONITOR-QWEN
+  protocol_commit: 25e8b8d
+  parent_manifest_hash: 350f5a3b18b97b434b517e9b08011f19c6c92c682e71abebde214ef66dcc6a07
+  model: qwen3-8b
+  arms: [raw, check]
+  completed_trajectories: 540
+  primary_discrimination_difference: {mean: 0.55, ci95: [0.3055555555555555, 0.7555555555555555]}
+  clean_acceptance_difference: {mean: -0.06666666666666667, ci95: [-0.1111111111111111, -0.022222222222222223]}
+  registered_joint_rule_met: false
+  exploratory_check_minus_flag_only: {qwen3-8b: -0.028, gemini-3.8-flash: -0.017}
+  flag_following: {accepted_flagged: 0, flagged: 120, rejected_compatible: 0, compatible: 150}
+  summary: data/ours/experiment_a/20261108_qwen3-8b/summary.json
+  report: data/ours/experiment_a/20261108_qwen3-8b/report.md

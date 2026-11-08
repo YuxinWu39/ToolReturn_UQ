@@ -1,0 +1,13 @@
+{
+  "endpoint": "http://127.0.0.1:18000/v1/chat/completions",
+  "manifest_digest": "8760296232ac2350d8875b9533a3598a9d0b5fccf359b69e7486d7dea6c91cbe",
+  "model": "qwen3-8b",
+  "source_hashes": {
+    "context_evidence.py": "a27a05e0168e703c0d0e35891de3b2bacd65be5a71bc9a61ec65c41b1fa471ae",
+    "context_pilot.py": "c2fed770b386f3c234c7be55ea31355fad509cf8c022da22baf5d8f7aaf0e158",
+    "experiment_a.py": "4685a06940cccc3b5589736b973e3fecadc99d1361b99078d5cb5c8bce63d1bd",
+    "experiment_a_qwen.py": "1b5786a021e142340cf74b04d90f6b0ceae204fa3ef20d201bfee8a2aa299e71",
+    "report_experiment_a.py": "77e38f1bf4a5c90110dc1e7ec6c3e8deba1be338c8027a7dd0dda2ad48064be9",
+    "zeroparam.py": "54ec5acbb9b308eae515f02533500da1a4c3328f953dcc7ad45859323cc98afd"
+  }
+}

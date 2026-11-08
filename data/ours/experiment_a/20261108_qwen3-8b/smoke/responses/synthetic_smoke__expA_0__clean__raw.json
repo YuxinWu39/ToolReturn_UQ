@@ -1,0 +1,82 @@
+{
+  "calls": [
+    {
+      "attempts": [
+        {
+          "attempt": 0,
+          "elapsed_seconds": 14.312538916012272,
+          "started_utc": "2026-11-08T10:52:16.698272+00:00",
+          "status": "success"
+        }
+      ],
+      "messages": [
+        {
+          "content": "You are auditing a scalar returned by a data-analysis tool. Assess the candidate using the query, code and partial table evidence. The rows shown are a sample, not the full population. The query asks for the full-table mean, not just the sample mean. You cannot access the population table or ground truth. Do not assume that a candidate is correct or incorrect. You may accept, reject or remain uncertain and may abstain from a final numeric answer. Return exactly one JSON object, no markdown, with decision (accept/reject/uncertain), confidence (integer 0..100 in correctness of the candidate), answer (finite numeric answer to the full-table query, or null), and reason (a brief string). No other fields.",
+          "role": "system"
+        },
+        {
+          "content": "QUERY\nWhat is the mean value for group a over all matching rows in the full table?\nTOOL CODE\ndf[df['group']=='a']['value'].mean()\nPARTIAL TABLE EVIDENCE\n{\"columns\": [\"group\", \"value\"], \"dtypes\": {\"group\": \"object\", \"value\": \"float64\"}, \"rows_csv\": \"group,value\\na,99.0\\na,101.0\\na,99.0\\na,101.0\\na,99.0\\na,101.0\\na,99.0\\na,101.0\\na,99.0\\na,101.0\\na,99.0\\na,101.0\\na,99.0\\na,101.0\\na,99.0\\na,101.0\\na,99.0\\na,101.0\\na,99.0\\na,101.0\\n\", \"sampling_rule\": \"20 matching rows from synthetic test table\", \"shape\": [200, 2]}\nTOOL RESULT\n{\"value\": 100.0}",
+          "role": "user"
+        }
+      ],
+      "payload_hash": "59abd6c22ebf8c1b459aa28a1e27291179b432d01f9856025d37cb411ca4e089",
+      "provider_response": {
+        "choices": [
+          {
+            "finish_reason": "stop",
+            "index": 0,
+            "logprobs": null,
+            "message": {
+              "annotations": null,
+              "audio": null,
+              "content": "{\"decision\": \"accept\", \"confidence\": 100, \"answer\": 100.0, \"reason\": \"The code correctly calculates the mean of the 'value' column for rows where 'group' is 'a'. The partial table evidence shows alternating values of 99.0 and 101.0, which average to 100.0. The tool result matches this expected mean.\"}",
+              "function_call": null,
+              "reasoning": null,
+              "refusal": null,
+              "role": "assistant"
+            },
+            "routed_experts": null,
+            "stop_reason": null,
+            "token_ids": null
+          }
+        ],
+        "created": 1794135136,
+        "ec_transfer_params": null,
+        "id": "chatcmpl-8c5c899c2e8ffe55",
+        "kv_transfer_params": null,
+        "metrics": null,
+        "model": "qwen3-8b",
+        "object": "chat.completion",
+        "prompt_logprobs": null,
+        "prompt_text": null,
+        "prompt_token_ids": null,
+        "service_tier": null,
+        "system_fingerprint": "vllm-0.31.0-14285958",
+        "usage": {
+          "completion_tokens": 91,
+          "completion_tokens_details": null,
+          "prompt_tokens": 433,
+          "prompt_tokens_details": null,
+          "total_tokens": 524
+        }
+      }
+    }
+  ],
+  "elapsed_seconds": 14.313111208030023,
+  "ended_utc": "2026-11-08T10:52:31.011396+00:00",
+  "finish_reason": "stop",
+  "initial_messages_hash": "f5c0cb0296a485c2a26b7fb1bca293e82f4d1b8b8eb00eb437125bd1e1a8e604",
+  "manifest_hash": "8760296232ac2350d8875b9533a3598a9d0b5fccf359b69e7486d7dea6c91cbe",
+  "parsed": {
+    "answer": 100.0,
+    "confidence": 100,
+    "decision": "accept",
+    "reason": "The code correctly calculates the mean of the 'value' column for rows where 'group' is 'a'. The partial table evidence shows alternating values of 99.0 and 101.0, which average to 100.0. The tool result matches this expected mean."
+  },
+  "raw": "{\"decision\": \"accept\", \"confidence\": 100, \"answer\": 100.0, \"reason\": \"The code correctly calculates the mean of the 'value' column for rows where 'group' is 'a'. The partial table evidence shows alternating values of 99.0 and 101.0, which average to 100.0. The tool result matches this expected mean.\"}",
+  "response_model": "qwen3-8b",
+  "started_utc": "2026-11-08T10:52:16.698231+00:00",
+  "status": "completed",
+  "unit_id": "synthetic_smoke__expA_0__clean__raw",
+  "valid": true
+}

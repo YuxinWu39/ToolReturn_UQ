@@ -668,3 +668,23 @@ Verdict: continue fixed810 roster for intact B-A primary; C only engineering dia
 Cost: main1030 logical requests/1031 HTTP attempts, one503 retried;
 reported total tokens1959544. Engineering smoke6 trajectories/8 requests separate.
 Verdict: PASS scoped B-A primary; C not eligible as uniform computation control.
+
+## Step: Qwen3-8B Experiment A replication (A-MONITOR-QWEN) — 2026-11-08
+
+1 Protocol: 25e8b8d (amendment + runner + frozen 540-unit manifest digest 24a2a9e7...)
+  committed before any Qwen request; parent Gemini manifest digest 350f5a3b... verified.
+2 Infra: existing private g5.2xlarge i-0c3eecdaee5cf642b (no-ingress SG, no public IP,
+  SSM only) started; vLLM Qwen/Qwen3-8B bound to 127.0.0.1:8000 (cached weights,
+  HF offline); local SSM port-forward 127.0.0.1:18000. No SG/IAM/network changes.
+  Instance stopped and tunnel closed after collection.
+3 Smoke: 4 synthetic raw/check units, strict-valid, excluded from efficacy.
+4 Collection: 540/540 completed, 8 workers, ~6 min; all finish_reason=stop, 540 HTTP
+  attempts, no retries; response model qwen3-8b on every record.
+5 Primary: D-diff 0.550 [0.306, 0.756]; clean diff -0.067 [-0.111, -0.022]; joint
+  rule FALSE (clean guard). Valid-triplet sensitivity identical (no invalid replies).
+6 Exploratory flag-only: check minus flag-only Qwen -0.028 [-0.061, 0.000], Gemini
+  -0.017 [-0.078, 0.039]; Qwen flag following 0/120 flagged accepted, 0/150
+  compatible rejected.
+7 Scope: reused queries, six table clusters, upward errors only, one completion/cell;
+  no recovery/cost/placement claim. Verdict: primary discrimination gain replicates
+  with a failed clean guard; aided models do not exceed the flag policy.

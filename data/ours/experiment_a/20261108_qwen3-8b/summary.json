@@ -1,0 +1,461 @@
+{
+  "analysis_provenance": {
+    "numpy": "2.5.4",
+    "pandas": "3.1.0",
+    "python": "3.12.11",
+    "script_sha256": "1b5786a021e142340cf74b04d90f6b0ceae204fa3ef20d201bfee8a2aa299e71"
+  },
+  "cells": {
+    "check": {
+      "clean": {
+        "accept": 84,
+        "adopted_wrong": 0,
+        "correct_numeric": 84,
+        "invalid": 0,
+        "n": 90,
+        "null": 6,
+        "numeric_answer_coverage": 0.9333333333333333,
+        "reject": 3,
+        "uncertain": 3,
+        "valid": 90,
+        "wrong_numeric": 0
+      },
+      "scale110": {
+        "accept": 49,
+        "adopted_wrong": 49,
+        "correct_numeric": 0,
+        "invalid": 0,
+        "n": 90,
+        "null": 41,
+        "numeric_answer_coverage": 0.5444444444444444,
+        "reject": 40,
+        "uncertain": 1,
+        "valid": 90,
+        "wrong_numeric": 49
+      },
+      "scale150": {
+        "accept": 13,
+        "adopted_wrong": 13,
+        "correct_numeric": 0,
+        "invalid": 0,
+        "n": 90,
+        "null": 77,
+        "numeric_answer_coverage": 0.14444444444444443,
+        "reject": 77,
+        "uncertain": 0,
+        "valid": 90,
+        "wrong_numeric": 13
+      }
+    },
+    "raw": {
+      "clean": {
+        "accept": 90,
+        "adopted_wrong": 0,
+        "correct_numeric": 90,
+        "invalid": 0,
+        "n": 90,
+        "null": 0,
+        "numeric_answer_coverage": 1.0,
+        "reject": 0,
+        "uncertain": 0,
+        "valid": 90,
+        "wrong_numeric": 0
+      },
+      "scale110": {
+        "accept": 90,
+        "adopted_wrong": 90,
+        "correct_numeric": 0,
+        "invalid": 0,
+        "n": 90,
+        "null": 0,
+        "numeric_answer_coverage": 1.0,
+        "reject": 0,
+        "uncertain": 0,
+        "valid": 90,
+        "wrong_numeric": 90
+      },
+      "scale150": {
+        "accept": 83,
+        "adopted_wrong": 83,
+        "correct_numeric": 0,
+        "invalid": 0,
+        "n": 90,
+        "null": 7,
+        "numeric_answer_coverage": 0.9222222222222223,
+        "reject": 6,
+        "uncertain": 1,
+        "valid": 90,
+        "wrong_numeric": 83
+      }
+    }
+  },
+  "completed": 540,
+  "expected": 540,
+  "exploratory_flag_only": {
+    "gemini-3.8-flash": {
+      "check_minus_flag_only": {
+        "clean_acceptance": {
+          "ci95": [
+            0.0,
+            0.07777777777777778
+          ],
+          "mean": 0.03333333333333333
+        },
+        "discrimination": {
+          "ci95": [
+            -0.07777777777777779,
+            0.038888888888888896
+          ],
+          "mean": -0.016666666666666673
+        },
+        "evidence_units": 90,
+        "per_table": {
+          "public_abalone.csv": {
+            "clean_acceptance": 0.06666666666666667,
+            "discrimination": -0.13333333333333336
+          },
+          "public_auto_mpg_v4.csv": {
+            "clean_acceptance": 0.13333333333333333,
+            "discrimination": 0.1
+          },
+          "public_bike_v4.csv": {
+            "clean_acceptance": 0.0,
+            "discrimination": -0.03333333333333333
+          },
+          "public_penguins_v3.csv": {
+            "clean_acceptance": 0.0,
+            "discrimination": 0.0
+          },
+          "public_student.csv": {
+            "clean_acceptance": 0.0,
+            "discrimination": -0.06666666666666668
+          },
+          "public_wine_quality.csv": {
+            "clean_acceptance": 0.0,
+            "discrimination": 0.03333333333333333
+          }
+        },
+        "queries": 30,
+        "status": "descriptive-paired-table-bootstrap",
+        "tables": 6
+      },
+      "flag_only_minus_raw": {
+        "clean_acceptance": {
+          "ci95": [
+            -0.06666666666666667,
+            0.044444444444444446
+          ],
+          "mean": -0.011111111111111115
+        },
+        "discrimination": {
+          "ci95": [
+            0.07777777777777777,
+            0.15555555555555556
+          ],
+          "mean": 0.1111111111111111
+        },
+        "evidence_units": 90,
+        "per_table": {
+          "public_abalone.csv": {
+            "clean_acceptance": -0.06666666666666667,
+            "discrimination": 0.2
+          },
+          "public_auto_mpg_v4.csv": {
+            "clean_acceptance": -0.13333333333333333,
+            "discrimination": 0.06666666666666665
+          },
+          "public_bike_v4.csv": {
+            "clean_acceptance": 0.06666666666666667,
+            "discrimination": 0.13333333333333336
+          },
+          "public_penguins_v3.csv": {
+            "clean_acceptance": 0.0,
+            "discrimination": 0.13333333333333333
+          },
+          "public_student.csv": {
+            "clean_acceptance": 0.0,
+            "discrimination": 0.06666666666666668
+          },
+          "public_wine_quality.csv": {
+            "clean_acceptance": 0.06666666666666667,
+            "discrimination": 0.06666666666666667
+          }
+        },
+        "queries": 30,
+        "status": "descriptive-paired-table-bootstrap",
+        "tables": 6
+      }
+    },
+    "note": "Registered in A-MONITOR-QWEN after seeing Gemini results; exploratory, descriptive.",
+    "qwen3-8b": {
+      "check_minus_flag_only": {
+        "clean_acceptance": {
+          "ci95": [
+            -0.07777777777777778,
+            0.0
+          ],
+          "mean": -0.03333333333333333
+        },
+        "discrimination": {
+          "ci95": [
+            -0.061111111111111116,
+            0.0
+          ],
+          "mean": -0.02777777777777778
+        },
+        "evidence_units": 90,
+        "per_table": {
+          "public_abalone.csv": {
+            "clean_acceptance": 0.0,
+            "discrimination": 0.0
+          },
+          "public_auto_mpg_v4.csv": {
+            "clean_acceptance": 0.0,
+            "discrimination": 0.0
+          },
+          "public_bike_v4.csv": {
+            "clean_acceptance": -0.06666666666666667,
+            "discrimination": -0.06666666666666667
+          },
+          "public_penguins_v3.csv": {
+            "clean_acceptance": 0.0,
+            "discrimination": 0.0
+          },
+          "public_student.csv": {
+            "clean_acceptance": -0.13333333333333333,
+            "discrimination": -0.1
+          },
+          "public_wine_quality.csv": {
+            "clean_acceptance": 0.0,
+            "discrimination": 0.0
+          }
+        },
+        "queries": 30,
+        "status": "descriptive-paired-table-bootstrap",
+        "tables": 6
+      },
+      "flag_only_minus_raw": {
+        "clean_acceptance": {
+          "ci95": [
+            -0.07777777777777778,
+            0.0
+          ],
+          "mean": -0.03333333333333333
+        },
+        "discrimination": {
+          "ci95": [
+            0.3666666666666667,
+            0.7555555555555555
+          ],
+          "mean": 0.5777777777777777
+        },
+        "evidence_units": 90,
+        "per_table": {
+          "public_abalone.csv": {
+            "clean_acceptance": -0.06666666666666667,
+            "discrimination": 0.5333333333333333
+          },
+          "public_auto_mpg_v4.csv": {
+            "clean_acceptance": -0.13333333333333333,
+            "discrimination": 0.7666666666666667
+          },
+          "public_bike_v4.csv": {
+            "clean_acceptance": 0.0,
+            "discrimination": 0.4666666666666666
+          },
+          "public_penguins_v3.csv": {
+            "clean_acceptance": 0.0,
+            "discrimination": 0.9
+          },
+          "public_student.csv": {
+            "clean_acceptance": 0.0,
+            "discrimination": 0.13333333333333336
+          },
+          "public_wine_quality.csv": {
+            "clean_acceptance": 0.0,
+            "discrimination": 0.6666666666666666
+          }
+        },
+        "queries": 30,
+        "status": "descriptive-paired-table-bootstrap",
+        "tables": 6
+      }
+    }
+  },
+  "flag_following": {
+    "accepted_flagged": 0,
+    "by_level": {
+      "clean": {
+        "compatible": {
+          "accept": 84,
+          "invalid": 0,
+          "reject": 0,
+          "uncertain": 3
+        },
+        "flagged": {
+          "accept": 0,
+          "invalid": 0,
+          "reject": 3,
+          "uncertain": 0
+        }
+      },
+      "scale110": {
+        "compatible": {
+          "accept": 49,
+          "invalid": 0,
+          "reject": 0,
+          "uncertain": 1
+        },
+        "flagged": {
+          "accept": 0,
+          "invalid": 0,
+          "reject": 40,
+          "uncertain": 0
+        }
+      },
+      "scale150": {
+        "compatible": {
+          "accept": 13,
+          "invalid": 0,
+          "reject": 0,
+          "uncertain": 0
+        },
+        "flagged": {
+          "accept": 0,
+          "invalid": 0,
+          "reject": 77,
+          "uncertain": 0
+        }
+      }
+    },
+    "compatible": 150,
+    "flagged": 120,
+    "rejected_compatible": 0
+  },
+  "limits": [
+    "Same 30 reused queries/six tables as Gemini Experiment A; no fresh-table generalization.",
+    "Three row draws/query are not extra queries or tables; one completion per cell.",
+    "B-A tests the full check-aid package, not warning text versus statistical content.",
+    "Flag-only comparison was specified after seeing Gemini results; exploratory.",
+    "Qwen and Gemini sampling settings differ; no model-comparison test.",
+    "No end-to-end recovery, cost or runtime-placement claim; null is not correct."
+  ],
+  "manifest_digest": "24a2a9e763f44fd09a0205ed03e121bd10ff46d899531d7cdeb50f42a657bc7e",
+  "model": "qwen3-8b",
+  "parent_manifest_digest": "350f5a3b18b97b434b517e9b08011f19c6c92c682e71abebde214ef66dcc6a07",
+  "primary": {
+    "clean_acceptance": {
+      "ci95": [
+        -0.1111111111111111,
+        -0.022222222222222223
+      ],
+      "mean": -0.06666666666666667
+    },
+    "discrimination": {
+      "ci95": [
+        0.3055555555555555,
+        0.7555555555555555
+      ],
+      "mean": 0.5499999999999999
+    },
+    "evidence_units": 90,
+    "per_table": {
+      "public_abalone.csv": {
+        "clean_acceptance": -0.06666666666666667,
+        "discrimination": 0.5333333333333333
+      },
+      "public_auto_mpg_v4.csv": {
+        "clean_acceptance": -0.13333333333333333,
+        "discrimination": 0.7666666666666667
+      },
+      "public_bike_v4.csv": {
+        "clean_acceptance": -0.06666666666666667,
+        "discrimination": 0.4
+      },
+      "public_penguins_v3.csv": {
+        "clean_acceptance": 0.0,
+        "discrimination": 0.9
+      },
+      "public_student.csv": {
+        "clean_acceptance": -0.13333333333333333,
+        "discrimination": 0.03333333333333334
+      },
+      "public_wine_quality.csv": {
+        "clean_acceptance": 0.0,
+        "discrimination": 0.6666666666666666
+      }
+    },
+    "queries": 30,
+    "registered_joint_rule_met": false,
+    "status": "descriptive-paired-table-bootstrap",
+    "tables": 6
+  },
+  "protocol": "A-MONITOR-QWEN",
+  "sampling": {
+    "chat_template_kwargs": {
+      "enable_thinking": false
+    },
+    "max_tokens": 1536,
+    "seed": 0,
+    "temperature": 0.7
+  },
+  "status": "final-descriptive-intervention",
+  "usage": {
+    "check": {
+      "completion_tokens": 19908,
+      "prompt_tokens": 465898,
+      "total_tokens": 485806
+    },
+    "raw": {
+      "completion_tokens": 23735,
+      "prompt_tokens": 426951,
+      "total_tokens": 450686
+    }
+  },
+  "valid_triplet_sensitivity": {
+    "clean_acceptance": {
+      "ci95": [
+        -0.1111111111111111,
+        -0.022222222222222223
+      ],
+      "mean": -0.06666666666666667
+    },
+    "discrimination": {
+      "ci95": [
+        0.3055555555555555,
+        0.7555555555555555
+      ],
+      "mean": 0.5499999999999999
+    },
+    "evidence_units": 90,
+    "per_table": {
+      "public_abalone.csv": {
+        "clean_acceptance": -0.06666666666666667,
+        "discrimination": 0.5333333333333333
+      },
+      "public_auto_mpg_v4.csv": {
+        "clean_acceptance": -0.13333333333333333,
+        "discrimination": 0.7666666666666667
+      },
+      "public_bike_v4.csv": {
+        "clean_acceptance": -0.06666666666666667,
+        "discrimination": 0.4
+      },
+      "public_penguins_v3.csv": {
+        "clean_acceptance": 0.0,
+        "discrimination": 0.9
+      },
+      "public_student.csv": {
+        "clean_acceptance": -0.13333333333333333,
+        "discrimination": 0.03333333333333334
+      },
+      "public_wine_quality.csv": {
+        "clean_acceptance": 0.0,
+        "discrimination": 0.6666666666666666
+      }
+    },
+    "queries": 30,
+    "status": "descriptive-paired-table-bootstrap",
+    "tables": 6
+  }
+}

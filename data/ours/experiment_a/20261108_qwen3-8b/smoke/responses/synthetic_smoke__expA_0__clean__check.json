@@ -1,0 +1,82 @@
+{
+  "calls": [
+    {
+      "attempts": [
+        {
+          "attempt": 0,
+          "elapsed_seconds": 2.269165207981132,
+          "started_utc": "2026-11-08T10:52:29.755909+00:00",
+          "status": "success"
+        }
+      ],
+      "messages": [
+        {
+          "content": "You are auditing a scalar returned by a data-analysis tool. Assess the candidate using the query, code and partial table evidence. The rows shown are a sample, not the full population. The query asks for the full-table mean, not just the sample mean. You cannot access the population table or ground truth. Do not assume that a candidate is correct or incorrect. You may accept, reject or remain uncertain and may abstain from a final numeric answer. Return exactly one JSON object, no markdown, with decision (accept/reject/uncertain), confidence (integer 0..100 in correctness of the candidate), answer (finite numeric answer to the full-table query, or null), and reason (a brief string). No other fields.\nThe attached sample-based check is computed from exactly these visible rows using the query's filtered mean and 2,000 bootstrap resamples. It supplies a percentile interval and a candidate flag. A flag suggests incompatibility with that sample-based check; no flag does not certify correctness. It supplies no population answer. Make your own final audit decision.",
+          "role": "system"
+        },
+        {
+          "content": "QUERY\nWhat is the mean value for group a over all matching rows in the full table?\nTOOL CODE\ndf[df['group']=='a']['value'].mean()\nPARTIAL TABLE EVIDENCE\n{\"columns\": [\"group\", \"value\"], \"dtypes\": {\"group\": \"object\", \"value\": \"float64\"}, \"rows_csv\": \"group,value\\na,99.0\\na,101.0\\na,99.0\\na,101.0\\na,99.0\\na,101.0\\na,99.0\\na,101.0\\na,99.0\\na,101.0\\na,99.0\\na,101.0\\na,99.0\\na,101.0\\na,99.0\\na,101.0\\na,99.0\\na,101.0\\na,99.0\\na,101.0\\n\", \"sampling_rule\": \"20 matching rows from synthetic test table\", \"shape\": [200, 2]}\nTOOL RESULT\n{\"value\": 100.0}\nSAMPLE-BASED CHECK\n{\"flag\": false, \"interval\": [99.6, 100.4], \"method\": \"bootstrap_filtered_mean\", \"score\": 0.0, \"visible_matching_rows\": 20}",
+          "role": "user"
+        }
+      ],
+      "payload_hash": "d1f180449eb7d4baae1dc3293e76cd5c6a18a59547b7febe25c8b886b83931e5",
+      "provider_response": {
+        "choices": [
+          {
+            "finish_reason": "stop",
+            "index": 0,
+            "logprobs": null,
+            "message": {
+              "annotations": null,
+              "audio": null,
+              "content": "{\"decision\": \"accept\", \"confidence\": 100, \"answer\": 100.0, \"reason\": \"The tool result matches the sample-based check's interval and the mean value is within the bootstrap interval, indicating consistency with the data.\"}",
+              "function_call": null,
+              "reasoning": null,
+              "refusal": null,
+              "role": "assistant"
+            },
+            "routed_experts": null,
+            "stop_reason": null,
+            "token_ids": null
+          }
+        ],
+        "created": 1794135149,
+        "ec_transfer_params": null,
+        "id": "chatcmpl-b8a0ae69dfe8ed85",
+        "kv_transfer_params": null,
+        "metrics": null,
+        "model": "qwen3-8b",
+        "object": "chat.completion",
+        "prompt_logprobs": null,
+        "prompt_text": null,
+        "prompt_token_ids": null,
+        "service_tier": null,
+        "system_fingerprint": "vllm-0.31.0-14285958",
+        "usage": {
+          "completion_tokens": 56,
+          "completion_tokens_details": null,
+          "prompt_tokens": 556,
+          "prompt_tokens_details": null,
+          "total_tokens": 612
+        }
+      }
+    }
+  ],
+  "elapsed_seconds": 2.269640708982479,
+  "ended_utc": "2026-11-08T10:52:32.025543+00:00",
+  "finish_reason": "stop",
+  "initial_messages_hash": "b6886aed953e5aad508ba4b57ff9e612ff2fe8c0dfe2de54ab90912459e249ee",
+  "manifest_hash": "8760296232ac2350d8875b9533a3598a9d0b5fccf359b69e7486d7dea6c91cbe",
+  "parsed": {
+    "answer": 100.0,
+    "confidence": 100,
+    "decision": "accept",
+    "reason": "The tool result matches the sample-based check's interval and the mean value is within the bootstrap interval, indicating consistency with the data."
+  },
+  "raw": "{\"decision\": \"accept\", \"confidence\": 100, \"answer\": 100.0, \"reason\": \"The tool result matches the sample-based check's interval and the mean value is within the bootstrap interval, indicating consistency with the data.\"}",
+  "response_model": "qwen3-8b",
+  "started_utc": "2026-11-08T10:52:29.755866+00:00",
+  "status": "completed",
+  "unit_id": "synthetic_smoke__expA_0__clean__check",
+  "valid": true
+}

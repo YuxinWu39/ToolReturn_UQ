@@ -750,3 +750,59 @@ Primary raw/check payloads and grading remained unchanged across the repair.
 Do not infer generic-warning versus numerical-content mechanism, runtime placement
 necessity, new-table generalization or calibrated population noninferiority.
 Full report: docs/EXPERIMENT_A_RESULTS_2026-11-08.md.
+
+## F15 (2026-11-08) — Qwen3-8B replication of Experiment A raw/check arms (A-MONITOR-QWEN)
+
+Protocol `25e8b8d` committed before any Qwen request. Same frozen Gemini Experiment A inputs
+(540 raw/check units, unchanged messages and 0d flags); Qwen3-8B on loopback vLLM, temperature 0.7,
+seed 0, thinking disabled, max_tokens 1536; 4 excluded engineering smoke units first. 540/540
+completed, all `finish_reason=stop`, one HTTP attempt each; prompt 892,849 / completion 43,643 tokens.
+Tables below are copied from `report.md` (script `experiment_a_qwen.py report`).
+
+| Arm | Candidate | Accept | Reject | Uncertain | Invalid | Correct numeric | Null |
+|---|---|---:|---:|---:|---:|---:|---:|
+| raw | clean | 90/90 | 0 | 0 | 0 | 90 | 0 |
+| raw | scale110 | 90/90 | 0 | 0 | 0 | 0 | 0 |
+| raw | scale150 | 83/90 | 6 | 1 | 0 | 0 | 7 |
+| check | clean | 84/90 | 3 | 3 | 0 | 84 | 6 |
+| check | scale110 | 49/90 | 40 | 1 | 0 | 0 | 41 |
+| check | scale150 | 13/90 | 77 | 0 | 0 | 0 | 77 |
+
+### Registered primary: check minus raw
+
+- discrimination: 0.550 [0.306, 0.756]
+- clean_acceptance: -0.067 [-0.111, -0.022]
+- Joint benefit rule met: False.
+
+### Exploratory: flag-only policy (accept iff 0d flag absent)
+
+| Model | check minus flag-only [95%] | flag-only minus raw [95%] |
+|---|---|---|
+| qwen3-8b | -0.028 [-0.061, 0.000] | 0.578 [0.367, 0.756] |
+| gemini-3.8-flash | -0.017 [-0.078, 0.039] | 0.111 [0.078, 0.156] |
+
+Flag following (check arm): accepted 0/120 flagged candidates; rejected 0/150 compatible candidates.
+
+### Limits
+
+- Same 30 reused queries/six tables as Gemini Experiment A; no fresh-table generalization.
+- Three row draws/query are not extra queries or tables; one completion per cell.
+- B-A tests the full check-aid package, not warning text versus statistical content.
+- Flag-only comparison was specified after seeing Gemini results; exploratory.
+- Qwen and Gemini sampling settings differ; no model-comparison test.
+- No end-to-end recovery, cost or runtime-placement claim; null is not correct.
+
+**Reading.** Without the check, Qwen3-8B accepts almost every candidate (raw discrimination near zero:
+clean 90/90, x1.10 90/90, x1.50 83/90). With the check it follows the 0d flag exactly: 0/120 flagged
+candidates accepted, 0/150 compatible candidates rejected; its only deviations are 4 `uncertain`
+answers on compatible candidates. The registered discrimination gain is large (+0.550 [0.306, 0.756])
+but the **registered joint rule fails**: clean acceptance drops 6.7 pp [-11.1, -2.2], because the
+3/90 clean candidates that 0d flags are rejected and 3 more become uncertain. Report as a primary
+discrimination gain with a failed clean guard, not as joint benefit.
+
+Exploratory (registered here after seeing Gemini): for both models, the check-aided decision is not
+better than the flag alone (check minus flag-only: Qwen -0.028 [-0.061, 0.000], Gemini -0.017
+[-0.078, 0.039]). The check helps a model with little intrinsic rejection (Qwen) much more than one
+that already rejects large errors (Gemini: +0.094); in both, the aided model converges to, and does
+not exceed, the flag policy. Sampling settings differ; no model-comparison test. Same 30 reused
+queries and six tables; upward corruption only; null/abstention is not correction.
