@@ -112,6 +112,58 @@ def export(root):
         g = c['registered_gain']
         lines.append(f"| {name.removeprefix('eval_').removesuffix('_scorer')} | {fmt(c['clean_coverage'])} | {'pass' if c['gate_pass'] else 'fail'} | {g['common_tasks']} / {g['common_tables']} | {g['status']} |")
     tables['scorer'] = '\n'.join(lines)
+    # Free-running agent adoption (P4/A-P4b/A-P4-Gemini trajectories). Counting only, no estimation.
+    import sys
+    sys.path.insert(0, str(root/'experiments'))
+    from p4_common import exposure_before
+
+    def used(r):
+        return bool(r['metrics'].get('poisoned_answer_used'))
+
+    adoption_sets = [('qwen3-4b', 'T0_agent'), ('qwen3-4b', 'T1'), ('qwen3-4b', 'T3'),
+                     ('qwen3-8b', 'T0_agent'), ('qwen3-8b', 'T1'), ('gemini-3.8-flash', 'T1')]
+    adoption = {}
+    for agent, tier in adoption_sets:
+        path = f'data/ours/p4/{agent}/{tier}/toxic_seed0.jsonl'
+        raw = (root/path).read_bytes()
+        sources[path] = hashlib.sha256(raw).hexdigest()
+        runs = [json.loads(line) for line in raw.decode().splitlines() if line.strip()]
+        fired = [r for r in runs if any(e.get('was_poisoned') for e in r['tool_events'])]
+        seen = [r for r in fired if exposure_before(r, next(e for e in r['tool_events'] if e.get('was_poisoned')))['rows'] > 0]
+        unseen = [r for r in fired if r not in seen]
+        value = {'runs': len(runs), 'fired': len(fired), 'used': sum(map(used, fired)),
+                 'seen': len(seen), 'seen_used': sum(map(used, seen)),
+                 'unseen': len(unseen), 'unseen_used': sum(map(used, unseen))}
+        claims.append({'id': f'adoption:{agent}:{tier}',
+                       'statement': 'Counts of poisoned-answer use among toxic runs where the poison fired, split by whether any preview rows were shown before the poisoned call.',
+                       'limits': 'Automatic poisoned_answer_used metric; poison_once; preview exposure reconstructed from logged events; not a causal effect of previewing.',
+                       'evidence': [{'file': path, 'sha256': sources[path], 'json_pointer': None, 'value': value}]})
+        adoption[agent, tier] = value
+
+    def frac(a, b):
+        return f'{a}/{b} ({100 * a / b:.0f}%)' if b else 'n/a'
+
+    lines = ['| Agent | Preview tier | Poison fired / runs | Corrupted value used | Used, rows previewed | Used, no rows previewed |',
+             '|---|---|---|---|---|---|']
+    for (agent, tier), v in adoption.items():
+        lines.append(f"| {agent} | {tier} | {v['fired']}/{v['runs']} | {frac(v['used'], v['fired'])} | {frac(v['seen_used'], v['seen'])} | {frac(v['unseen_used'], v['unseen'])} |")
+    tables['adoption'] = '\n'.join(lines)
+
+    ks = ('5', '10', '20', '50', '100', '200')
+    curve, sanity = claim('ksweep',
+                          'Offline row-budget sweep on 168 tasks computable at every k: within-table AUROC by visible random rows.',
+                          'Random rows (agents see head rows); 0o/0o* are privileged full-table Monte Carlo references, not optimality bounds.',
+                          [('data/ours/ksweep2/summary.json', '/curve_common_tasks'),
+                           ('data/ours/ksweep2/summary.json', '/k')])
+    lines = ['| Check (within-table AUROC) | ' + ' | '.join(f'k={k}' for k in ks) + ' |', '|---|' + '---:|' * len(ks)]
+    for method, label in (('0d', '0d bootstrap check (visible rows only)'),
+                          ('0o_star', '0o* privileged reference (knows k-row sampling law)'),
+                          ('0o', '0o privileged reference (knows population answer)')):
+        lines.append(f'| {label} | ' + ' | '.join(fmt(curve[k][method]['within_table']) for k in ks) + ' |')
+    lines.append('| min sanity AUROC (0d, high/low) | ' + ' | '.join(
+        fmt(min(sanity[k]['sanity']['0d']['s_hi'], sanity[k]['sanity']['0d']['s_lo'])) for k in ks) + ' |')
+    tables['ksweep'] = '\n'.join(lines)
+
     provenance, = claim('datasets', 'Versioned source exports, counts, licenses and hashes are documented.',
                          'These describe the saved exports, not arbitrary later upstream dataset versions.',
                          [('data/ours/datasets/PROVENANCE.json', '')])
