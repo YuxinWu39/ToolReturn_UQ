@@ -317,7 +317,7 @@ def score_0o(y, dist):
 
 
 def oracle_law(fast, k, M, rng, theta):
-    """A-P3d: law of r = log(theta_hat_k / theta) (or theta_hat_k - theta when not all positive) over M
+    """A-P3d: finite Monte Carlo approximation of r = log(theta_hat_k / theta) (or theta_hat_k - theta when not all positive) over M
     random k-subsets of the full table. Returns (b_k, w_k, is_log, dist_0o) or None (> 20% undefined).
     dist_0o is the A-P3c population oracle from the same subsets, so both references share the draws."""
     outs, undefined = [], 0
@@ -343,7 +343,8 @@ def oracle_law(fast, k, M, rng, theta):
 
 def score_0o_star(y, theta_hat_draw, law):
     """A-P3d draw-conditioned oracle: how implausible the observed k-row statistic is if y were the truth,
-    given the exact k-row sampling law (bias b_k, spread w_k). (signed, unsigned) or (None, None)."""
+    using finite Monte Carlo bias/spread estimates (b_k, w_k). No optimality bound.
+    (signed, unsigned) or (None, None)."""
     if law is None or theta_hat_draw is None or (isinstance(theta_hat_draw, float) and math.isnan(theta_hat_draw)):
         return None, None
     b, w, is_log, _ = law

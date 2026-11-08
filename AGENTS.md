@@ -33,13 +33,13 @@ is excluded because under `poison_once` it trivially wins.
 | `0b` | zero-parameter | z-score of y against visible values (original tables only) |
 | `0d` | zero-parameter | re-execute the agent's own code on bootstrap resamples (size k) of the visible rows; distance outside the percentile interval; sums/counts scaled by n/k (`is_sum_type`) |
 | `0r_log` | zero-parameter reference | analytic log-ratio t-score; unfiltered mean/median only |
-| `0o` | oracle (not achievable) | true sampling law of the k-row statistic from the full table, centred on its population median ("knows the answer") |
-| `0o*` / `0o_star` | oracle (achievable bound) | same law's bias and spread, centred on the observed draw: best a k-row checker could do |
+| `0o` | privileged reference | finite full-table Monte Carlo bias/spread score, population-centred; not an optimality bound |
+| `0o*` / `0o_star` | privileged reference | finite full-table Monte Carlo bias/spread score, draw-centred; no proven achievable ceiling |
 | signal 1 | agent-intrinsic | mean token entropy over the action following the observation (A-P4b; first-token entropy is degenerate) |
 | signal 3 | agent-intrinsic | shadow verbalized confidence (0-100), negated |
 | signal 7 / C3 | learned | clean-only scorer, `experiments/scorer/`: predicts 5 quantiles of signed-log10 value; surprise = distance of y |
 
-Derived quantities: **estimator loss** = 0o* − 0d; **oracle knowledge** = 0o − 0o*.
+AUROC differences 0o* − 0d and 0o − 0o* are descriptive gaps between specified scores, not identified information components. See A-REVISION-CACHED and `docs/CURRENT_CONCLUSIONS.md`.
 
 ## 3. End-to-end pipeline
 
@@ -51,8 +51,8 @@ Run scripts from `experiments/` with the venv python. All scripts are resumable 
 | 0 | inventory of ToxicBench fields and counts | — | `inventory.py` | `data/toxicbench/` | `results/inventory.json` | F0 |
 | 1 | failure taxonomy (capability vs observation) with run-to-run noise null, G1 gate | P1, A-P1 | `taxonomy.py` | ToxicBench trajectories | `results/taxonomy/` | F1, F1' |
 | 2 | zero-parameter checks on original (tiny) tables, G2 gate | P2, A-P2, A-P3d | `range_check.py` | ToxicBench trajectories | `results/range_check/` | F2''' |
-| 3 | generate 210 large-table tasks + rule ceilings | P3, A-P3 | `gen_tasks.py` | public CSVs | `data/ours/{datasets,tasks,ceiling*.json*,dropped_tasks.jsonl}` | F3 |
-| 4 | k-sweep: information vs estimator (0d, 0r_log, 0o, 0o*) | A-P3b-d | `ksweep2.py` | `data/ours/tasks/large_tables_v2.jsonl` | `data/ours/ksweep2/` | F4''' |
+| 3 | generate 210 large-table tasks + rule-specific references | P3, A-P3 | `gen_tasks.py` | public CSVs | `data/ours/{datasets,tasks,ceiling*.json*,dropped_tasks.jsonl}` | F3 |
+| 4 | k-sweep: specified score comparison (0d, 0r_log, 0o, 0o*) | A-P3b-d | `ksweep2.py` | `data/ours/tasks/large_tables_v2.jsonl` | `data/ours/ksweep2/` | F4''' |
 | 5a | agent runs at each tier (GPU) | P4, A-P4, A-P4b | `p4_run.py` (+ `scripts/serve_vllm.sh`) | tasks + ToxicBench agent | `data/ours/p4/<agent>/<tier>/{clean_seed0,clean_seed1,toxic_seed0}.jsonl` | F5-F7 |
 | 5b | zero-parameter signals on real agent events | A-P4 | `p4_score_zeroparam.py --agent A --tier T` | P4 trajectories | `.../zeroparam_scores.jsonl` | F5, F7 |
 | 5c | agent-intrinsic signals 1 and 3 | A-P4, A-P4b | `p4_score_intrinsic.py --agent A --tier T` | P4 trajectories (runs with logprobs) | `.../intrinsic_scores.jsonl` | F6, F7 |
@@ -143,6 +143,7 @@ filter, group, log2_scale, severity_logratio, code}`. Score files: one row per s
 ## 7. Gotchas
 
 - `findings.md` keeps every superseded version (e.g. F4 -> F4' -> F4'' -> F4'''). Cite the latest unsuperseded one.
+  Current interpretation overrides historical claims as specified in F13 and `docs/CURRENT_CONCLUSIONS.md`.
   F4' refers to `ksweep.py`, which was removed (superseded by `ksweep2.py`).
 - Commit SHAs quoted in PREREGISTRATION.md / research-log.md refer to the original development history, which is
   not part of this repository. "The plan" / `agent-uq-plan-FINAL.md` refers to private planning notes, not included.
@@ -155,3 +156,7 @@ filter, group, log2_scale, severity_logratio, code}`. Score files: one row per s
   of the same task; in 4.2% of pairs the agent's code differs between the two runs (disclosed in F6).
 - Only single-scalar returns are scored; multi-number returns are out of scope for every scalar signal.
 - `gpt-5.4-mini` is registered in `p4_run.py` but has not been run.
+
+## 8. Current revision / cached analysis
+
+`experiments/audit_cached_revision.py` reads cached intrinsic/scorer/baseline files, validates support and writes a separate audit. `experiments/cached_metrics.py` carries same-task finite pairing and gate-aware reporting. `scorer/score_scorer.py --cached PATH` needs no torch/model weights. Intrinsic H1/H5 efficacy is withheld without live sanity; no global H1-confirmed label is valid across conflicting protocol versions. All six cached P5 configurations fail their own gates. Qwen context-pilot raw replies are missing; auxiliary scored records must not be represented as a full raw archive. No fresh model calls are required for these revisions.

@@ -1,5 +1,5 @@
-# Versions used for every reported number. Python 3.11+.
-# CPU-only analysis (steps 0-4) needs the first four; the P5 scorer also needs torch/transformers/peft/accelerate.
+# Historical pinned environment. Python 3.11+; the retrospective cached audit records its actual runtime in summary.json.
+# CPU-only analysis (steps 0-4) needs the first four; P5 inference/training also needs torch/transformers/peft/accelerate; --cached does not.
 # P4 agent runs additionally need a vLLM server (scripts/serve_vllm.sh), installed on the GPU machine.
 numpy==2.5.4
 pandas==3.1.0

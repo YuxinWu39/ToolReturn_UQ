@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""A-P3c + A-P3d: information vs estimator. Draws the k visible rows per (table, k, draw) with a fixed seed and adds the
-population oracle 0o (A-P3c, "not achievable"), the draw-conditioned oracle 0o* (A-P3d), the registered
-log-form 0r, sanity rows for every reference, the estimator-loss / oracle-knowledge decomposition with
-table-level CIs, T0_agent components, and B / floor sensitivities.
+"""A-P3c/d historical sampling-score comparison. Draws k visible rows with a fixed seed,
+then compares bootstrap scores with finite Monte Carlo privileged reference scores.
+A-REVISION-CACHED: legacy JSON keys containing estimator_loss/oracle_knowledge are
+retained for compatibility, but denote descriptive AUROC gaps only. No optimality,
+information ceiling, or recoverability decomposition is established.
 
     python ksweep2.py [--draws 20] [--boot 50] [--oracle-m 300] [--out ../data/ours/ksweep2]
 """
@@ -62,16 +63,16 @@ def paired_ci_table_draw(df, a, b, boot=1000, seed=0):
 
 
 def decide(ci, ref="0o_star"):
-    """A-P3d decision on the table-level CI of (ref - 0d)."""
+    """Descriptive interval bands for (ref - 0d); no information/mechanism decision."""
     if ci is None:
         return "undecidable"
     lo, hi = ci
     if lo >= -0.05 and hi <= 0.05:
-        return f"information limit ({ref} ~ 0d)"
+        return f"descriptive AUROC gap within +/-0.05 ({ref} - 0d)"
     if lo > 0.05:
-        return f"estimator loss ({ref} >> 0d): achievable bar = {ref}"
+        return f"descriptive AUROC gap >0.05 ({ref} - 0d); not an achievable bound"
     if hi < -0.05:
-        return f"artefact (0d > {ref})"
+        return f"descriptive AUROC gap <-0.05 ({ref} - 0d)"
     return "undecided"
 
 
@@ -185,7 +186,7 @@ def main():
     kcurve = kall[kall.kind.isin(["clean", "poisoned"])].copy()  # real rows; sanity rows kept in kall
 
     wt = lambda pt: float(np.mean(list(pt.values()))) if pt else None
-    summary = {"draws": args.draws, "boot": args.boot, "oracle_m": args.oracle_m, "k": {}, "T0_agent": {}, "sensitivity": {}}
+    summary = {"interpretation": "Privileged Monte Carlo reference scores, not information bounds; legacy gap keys are descriptive only (A-REVISION-CACHED)", "draws": args.draws, "boot": args.boot, "oracle_m": args.oracle_m, "k": {}, "T0_agent": {}, "sensitivity": {}}
     for k, g in kcurve.groupby("k"):
         gall = kall[kall.k == k]
         common = g.dropna(subset=["0d", "0o_star"])  # A-P3d common support

@@ -1,0 +1,246 @@
+{
+  "kind": "author-revision-resolution",
+  "source_review_commit": "89361ee",
+  "protocol_commit": "27ab078",
+  "formal_rereview": false,
+  "new_model_calls": 0,
+  "items": [
+    {
+      "id": "REV-EIC-W1",
+      "status": "addressed-by-correction",
+      "action": "Current claims narrowed; historical append-only statements superseded without altering review records or raw evidence.",
+      "evidence": [
+        "README.md",
+        "AGENTS.md",
+        "docs/CURRENT_CONCLUSIONS.md",
+        "findings.md#f13"
+      ]
+    },
+    {
+      "id": "REV-EIC-W2",
+      "status": "addressed",
+      "action": "Official v2/v1 nearest-work comparison; corrected Qwen3-8B and entropy definitions; no first-ever claim.",
+      "evidence": [
+        "docs/RELATED_WORK_POSITIONING.md",
+        "research-state.yaml"
+      ]
+    },
+    {
+      "id": "REV-EIC-W3",
+      "status": "addressed-by-correction",
+      "action": "Current claims narrowed; historical append-only statements superseded without altering review records or raw evidence.",
+      "evidence": [
+        "README.md",
+        "AGENTS.md",
+        "docs/CURRENT_CONCLUSIONS.md",
+        "findings.md#f13"
+      ]
+    },
+    {
+      "id": "REV-EIC-W4",
+      "status": "addressed-by-correction",
+      "action": "Current claims narrowed; historical append-only statements superseded without altering review records or raw evidence.",
+      "evidence": [
+        "README.md",
+        "AGENTS.md",
+        "docs/CURRENT_CONCLUSIONS.md",
+        "findings.md#f13"
+      ]
+    },
+    {
+      "id": "REV-EIC-W5",
+      "status": "addressed-by-narrowing-archive-still-missing",
+      "action": "Qwen pilot auxiliary scored records only; no raw-response claims. Original raw recovery remains open; no regeneration.",
+      "evidence": [
+        "README.md",
+        "docs/CURRENT_CONCLUSIONS.md",
+        "research-state.yaml"
+      ]
+    },
+    {
+      "id": "REV-EIC-W6",
+      "status": "addressed",
+      "action": "Preserved distinct protocol versions; paired diagnostic reanalysis; global confirmation withdrawn; current hypothesis states reconciled.",
+      "evidence": [
+        "docs/HYPOTHESIS_LEDGER_2026-11-07.md",
+        "data/ours/revision_cached/20261107/report.md",
+        "PREREGISTRATION.md"
+      ]
+    },
+    {
+      "id": "REV-R1-W1",
+      "status": "addressed-by-correction",
+      "action": "Current claims narrowed; historical append-only statements superseded without altering review records or raw evidence.",
+      "evidence": [
+        "README.md",
+        "AGENTS.md",
+        "docs/CURRENT_CONCLUSIONS.md",
+        "findings.md#f13"
+      ]
+    },
+    {
+      "id": "REV-R1-W2",
+      "status": "addressed",
+      "action": "Preserved distinct protocol versions; paired diagnostic reanalysis; global confirmation withdrawn; current hypothesis states reconciled.",
+      "evidence": [
+        "docs/HYPOTHESIS_LEDGER_2026-11-07.md",
+        "data/ours/revision_cached/20261107/report.md",
+        "PREREGISTRATION.md"
+      ]
+    },
+    {
+      "id": "REV-R1-W3",
+      "status": "addressed",
+      "action": "Constant tables=0.5, finite same-task controls, cached-only mode, support validation; P5 gain withheld after failed gate. No valid-detector gain claim.",
+      "evidence": [
+        "experiments/cached_metrics.py",
+        "experiments/scorer/score_scorer.py",
+        "experiments/test_cached_metrics.py",
+        "data/ours/revision_cached/20261107/summary.json"
+      ]
+    },
+    {
+      "id": "REV-R1-W4",
+      "status": "addressed",
+      "action": "Constant tables=0.5, finite same-task controls, cached-only mode, support validation; P5 gain withheld after failed gate. No valid-detector gain claim.",
+      "evidence": [
+        "experiments/cached_metrics.py",
+        "experiments/scorer/score_scorer.py",
+        "experiments/test_cached_metrics.py",
+        "data/ours/revision_cached/20261107/summary.json"
+      ]
+    },
+    {
+      "id": "REV-R1-W5",
+      "status": "addressed-by-narrowing-archive-still-missing",
+      "action": "Qwen pilot auxiliary scored records only; no raw-response claims. Original raw recovery remains open; no regeneration.",
+      "evidence": [
+        "README.md",
+        "docs/CURRENT_CONCLUSIONS.md",
+        "research-state.yaml"
+      ]
+    },
+    {
+      "id": "REV-R1-W6",
+      "status": "addressed-by-correction",
+      "action": "Current claims narrowed; historical append-only statements superseded without altering review records or raw evidence.",
+      "evidence": [
+        "README.md",
+        "AGENTS.md",
+        "docs/CURRENT_CONCLUSIONS.md",
+        "findings.md#f13"
+      ]
+    },
+    {
+      "id": "REV-R2-W1",
+      "status": "addressed-by-correction",
+      "action": "Current claims narrowed; historical append-only statements superseded without altering review records or raw evidence.",
+      "evidence": [
+        "README.md",
+        "AGENTS.md",
+        "docs/CURRENT_CONCLUSIONS.md",
+        "findings.md#f13"
+      ]
+    },
+    {
+      "id": "REV-R2-W2",
+      "status": "addressed",
+      "action": "Official v2/v1 nearest-work comparison; corrected Qwen3-8B and entropy definitions; no first-ever claim.",
+      "evidence": [
+        "docs/RELATED_WORK_POSITIONING.md",
+        "research-state.yaml"
+      ]
+    },
+    {
+      "id": "REV-R2-W3",
+      "status": "addressed-by-correction",
+      "action": "Current claims narrowed; historical append-only statements superseded without altering review records or raw evidence.",
+      "evidence": [
+        "README.md",
+        "AGENTS.md",
+        "docs/CURRENT_CONCLUSIONS.md",
+        "findings.md#f13"
+      ]
+    },
+    {
+      "id": "REV-R2-W4",
+      "status": "addressed-by-correction",
+      "action": "Current claims narrowed; historical append-only statements superseded without altering review records or raw evidence.",
+      "evidence": [
+        "README.md",
+        "AGENTS.md",
+        "docs/CURRENT_CONCLUSIONS.md",
+        "findings.md#f13"
+      ]
+    },
+    {
+      "id": "REV-R3-W1",
+      "status": "addressed-by-correction",
+      "action": "Current claims narrowed; historical append-only statements superseded without altering review records or raw evidence.",
+      "evidence": [
+        "README.md",
+        "AGENTS.md",
+        "docs/CURRENT_CONCLUSIONS.md",
+        "findings.md#f13"
+      ]
+    },
+    {
+      "id": "REV-R3-W2",
+      "status": "addressed-by-narrowing-archive-still-missing",
+      "action": "Qwen pilot auxiliary scored records only; no raw-response claims. Original raw recovery remains open; no regeneration.",
+      "evidence": [
+        "README.md",
+        "docs/CURRENT_CONCLUSIONS.md",
+        "research-state.yaml"
+      ]
+    },
+    {
+      "id": "REV-R3-W3",
+      "status": "addressed",
+      "action": "Ordered 23/27 first-call outcomes and 10 success-before-error counts; no verification-intent inference.",
+      "evidence": [
+        "experiments/audit_gemini_recovery.py",
+        "docs/CURRENT_CONCLUSIONS.md"
+      ]
+    },
+    {
+      "id": "REV-R3-W4",
+      "status": "addressed-by-scope",
+      "action": "Permissions, offline computation and observed actions separated; deployment latency/net-cost benefits expressly unmeasured.",
+      "evidence": [
+        "docs/CURRENT_CONCLUSIONS.md"
+      ]
+    },
+    {
+      "id": "REV-DA-M1",
+      "status": "addressed-by-correction",
+      "action": "Current claims narrowed; historical append-only statements superseded without altering review records or raw evidence.",
+      "evidence": [
+        "README.md",
+        "AGENTS.md",
+        "docs/CURRENT_CONCLUSIONS.md",
+        "findings.md#f13"
+      ]
+    },
+    {
+      "id": "REV-DA-M2",
+      "status": "addressed-by-correction",
+      "action": "Current claims narrowed; historical append-only statements superseded without altering review records or raw evidence.",
+      "evidence": [
+        "README.md",
+        "AGENTS.md",
+        "docs/CURRENT_CONCLUSIONS.md",
+        "findings.md#f13"
+      ]
+    }
+  ],
+  "verification": {
+    "unit_tests": 17,
+    "p4_common": "ALL PASS",
+    "zeroparam": "ALL PASS; 63000 alignment evaluations, 0 mismatches",
+    "hashed_inputs": 17,
+    "original_inputs_preserved": true,
+    "narrow_read_only_subagent": "no-blocking-defect",
+    "formal_five_seat_rereview": false
+  }
+}

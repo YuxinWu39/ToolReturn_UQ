@@ -10,20 +10,22 @@ epistemic (std of q50). Reports within-table AUROC + 6-table CI, sanity rows (y*
 """
 import argparse
 import json
-import math
+import sys
 from pathlib import Path
 
 import numpy as np
 import pandas as pd
-import torch
-from sklearn.metrics import roc_auc_score
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from cached_metrics import scorer_summary
 
-from train_scorer import QUANTILES, QuantileScorer, load_backbone
+QUANTILES = [0.05, 0.25, 0.5, 0.75, 0.95]
 
 HERE = Path(__file__).resolve().parent
 
 
 def load_member(path, device):
+    import torch
+    from train_scorer import QuantileScorer, load_backbone
     meta = json.loads((path / "meta.json").read_text())
     tok, bb, _ = load_backbone(meta["model"], lora=False, device=device)
     if (path / "adapter").exists():
@@ -36,12 +38,13 @@ def load_member(path, device):
     return meta, tok, m.to(device).eval()
 
 
-@torch.no_grad()
 def predict(tok, model, texts, device, max_len, batch=16):
+    import torch
     out = []
     for b in range(0, len(texts), batch):
         enc = tok(texts[b:b + batch], padding=True, truncation=True, max_length=max_len, return_tensors="pt").to(device)
-        out.append(model(enc["input_ids"], enc["attention_mask"]).float().cpu().numpy())
+        with torch.no_grad():
+            out.append(model(enc["input_ids"], enc["attention_mask"]).float().cpu().numpy())
     return np.concatenate(out) if out else np.zeros((0, len(QUANTILES)))
 
 
@@ -57,12 +60,27 @@ def signed_log(y):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--members", nargs="+", type=Path, required=True)
-    ap.add_argument("--eval", type=Path, required=True)
+    ap.add_argument("--members", nargs="+", type=Path)
+    ap.add_argument("--cached", type=Path, help="summarize saved predictions without loading torch or model weights")
+    ap.add_argument("--eval", type=Path)
     ap.add_argument("--smoke-eval", action="store_true", help="apply every member to every table regardless of holdout (pipeline check only)")
     ap.add_argument("--max-len", type=int, default=1024)
     ap.add_argument("--out", type=Path, default=None)
     a = ap.parse_args()
+    if a.cached:
+        if a.members or a.eval:
+            ap.error("--cached cannot be combined with --members/--eval")
+        E = pd.read_json(a.cached, lines=True)
+        report = scorer_summary(E)
+        text = json.dumps(report, indent=2, allow_nan=False)
+        if a.out:
+            a.out.write_text(text + "\n")
+        else:
+            print(text)
+        return
+    if not a.members or not a.eval:
+        ap.error("inference requires --members and --eval; use --cached for saved predictions")
+    import torch
     device = "cuda" if torch.cuda.is_available() else ("mps" if torch.backends.mps.is_available() else "cpu")
     E = pd.DataFrame([json.loads(l) for l in a.eval.open() if l.strip()])
     texts = E.text.tolist(); t = E.t.to_numpy()
@@ -89,26 +107,12 @@ def main():
     out = a.out or a.eval.with_name(a.eval.stem + "_scorer.jsonl")
     E.to_json(out, orient="records", lines=True)
 
-    auc = lambda g, c: (lambda h: None if h.label.nunique() < 2 or h[c].nunique() < 2 else float(roc_auc_score(h.label, h[c])))(g.dropna(subset=[c]))
-    def within(g, c):
-        per = [auc(x, c) for _, x in g.groupby("table")]; per = [p for p in per if p is not None]
-        if not per: return None, None
-        rs = np.random.default_rng(1); bs = [np.mean(rs.choice(per, len(per), replace=True)) for _ in range(2000)]
-        return float(np.mean(per)), [float(np.percentile(bs, 2.5)), float(np.percentile(bs, 97.5))]
-    f = lambda x: "  NA " if x is None else f"{x:.3f}"
-    scored = E.dropna(subset=["surprise"])
-    ps = scored[scored.severity.isin(["plausible", "subtle"])]
-    cov = float(((clean.t >= E.loc[clean.index, "q05"]) & (clean.t <= E.loc[clean.index, "q95"])).mean())
-    print(f"\n{a.eval.name}: {len(scored)} events scored (pos {int(scored.label.sum())}); clean coverage in [q05,q95] = {cov:.2f} (P5 window 0.80-0.98)")
-    sh = pd.concat([clean.assign(label=0, s=E.loc[clean.index, "surprise"]), clean.assign(label=1, s=E.loc[clean.index, "s_hi"])])
-    sl = pd.concat([clean.assign(label=0, s=E.loc[clean.index, "surprise"]), clean.assign(label=1, s=E.loc[clean.index, "s_lo"])])
-    print(f"sanity: s_hi {f(auc(sh, 's'))}  s_lo {f(auc(sl, 's'))}  (hard rule > 0.95)")
-    for c in ("surprise", "epistemic"):
-        w, ci = within(scored, c); wp, cip = within(ps, c)
-        print(f"{c:10s} pooled {f(auc(scored, c))}  within {f(w)} {['%.2f'%x for x in ci] if ci else ''}  | plausible+subtle within {f(wp)} {['%.2f'%x for x in cip] if cip else ''}")
-    print("by severity (surprise):", {sv: f(auc(pd.concat([g, scored[scored.label == 0]]), "surprise")) for sv, g in scored[scored.label == 1].groupby("severity")})
-    print("by template (surprise):", {tn: f(auc(g, "surprise")) for tn, g in scored.groupby("template")})
-    print("wrote", out)
+    report = scorer_summary(E)
+    summary_path = out.with_suffix(".summary.json")
+    summary_path.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n")
+    print("clean coverage:", report["clean_coverage"], "gate:", report["gate_pass"])
+    print("real-corruption efficacy:", report["real_corruption_status"])
+    print("wrote", out, summary_path)
 
 
 if __name__ == "__main__":

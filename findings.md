@@ -602,3 +602,68 @@ Severity is tied to query. Secondary 0a passes sanity, real AUROC 0.614583; zero
 Signal persists across sampling for these selected queries, with task heterogeneity and missed subtle cases. Single-draw 0.917 and mixture 0.818 estimate different targets; their difference does not prove initial luck/bias. No new table/task generalization, model-gap replication, identified internal mechanism or new algorithm. Independent artifact/ranking review: PASS-AS-EXPLORATORY.
 
 Next: preregister fresh-table raw-rows versus same-row-statistics controls, crossing severity within each query and retaining 0d/clean/sanity. [Generated report](docs/CONTEXT_EVIDENCE_RESAMPLING_2026-11-07.md).
+
+
+## F13 (2026-11-07) — Binding author correction after five-seat review
+
+This appended interpretation supersedes historical information-ceiling, irrecoverability,
+estimator-loss and universal UQ-failure language in F4/F8 and “Central claim, reconciled”.
+Previous sections remain verbatim as provenance. The current conclusion is
+[docs/CURRENT_CONCLUSIONS.md](docs/CURRENT_CONCLUSIONS.md).
+
+0o/0o* are specified, privileged, finite Monte Carlo reference scores, not proven
+optimal detectors. AUROC differences are descriptive method gaps, not an identified
+information decomposition. Weak default-context scores do not establish impossibility.
+The earlier correction's blanket “0a/0d <=0.56” statement is withdrawn (its own
+4B T0_agent table lists 0a=0.579). Do not pool actual exposure conditions or infer
+strict absence of information from low discrimination. Current headline scope is F11/F12.
+
+Protocol 27ab078 locked the **retrospective** cached audit before these calculations.
+A-P4 subtle/AP and A-P4b P+S/upper-CI are different H1 rules. Both now have paired
+finite-score counts, AUROC/CI and AP in the generated report; H1 global confirmation
+is withdrawn and intrinsic detector efficacy withheld for missing live sanity.
+Four-B confidence P+S paired diagnostic upper CI is 0.606, not <0.60. Balanced-pair
+AP<2*base reduces to AP<1 and is weak. See the hypothesis-version ledger.
+
+All six cached P5 scorer configurations fail both sanity/coverage requirements.
+They establish only that this configuration did not yield an eligible scorer.
+The earlier claim that it “learns the scale” is an untested representation explanation,
+not an identified mechanism; optimization, objective and transfer remain alternatives.
+Constant dual-class score tables now contribute AUROC=0.5, not NA. No constant
+surprise tables occur in these six whole paired slices, so that bug repair alone
+does not change their whole-slice estimates. Per-severity controls now match tasks.
+P5 shared surprise/0d/0r_log support has been enumerated with metadata and return
+checks; the real-corruption gain remains withheld because the scorer gate fails.
+No general learned-method failure or completed valid-detector gain test is claimed.
+
+Generated audit (numbers below copied from script output):
+
+## P5 gates and common support
+
+| Cache | Coverage | High sanity | Low sanity | Constant surprise tables (all) | Common P+S pairs/tables | Gain |
+|---|---:|---:|---:|---:|---|---|
+| eval_qwen3-4b_T0_agent_scorer | 0.167 | 0.845 | 0.664 | 0 | 15/5 | withheld-scorer-gate-failed |
+| eval_qwen3-4b_T1_scorer | 0.176 | 0.852 | 0.673 | 0 | 15/5 | withheld-scorer-gate-failed |
+| eval_qwen3-4b_T1r2_scorer | 0.183 | 0.851 | 0.679 | 0 | 14/4 | withheld-scorer-gate-failed |
+| eval_qwen3-4b_T3_scorer | 0.185 | 0.826 | 0.698 | 0 | 0/0 | withheld-scorer-gate-failed |
+| eval_qwen3-8b_T0_agent_scorer | 0.176 | 0.866 | 0.640 | 0 | 29/6 | withheld-scorer-gate-failed |
+| eval_qwen3-8b_T1_scorer | 0.147 | 0.854 | 0.650 | 0 | 29/6 | withheld-scorer-gate-failed |
+
+All rows above are diagnostics. Gate-failed scorer instances cannot establish learned UQ failure or the registered gain. Constant dual-class tables now contribute 0.5; missing-class tables do not.
+
+Full JSON includes per table/severity/template metrics, finite paired coverage, pooled secondary metrics, baseline support and input SHA-256. Baseline matching checks cached return and metadata, not full raw event identity.
+
+The README and current state no longer claim that every trajectory is archived: Qwen's
+72 context-pilot raw replies are missing, so it remains auxiliary scored-record evidence.
+No missing original is replaced with a new generation. The “0 challenges” shorthand
+means zero automatic flags, not a validated annotation that no suspicion occurred.
+Recovery chronology: 50 Gemini recovery runs; first subsequent Python success/error
+23/27; 37 with any later error, including 10 with a successful Python call before the
+first later error. These counts do not identify verification intent or error causation.
+
+Nearest-work definitions are corrected from official primary text in
+[docs/RELATED_WORK_POSITIONING.md](docs/RELATED_WORK_POSITIONING.md). Evidence controls
+and return-boundary signals have prior art. Current evidence concerns selected scalar
+tasks and tested procedures; no algorithm novelty, internal mechanism, general
+information bound, latency benefit or deployed accept/retry/abstain policy is established.
+F11/F12 remain exploratory with six table clusters. No new model calls or training.

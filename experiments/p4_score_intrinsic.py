@@ -2,11 +2,11 @@
 """P4 agent-intrinsic signals (A-P4 H1): signal 1 token entropy and signal 3 shadow verbalized confidence, on the
 completion that FOLLOWS each python_exec observation. Positives = poisoned scalar python_exec observations (toxic run);
 negatives = the matching python_exec observation in the clean seed-0 run of the same task. Score direction: higher =
-more suspicious (entropy as-is; verbalized confidence negated). Within-table AUROC primary; H1 statistic = upper 95% CI
-(6-table bootstrap) on plausible+subtle.   python p4_score_intrinsic.py --agent qwen3-4b --tier T1r2
+more suspicious (entropy as-is; verbalized confidence negated). Within-table AUROC primary; historical subtle and plausible+subtle rules conflict.
+See A-REVISION-CACHED and audit_cached_revision.py; printed metrics are diagnostics, not H1 decisions.   python p4_score_intrinsic.py --agent qwen3-4b --tier T1r2
 
-2026-11-07 fix: the completion is matched to its tool event by after_observation.n_tool_turns == event.step (the
-shadow call is issued right after that observation), instead of zipping a list that had ERROR events removed against
+2026-11-07 fix: the completion is matched to its tool event by its ordinal among all tool observations, including ERRORs
+(n_tool_turns counts assistant turns and is not an event key), instead of zipping a list that had ERROR events removed against
 one that had not. The scored event must itself be a single-number observation (same rule as the zero-parameter scorer).
 """
 import argparse, json, re
@@ -61,11 +61,11 @@ def main():
     print("verbalized confidence: clean mean %.1f, poisoned mean %.1f; distribution clean %s poisoned %s" % (
         R[R.label==0].verbalized_conf.mean(), R[R.label==1].verbalized_conf.mean(),
         R[R.label==0].verbalized_conf.value_counts().head(4).to_dict(), R[R.label==1].verbalized_conf.value_counts().head(4).to_dict()))
-    print("signal                     pooled  within [CI] (tables)   | paired within [CI] (n tasks) | plaus+subtle within [CI] -> H1 (upper < 0.60?)")
+    print("signal                     pooled  within [CI] (tables)   | paired within [CI] (n tasks) | plaus+subtle within [CI] (diagnostics; no live sanity)")
     for c in ("sig3_neg_conf", "sig1_first_token_entropy", "sig1_mean_entropy", "sig1_max_entropy", "sig1_neg_sum_logprob"):
         w, ci, nt = within_table(R, c); wp, cip, _ = within_table(ps, c)
         pt = paired_tasks(R, c); wq, ciq, _ = within_table(R[R.task_id.isin(pt)], c)
-        verdict = "" if cip is None else ("H1 PASS" if cip[1] < 0.60 else "H1 FAIL")
+        verdict = "H1 decision withheld: protocol-version conflict / no live sanity"
         print(f"{c:26s} {fmt(auc(R,c))}   {fmt(w)} {fmt_ci(ci)} ({nt})   | {fmt(wq)} {fmt_ci(ciq)} ({len(pt)})   | {fmt(wp)} {fmt_ci(cip)}  {verdict}")
     sev = {}
     for sv, g in R[R.label == 1].groupby("severity"):

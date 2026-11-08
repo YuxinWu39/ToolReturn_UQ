@@ -454,3 +454,40 @@ against same-row summaries, crosses severity within each query, retains direct s
 clean and sanity, and controls added prompt/compute information. No new-table model run
 started in these two offline steps. Workshop short-paper relevance is plausible; acceptance
 and new-algorithm novelty are not inferred from pilot statistics.
+
+
+## Step: author revision / cached-output audit — 2026-11-07
+
+1. Protocol-before-results: A-REVISION-CACHED commit 27ab078 precedes this result commit.
+   Reused, previously inspected outputs are retrospective diagnostics, not confirmatory.
+2. Hypotheses served: H1 version reconciliation and P5 eligibility/common support;
+   bounded F11/F12 paper narrative. No model calls or training runs.
+3. Sanity/verification: 17 unit tests pass (6 cached-metric + 9 context evidence +
+   2 resampling); p4_common exposure/alignment/AUROC groups ALL PASS; zeroparam
+   regression ALL PASS including 25 sum cases and 63,000 alignment evaluations,
+   zero mismatches. Standalone scorer --cached sanity equals audit. All 17 input
+   hashes verified; original input files and five-seat review unchanged; append-only
+   historical prefixes preserved. Syntax and git diff --check pass.
+4. Interpretation: intrinsic efficacy withheld for absent live sanity; H1 global
+   confirmation withdrawn for conflicting rules. All six cached scorer configurations
+   fail sanity and coverage. P5 support enumerated, real-corruption gain withheld.
+5. Claim scope: 0o/0o* are finite Monte Carlo privileged reference scores, not proven
+   optimality bounds. Legacy score keys retained for compatibility but their current
+   labels are descriptive. No general learned-UQ failure or internal-mechanism claim.
+   Current conclusions/README/state and nearest-work positioning reconciled.
+6. Reviewer objection: Qwen raw pilot replies missing and public-table/12-query
+   selection restrict audit/generalization. Response: auxiliary scored-record result
+   only; no regenerated originals, no broad mechanism or deployment claim.
+   program.md milestone read-only subagent /root/revision_check found no blocking
+   issue, independently recomputed six P5 gates and verified 17 hashes. This narrow
+   check is not a formal five-seat re-review or a claim of independent human review.
+7. Workshop fitness: fixes the existing empirical argument without more inference.
+   No complete manuscript is present yet. Fresh-table raw-vs-derived-summary model
+   experiments are needed only to add the untested new mechanism/transfer claim.
+Verdict: PASS-AS-RETROSPECTIVE-AUDIT; Qwen raw archive gap remains disclosed.
+
+Outputs: data/ours/revision_cached/20261107/{summary.json,report.md};
+current conclusions docs/CURRENT_CONCLUSIONS.md; version ledger and 22-item author
+resolution in docs/HYPOTHESIS_LEDGER_2026-11-07.md and REVISION_2026-11-07.{json,md}.
+Actual analysis environment recorded in summary.json (Python 3.11.13, numpy 1.26.4,
+pandas 2.2.3, sklearn 1.7.0); not represented as the historical pinned environment.

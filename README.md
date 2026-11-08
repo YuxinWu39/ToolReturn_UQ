@@ -1,59 +1,41 @@
 # ToolReturn_UQ
 
-**Can anything tell a corrupted tool return from a clean one, at the moment an LLM agent receives it?**
+**Which checks can distinguish corrupted numeric tool returns using the evidence visible to an agent?**
 
-A data-analysis agent writes pandas code, a `python_exec` tool runs it on a CSV table and returns a number, and
-the agent reports that number as its answer. We corrupt the returned number (multiply it by 1.05-2x or the
-reciprocal) and ask which uncertainty signals can flag it, as a function of how much of the table the agent
-(and any checker limited to the agent's context) has seen.
+We study scalar pandas-tool returns on six public tables. Corruption multiplies the return by 1.05–2 or its reciprocal while leaving source data unchanged. Agent trajectories, fixed-return context pilots, and offline statistical checks answer different questions and are reported separately.
 
-## Headline results
+## Current findings and limits
 
-| Finding | Number |
-|---|---|
-| Agents (Qwen3-4B, Qwen3-8B) use the corrupted value as their answer | 83-93% of poisoned runs; 0 challenges in 3,780 trajectories |
-| Observation failures (misled by the return, not incapable), noise-corrected, original ToxicBench | 55% of failures (43% numerical) |
-| Zero-parameter checks on the rows the agent saw (head-5) | within-table AUROC 0.53-0.58 |
-| Agent-intrinsic signals (verbalized confidence, token entropy) | 0.46-0.56 |
-| Clean-only learned scorer (Qwen2.5-0.5B + LoRA, quantile head) | 0.50-0.52 (pre-registered prediction 0.55-0.70 missed) |
-| Information curve, k random visible rows: bootstrap check 0d / draw-conditioned oracle 0o* | 0.62 / 0.73 at k=5 -> 0.85 / 0.90 at k=200 |
+The current interpretation is in [CURRENT_CONCLUSIONS.md](docs/CURRENT_CONCLUSIONS.md). It supersedes stronger historical claims in the append-only findings log.
 
-Reading: under the default observation context (first 5 rows) nothing tested separates poisoned from clean
-returns; the k-sweep shows the limit is the information in the visible rows, which rises with k.
-Scope: numeric, single-scalar tool returns on tabular data; one corruption type (scaling); two open-weight
-agents from one model family. Full narrative and every caveat: [findings.md](findings.md).
+| Evidence | Result | Scope |
+|---|---|---|
+| Fixed-return context pilots, 12 queries / 6 tables | Gemini primary contrast +0.083 [−0.167, 0.333]; Qwen 0.000 [−0.333, 0.333] | No stable cross-model benefit established; not evidence of equivalence or no context effect |
+| Bootstrap check on the original matched20 packets | Flags 10/12 corrupt and 1/12 clean returns; within-table AUROC 0.917 [0.833, 1.000] | Same visible rows; structured query and extra computation differ from model prompting |
+| Independent matched20 draws, same 12 queries | Flags 161/240 corrupt and 14/240 clean; within-table mixture AUROC 0.818 [0.718, 0.915] | 20 draws/query, still only 6 table clusters; no new model responses |
+| Learned scorer, six saved agent/tier evaluations | All fail sanity and clean coverage gates | This training configuration did not yield an eligible detector; no general learned-UQ failure claim |
+| Agent confidence / entropy | Cached diagnostics available; efficacy withheld | Missing live sanity; H1 protocol versions conflict; Gemini subtle paired coverage 7/73 |
 
-## Quick start
+On the selected tasks, some statistical checks extract signal from the displayed evidence, while merely supplying query-related rows has not established reliable model checking. These experiments do not prove an information ceiling, identify an internal model mechanism, establish a new algorithm, or measure deployment benefits. The privileged Monte Carlo scores 0o/0o* are empirical references, not optimality bounds.
+
+## Reproduce cached analyses
 
 ```bash
-bash scripts/setup_toxicbench.sh                       # clone the ToxicBench dependency at the pinned commit
+bash scripts/setup_toxicbench.sh
 python3 -m venv experiments/.venv
 experiments/.venv/bin/pip install -r experiments/requirements.txt
-cd experiments
-.venv/bin/python test_zeroparam.py                     # unit tests (no GPU)
-.venv/bin/python p4_score_zeroparam.py --agent qwen3-4b --tier T1   # reproduces F5 from committed trajectories
+experiments/.venv/bin/python experiments/audit_cached_revision.py --out /tmp/toolreturn-cached-audit
+experiments/.venv/bin/python experiments/scorer/score_scorer.py --cached data/ours/scorer/eval_qwen3-4b_T1_scorer.jsonl --out /tmp/toolreturn-scorer-summary.json
 ```
 
-A Gemini Flash T1 replication adds 630 trajectories. Its output formatting leaves 7/73 subtle tasks
-with paired scalar confidence, and H5 is not confirmed. Run instructions and scope are in
-[docs/GEMINI_FLASH.md](docs/GEMINI_FLASH.md); results are in [findings.md, F9](findings.md#f9-a-p4-gemini-2026-11-07--gemini-flash-external-replication-and-scalar-coverage).
+The revision audit needs cached files and CPU libraries, not model weights or API calls. It records input hashes, paired support, table-bootstrap intervals, AP and sanity gates. See the [audit report](data/ours/revision_cached/20261107/report.md), [version ledger](docs/HYPOTHESIS_LEDGER_2026-11-07.md), [nearest-work comparison](docs/RELATED_WORK_POSITIONING.md), and [revision response](docs/REVISION_2026-11-07.md). The original five-seat review remains in [docs/final_review_2026-11-07/](docs/final_review_2026-11-07/).
 
-All agent trajectories and scored events are committed under `data/ours/`, so every number in
-`findings.md` except the agent runs themselves can be recomputed on a CPU. See [AGENTS.md](AGENTS.md) for the
-end-to-end pipeline and what every file does.
+Historical protocols are preserved in [PREREGISTRATION.md](PREREGISTRATION.md), with appended corrections. The latest cached audit is retrospective, not a new confirmatory experiment. Within-table AUROC is primary; pooled values are secondary. Failed or absent sanity gates withhold efficacy headlines.
 
-## Method in one paragraph
+## Archive and licenses
 
-Every step is pre-registered: the hypothesis, the statistic and the pass/fail threshold are written to
-[PREREGISTRATION.md](PREREGISTRATION.md) before the script that tests them produces a number, and amendments are
-appended rather than rewritten. AUROC is reported within-table (table-clustered bootstrap CI) as well as pooled,
-and every signal must pass a sanity row (an obviously corrupted value is flagged with AUROC > 0.95) before its
-real number is reported. Independent reviews of each round are in [docs/](docs/).
+Main P4 trajectories and scores are committed under `data/ours/`. The Qwen fixed-return pilot currently has configuration and scored records but lacks its 72 raw replies in this checkout; its behavior result is auxiliary and cannot support a raw-response audit. Fresh generations cannot replace the missing originals. Gemini instructions: [GEMINI_FLASH.md](docs/GEMINI_FLASH.md). Pipeline guide: [AGENTS.md](AGENTS.md).
 
-## Data and licenses
-
-- ToxicBench (turambar928/Toxic_Tool_Bench): MIT code, CC BY 4.0 data; cloned, not redistributed, except for
-  derived events in `data/ours/scorer/`.
-- Six public tables in `data/ours/datasets/` (Palmer Penguins CC0; UCI Auto MPG, Bike Sharing, Wine Quality,
-  Abalone, Student Performance, CC BY 4.0). Sources, citations and SHA-256 hashes: `data/ours/datasets/PROVENANCE.json`.
-- Agent outputs were generated with Qwen3-4B and Qwen3-8B (Apache 2.0).
+- ToxicBench dependency: MIT code, CC BY 4.0 data; cloned rather than redistributed, except derived scorer events.
+- Six public tables: Palmer Penguins CC0; UCI Auto MPG, Bike Sharing, Wine Quality, Abalone and Student Performance CC BY 4.0. [Sources, licenses and hashes](data/ours/datasets/PROVENANCE.json).
+- Open-model agent outputs: Qwen3-4B and Qwen3-8B (Apache 2.0); additional Gemini Flash outputs are separately archived.

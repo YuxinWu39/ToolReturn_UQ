@@ -1,107 +1,229 @@
 project:
-  title: "Observation-level uncertainty signals for tool-using agents"
-  question: "At the tool-return step, which uncertainty signals separate clean from corrupted tool returns, and how does that degrade as the agent has less context about what a normal return looks like?"
+  title: Observation-level uncertainty signals for tool-using agents
+  question: At the tool-return step, which uncertainty signals separate clean from corrupted tool returns, and how
+    does that degrade as the agent has less context about what a normal return looks like?
   status: active
-  started: "2026-10-31"
-  domain: "LLM agents / uncertainty quantification"
-  venue: "ICLR 2027 workshop (~2027-02-01); optional AAAI MATH4AI 4p (2026-11-20)"
-
+  started: '2026-10-31'
+  domain: LLM agents / uncertainty quantification
+  venue: ICLR 2027 workshop (~2027-02-01); optional AAAI MATH4AI 4p (2026-11-20)
 literature:
   key_papers:
-    - {id: "2609.37153", title: "ToxicBench", relevance: "env-1; paired clean/toxic runs; 26-39pt drops"}
-    - {id: "2610.10062", title: "Loud/Quiet Failures", relevance: "prompting to check has no effect; error channel not content"}
-    - {id: "2607.10059", title: "AgentAbstain", relevance: "abstention independent of capability; post-hoc abstention"}
-    - {id: "2608.22676", title: "Robustness Analysis", relevance: "nearest prior: 2 signals at return boundary, closed model, 1 domain"}
-    - {id: "2608.11552", title: "Trajectory-Adapted UQ", relevance: "multi-method comparison at trajectory level"}
-    - {id: "2610.09115", title: "VoS", relevance: "5 UQ methods at step level; no signal locates the step; no corruption"}
-    - {id: "2610.05572", title: "Difficulty vs run-level failure", relevance: "pooled AUROC is cross-unit; report within-table AUROC"}
-    - {id: "2610.30491", title: "Trace vs label", relevance: "silent tool-output override confounds C2 labels"}
+  - id: '2609.37153'
+    title: ToxicBench
+    relevance: env-1; paired clean/toxic runs; 26-39pt drops
+  - id: '2610.10062'
+    title: Loud/Quiet Failures
+    relevance: prompting to check has no effect; error channel not content
+  - id: '2607.10059'
+    title: AgentAbstain
+    relevance: abstention independent of capability; post-hoc abstention
+  - id: '2608.22676'
+    title: Robustness Analysis
+    relevance: Qwen3-8B retail paired-return study; schema/full-prefix content likelihood + legal-action distribution
+      entropy; distinct from our mean-token entropy (official v2 II-B/C)
+  - id: '2608.11552'
+    title: Trajectory-Adapted UQ
+    relevance: multi-method comparison at trajectory level
+  - id: '2610.09115'
+    title: VoS
+    relevance: 5 UQ methods at step level; no signal locates the step; no corruption
+  - id: '2610.05572'
+    title: Difficulty vs run-level failure
+    relevance: pooled AUROC is cross-unit; report within-table AUROC
+  - id: '2610.30491'
+    title: Trace vs label
+    relevance: silent tool-output override confounds C2 labels
   open_problems:
-    - "No systematic comparison of UQ signals at the observation step with context richness as the independent variable"
-    - "No capability-vs-observation failure taxonomy using paired runs"
+  - Whether controlled visible-row budgets change scalar tool-return checking, on the measured tasks
+  - Whether structured summaries derived from identical rows improve model evidence use on fresh queries (not yet
+    tested)
   evidence_gaps:
-    - "RESOLVED by P3 v2 (data/ours): 210 tasks on 6 tables of 344-17,379 rows"
-    - "Only 10 subtle numerical tasks / 32 subtle aggregate_scale events exist: H1 subtle-tier test needs regenerated severities (P3)"
-    - "Scalar zero-param methods (rule 24.5%, re-execution 44.6% scored) leave 55% of poisoned python_exec events uncovered: multi-number observations"
-    - "A-P3d: achievable ceiling (draw-conditioned oracle 0o*) at 5 random rows is 0.73, bootstrap 0d 0.62, population oracle 0o 0.79 (not achievable); estimator loss 0.11, oracle knowledge 0.06; C3 bar on slice (b) = beats max(0d, 0r_log) on the same rows; P4 places agent signals at the k they saw"
-
+  - Qwen context pilot lacks 72 original raw replies in this checkout; auxiliary scored-record evidence only
+  - Intrinsic signals lack live sanity controls; H1 protocol slice/AP versions conflict
+  - P5 scorer configurations fail sanity/coverage; registered real-corruption gain withheld
+  - 0o/0o* are finite Monte Carlo privileged references; no optimality bound or information decomposition
+  - Only 12 fixed context-pilot queries, 6 table clusters; resampled rows are not new tasks or model replies
+  - Scalar scoring excludes multi-number observations; no deployed intervention/cost benefit established
 hypotheses:
-  - {id: H1, statement: "A-P4: token entropy and verbalized, subtle log-ratio bin, T1: upper 95% CI of AUROC < 0.60 and AUPRC < 2x base rate, per open agent", status: pending, priority: high}
-  - {id: H2, statement: "A-P4: for 0d and 7 separately, AUROC minus prior (4): lower CI > 0.20 at T0_agent, upper CI < 0.10 at T1", status: pending, priority: high}
-  - {id: H3, statement: "Clean-only scorer transfers to held-out corruption types (sign_flip, label_swap): drop < 0.05; BCE classifier drop > 0.15", status: pending, priority: medium}
-  - {id: H4, statement: "Signal ranking is stable across open agents (Kendall tau > 0.7)", status: pending, priority: medium}
-  - {id: H5, statement: "Closed agents: verbalized subtle-tier AUROC < 0.60", status: not-confirmed, priority: medium, result: "A-P4-Gemini: 630 runs; subtle paired scalar 7/73 tasks, 3 tables; AUROC 0.556 [0.500,0.667]. Upper CI misses 0.60; low coverage. See F9."}
-  - {id: H6, statement: "Amended: consumed-observation-failure events have higher scorer surprise (7) and re-execution distance (0d) than capability-failure events (d > 0.5); intrinsic signals do not differ (|d| < 0.2). 0a arm removed. Exploratory if either class < 50 events", status: exploratory, priority: high, note: "25 observation-failure pairs at subtle/numerical (taxonomy 2026-10-31)"}
-  - {id: G1, statement: "PILOT GATE: observation failures >= 15% of all failures in paired runs, else C2 is dropped", status: supported, priority: high, parent: H6, result: "A-P1: excess toxic-failure 18.7pp [15.1,22.3] overall, 22.4pp numerical; noise-corrected share 0.55 / 0.43"}
-  - {id: G2, statement: "PILOT GATE: range check with min/max removed (head-5 tier) AUROC > 0.90 on aggregate_scale -> activate 'rules suffice' narrative fork and pull env-2 forward", status: expected-to-fail-by-bound, priority: high, parent: H2, result: "A-P3: hit-rate bound 0.5+0.5h = 0.84 at head-5 on plausible+subtle (< 0.90) and 0a covers 29% of tasks (< 50%); decided formally at P4"}
-
+- id: H1
+  statement: 'A-P4: token entropy and verbalized, subtle log-ratio bin, T1: upper 95% CI of AUROC < 0.60 and AUPRC
+    < 2x base rate, per open agent'
+  status: not-confirmed-version-conflict-and-missing-sanity
+  priority: high
+  result: A-P4 subtle+AP differs from A-P4b P+S upper-CI. Both cached slices audited retrospectively; see hypothesis
+    ledger.
+- id: H2
+  statement: 'A-P4: for 0d and 7 separately, AUROC minus prior (4): lower CI > 0.20 at T0_agent, upper CI < 0.10
+    at T1'
+  status: not-evaluated-as-registered
+  priority: high
+  result: Prior signal 4 not implemented; P5 is not a substitute.
+- id: H3
+  statement: 'Clean-only scorer transfers to held-out corruption types (sign_flip, label_swap): drop < 0.05; BCE
+    classifier drop > 0.15'
+  status: not-run
+  priority: medium
+  result: No held-out corruption-type transfer/BCE experiment.
+- id: H4
+  statement: Signal ranking is stable across open agents (Kendall tau > 0.7)
+  status: not-established
+  priority: medium
+  result: Incomplete signal panel and gate failures; no complete ranking stability claim.
+- id: H5
+  statement: 'Closed agents: verbalized subtle-tier AUROC < 0.60'
+  status: not-confirmed
+  priority: medium
+  result: 'A-P4-Gemini: 630 runs; subtle paired scalar 7/73 tasks, 3 tables; AUROC 0.556 [0.500,0.667]. Upper CI
+    misses 0.60; low coverage. See F9.'
+- id: H6
+  statement: 'Amended: consumed-observation-failure events have higher scorer surprise (7) and re-execution distance
+    (0d) than capability-failure events (d > 0.5); intrinsic signals do not differ (|d| < 0.2). 0a arm removed.
+    Exploratory if either class < 50 events'
+  status: exploratory
+  priority: high
+  note: 25 observation-failure pairs at subtle/numerical (taxonomy 2026-10-31)
+- id: G1
+  statement: 'A-P1 gate: excess toxic-failure over two-clean-seed noise floor, lower CI>0 overall AND numerical;
+    15% share rule retired'
+  status: supported-under-A-P1
+  priority: high
+  parent: H6
+  result: Excess toxic failure lower CI>0 overall and numerical; original 15% share criterion retired.
+- id: G2
+  statement: 'PILOT GATE: range check with min/max removed (head-5 tier) AUROC > 0.90 on aggregate_scale -> activate
+    ''rules suffice'' narrative fork and pull env-2 forward'
+  status: rules-suffice-fork-not-established
+  priority: high
+  parent: H2
+  result: A-P4 requires T1 P+S lower CI>0.90 and coverage>=50%; do not infer a general bound from the historical
+    expectation.
 experiments:
-  proxy_metric: "AUROC (pooled and within-table) + AUPRC on subtle+plausible tiers at the head-5-no-minmax context tier"
+  proxy_metric: AUROC (pooled and within-table) + AUPRC on subtle+plausible tiers at the head-5-no-minmax context
+    tier
   baseline_value: null
   best_value: null
-  total_runs: 11
+  total_runs: 13
   trajectory:
-    - {run_id: taxonomy_001, hypothesis: G1, metric_value: 0.6014, change_summary: "3633 pairs classified; silent override 8%", timestamp: "2026-10-31"}
-    - {run_id: range_check_001, hypothesis: G2, metric_value: 0.9229, change_summary: "0a@T1 aggregate_scale; coverage 283/1153 poisoned; no subtle events in scope", timestamp: "2026-10-31"}
-    - {run_id: taxonomy_002, hypothesis: G1, metric_value: 0.1873, change_summary: "A-P1 noise null; McNemar 734 vs 81", timestamp: "2026-10-31"}
-    - {run_id: range_check_002, hypothesis: H2, metric_value: 0.824, change_summary: "A-P2: 0d re-exec covers 50% poisoned at 0.82; rule 24.5% at 0.95; 50% multi-number uncovered", timestamp: "2026-10-31"}
-    - {run_id: gen_tasks_001, hypothesis: G2, metric_value: 0.567, change_summary: "P3: 180 tasks, 6 tables; 0a ceiling 0.57/0.55/0.55 by tier; 0b 0.71/0.57/0.56", timestamp: "2026-10-31"}
-    - {run_id: taxonomy_003, hypothesis: G1, metric_value: 609, change_summary: "observation split: consumed 609 / exposed-only 73", timestamp: "2026-10-31"}
-    - {run_id: gen_tasks_002, hypothesis: H2, metric_value: 0.935, change_summary: "A-P3 v2: 210 tasks; 0d full-table 0.935 / head-5 0.54 / rand-5 0.59; 0a 0.57; like-for-like control later found to be n=2 unique pairs (descriptive only)", timestamp: "2026-10-31"}
-    - {run_id: taxonomy_004, hypothesis: G1, metric_value: 0.0484, change_summary: "noise floor by model: gpt 6.5%, sonnet 1.1%, qwen 0 (n=11); reweighted 4.8%", timestamp: "2026-10-31"}
-    - {run_id: ksweep_001, hypothesis: H2, metric_value: 0.618, change_summary: "A-P3b: 0d 0.62(k5)->0.83(k200)->0.94(full); 0r withheld on sanity; T0_agent v1 withheld (combination flaw)", timestamp: "2026-10-31"}
-    - {run_id: ksweep2_001, hypothesis: H2, metric_value: 0.173, change_summary: "A-P3c: 0o oracle 0.79@k5 vs 0d 0.62; 0o-0d CI [0.16,0.19] -> estimator (SUPERSEDED: 0o does not condition on the draw)", timestamp: "2026-10-31"}
-    - {run_id: ksweep2_002, hypothesis: H2, metric_value: 0.111, change_summary: "A-P3d: 0o* draw-conditioned 0.73@k5 vs 0d 0.62; estimator loss CI [0.10,0.13] -> estimator loss; oracle knowledge 0o-0o* 0.06; unfiltered mean/median 0r_log 0.71 ~ 0o* 0.73", timestamp: "2026-10-31"}
-    - {run_id: range_check_003, hypothesis: C3, metric_value: 0.446, change_summary: "A-P3d sum-type rule reclassifies 163/1568 events; 0d head-5 sanity now passes (0.95); 0d 0.83/0.71 at head-5", timestamp: "2026-10-31"}
-
-    - {run_id: gemini_flash_t1_001, hypothesis: H5, metric_value: 0.5555555555555555, change_summary: "630 Gemini Flash T1 trajectories; H5 not confirmed on 7/73 scalar pairs. 72/128 exposed adopt, 50 recover; scoped by output format and retries", timestamp: "2026-11-07"}
-
+  - run_id: taxonomy_001
+    hypothesis: G1
+    metric_value: 0.6014
+    change_summary: 3633 pairs classified; silent override 8%
+    timestamp: '2026-10-31'
+  - run_id: range_check_001
+    hypothesis: G2
+    metric_value: 0.9229
+    change_summary: 0a@T1 aggregate_scale; coverage 283/1153 poisoned; no subtle events in scope
+    timestamp: '2026-10-31'
+  - run_id: taxonomy_002
+    hypothesis: G1
+    metric_value: 0.1873
+    change_summary: A-P1 noise null; McNemar 734 vs 81
+    timestamp: '2026-10-31'
+  - run_id: range_check_002
+    hypothesis: H2
+    metric_value: 0.824
+    change_summary: 'A-P2: 0d re-exec covers 50% poisoned at 0.82; rule 24.5% at 0.95; 50% multi-number uncovered'
+    timestamp: '2026-10-31'
+  - run_id: gen_tasks_001
+    hypothesis: G2
+    metric_value: 0.567
+    change_summary: 'P3: 180 tasks, 6 tables; 0a ceiling 0.57/0.55/0.55 by tier; 0b 0.71/0.57/0.56'
+    timestamp: '2026-10-31'
+  - run_id: taxonomy_003
+    hypothesis: G1
+    metric_value: 609
+    change_summary: 'observation split: consumed 609 / exposed-only 73'
+    timestamp: '2026-10-31'
+  - run_id: gen_tasks_002
+    hypothesis: H2
+    metric_value: 0.935
+    change_summary: 'A-P3 v2: 210 tasks; 0d full-table 0.935 / head-5 0.54 / rand-5 0.59; 0a 0.57; like-for-like
+      control later found to be n=2 unique pairs (descriptive only)'
+    timestamp: '2026-10-31'
+  - run_id: taxonomy_004
+    hypothesis: G1
+    metric_value: 0.0484
+    change_summary: 'noise floor by model: gpt 6.5%, sonnet 1.1%, qwen 0 (n=11); reweighted 4.8%'
+    timestamp: '2026-10-31'
+  - run_id: ksweep_001
+    hypothesis: H2
+    metric_value: 0.618
+    change_summary: 'A-P3b: 0d 0.62(k5)->0.83(k200)->0.94(full); 0r withheld on sanity; T0_agent v1 withheld (combination
+      flaw)'
+    timestamp: '2026-10-31'
+  - run_id: ksweep2_001
+    hypothesis: H2
+    metric_value: 0.173
+    change_summary: 'A-P3c: 0o oracle 0.79@k5 vs 0d 0.62; 0o-0d CI [0.16,0.19] -> estimator (SUPERSEDED: 0o does
+      not condition on the draw)'
+    timestamp: '2026-10-31'
+  - run_id: ksweep2_002
+    hypothesis: H2
+    metric_value: 0.111
+    change_summary: 'A-P3d: 0o* draw-conditioned 0.73@k5 vs 0d 0.62; estimator loss CI [0.10,0.13] -> estimator
+      loss; oracle knowledge 0o-0o* 0.06; unfiltered mean/median 0r_log 0.71 ~ 0o* 0.73'
+    timestamp: '2026-10-31'
+  - run_id: range_check_003
+    hypothesis: C3
+    metric_value: 0.446
+    change_summary: A-P3d sum-type rule reclassifies 163/1568 events; 0d head-5 sanity now passes (0.95); 0d 0.83/0.71
+      at head-5
+    timestamp: '2026-10-31'
+  - run_id: gemini_flash_t1_001
+    hypothesis: H5
+    metric_value: 0.5555555555555555
+    change_summary: 630 Gemini Flash T1 trajectories; H5 not confirmed on 7/73 scalar pairs. 72/128 exposed adopt,
+      50 recover; scoped by output format and retries
+    timestamp: '2026-11-07'
+  trajectory_interpretation: Historical records retained verbatim; oracle/information interpretations superseded
+    by A-REVISION-CACHED and F13. total_runs counts only these legacy trajectory entries, not all subsequent studies.
 outer_loop:
   cycle: 0
   last_direction: null
-  last_reflection: ""
-
+  last_reflection: ''
 workspace:
-  findings: "findings.md"
-  log: "research-log.md"
-  experiments_dir: "experiments/"
-  data_dir: "data/"
-
+  findings: findings.md
+  log: research-log.md
+  experiments_dir: experiments/
+  data_dir: data/
 context_pilots:
-  - run_id: gemini_fixed_return_context_20261107
-    protocol: A-CTX-PILOT
-    status: exploratory-complete
-    feasibility_pass: true
-    queries: 12
-    table_clusters: 6
-    completed_cells: 72
-    schema_valid: 67
-    primary_contrast: matched20-minus-random20-clean-minus-corrupted-acceptance
-    estimate: 0.08333333333333333
-    descriptive_ci95: [-0.16666666666666666, 0.3333333333333333]
-    confidence_auroc: withheld-no-live-sanity-and-scale-noncompliance
-    conclusion: no-stable-semantic-checking-benefit-established
-    next: offline-evidence-complete-prepare-fresh-controls
-    report: docs/CONTEXT_PILOT_2026-11-07_gemini.md
-  - run_id: qwen3_8b_fixed_return_context_20261107
-    protocol: A-CTX-PILOT
-    status: exploratory-complete
-    feasibility_pass: true
-    queries: 12
-    table_clusters: 6
-    completed_cells: 72
-    schema_valid: 72
-    primary_contrast: matched20-minus-random20-clean-minus-corrupted-acceptance
-    estimate: 0.0
-    descriptive_ci95: [-0.3333333333333333, 0.3333333333333333]
-    conclusion: no-stable-cross-model-benefit-established-primary-zero-not-reversal
-    confidence_auroc: withheld-no-live-sanity
-    raw_archive_status: missing-from-repository
-    next: archive-raw-and-prepare-fresh-controls
-    report: findings.md#F10-addendum
-
+- run_id: gemini_fixed_return_context_20261107
+  protocol: A-CTX-PILOT
+  status: exploratory-complete
+  feasibility_pass: true
+  queries: 12
+  table_clusters: 6
+  completed_cells: 72
+  schema_valid: 67
+  primary_contrast: matched20-minus-random20-clean-minus-corrupted-acceptance
+  estimate: 0.08333333333333333
+  descriptive_ci95:
+  - -0.16666666666666666
+  - 0.3333333333333333
+  confidence_auroc: withheld-no-live-sanity-and-scale-noncompliance
+  conclusion: no-stable-semantic-checking-benefit-established
+  next: offline-evidence-complete-prepare-fresh-controls
+  report: docs/CONTEXT_PILOT_2026-11-07_gemini.md
+- run_id: qwen3_8b_fixed_return_context_20261107
+  protocol: A-CTX-PILOT
+  status: exploratory-complete
+  feasibility_pass: true
+  queries: 12
+  table_clusters: 6
+  completed_cells: 72
+  schema_valid: 72
+  primary_contrast: matched20-minus-random20-clean-minus-corrupted-acceptance
+  estimate: 0.0
+  descriptive_ci95:
+  - -0.3333333333333333
+  - 0.3333333333333333
+  conclusion: no-stable-cross-model-benefit-established-primary-zero-not-reversal
+  confidence_auroc: withheld-no-live-sanity
+  raw_archive_status: missing-from-repository
+  next: archive-raw-and-prepare-fresh-controls
+  report: findings.md#F10-addendum
 context_replication_review:
-  date: "2026-11-07"
+  date: '2026-11-07'
   snapshot: feeda57
   status: verified-scored-results-raw-qwen-audit-incomplete
   report: docs/REVIEW_2026-11-07_qwen_context_next.md
@@ -109,7 +231,6 @@ context_replication_review:
   independent_reviewer: completed-read-only
   new_model_calls: 0
   proposed_offline_study: completed-see-context_evidence
-
 context_evidence:
   run_id: same_evidence_statistics_20261107
   protocol: A-CTX-EVIDENCE
@@ -124,7 +245,9 @@ context_evidence:
   primary: 0d-matched20
   sanity_auroc: 1.0
   within_table_auroc: 0.9166666666666666
-  descriptive_ci95: [0.8333333333333334, 1.0]
+  descriptive_ci95:
+  - 0.8333333333333334
+  - 1.0
   clean_false_flags: 1
   corrupted_flags: 10
   denominator_per_label: 12
@@ -132,7 +255,6 @@ context_evidence:
   conclusion: fixed-matched-sample-contains-extractable-statistical-signal-mechanism-unidentified
   next: independent-draws-complete-prepare-fresh-table-raw-versus-statistical-summary-study
   report: docs/CONTEXT_EVIDENCE_2026-11-07.md
-
 context_evidence_resample:
   run_id: matched20_row_draws_20261107
   protocol: A-CTX-RESAMPLE
@@ -148,7 +270,9 @@ context_evidence_resample:
   events: 1920
   primary_0d_sanity_auroc: 0.9959375
   query_draw_mixture_within_table_auroc: 0.8184374999999999
-  descriptive_ci95: [0.7183333333333334, 0.9153125000000001]
+  descriptive_ci95:
+  - 0.7183333333333334
+  - 0.9153125000000001
   clean_false_flags: 14
   corrupted_flags: 161
   denominator_per_label: 240
@@ -156,3 +280,16 @@ context_evidence_resample:
   conclusion: selected-query-statistical-signal-persists-with-row-draw-and-task-heterogeneity
   next: preregister-fresh-table-raw-versus-derived-summary-with-within-query-severity-crossing
   report: docs/CONTEXT_EVIDENCE_RESAMPLING_2026-11-07.md
+author_revision:
+  date: '2026-11-07'
+  protocol: A-REVISION-CACHED
+  protocol_commit: 27ab078
+  status: cached-analysis-and-claim-revision-complete
+  new_model_calls: 0
+  new_training_runs: 0
+  complete_manuscript_present: false
+  formal_rereview: not-performed
+  conclusions: docs/CURRENT_CONCLUSIONS.md
+  hypothesis_ledger: docs/HYPOTHESIS_LEDGER_2026-11-07.md
+  audit: data/ours/revision_cached/20261107/summary.json
+  unresolved_archive: Qwen context-pilot original raw replies; claim scoped to auxiliary scored records
