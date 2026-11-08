@@ -640,3 +640,31 @@ install; only root escalated tests/smoke establish actual isolation here.
 Reporter records runtime phase, tool errors and final analysis hash. Original runtime
 metadata remains an initial-freeze snapshot. No primary efficacy peeking/stopping.
 Verdict: continue fixed810 roster for intact B-A primary; C only engineering diagnostic.
+
+
+## Step: Experiment A final analysis and raw-record audit — 2026-11-08
+
+1 Protocol:89734f4 and before-main amendments9ccf2bd/880084a; frozen inputs0a8877b
+  precede main requests. Mid-run runtime deviation5101177 explicitly preserves
+  554 completions; pending-only patch bound to unchanged inputs, no efficacy peeking.
+2 Purpose: selected-query check-aid intervention, B-A discrimination/clean guard;
+  C diagnostic only after runtime repair. No new training/Qwen or extra sample expansion.
+3 Validation:10 root escalated synthetic/tool/report tests pass; independent
+  from-raw audit reconstructs810 unit/request hashes, strict final labels, primary
+  grouping/bootstrap, clean guard and costs.554 old replies byte-identical, frozen
+  manifest/config retained. Credential-pattern scan clean. Original prior studies
+  and formal five-seat review not rewritten.
+4 Label: prospective new responses on reused selected queries; descriptive six-table
+  uncertainty, not a powered noninferiority/generalization study. Main primary
+  Ddiff0.094444 CI[0.049999999999999996, 0.13333333333333333], clean diff0.022222
+  CI[0.0, 0.044444444444444446]; joint empirical rule true.
+5 Scope: wrong acceptance85/180->72/180, clean88/90->90/90;
+  more nulls rather than corrected corrupt numeric answers (0 in check). Whole
+  aid package, no generic-warning arm; runtime placement/causal mechanism untested.
+6 Reviewer: mixed C implementation192/78; actual main internal-import errors0/0.
+  Must not claim observed NumPy-induced failures. All C comparisons diagnostic.
+7 Workshop relevance: now a bounded intervention result supporting aid, not merely
+  an extrapolated runtime motivation. No acceptance probability or deployment claim.
+Cost: main1030 logical requests/1031 HTTP attempts, one503 retried;
+reported total tokens1959544. Engineering smoke6 trajectories/8 requests separate.
+Verdict: PASS scoped B-A primary; C not eligible as uniform computation control.

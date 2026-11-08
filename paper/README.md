@@ -33,3 +33,8 @@ python experiments/export_paper_evidence.py --check
 下一步是作者核对论点与署名、压缩正文、套官方模板并检查匿名性；随后可对实际排版稿正式复审。初稿没有对模型训练来源或数值先验作额外认证。无需为写作重跑 Gemini/Qwen；若要增加“同样原始行的派生摘要改善模型核验”这一主张，再独立锁新表/查询、严重度交叉、sanity、预算和分析协议，进行新模型实验。
 
 使用了 scientific-critical-thinking 与 anti-ai-writing skills，开发辅助披露及 Kassis et al. 的正式引用已写进初稿。AI 辅助文本仍需作者负责核对，具体披露格式留待目标场馆适配。
+
+
+## 新实验已完成（2026-11-08）
+
+[Gemini实验A报告](../docs/EXPERIMENT_A_RESULTS_2026-11-08.md)：810条轨迹、30查询。注册check−raw区分度+9.4pp [5.0,13.3]，clean接受88/90到90/90；主要收益为拒绝/弃答，没有把错值修正成真值。C混合运行时只作诊断。当前manuscript尚未整合这项新结果，不应直接以旧稿替代新数据报告；并须修正REVIEW_REFRAME指出的过强句。

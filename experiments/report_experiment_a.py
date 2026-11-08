@@ -162,7 +162,7 @@ def analyze(output):
                       'No end-to-end recovery policy evaluated; null is not correct; confidence efficacy withheld.',
                       'Six-table bootstrap intervals are descriptive; no calibrated noninferiority or acceptance probability.']
     if 'runtime_repair' in summary:
-        summary['limits'].append('C includes pre-repair internal-import failures and repaired runtime; do not infer model computation limits or fair C superiority. All pre-repair replies retained byte-for-byte.')
+        summary['limits'].append('C spans a synthetic-demonstrated pre-repair internal-import limitation and a repaired runtime; no identifiable main internal-import errors were observed. Do not infer model computation limits or fair C superiority. All pre-repair replies retained byte-for-byte.')
     save(output/'scored.json',rows);save(output/'summary.json',summary)
     def fmt(x):return f'{x:.3f}'
     lines=['# Gemini Experiment A: paired monitor intervention','','Final analysis of 810 completed trajectories; 30 selected queries, three row draws, six tables.','',

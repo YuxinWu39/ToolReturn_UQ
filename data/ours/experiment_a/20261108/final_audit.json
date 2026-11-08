@@ -1,0 +1,16 @@
+{
+  "kind": "read-only separate-role raw-record verification",
+  "reviewer": "/root/revision_check",
+  "formal_paper_rereview": false,
+  "calibrated_or_independent_human_review": false,
+  "raw_records_verified": 810,
+  "preserved_original_records_verified": 554,
+  "unit_request_hashes": "pass",
+  "strict_final_parsing": "pass",
+  "primary_paired_recalculation": "matches",
+  "cost_recount": "matches",
+  "joint_rule_met": true,
+  "runtime_C_scope": "diagnostic-only",
+  "observed_main_internal_import_errors": 0,
+  "analysis_script_sha256": "77e38f1bf4a5c90110dc1e7ec6c3e8deba1be338c8027a7dd0dda2ad48064be9"
+}

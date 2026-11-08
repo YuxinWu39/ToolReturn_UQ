@@ -1,0 +1,17 @@
+{
+  "endpoint": "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions",
+  "manifest_hash": "350f5a3b18b97b434b517e9b08011f19c6c92c682e71abebde214ef66dcc6a07",
+  "max_tokens": 1536,
+  "model": "gemini-3.8-flash",
+  "phase": "numpy-internal-import-repair",
+  "reasoning_effort": "low",
+  "runtime_patch_sha256": "67cbe16dd8b187a7eae4a7d73cfe78853c17b97b236218cc59a10cfba28cd299",
+  "source_hashes": {
+    "context_evidence.py": "a27a05e0168e703c0d0e35891de3b2bacd65be5a71bc9a61ec65c41b1fa471ae",
+    "context_pilot.py": "c2fed770b386f3c234c7be55ea31355fad509cf8c022da22baf5d8f7aaf0e158",
+    "experiment_a.py": "4685a06940cccc3b5589736b973e3fecadc99d1361b99078d5cb5c8bce63d1bd",
+    "experiment_a_python.py": "70085db2b14617cf62dc84a060321c6ac002a5161c6062fe287ef2d6350a6c67",
+    "p4_common.py": "d7c1fc5ebad19534bb0fc04af3f9774e4205b4d8e4a58a07a1e45847b594728e",
+    "zeroparam.py": "54ec5acbb9b308eae515f02533500da1a4c3328f953dcc7ad45859323cc98afd"
+  }
+}

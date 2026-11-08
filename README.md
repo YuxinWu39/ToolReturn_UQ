@@ -6,6 +6,8 @@ We study scalar pandas-tool returns on six public tables. Corruption multiplies 
 
 ## Current findings and limits
 
+New: [Gemini Experiment A](docs/EXPERIMENT_A_RESULTS_2026-11-08.md) completed 810 paired cells on 30 selected queries. Check-aid versus raw discrimination improves by 0.094 [0.050, 0.133], with clean acceptance 88/90 to 90/90. Gains primarily involve rejection/abstention, not correcting corrupted numeric answers; C is mixed-runtime diagnostic only.
+
 The current interpretation is in [CURRENT_CONCLUSIONS.md](docs/CURRENT_CONCLUSIONS.md). A full-structure [working manuscript](paper/manuscript.md) and [writing status](paper/README.md) now organize the existing evidence; this is an author draft, not a submission PDF. It supersedes stronger historical claims in the append-only findings log.
 
 | Evidence | Result | Scope |

@@ -1,0 +1,1287 @@
+{
+  "analysis_provenance": {
+    "numpy": "1.26.4",
+    "pandas": "2.2.3",
+    "python": "3.11.13",
+    "script_sha256": "77e38f1bf4a5c90110dc1e7ec6c3e8deba1be338c8027a7dd0dda2ad48064be9"
+  },
+  "cells": {
+    "check": {
+      "clean": {
+        "accept": 90,
+        "adopted_wrong": 0,
+        "correct_numeric": 90,
+        "invalid": 0,
+        "n": 90,
+        "null": 0,
+        "numeric_answer_coverage": 1.0,
+        "reject": 0,
+        "uncertain": 0,
+        "valid": 90,
+        "wrong_numeric": 0
+      },
+      "scale110": {
+        "accept": 52,
+        "adopted_wrong": 53,
+        "correct_numeric": 0,
+        "invalid": 5,
+        "n": 90,
+        "null": 32,
+        "numeric_answer_coverage": 0.5888888888888889,
+        "reject": 30,
+        "uncertain": 3,
+        "valid": 85,
+        "wrong_numeric": 53
+      },
+      "scale150": {
+        "accept": 20,
+        "adopted_wrong": 21,
+        "correct_numeric": 0,
+        "invalid": 3,
+        "n": 90,
+        "null": 66,
+        "numeric_answer_coverage": 0.23333333333333334,
+        "reject": 66,
+        "uncertain": 1,
+        "valid": 87,
+        "wrong_numeric": 21
+      }
+    },
+    "code": {
+      "clean": {
+        "accept": 82,
+        "adopted_wrong": 0,
+        "correct_numeric": 82,
+        "invalid": 8,
+        "n": 90,
+        "null": 0,
+        "numeric_answer_coverage": 0.9111111111111111,
+        "reject": 0,
+        "uncertain": 0,
+        "valid": 82,
+        "wrong_numeric": 0
+      },
+      "scale110": {
+        "accept": 48,
+        "adopted_wrong": 54,
+        "correct_numeric": 1,
+        "invalid": 21,
+        "n": 90,
+        "null": 14,
+        "numeric_answer_coverage": 0.6111111111111112,
+        "reject": 15,
+        "uncertain": 6,
+        "valid": 69,
+        "wrong_numeric": 54
+      },
+      "scale150": {
+        "accept": 14,
+        "adopted_wrong": 16,
+        "correct_numeric": 0,
+        "invalid": 26,
+        "n": 90,
+        "null": 48,
+        "numeric_answer_coverage": 0.17777777777777778,
+        "reject": 47,
+        "uncertain": 3,
+        "valid": 64,
+        "wrong_numeric": 16
+      }
+    },
+    "raw": {
+      "clean": {
+        "accept": 88,
+        "adopted_wrong": 0,
+        "correct_numeric": 88,
+        "invalid": 2,
+        "n": 90,
+        "null": 0,
+        "numeric_answer_coverage": 0.9777777777777777,
+        "reject": 0,
+        "uncertain": 0,
+        "valid": 88,
+        "wrong_numeric": 0
+      },
+      "scale110": {
+        "accept": 60,
+        "adopted_wrong": 66,
+        "correct_numeric": 0,
+        "invalid": 14,
+        "n": 90,
+        "null": 10,
+        "numeric_answer_coverage": 0.7333333333333333,
+        "reject": 8,
+        "uncertain": 8,
+        "valid": 76,
+        "wrong_numeric": 66
+      },
+      "scale150": {
+        "accept": 25,
+        "adopted_wrong": 30,
+        "correct_numeric": 0,
+        "invalid": 7,
+        "n": 90,
+        "null": 53,
+        "numeric_answer_coverage": 0.3333333333333333,
+        "reject": 52,
+        "uncertain": 6,
+        "valid": 83,
+        "wrong_numeric": 30
+      }
+    }
+  },
+  "code_runtime_phases": {
+    "initial": {
+      "cells": {
+        "clean": {
+          "accept": 59,
+          "adopted_wrong": 0,
+          "correct_numeric": 59,
+          "invalid": 5,
+          "n": 64,
+          "null": 0,
+          "numeric_answer_coverage": 0.921875,
+          "reject": 0,
+          "uncertain": 0,
+          "valid": 59,
+          "wrong_numeric": 0
+        },
+        "scale110": {
+          "accept": 34,
+          "adopted_wrong": 39,
+          "correct_numeric": 0,
+          "invalid": 17,
+          "n": 68,
+          "null": 12,
+          "numeric_answer_coverage": 0.5735294117647058,
+          "reject": 12,
+          "uncertain": 5,
+          "valid": 51,
+          "wrong_numeric": 39
+        },
+        "scale150": {
+          "accept": 10,
+          "adopted_wrong": 10,
+          "correct_numeric": 0,
+          "invalid": 13,
+          "n": 60,
+          "null": 37,
+          "numeric_answer_coverage": 0.16666666666666666,
+          "reject": 36,
+          "uncertain": 1,
+          "valid": 47,
+          "wrong_numeric": 10
+        }
+      },
+      "internal_import_errors": 0,
+      "python_calls": 156,
+      "python_errors": 14,
+      "trajectories": 192
+    },
+    "numpy-internal-import-repair": {
+      "cells": {
+        "clean": {
+          "accept": 23,
+          "adopted_wrong": 0,
+          "correct_numeric": 23,
+          "invalid": 3,
+          "n": 26,
+          "null": 0,
+          "numeric_answer_coverage": 0.8846153846153846,
+          "reject": 0,
+          "uncertain": 0,
+          "valid": 23,
+          "wrong_numeric": 0
+        },
+        "scale110": {
+          "accept": 14,
+          "adopted_wrong": 15,
+          "correct_numeric": 1,
+          "invalid": 4,
+          "n": 22,
+          "null": 2,
+          "numeric_answer_coverage": 0.7272727272727273,
+          "reject": 3,
+          "uncertain": 1,
+          "valid": 18,
+          "wrong_numeric": 15
+        },
+        "scale150": {
+          "accept": 4,
+          "adopted_wrong": 6,
+          "correct_numeric": 0,
+          "invalid": 13,
+          "n": 30,
+          "null": 11,
+          "numeric_answer_coverage": 0.2,
+          "reject": 11,
+          "uncertain": 2,
+          "valid": 17,
+          "wrong_numeric": 6
+        }
+      },
+      "internal_import_errors": 0,
+      "python_calls": 64,
+      "python_errors": 2,
+      "trajectories": 78
+    }
+  },
+  "completed": 810,
+  "confidence_auroc": "not-estimated",
+  "costs": {
+    "check": {
+      "completed_trajectories": 270,
+      "completion_tokens": 20845,
+      "failed_http_attempts": 0,
+      "http_attempts": 270,
+      "http_seconds": 1381.9676019970793,
+      "logical_requests": 270,
+      "prompt_tokens": 477214,
+      "python_calls": 0,
+      "python_errors": 0,
+      "tool_seconds": 0.0,
+      "total_tokens": 545146
+    },
+    "code": {
+      "completed_trajectories": 270,
+      "completion_tokens": 37640,
+      "failed_http_attempts": 0,
+      "http_attempts": 490,
+      "http_seconds": 2001.890761546325,
+      "logical_requests": 490,
+      "prompt_tokens": 851534,
+      "python_calls": 220,
+      "python_errors": 16,
+      "tool_seconds": 75.60184562113136,
+      "total_tokens": 891821
+    },
+    "raw": {
+      "completed_trajectories": 270,
+      "completion_tokens": 20058,
+      "failed_http_attempts": 1,
+      "http_attempts": 271,
+      "http_seconds": 1441.952858429402,
+      "logical_requests": 270,
+      "prompt_tokens": 436377,
+      "python_calls": 0,
+      "python_errors": 0,
+      "tool_seconds": 0.0,
+      "total_tokens": 522577
+    }
+  },
+  "direct_monitor": {
+    "detection": {
+      "ci95": [
+        0.7088333333333332,
+        0.9233472222222222
+      ],
+      "paired_queries": 90,
+      "per_table": {
+        "public_abalone.csv": 0.7866666666666667,
+        "public_auto_mpg_v4.csv": 0.9700000000000001,
+        "public_bike_v4.csv": 0.7333333333333334,
+        "public_penguins_v3.csv": 1.0,
+        "public_student.csv": 0.6,
+        "public_wine_quality.csv": 0.8333333333333333
+      },
+      "pooled": 0.8177469135802469,
+      "tables": 6,
+      "within_table": 0.8205555555555555
+    },
+    "flag_counts": {
+      "clean": {
+        "flag": 3,
+        "n": 90
+      },
+      "scale110": {
+        "flag": 40,
+        "n": 90
+      },
+      "scale150": {
+        "flag": 77,
+        "n": 90
+      }
+    },
+    "sanity": {
+      "ci95": [
+        1.0,
+        1.0
+      ],
+      "paired_queries": 90,
+      "per_table": {
+        "public_abalone.csv": 1.0,
+        "public_auto_mpg_v4.csv": 1.0,
+        "public_bike_v4.csv": 1.0,
+        "public_penguins_v3.csv": 1.0,
+        "public_student.csv": 1.0,
+        "public_wine_quality.csv": 1.0
+      },
+      "pooled": 0.9999382716049383,
+      "tables": 6,
+      "within_table": 1.0
+    }
+  },
+  "expected": 810,
+  "flag_following": {
+    "accepted_flagged": 17,
+    "flagged": 120,
+    "rejected_compatible": 0
+  },
+  "limits": [
+    "Reused selected queries/six public tables; no fresh-table generalization.",
+    "Three row draws/query are not extra queries or tables; one model sequence/cell.",
+    "B-A tests a full check-aid package, not a warning-versus-statistical-content mechanism.",
+    "C has extra computation and requests; no equal-cost or placement-superiority claim.",
+    "No end-to-end recovery policy evaluated; null is not correct; confidence efficacy withheld.",
+    "Six-table bootstrap intervals are descriptive; no calibrated noninferiority or acceptance probability.",
+    "C spans a synthetic-demonstrated pre-repair internal-import limitation and a repaired runtime; no identifiable main internal-import errors were observed. Do not infer model computation limits or fair C superiority. All pre-repair replies retained byte-for-byte."
+  ],
+  "manifest_hash": "350f5a3b18b97b434b517e9b08011f19c6c92c682e71abebde214ef66dcc6a07",
+  "new_queries": false,
+  "per_table": {
+    "public_abalone.csv": {
+      "check": {
+        "clean": {
+          "accept": 15,
+          "adopted_wrong": 0,
+          "correct_numeric": 15,
+          "invalid": 0,
+          "n": 15,
+          "null": 0,
+          "numeric_answer_coverage": 1.0,
+          "reject": 0,
+          "uncertain": 0,
+          "valid": 15,
+          "wrong_numeric": 0
+        },
+        "scale110": {
+          "accept": 13,
+          "adopted_wrong": 13,
+          "correct_numeric": 0,
+          "invalid": 2,
+          "n": 15,
+          "null": 0,
+          "numeric_answer_coverage": 0.8666666666666667,
+          "reject": 0,
+          "uncertain": 0,
+          "valid": 13,
+          "wrong_numeric": 13
+        },
+        "scale150": {
+          "accept": 5,
+          "adopted_wrong": 5,
+          "correct_numeric": 0,
+          "invalid": 2,
+          "n": 15,
+          "null": 8,
+          "numeric_answer_coverage": 0.3333333333333333,
+          "reject": 8,
+          "uncertain": 0,
+          "valid": 13,
+          "wrong_numeric": 5
+        }
+      },
+      "code": {
+        "clean": {
+          "accept": 14,
+          "adopted_wrong": 0,
+          "correct_numeric": 14,
+          "invalid": 1,
+          "n": 15,
+          "null": 0,
+          "numeric_answer_coverage": 0.9333333333333333,
+          "reject": 0,
+          "uncertain": 0,
+          "valid": 14,
+          "wrong_numeric": 0
+        },
+        "scale110": {
+          "accept": 13,
+          "adopted_wrong": 13,
+          "correct_numeric": 0,
+          "invalid": 2,
+          "n": 15,
+          "null": 0,
+          "numeric_answer_coverage": 0.8666666666666667,
+          "reject": 0,
+          "uncertain": 0,
+          "valid": 13,
+          "wrong_numeric": 13
+        },
+        "scale150": {
+          "accept": 5,
+          "adopted_wrong": 5,
+          "correct_numeric": 0,
+          "invalid": 9,
+          "n": 15,
+          "null": 1,
+          "numeric_answer_coverage": 0.3333333333333333,
+          "reject": 1,
+          "uncertain": 0,
+          "valid": 6,
+          "wrong_numeric": 5
+        }
+      },
+      "raw": {
+        "clean": {
+          "accept": 15,
+          "adopted_wrong": 0,
+          "correct_numeric": 15,
+          "invalid": 0,
+          "n": 15,
+          "null": 0,
+          "numeric_answer_coverage": 1.0,
+          "reject": 0,
+          "uncertain": 0,
+          "valid": 15,
+          "wrong_numeric": 0
+        },
+        "scale110": {
+          "accept": 14,
+          "adopted_wrong": 14,
+          "correct_numeric": 0,
+          "invalid": 0,
+          "n": 15,
+          "null": 1,
+          "numeric_answer_coverage": 0.9333333333333333,
+          "reject": 1,
+          "uncertain": 0,
+          "valid": 15,
+          "wrong_numeric": 14
+        },
+        "scale150": {
+          "accept": 6,
+          "adopted_wrong": 7,
+          "correct_numeric": 0,
+          "invalid": 2,
+          "n": 15,
+          "null": 6,
+          "numeric_answer_coverage": 0.4666666666666667,
+          "reject": 5,
+          "uncertain": 2,
+          "valid": 13,
+          "wrong_numeric": 7
+        }
+      }
+    },
+    "public_auto_mpg_v4.csv": {
+      "check": {
+        "clean": {
+          "accept": 15,
+          "adopted_wrong": 0,
+          "correct_numeric": 15,
+          "invalid": 0,
+          "n": 15,
+          "null": 0,
+          "numeric_answer_coverage": 1.0,
+          "reject": 0,
+          "uncertain": 0,
+          "valid": 15,
+          "wrong_numeric": 0
+        },
+        "scale110": {
+          "accept": 2,
+          "adopted_wrong": 2,
+          "correct_numeric": 0,
+          "invalid": 2,
+          "n": 15,
+          "null": 11,
+          "numeric_answer_coverage": 0.13333333333333333,
+          "reject": 11,
+          "uncertain": 0,
+          "valid": 13,
+          "wrong_numeric": 2
+        },
+        "scale150": {
+          "accept": 0,
+          "adopted_wrong": 0,
+          "correct_numeric": 0,
+          "invalid": 0,
+          "n": 15,
+          "null": 15,
+          "numeric_answer_coverage": 0.0,
+          "reject": 15,
+          "uncertain": 0,
+          "valid": 15,
+          "wrong_numeric": 0
+        }
+      },
+      "code": {
+        "clean": {
+          "accept": 15,
+          "adopted_wrong": 0,
+          "correct_numeric": 15,
+          "invalid": 0,
+          "n": 15,
+          "null": 0,
+          "numeric_answer_coverage": 1.0,
+          "reject": 0,
+          "uncertain": 0,
+          "valid": 15,
+          "wrong_numeric": 0
+        },
+        "scale110": {
+          "accept": 4,
+          "adopted_wrong": 5,
+          "correct_numeric": 1,
+          "invalid": 3,
+          "n": 15,
+          "null": 6,
+          "numeric_answer_coverage": 0.4,
+          "reject": 7,
+          "uncertain": 1,
+          "valid": 12,
+          "wrong_numeric": 5
+        },
+        "scale150": {
+          "accept": 0,
+          "adopted_wrong": 0,
+          "correct_numeric": 0,
+          "invalid": 3,
+          "n": 15,
+          "null": 12,
+          "numeric_answer_coverage": 0.0,
+          "reject": 12,
+          "uncertain": 0,
+          "valid": 12,
+          "wrong_numeric": 0
+        }
+      },
+      "raw": {
+        "clean": {
+          "accept": 15,
+          "adopted_wrong": 0,
+          "correct_numeric": 15,
+          "invalid": 0,
+          "n": 15,
+          "null": 0,
+          "numeric_answer_coverage": 1.0,
+          "reject": 0,
+          "uncertain": 0,
+          "valid": 15,
+          "wrong_numeric": 0
+        },
+        "scale110": {
+          "accept": 7,
+          "adopted_wrong": 10,
+          "correct_numeric": 0,
+          "invalid": 5,
+          "n": 15,
+          "null": 0,
+          "numeric_answer_coverage": 0.6666666666666666,
+          "reject": 0,
+          "uncertain": 3,
+          "valid": 10,
+          "wrong_numeric": 10
+        },
+        "scale150": {
+          "accept": 0,
+          "adopted_wrong": 0,
+          "correct_numeric": 0,
+          "invalid": 1,
+          "n": 15,
+          "null": 14,
+          "numeric_answer_coverage": 0.0,
+          "reject": 14,
+          "uncertain": 0,
+          "valid": 14,
+          "wrong_numeric": 0
+        }
+      }
+    },
+    "public_bike_v4.csv": {
+      "check": {
+        "clean": {
+          "accept": 15,
+          "adopted_wrong": 0,
+          "correct_numeric": 15,
+          "invalid": 0,
+          "n": 15,
+          "null": 0,
+          "numeric_answer_coverage": 1.0,
+          "reject": 0,
+          "uncertain": 0,
+          "valid": 15,
+          "wrong_numeric": 0
+        },
+        "scale110": {
+          "accept": 14,
+          "adopted_wrong": 14,
+          "correct_numeric": 0,
+          "invalid": 0,
+          "n": 15,
+          "null": 1,
+          "numeric_answer_coverage": 0.9333333333333333,
+          "reject": 1,
+          "uncertain": 0,
+          "valid": 15,
+          "wrong_numeric": 14
+        },
+        "scale150": {
+          "accept": 3,
+          "adopted_wrong": 3,
+          "correct_numeric": 0,
+          "invalid": 1,
+          "n": 15,
+          "null": 11,
+          "numeric_answer_coverage": 0.2,
+          "reject": 11,
+          "uncertain": 0,
+          "valid": 14,
+          "wrong_numeric": 3
+        }
+      },
+      "code": {
+        "clean": {
+          "accept": 13,
+          "adopted_wrong": 0,
+          "correct_numeric": 13,
+          "invalid": 2,
+          "n": 15,
+          "null": 0,
+          "numeric_answer_coverage": 0.8666666666666667,
+          "reject": 0,
+          "uncertain": 0,
+          "valid": 13,
+          "wrong_numeric": 0
+        },
+        "scale110": {
+          "accept": 12,
+          "adopted_wrong": 12,
+          "correct_numeric": 0,
+          "invalid": 3,
+          "n": 15,
+          "null": 0,
+          "numeric_answer_coverage": 0.8,
+          "reject": 0,
+          "uncertain": 0,
+          "valid": 12,
+          "wrong_numeric": 12
+        },
+        "scale150": {
+          "accept": 1,
+          "adopted_wrong": 2,
+          "correct_numeric": 0,
+          "invalid": 3,
+          "n": 15,
+          "null": 10,
+          "numeric_answer_coverage": 0.13333333333333333,
+          "reject": 10,
+          "uncertain": 1,
+          "valid": 12,
+          "wrong_numeric": 2
+        }
+      },
+      "raw": {
+        "clean": {
+          "accept": 14,
+          "adopted_wrong": 0,
+          "correct_numeric": 14,
+          "invalid": 1,
+          "n": 15,
+          "null": 0,
+          "numeric_answer_coverage": 0.9333333333333333,
+          "reject": 0,
+          "uncertain": 0,
+          "valid": 14,
+          "wrong_numeric": 0
+        },
+        "scale110": {
+          "accept": 15,
+          "adopted_wrong": 15,
+          "correct_numeric": 0,
+          "invalid": 0,
+          "n": 15,
+          "null": 0,
+          "numeric_answer_coverage": 1.0,
+          "reject": 0,
+          "uncertain": 0,
+          "valid": 15,
+          "wrong_numeric": 15
+        },
+        "scale150": {
+          "accept": 3,
+          "adopted_wrong": 5,
+          "correct_numeric": 0,
+          "invalid": 1,
+          "n": 15,
+          "null": 9,
+          "numeric_answer_coverage": 0.3333333333333333,
+          "reject": 9,
+          "uncertain": 2,
+          "valid": 14,
+          "wrong_numeric": 5
+        }
+      }
+    },
+    "public_penguins_v3.csv": {
+      "check": {
+        "clean": {
+          "accept": 15,
+          "adopted_wrong": 0,
+          "correct_numeric": 15,
+          "invalid": 0,
+          "n": 15,
+          "null": 0,
+          "numeric_answer_coverage": 1.0,
+          "reject": 0,
+          "uncertain": 0,
+          "valid": 15,
+          "wrong_numeric": 0
+        },
+        "scale110": {
+          "accept": 0,
+          "adopted_wrong": 0,
+          "correct_numeric": 0,
+          "invalid": 1,
+          "n": 15,
+          "null": 14,
+          "numeric_answer_coverage": 0.0,
+          "reject": 14,
+          "uncertain": 0,
+          "valid": 14,
+          "wrong_numeric": 0
+        },
+        "scale150": {
+          "accept": 0,
+          "adopted_wrong": 0,
+          "correct_numeric": 0,
+          "invalid": 0,
+          "n": 15,
+          "null": 15,
+          "numeric_answer_coverage": 0.0,
+          "reject": 15,
+          "uncertain": 0,
+          "valid": 15,
+          "wrong_numeric": 0
+        }
+      },
+      "code": {
+        "clean": {
+          "accept": 13,
+          "adopted_wrong": 0,
+          "correct_numeric": 13,
+          "invalid": 2,
+          "n": 15,
+          "null": 0,
+          "numeric_answer_coverage": 0.8666666666666667,
+          "reject": 0,
+          "uncertain": 0,
+          "valid": 13,
+          "wrong_numeric": 0
+        },
+        "scale110": {
+          "accept": 2,
+          "adopted_wrong": 4,
+          "correct_numeric": 0,
+          "invalid": 7,
+          "n": 15,
+          "null": 4,
+          "numeric_answer_coverage": 0.26666666666666666,
+          "reject": 4,
+          "uncertain": 2,
+          "valid": 8,
+          "wrong_numeric": 4
+        },
+        "scale150": {
+          "accept": 0,
+          "adopted_wrong": 0,
+          "correct_numeric": 0,
+          "invalid": 1,
+          "n": 15,
+          "null": 14,
+          "numeric_answer_coverage": 0.0,
+          "reject": 14,
+          "uncertain": 0,
+          "valid": 14,
+          "wrong_numeric": 0
+        }
+      },
+      "raw": {
+        "clean": {
+          "accept": 15,
+          "adopted_wrong": 0,
+          "correct_numeric": 15,
+          "invalid": 0,
+          "n": 15,
+          "null": 0,
+          "numeric_answer_coverage": 1.0,
+          "reject": 0,
+          "uncertain": 0,
+          "valid": 15,
+          "wrong_numeric": 0
+        },
+        "scale110": {
+          "accept": 4,
+          "adopted_wrong": 5,
+          "correct_numeric": 0,
+          "invalid": 6,
+          "n": 15,
+          "null": 4,
+          "numeric_answer_coverage": 0.3333333333333333,
+          "reject": 4,
+          "uncertain": 1,
+          "valid": 9,
+          "wrong_numeric": 5
+        },
+        "scale150": {
+          "accept": 0,
+          "adopted_wrong": 0,
+          "correct_numeric": 0,
+          "invalid": 0,
+          "n": 15,
+          "null": 15,
+          "numeric_answer_coverage": 0.0,
+          "reject": 15,
+          "uncertain": 0,
+          "valid": 15,
+          "wrong_numeric": 0
+        }
+      }
+    },
+    "public_student.csv": {
+      "check": {
+        "clean": {
+          "accept": 15,
+          "adopted_wrong": 0,
+          "correct_numeric": 15,
+          "invalid": 0,
+          "n": 15,
+          "null": 0,
+          "numeric_answer_coverage": 1.0,
+          "reject": 0,
+          "uncertain": 0,
+          "valid": 15,
+          "wrong_numeric": 0
+        },
+        "scale110": {
+          "accept": 14,
+          "adopted_wrong": 14,
+          "correct_numeric": 0,
+          "invalid": 0,
+          "n": 15,
+          "null": 1,
+          "numeric_answer_coverage": 0.9333333333333333,
+          "reject": 0,
+          "uncertain": 1,
+          "valid": 15,
+          "wrong_numeric": 14
+        },
+        "scale150": {
+          "accept": 12,
+          "adopted_wrong": 13,
+          "correct_numeric": 0,
+          "invalid": 0,
+          "n": 15,
+          "null": 2,
+          "numeric_answer_coverage": 0.8666666666666667,
+          "reject": 2,
+          "uncertain": 1,
+          "valid": 15,
+          "wrong_numeric": 13
+        }
+      },
+      "code": {
+        "clean": {
+          "accept": 13,
+          "adopted_wrong": 0,
+          "correct_numeric": 13,
+          "invalid": 2,
+          "n": 15,
+          "null": 0,
+          "numeric_answer_coverage": 0.8666666666666667,
+          "reject": 0,
+          "uncertain": 0,
+          "valid": 13,
+          "wrong_numeric": 0
+        },
+        "scale110": {
+          "accept": 13,
+          "adopted_wrong": 13,
+          "correct_numeric": 0,
+          "invalid": 2,
+          "n": 15,
+          "null": 0,
+          "numeric_answer_coverage": 0.8666666666666667,
+          "reject": 0,
+          "uncertain": 0,
+          "valid": 13,
+          "wrong_numeric": 13
+        },
+        "scale150": {
+          "accept": 8,
+          "adopted_wrong": 9,
+          "correct_numeric": 0,
+          "invalid": 4,
+          "n": 15,
+          "null": 2,
+          "numeric_answer_coverage": 0.6,
+          "reject": 1,
+          "uncertain": 2,
+          "valid": 11,
+          "wrong_numeric": 9
+        }
+      },
+      "raw": {
+        "clean": {
+          "accept": 15,
+          "adopted_wrong": 0,
+          "correct_numeric": 15,
+          "invalid": 0,
+          "n": 15,
+          "null": 0,
+          "numeric_answer_coverage": 1.0,
+          "reject": 0,
+          "uncertain": 0,
+          "valid": 15,
+          "wrong_numeric": 0
+        },
+        "scale110": {
+          "accept": 12,
+          "adopted_wrong": 13,
+          "correct_numeric": 0,
+          "invalid": 0,
+          "n": 15,
+          "null": 2,
+          "numeric_answer_coverage": 0.8666666666666667,
+          "reject": 0,
+          "uncertain": 3,
+          "valid": 15,
+          "wrong_numeric": 13
+        },
+        "scale150": {
+          "accept": 14,
+          "adopted_wrong": 15,
+          "correct_numeric": 0,
+          "invalid": 0,
+          "n": 15,
+          "null": 0,
+          "numeric_answer_coverage": 1.0,
+          "reject": 0,
+          "uncertain": 1,
+          "valid": 15,
+          "wrong_numeric": 15
+        }
+      }
+    },
+    "public_wine_quality.csv": {
+      "check": {
+        "clean": {
+          "accept": 15,
+          "adopted_wrong": 0,
+          "correct_numeric": 15,
+          "invalid": 0,
+          "n": 15,
+          "null": 0,
+          "numeric_answer_coverage": 1.0,
+          "reject": 0,
+          "uncertain": 0,
+          "valid": 15,
+          "wrong_numeric": 0
+        },
+        "scale110": {
+          "accept": 9,
+          "adopted_wrong": 10,
+          "correct_numeric": 0,
+          "invalid": 0,
+          "n": 15,
+          "null": 5,
+          "numeric_answer_coverage": 0.6666666666666666,
+          "reject": 4,
+          "uncertain": 2,
+          "valid": 15,
+          "wrong_numeric": 10
+        },
+        "scale150": {
+          "accept": 0,
+          "adopted_wrong": 0,
+          "correct_numeric": 0,
+          "invalid": 0,
+          "n": 15,
+          "null": 15,
+          "numeric_answer_coverage": 0.0,
+          "reject": 15,
+          "uncertain": 0,
+          "valid": 15,
+          "wrong_numeric": 0
+        }
+      },
+      "code": {
+        "clean": {
+          "accept": 14,
+          "adopted_wrong": 0,
+          "correct_numeric": 14,
+          "invalid": 1,
+          "n": 15,
+          "null": 0,
+          "numeric_answer_coverage": 0.9333333333333333,
+          "reject": 0,
+          "uncertain": 0,
+          "valid": 14,
+          "wrong_numeric": 0
+        },
+        "scale110": {
+          "accept": 4,
+          "adopted_wrong": 7,
+          "correct_numeric": 0,
+          "invalid": 4,
+          "n": 15,
+          "null": 4,
+          "numeric_answer_coverage": 0.4666666666666667,
+          "reject": 4,
+          "uncertain": 3,
+          "valid": 11,
+          "wrong_numeric": 7
+        },
+        "scale150": {
+          "accept": 0,
+          "adopted_wrong": 0,
+          "correct_numeric": 0,
+          "invalid": 6,
+          "n": 15,
+          "null": 9,
+          "numeric_answer_coverage": 0.0,
+          "reject": 9,
+          "uncertain": 0,
+          "valid": 9,
+          "wrong_numeric": 0
+        }
+      },
+      "raw": {
+        "clean": {
+          "accept": 14,
+          "adopted_wrong": 0,
+          "correct_numeric": 14,
+          "invalid": 1,
+          "n": 15,
+          "null": 0,
+          "numeric_answer_coverage": 0.9333333333333333,
+          "reject": 0,
+          "uncertain": 0,
+          "valid": 14,
+          "wrong_numeric": 0
+        },
+        "scale110": {
+          "accept": 8,
+          "adopted_wrong": 9,
+          "correct_numeric": 0,
+          "invalid": 3,
+          "n": 15,
+          "null": 3,
+          "numeric_answer_coverage": 0.6,
+          "reject": 3,
+          "uncertain": 1,
+          "valid": 12,
+          "wrong_numeric": 9
+        },
+        "scale150": {
+          "accept": 2,
+          "adopted_wrong": 3,
+          "correct_numeric": 0,
+          "invalid": 3,
+          "n": 15,
+          "null": 9,
+          "numeric_answer_coverage": 0.2,
+          "reject": 9,
+          "uncertain": 1,
+          "valid": 12,
+          "wrong_numeric": 3
+        }
+      }
+    }
+  },
+  "primary": {
+    "clean_acceptance": {
+      "ci95": [
+        0.0,
+        0.044444444444444446
+      ],
+      "mean": 0.022222222222222223
+    },
+    "discrimination": {
+      "ci95": [
+        0.049999999999999996,
+        0.13333333333333333
+      ],
+      "mean": 0.09444444444444444
+    },
+    "evidence_units": 90,
+    "per_table": {
+      "public_abalone.csv": {
+        "clean_acceptance": 0.0,
+        "discrimination": 0.06666666666666667
+      },
+      "public_auto_mpg_v4.csv": {
+        "clean_acceptance": 0.0,
+        "discrimination": 0.16666666666666666
+      },
+      "public_bike_v4.csv": {
+        "clean_acceptance": 0.06666666666666667,
+        "discrimination": 0.1
+      },
+      "public_penguins_v3.csv": {
+        "clean_acceptance": 0.0,
+        "discrimination": 0.13333333333333333
+      },
+      "public_student.csv": {
+        "clean_acceptance": 0.0,
+        "discrimination": 0.0
+      },
+      "public_wine_quality.csv": {
+        "clean_acceptance": 0.06666666666666667,
+        "discrimination": 0.1
+      }
+    },
+    "queries": 30,
+    "registered_joint_rule_met": true,
+    "status": "descriptive-paired-table-bootstrap",
+    "tables": 6
+  },
+  "protocol": "A-MONITOR-INTERVENTION",
+  "runtime_repair": {
+    "C_control_status": "runtime-mixed; descriptive diagnostics only, not a fair uniform code-access comparison",
+    "preserved_original_responses": 554,
+    "protocol_amendment": "5101177"
+  },
+  "secondary": {
+    "code_minus_check": {
+      "clean_acceptance": {
+        "ci95": [
+          -0.12222222222222222,
+          -0.05527777777777929
+        ],
+        "mean": -0.08888888888888889
+      },
+      "discrimination": {
+        "ci95": [
+          -0.11111111111111112,
+          0.03333333333333333
+        ],
+        "mean": -0.03333333333333334
+      },
+      "evidence_units": 90,
+      "per_table": {
+        "public_abalone.csv": {
+          "clean_acceptance": -0.06666666666666667,
+          "discrimination": -0.06666666666666668
+        },
+        "public_auto_mpg_v4.csv": {
+          "clean_acceptance": 0.0,
+          "discrimination": -0.06666666666666667
+        },
+        "public_bike_v4.csv": {
+          "clean_acceptance": -0.13333333333333333,
+          "discrimination": -5.551115123125783e-18
+        },
+        "public_penguins_v3.csv": {
+          "clean_acceptance": -0.13333333333333333,
+          "discrimination": -0.2
+        },
+        "public_student.csv": {
+          "clean_acceptance": -0.13333333333333333,
+          "discrimination": 0.03333333333333333
+        },
+        "public_wine_quality.csv": {
+          "clean_acceptance": -0.06666666666666667,
+          "discrimination": 0.1
+        }
+      },
+      "queries": 30,
+      "status": "diagnostic-only-runtime-patched-C-control",
+      "tables": 6
+    },
+    "code_minus_raw": {
+      "clean_acceptance": {
+        "ci95": [
+          -0.1111111111111111,
+          -0.022222222222222223
+        ],
+        "mean": -0.06666666666666667
+      },
+      "discrimination": {
+        "ci95": [
+          -0.005555555555555564,
+          0.13333333333333333
+        ],
+        "mean": 0.061111111111111116
+      },
+      "evidence_units": 90,
+      "per_table": {
+        "public_abalone.csv": {
+          "clean_acceptance": -0.06666666666666667,
+          "discrimination": 0.0
+        },
+        "public_auto_mpg_v4.csv": {
+          "clean_acceptance": 0.0,
+          "discrimination": 0.1
+        },
+        "public_bike_v4.csv": {
+          "clean_acceptance": -0.06666666666666667,
+          "discrimination": 0.1
+        },
+        "public_penguins_v3.csv": {
+          "clean_acceptance": -0.13333333333333333,
+          "discrimination": -0.06666666666666668
+        },
+        "public_student.csv": {
+          "clean_acceptance": -0.13333333333333333,
+          "discrimination": 0.033333333333333326
+        },
+        "public_wine_quality.csv": {
+          "clean_acceptance": 0.0,
+          "discrimination": 0.2
+        }
+      },
+      "queries": 30,
+      "status": "diagnostic-only-runtime-patched-C-control",
+      "tables": 6
+    }
+  },
+  "status": "final-descriptive-intervention",
+  "valid_triplet_sensitivity": {
+    "clean_acceptance": {
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "mean": 0.0
+    },
+    "discrimination": {
+      "ci95": [
+        0.022222222222222216,
+        0.20277777777777775
+      ],
+      "mean": 0.1111111111111111
+    },
+    "evidence_units": 61,
+    "per_table": {
+      "public_abalone.csv": {
+        "clean_acceptance": 0.0,
+        "discrimination": 0.0
+      },
+      "public_auto_mpg_v4.csv": {
+        "clean_acceptance": 0.0,
+        "discrimination": 0.26666666666666666
+      },
+      "public_bike_v4.csv": {
+        "clean_acceptance": 0.0,
+        "discrimination": -0.01666666666666667
+      },
+      "public_penguins_v3.csv": {
+        "clean_acceptance": 0.0,
+        "discrimination": 0.25
+      },
+      "public_student.csv": {
+        "clean_acceptance": 0.0,
+        "discrimination": 0.0
+      },
+      "public_wine_quality.csv": {
+        "clean_acceptance": 0.0,
+        "discrimination": 0.16666666666666666
+      }
+    },
+    "queries": 29,
+    "status": "descriptive-paired-table-bootstrap",
+    "tables": 6
+  }
+}

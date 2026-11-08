@@ -681,3 +681,72 @@ rewritten. The selected-query behavior contrast remains 0 [-0.333,0.333].
 This resolves an archive gap, not the absent live sanity or small-sample limits.
 No model calls. See docs/QWEN_RAW_ARCHIVE_2026-11-07.md and the separate
 data/ours/context_pilot/20261107/raw_archive_audit.json; historical audits retained.
+
+
+## F14 (2026-11-08) — Gemini Experiment A: check-aid intervention
+
+Completed810 frozen cells:30 reused queries x3 row draws x3 candidates x3 arms,
+six tables, stable Gemini3.8 Flash. Main check-minus-raw discrimination difference
+0.094444, paired six-table descriptive CI[0.049999999999999996, 0.13333333333333333]; clean
+acceptance difference0.022222 CI[0.0, 0.044444444444444446]. Registered joint
+rule met. Valid-triplet sensitivity61 evidence units/29 queries retains positive
+direction; conditional-format subset does not replace primary.
+
+Wrong-candidate acceptance: raw85/180 -> check72/180; clean acceptance
+88/90 -> 90/90. Wrong numeric answers96/180 -> 74/180, null answers
+63/180 -> 98/180. Neither raw nor check fixes a corrupted candidate into a correct
+full-table numeric answer. This is improved acceptance discrimination/abstention,
+not a task-recovery or numerical-correction result.
+
+# Gemini Experiment A: paired monitor intervention
+
+Final analysis of 810 completed trajectories; 30 selected queries, three row draws, six tables.
+
+| Arm | Candidate | Accept | Reject | Uncertain | Invalid | Correct numeric | Null |
+|---|---|---:|---:|---:|---:|---:|---:|
+| raw | clean | 88/90 | 0 | 0 | 2 | 88 | 0 |
+| raw | scale110 | 60/90 | 8 | 8 | 14 | 0 | 10 |
+| raw | scale150 | 25/90 | 52 | 6 | 7 | 0 | 53 |
+| check | clean | 90/90 | 0 | 0 | 0 | 90 | 0 |
+| check | scale110 | 52/90 | 30 | 3 | 5 | 0 | 32 |
+| check | scale150 | 20/90 | 66 | 1 | 3 | 0 | 66 |
+| code (runtime-mixed diagnostic) | clean | 82/90 | 0 | 0 | 8 | 82 | 0 |
+| code (runtime-mixed diagnostic) | scale110 | 48/90 | 15 | 6 | 21 | 1 | 14 |
+| code (runtime-mixed diagnostic) | scale150 | 14/90 | 47 | 3 | 26 | 0 | 48 |
+
+## Registered primary: check minus raw
+
+- discrimination: 0.094, descriptive interval [0.049999999999999996, 0.13333333333333333].
+- clean_acceptance: 0.022, descriptive interval [0.0, 0.044444444444444446].
+- Joint benefit rule met: True.
+
+Joint rule requires discrimination lower bound >0 and clean-acceptance lower bound >=−0.05. Passing does not establish population noninferiority or deployed net benefit.
+
+## Request and tool cost
+
+| Arm | Logical requests | HTTP attempts | Python calls | Python errors | Prompt tokens | Completion tokens | Reported total tokens |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| raw | 270 | 271 | 0 | 0 | 436377 | 20058 | 522577 |
+| check | 270 | 270 | 0 | 0 | 477214 | 20845 | 545146 |
+| code | 490 | 490 | 220 | 16 | 851534 | 37640 | 891821 |
+
+Usage fields are preserved as returned; total may include reasoning categories not separately itemized. HTTP time includes failed attempts; tool time is separate. No currency-cost or equal-budget claim.
+
+## Limits
+
+- Reused selected queries/six public tables; no fresh-table generalization.
+- Three row draws/query are not extra queries or tables; one model sequence/cell.
+- B-A tests a full check-aid package, not a warning-versus-statistical-content mechanism.
+- C has extra computation and requests; no equal-cost or placement-superiority claim.
+- No end-to-end recovery policy evaluated; null is not correct; confidence efficacy withheld.
+- Six-table bootstrap intervals are descriptive; no calibrated noninferiority or acceptance probability.
+- C spans a synthetic-demonstrated pre-repair internal-import limitation and a repaired runtime; no identifiable main internal-import errors were observed. Do not infer model computation limits or fair C superiority. All pre-repair replies retained byte-for-byte.
+
+C spans a synthetic-discovered internal-import limitation and repaired runtime;
+no identifiable main internal-import error was actually observed. It remains
+diagnostic-only per disclosed amendment5101177; do not infer computation inability.
+554 original responses preserved byte-for-byte, no completed answer regenerated.
+Primary raw/check payloads and grading remained unchanged across the repair.
+Do not infer generic-warning versus numerical-content mechanism, runtime placement
+necessity, new-table generalization or calibrated population noninferiority.
+Full report: docs/EXPERIMENT_A_RESULTS_2026-11-08.md.

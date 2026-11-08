@@ -331,7 +331,7 @@ manuscript:
     fit_limit: runtime evidence/checking audit; no long-horizon evolution experiment
 experiment_a:
   date: '2026-11-08'
-  status: collecting-frozen-roster
+  status: complete-final-analysis-audited
   protocol: A-MONITOR-INTERVENTION
   protocol_commits:
   - 89734f4
@@ -369,3 +369,25 @@ experiment_a:
     sidecar: data/ours/experiment_a/20261108/runtime_patch_1.json
     C_status: mixed-runtime diagnostic only
     primary_raw_check: unchanged
+    C_initial_trajectories: 192
+    C_repaired_trajectories: 78
+    actual_main_internal_import_errors: 0
+  completed_trajectories: 810
+  main_logical_requests: 1030
+  http_attempts: 1031
+  reported_total_tokens: 1959544
+  primary_discrimination_difference:
+    ci95:
+    - 0.049999999999999996
+    - 0.13333333333333333
+    mean: 0.09444444444444444
+  clean_acceptance_difference:
+    ci95:
+    - 0.0
+    - 0.044444444444444446
+    mean: 0.022222222222222223
+  registered_joint_rule_met: true
+  report: docs/EXPERIMENT_A_RESULTS_2026-11-08.md
+  summary: data/ours/experiment_a/20261108/summary.json
+  raw_accept_wrong: 85
+  check_accept_wrong: 72

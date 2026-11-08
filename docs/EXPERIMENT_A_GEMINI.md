@@ -32,7 +32,7 @@
 
 ```bash
 # 已冻结，不能再次 prepare 或覆盖；模型采集仅补未完成记录
-python experiments/experiment_a.py run --output data/ours/experiment_a/20261108 --workers 4
+python experiments/experiment_a.py run --output data/ours/experiment_a/20261108 --workers 4 --runtime-patch data/ours/experiment_a/20261108/runtime_patch_1.json
 # 不会调用模型；未齐时只出进度与明确标记的 common-cell sensitivity
 python experiments/report_experiment_a.py --output data/ours/experiment_a/20261108
 ```
@@ -58,3 +58,7 @@ python experiments/report_experiment_a.py --output data/ours/experiment_a/202611
 raw/check无该Python工具，注册的B-A主分析保持。C跨两个实现阶段，整组对照只作诊断，不能作为均一的计算对照或模型计算能力证据；报告按阶段的工具错误。只读独立核验确认554文件、旧/新指纹、原始输入和提示/请求常量不变，未查看主实验决策或计算中期效果。此修复没有增加模型样本，也不授权重生完成的C输出。
 
 续跑必须显式传入 `--runtime-patch data/ours/experiment_a/20261108/runtime_patch_1.json`，不能绕开代码哈希检查。
+
+## 完成状态
+
+810/810已全部完成并独立复算；结果入口为 [EXPERIMENT_A_RESULTS_2026-11-08.md](EXPERIMENT_A_RESULTS_2026-11-08.md)。无需重新运行collect，复算只用report脚本，不需要密钥。设计流程来源保留于REVIEW_REFRAME的experimental-design/hypothesis-generation开发资源说明，不作效能证据。
