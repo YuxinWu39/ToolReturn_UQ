@@ -1,0 +1,55 @@
+{
+  "review_id": "final_f41db23_20261107",
+  "snapshot": "f41db23",
+  "mode": "full",
+  "phase0": "complete",
+  "card_confirmation": "confirmed",
+  "phase1": "all_five_precommitments_validated",
+  "editorial_decision": "Major Revision",
+  "complete_manuscript_present": false,
+  "criteria_binding": "unavailable",
+  "calibration": "NOT_CALIBRATED",
+  "fixed_fifth_seat": "Devils Advocate",
+  "cards": "reviewer_cards.md",
+  "input_manifest": "input_manifest.json",
+  "field_analyst_task": "final_review_field_analysis",
+  "reviewer_seats_dispatched": 5,
+  "confirmed_user_message": "确认全部",
+  "runtime_source": {
+    "repository": "https://github.com/Imbad0202/academic-research-skills",
+    "commit": "6d9388674de1ad0437ad95db3d52f92b92204d84",
+    "installed_skill_matches": true
+  },
+  "attempt1": {
+    "status": "infra_aborted",
+    "reason": "metadata word_count=null rejected by checker before any paper-visible review",
+    "phase2_calls": 0
+  },
+  "active_attempt": "attempt2",
+  "metadata_count_definition": "whitespace-delimited words in the compiled artifact packet, not an absent manuscript",
+  "phase2": "five_reports_validated",
+  "phase1_hashes": {
+    "eic": "27eaea6fbe1d500dc645939d9b4be2e699cdcccfd6b4416f2c325153e63e4079",
+    "methodology": "5e636bc0148073bc344b999fef846716d7c72bd2746e501997a8d3928abfa80a",
+    "domain": "528247b56038ae12bb98a6e0deb693f67de10c7f31791b4a198300dfde45b724",
+    "perspective": "1e56857c2d331e5fd6d9dc6424500a675e1fc17bb614d687033b817f047feb15",
+    "da": "e196ce3a2dbeae3ac3686559cc4535c67ec2f19f41493f37f152872613fcbd98"
+  },
+  "synthesis": "completed_inline_as_editorial_synthesizer",
+  "panel_synthesis_check": "PASS",
+  "revision_roadmap_check": "PASS",
+  "schema6_provenance_check": "PASS",
+  "usable_reports": 5,
+  "completed_utc": "2026-11-08T03:47:30.403730+00:00",
+  "execution_issues": [
+    "Attempt1 infra-aborted for null word_count before any paper-visible calls; fresh attempt2 used actual artifact-packet whitespace count.",
+    "EIC/DA turns reported usage limit after saving complete Phase2 reports; saved files passed conformance and cardinality checks.",
+    "Additional claim-judge attachment not run due agent usage limit; acronym attachment not run without a complete manuscript."
+  ],
+  "outputs": {
+    "final_conclusion": "final_conclusion.md",
+    "editorial_decision": "attempt2/editorial_decision.md",
+    "review_package": "attempt2/review_package.json",
+    "roadmap": "attempt2/revision_roadmap.json"
+  }
+}

@@ -1,0 +1,302 @@
+{
+  "eic": [
+    {
+      "id": "W1",
+      "title": "当前中心主张将受限 oracle 参考扩展为一般信息界限",
+      "evidence_anchor": {
+        "anchor_type": "text",
+        "locator": "findings.md，Central claim, reconciled — \"what bounds detection is the information\"；F4 最终版 unfiltered mean/median caveat — \"Neither is a bound on a checker that reads the query and the full visible rows.\"",
+        "quote": "what bounds detection is the information"
+      },
+      "body": "**Severity**: Major\n**Evidence Anchor**: text: findings.md，Central claim, reconciled — \"what bounds detection is the information\"；F4 最终版 unfiltered mean/median caveat — \"Neither is a bound on a checker that reads the query and the full visible rows.\"\n**Confidence**: 5 — 当前中心主张与同文件适用范围限定可直接比对。\n\n标为 reconciled 的主张仍将 0o−0o* 说成任何 context-limited checker 无法恢复的部分，而同文件承认该参考只涉及指定统计量与精确抽样律；使用可见行离散程度的 0r_log 还可在部分条件超过它。全表生成的偏差与尺度知识，也不等于部署时可由可见行取得的知识。随机 k 行曲线可描述这些程序，尚不足以确立任意核验器的最优性能或唯一瓶颈。F11/F12 的较窄解释是积极修复，但尚未替换仍被标为当前中心主张的版本。\n\n最小修复是实质改写中心贡献，限定为有限任务、抽样规则与核验程序的实证比较；将 0o* 标为依赖指定统计量、带特权抽样律知识的参考，清除对任意 checker 的界限及可恢复损失断言。若保留最优上界贡献，需另给允许的核验器、信息集合与最优性依据。已有实证材料可以保留。",
+      "severity": "major",
+      "confidence": 5,
+      "competence_basis": "当前中心主张与同文件适用范围限定可直接比对。"
+    },
+    {
+      "id": "W2",
+      "title": "最终领域增量尚缺近邻工作对照",
+      "evidence_anchor": {
+        "anchor_type": "absence",
+        "locator": "提交材料的贡献定位",
+        "absence_scope": "将最终贡献逐项对照最近工作的研究单位、污染、可见证据操纵、信号及结论范围的明确说明",
+        "check_performed": "README.md、findings.md 当前贡献段、research-state.yaml 的 literature 与 open_problems、docs/references_verified.bib 及原源 program.md"
+      },
+      "body": "**Severity**: Major\n**Evidence Anchor**: absence: 提交材料的贡献定位 — expected 将最终贡献逐项对照最近工作的研究单位、污染、可见证据操纵、信号及结论范围的明确说明; checked README.md、findings.md 当前贡献段、research-state.yaml 的 literature 与 open_problems、docs/references_verified.bib 及原源 program.md\n**Confidence**: 4 — 能检查材料是否建立比较；未联网或阅读所列文献全文。\n\n文献清单及简短相关性说明丰富，但尚未把最终贡献逐项对照最近工作。open_problems 仍偏向系统比较与 failure taxonomy，晚期同证据检查和抽样敏感性尚未形成统一增量论证。问题值得研究并不自动建立原创性；没有新算法也不等于没有贡献。\n\n最小修复是建立由原文支撑的近邻比较表，优先核查 ToxicBench、RobustnessAnalysis、TrajectoryAdaptedUQ 与相关 step-level UQ 研究，明确新增的实证问题、证据与局限。这里只列待核查候选，不断言这些文献实际覆盖什么。每项贡献绑定已有结果及未完成检验，撤回尚未建立的首创性表述。优先需要比较与贡献重写，无须先增加模型运行；没有发现可支持 fatal 的完整重复证据。",
+      "severity": "major",
+      "confidence": 4,
+      "competence_basis": "能检查材料是否建立比较；未联网或阅读所列文献全文。"
+    },
+    {
+      "id": "W3",
+      "title": "失败 sanity 的学习器仍进入概括性无效结论",
+      "evidence_anchor": {
+        "anchor_type": "text",
+        "locator": "findings.md，F8 标题与 Paper consequence — \"fails its own sanity and calibration rules\"；\"every signal, learned or not, is at chance under the default observation context\"",
+        "quote": "fails its own sanity and calibration rules"
+      },
+      "body": "**Severity**: Major\n**Evidence Anchor**: text: findings.md，F8 标题与 Paper consequence — \"fails its own sanity and calibration rules\"；\"every signal, learned or not, is at chance under the default observation context\"\n**Confidence**: 5 — 有效性门槛与贡献推论在同一条目中可比。\n\n该实现连极端污染与 held-out clean coverage 门槛都未通过，可支持此训练配置未形成可用检测器；不足以与有效检测器等量齐观，支持学习信号家族缺乏判别信息或信息不足的解释。README 的 headline AUROC 未就近标注失败 gate，易被当成有效检验后的负结果。部分 H1 上界未达预定阈值，也需区分点估计偏低与确认性结论。\n\n保留 P5 为失败训练／迁移实例，在首页与贡献总结并列 gate 状态，将 C1 限定到已测、有效且具有相应支持集的具体指标。不必为了报告负结果重新训练；只有保留学习信号家族普遍无效的主张，才需要有效实例及额外证据。",
+      "severity": "major",
+      "confidence": 5,
+      "competence_basis": "有效性门槛与贡献推论在同一条目中可比。"
+    },
+    {
+      "id": "W4",
+      "title": "修正段的数值范围仍未同步",
+      "evidence_anchor": {
+        "anchor_type": "table",
+        "locator": "findings.md，F5/F6/F7 correction 的 Within-table AUROC before -> after 表，4B T0_agent 行 0a=0.579，与随后 What changes in the text 中关于 0d 与 0a 在所有条件均不超过 0.56 的陈述"
+      },
+      "body": "**Severity**: Minor\n**Evidence Anchor**: table: findings.md，F5/F6/F7 correction 的 Within-table AUROC before -> after 表，4B T0_agent 行 0a=0.579，与随后 What changes in the text 中关于 0d 与 0a 在所有条件均不超过 0.56 的陈述\n**Confidence**: 5 — 同一修正段可直接核对表值与摘要。\n\n表中 0a=0.579 超过文字的 0.56。首页 0.53—0.58 与表较一致，故这是局部范围未同步，没有单独推翻主要结果。请按 actual-exposure／protocol、tier、支持集及 coverage 写确切范围，区别较低 AUROC、接近 0.5 与低于实用阈值；不需新实验。",
+      "severity": "minor",
+      "confidence": 5,
+      "competence_basis": "同一修正段可直接核对表值与摘要。"
+    },
+    {
+      "id": "W5",
+      "title": "全称归档承诺超过 Qwen pilot 的原始材料覆盖",
+      "evidence_anchor": {
+        "anchor_type": "text",
+        "locator": "README.md，归档承诺 — \"All agent trajectories and scored events are committed\"；findings.md，F10 addendum clarification，Audit scope — \"Qwen 0/72 raw replies present in this repository.\"",
+        "quote": "All agent trajectories and scored events are committed"
+      },
+      "body": "**Severity**: Minor\n**Evidence Anchor**: text: README.md，归档承诺 — \"All agent trajectories and scored events are committed\"；findings.md，F10 addendum clarification，Audit scope — \"Qwen 0/72 raw replies present in this repository.\"\n**Confidence**: 4 — 缺口由提交材料披露；未逐个审计响应目录。\n\nscored/config 可支持计数的有限复核，但原始回答缺失限制格式、理由和提示遵从的独立审计。请在首页按实验列 raw、scored、config 与可重算范围，从既有实例归档 72 条回答及环境；暂不可得则明确仅核验到评分记录。不要重跑替代原回答，也不要把该缺口解释为造假。此项影响审计覆盖，未单独否定已核对的计数。",
+      "severity": "minor",
+      "confidence": 4,
+      "competence_basis": "缺口由提交材料披露；未逐个审计响应目录。"
+    },
+    {
+      "id": "W6",
+      "title": "当前假设索引混用旧门槛与更新结果",
+      "evidence_anchor": {
+        "anchor_type": "text",
+        "locator": "research-state.yaml，H1—H4 状态及 G1 statement — \"status: pending\"；\"PILOT GATE: observation failures >= 15% of all failures in paired runs\"",
+        "quote": "status: pending"
+      },
+      "body": "**Severity**: Minor\n**Evidence Anchor**: text: research-state.yaml，H1—H4 状态及 G1 statement — \"status: pending\"；\"PILOT GATE: observation failures >= 15% of all failures in paired runs\"\n**Confidence**: 5 — 可与 A-P1、F7、F8 更新直接对应。\n\n当前索引仍将 H1—H4 留为 pending，G1 statement 仍保留已退休的 15% 门槛；findings 已按 agent/tier 给出部分 H1 状态、P5 负结果及 H4 按原排名方式不可检验的限制。P5 不等于 H2 已完成，未测项也不应强填成功或失败；索引未分清完成、部分完成、替代及未测，需要读者重建成熟度。\n\n请建立当前状态矩阵，链接假设版本、统计量、agent/tier、支持集及结果，保留旧协议。替代条目标明有效版本，未执行项继续标未执行。完整稿可随后围绕矩阵组织，无须为形式完整补跑原始计划。",
+      "severity": "minor",
+      "confidence": 5,
+      "competence_basis": "可与 A-P1、F7、F8 更新直接对应。"
+    }
+  ],
+  "methodology": [
+    {
+      "id": "W1",
+      "title": "0o* 的得分差仍被解释为信息上界与不可恢复知识",
+      "evidence_anchor": {
+        "anchor_type": "text",
+        "locator": "findings.md，Central claim, reconciled，“what bounds detection is the information in the observation context”；同段，“the part no context-limited checker can recover”。",
+        "quote": "what bounds detection is the information in the observation context"
+      },
+      "body": "**Severity**: Major\n**Evidence Anchor**: text: findings.md，Central claim, reconciled，“what bounds detection is the information in the observation context”；同段，“the part no context-limited checker can recover”。\n**Confidence**: 5 — 统计判别与基准构造的直接方法学判断。\n\n0o* 使用抽样误差的中位数与 IQR 形成绝对距离，并非针对 clean/corrupted 两个分布的最优似然比排序；给它额外的全表采样分布知识，也不能自动使其特定得分成为任何方法的 AUROC 上界。即使限定只使用同一个模板统计量，也需要最优性论证，不能从一个 oracle 启发式的点估计得到“achievable ceiling”。0o 与 0o* 的 AUROC 差同样只是两种打分程序的差，不能识别所有 context-limited 方法不可恢复的信息量。材料后文已承认全行 checker 不受该界约束，F11 更明确禁止通用信息论上界，但中心句和 research-state 的 ceiling 分解尚未同步。最小修复是把二者统一命名为有额外知识的参考程序，将 0o*−0d 和 0o−0o* 报为限定支持集上的经验 AUROC 差；保留随 k 上升和估计器存在差异的观察。若坚持理论上界，需要明确决策类及分布假设并证明最优性，这属于更高成本的另一个论证任务。",
+      "severity": "major",
+      "confidence": 5,
+      "competence_basis": "统计判别与基准构造的直接方法学判断。"
+    },
+    {
+      "id": "W2",
+      "title": "H1 的主切片和决策规则没有唯一的版本账",
+      "evidence_anchor": {
+        "anchor_type": "text",
+        "locator": "PREREGISTRATION.md，A-P4，“H1 = token entropy (1) and verbalized (3) separately, subtle bin, T1”；A-P4b，“H1 statistic unchanged”。",
+        "quote": "H1 = token entropy (1) and verbalized (3) separately, subtle bin, T1"
+      },
+      "body": "**Severity**: Major\n**Evidence Anchor**: text: PREREGISTRATION.md，A-P4，“H1 = token entropy (1) and verbalized (3) separately, subtle bin, T1”；A-P4b，“H1 statistic unchanged”。\n**Confidence**: 5 — 预定估计对象与实际评分脚本可直接比对。\n\nA-P4 指定 subtle，A-P4b 却在声称规则不变时写成 plausible+subtle；research-state 还保留 subtle 与 AUPRC 门槛，而 F6/F7 的 H1 判决和 p4_score_intrinsic.py 第 58、66–68 行使用 P+S 的 AUROC 上端点。这些不是相同的检验对象。A-P4b 在后续 8B 采集前写入，因此不能仅凭此认定其为事后挑选；但 Qwen3-4B 的已见数据、后来预锁定的 8B 测试和原 subtle 命题必须分别报告。最低修复是制作按模型/采集时间的规则表，明确哪次改动替代了哪条主切片及 AUPRC 规则，并以既有分数补齐原 subtle 的同任务、表内估计与区间。未完成前，8B 的 P+S 结论只支持其实际锁定的命题，不能回填为全部原 H1 已确认；无须为此新增模型运行。",
+      "severity": "major",
+      "confidence": 5,
+      "competence_basis": "预定估计对象与实际评分脚本可直接比对。"
+    },
+    {
+      "id": "W3",
+      "title": "学习 scorer 的相对比较缺少预定共同支持集差值",
+      "evidence_anchor": {
+        "anchor_type": "absence",
+        "locator": "findings.md F8 及 experiments/scorer/score_scorer.py 的结果输出",
+        "absence_scope": "A-P3d/P5 指定的共同支持集上 AUROC_7−max(AUROC_0d,AUROC_0r_log) 及配对表级区间",
+        "check_performed": "完整 Phase2 材料中的 F8、2026-11-07 更正表、P5 和 score_scorer.py 全部比较输出。"
+      },
+      "body": "**Severity**: Major\n**Evidence Anchor**: absence: findings.md F8 及 experiments/scorer/score_scorer.py 的结果输出 — expected A-P3d/P5 指定的共同支持集上 AUROC_7−max(AUROC_0d,AUROC_0r_log) 及配对表级区间; checked 完整 Phase2 材料中的 F8、2026-11-07 更正表、P5 和 score_scorer.py 全部比较输出。\n**Confidence**: 5 — 配对性能比较及缺失支持集审查。\n\nF8 以分别计算的 scorer AUROC 和其他信号点估计断言没有超过 baseline，但 0r_log、0d、实际 preview 和 scorer 的覆盖对象不同。2026-11-07 更正也已表明限制到真实暴露事件会改变任务构成。锁定的比较需要同任务、同标签和各方法均可评分的交集，并将不同支持集分别标明；现有 scorer 脚本没有加载 baseline 做该差值。最低修复是仅重分析已保存分数，报告交集任务/表数和表级配对差值区间，或把结论收缩为“该 scorer 未通过自身 sanity/覆盖门槛，未建立预定增益”，不声称完成了相对性能检验。不能把未建立收益写成等效，也不应以失败仪器证明 learned signals 一般无效。",
+      "severity": "major",
+      "confidence": 5,
+      "competence_basis": "配对性能比较及缺失支持集审查。"
+    },
+    {
+      "id": "W4",
+      "title": "scorer 的常数表处理仍保留已披露的旧错误",
+      "evidence_anchor": {
+        "anchor_type": "text",
+        "locator": "experiments/scorer/score_scorer.py，auc 局部函数，“h[c].nunique() < 2”；findings.md，2026-11-07 correction，“Constant scores dropped instead of scored 0.5.”",
+        "quote": "h[c].nunique() < 2"
+      },
+      "body": "**Severity**: Minor\n**Evidence Anchor**: text: experiments/scorer/score_scorer.py，auc 局部函数，“h[c].nunique() < 2”；findings.md，2026-11-07 correction，“Constant scores dropped instead of scored 0.5.”\n**Confidence**: 5 — 代码条件与已明确的评分语义直接对应。\n\nP4 helper 已修正为双类常数分数计 0.5，但 P5 的独立 auc 函数仍在分数种类少于二时返回 None，并从表内平均删除该表。对于 epistemic 或其他大量相等得分，这会改变估计对象；当前没有证据证明某个已报告 surprise 数字因此改变，故不把潜在影响扩大为已证实的数值错误。修复该函数并用保存的 scorer 分数核对受影响表数、AUROC 与区间，足以解决；无需重新训练或预测。其自身 sanity 失败的结论并不因此自动消失。",
+      "severity": "minor",
+      "confidence": 5,
+      "competence_basis": "代码条件与已明确的评分语义直接对应。"
+    },
+    {
+      "id": "W5",
+      "title": "Qwen 固定返回 pilot 的原始回复缺档限制主要行为对照审计",
+      "evidence_anchor": {
+        "anchor_type": "text",
+        "locator": "findings.md，F10 addendum clarification，“Qwen 0/72 raw replies present in this repository.”",
+        "quote": "Qwen 0/72 raw replies present in this repository."
+      },
+      "body": "**Severity**: Major\n**Evidence Anchor**: text: findings.md，F10 addendum clarification，“Qwen 0/72 raw replies present in this repository.”\n**Confidence**: 5 — 原始测量与派生评分可追溯性的审计判断。\n\nQwen 的 72/72 schema-valid、决策与置信度解释以及与程序 checker 的行为差距，目前只能从 scored/config 层接受。事件数和摘要内部一致不能独立验证解析器是否正确处理了原回复、截断、理由或采集版本。该缺口已如实披露，不能据此推断造假或把所有统计证据判为无效；它仍使关键模型对照的测量审计不完整。最低修复是归档既有 72 条原始响应和运行版本，再按冻结严格解析器重解析并核对派生计数；若无法找回，则将该模型比较明确降为未完成原始审计的辅助结果，以可审计的 Gemini 和离线统计观察承载主要结论。不要重新生成回复来冒充原记录。",
+      "severity": "major",
+      "confidence": 5,
+      "competence_basis": "原始测量与派生评分可追溯性的审计判断。"
+    },
+    {
+      "id": "W6",
+      "title": "当前入口摘要仍把限定的低表现写成普遍不可分",
+      "evidence_anchor": {
+        "anchor_type": "text",
+        "locator": "README.md，Reading，“nothing tested separates poisoned from clean returns”；findings.md，2026-11-07 correction，“0d and 0a <= 0.56 everywhere”。",
+        "quote": "nothing tested separates poisoned from clean returns"
+      },
+      "body": "**Severity**: Minor\n**Evidence Anchor**: text: README.md，Reading，“nothing tested separates poisoned from clean returns”；findings.md，2026-11-07 correction，“0d and 0a <= 0.56 everywhere”。\n**Confidence**: 5 — 当前摘要与同包更正表的直接一致性核查。\n\n更正表本身给出 4B T0_agent 的 0a=0.579、0d=0.562，另有 0o*=0.611–0.616；因此“0a/0d everywhere ≤0.56”也并非与该表一致。总体近随机的日常概括不等于 AUROC=0.5，更不等于未检出即可证明无信息；失败 sanity 的 scorer 和未建立 H1 的切片也应各自注明。最低修复是让 README 只引用更正后的实际暴露/协议两套结果与覆盖，写成“所测信号表现有限，尚未建立预定效果”，并将 F11/F12 的选定 matched20 可用信号作为不同协议下的发现。最新报告已充分限定其推断，所以这里按入口表达与数字同步问题处理，不额外制造一次核心证据否定。\n\n就近期的核心可行性结果而言，十二查询、六表与公共数据先验限制了外推；这些限制已经明确，不能再当成作者声称拥有新表泛化或识别内部机制的证据。最低完成路径是归档和既有数据重分析、清理决策版本、统一中心结论；新表和表示干预属于更强的未来验证，不是修复所有问题都必须先追加的新实验。",
+      "severity": "minor",
+      "confidence": 5,
+      "competence_basis": "当前摘要与同包更正表的直接一致性核查。"
+    }
+  ],
+  "domain": [
+    {
+      "id": "W1",
+      "title": "0o* 是特定 oracle 分数，尚不能解释为可达信息上界或纯估计器损失",
+      "evidence_anchor": {
+        "anchor_type": "text",
+        "locator": "findings.md，F4''' — \"the achievable ceiling for a k-row checker using the template statistic is ~0.73 at five rows\"；Central claim, reconciled — \"the part no context-limited checker can recover\"",
+        "quote": "the achievable ceiling for a k-row checker using the template statistic is ~0.73 at five rows"
+      },
+      "body": "**Severity**: Major\n**Evidence Anchor**: text: findings.md，F4''' — \"the achievable ceiling for a k-row checker using the template statistic is ~0.73 at five rows\"；Central claim, reconciled — \"the part no context-limited checker can recover\"\n**Confidence**: 5 — 已核对 A-P3d 定义及 zeroparam.py 中 oracle_law、score_0o_star 的实际计算。\n\n0o* 使用全表及真实聚合值生成的任务专属参考量。代码用 M=300 个全表子集估计 b_k 和 w_k，再计算偏差校正后的绝对标准化残差；这里既没有完整精确抽样律，也没有证明该分数对所允许的信息集合具有最优 AUROC。即使只允许使用观测统计量和参考律，非对称、多峰或特定污染分布下，绝对标准化距离也不自动等同最优检验。F4''' 对“完整可见行并非受此上界约束”的补充限制是必要的，但不能补出统计量受限类中的最优性。\n\n此外，0d 从样本估计其参考区间，而 0o* 获得了全表生成的 bias/spread。两者差值同时改变参考知识和打分规则，不能仅凭 AUROC 相差约 0.11 就认定这些都是相同行中本可恢复、只被 bootstrap 浪费的信号；0o−0o* 也不能直接解释成任何 context-limited checker 都无法恢复的那一部分。头五行并非随机抽样时，所用随机行参考律还有额外失配，低分不能确立信息不足机制。\n\n最低修复是将三条曲线称为已测 bootstrap、任务专属 draw-centred oracle reference 和 population-centred reference，明确 M=300 是 Monte Carlo 近似；将两项差值改为方法间的描述性差距，删除不可恢复性和可达上界措辞，并统一 README、当前 central claim、图注和 research-state 中未撤销的解释。这样不必重跑就能保留行数曲线及已有数值。更强方案是明确可观测量、参考知识及污染模型，给出最优性证明或同信息条件下的检验比较，再讨论边界；该方案属于新增理论或分析，不能把预期结果写成已完成结论。此问题实质削弱当前核心机制解释，但不使 F11/F12 的限定经验结果消失，故不定为 Critical。",
+      "severity": "major",
+      "confidence": 5,
+      "competence_basis": "已核对 A-P3d 定义及 zeroparam.py 中 oracle_law、score_0o_star 的实际计算。"
+    },
+    {
+      "id": "W2",
+      "title": "最近邻工作的模型条件被误述，现有定位尚未辨清已有发现与本研究增量",
+      "evidence_anchor": {
+        "anchor_type": "text",
+        "locator": "research-state.yaml，literature.key_papers，2608.22676 条目 — \"nearest prior: 2 signals at return boundary, closed model, 1 domain\"",
+        "quote": "nearest prior: 2 signals at return boundary, closed model, 1 domain"
+      },
+      "body": "**Severity**: Major\n**Evidence Anchor**: text: research-state.yaml，literature.key_papers，2608.22676 条目 — \"nearest prior: 2 signals at return boundary, closed model, 1 domain\"\n**Confidence**: 5 — 已核对最近邻官方 v2 全文的方法定义、模型说明及 ToxicBench 的受控证据实验。\n\n该最近邻的官方原文 II-C 明写使用 Qwen3-8B；因此 closed model 的描述不成立，本研究的 Qwen3-8B 结果也不能被当成相对于它的开放模型覆盖增量。其 II-B 区分返回内容在 schema/full-prefix 下的 surprisal，以及合法动作集合上的 entropy；后者并非本研究对生成 action 所有 token 求平均的 entropy。笼统写两个信号会掩盖比较对象的差异，也不足以支持“已有信号已被系统覆盖”的读法。[Robustness Analysis 原文](https://arxiv.org/html/2608.22676v2)\n\n另一项关键重叠是：ToxicBench 本身已经使用配对 clean/poisoned 条件研究采纳与检查，附录 E.2 还在三张公开表上固定父轨迹并操纵后续证据。因而，污染会被采纳、检查不必然恢复、证据条件影响结果这些方向已有直接前例，不能单独承担本研究的主要新增知识。[ToxicBench 原文 §3–4、附录 E.2](https://arxiv.org/html/2609.37153v1)\n\n最低修复需要围绕主张重写领域定位，而非仅纠正一个模型名称：逐项列出返回边界、参考信息、动作/词元信号定义、数据域、行抽样预算、评价标签及既有结论。可保留并待进一步核实的增量包括：标量数值缩放下的可见行预算曲线、真实 exposure/覆盖率审计、在相同展示样本上比较结构化统计核验与提示判断，以及选定查询的独立行抽样稳定性。这些不是已经证明的“首次”，但足以形成可检验的经验贡献。若最终要声称对最近邻信号做了直接性能比较，还需实际实现其定义或清楚声明未比较；当前没有该实验，不要求以预设结果补齐。",
+      "severity": "major",
+      "confidence": 5,
+      "competence_basis": "已核对最近邻官方 v2 全文的方法定义、模型说明及 ToxicBench 的受控证据实验。"
+    },
+    {
+      "id": "W3",
+      "title": "零挑战的标题措辞仍比所用行为指标能支持的范围更宽",
+      "evidence_anchor": {
+        "anchor_type": "text",
+        "locator": "README.md，“Headline results”第一行 — \"0 challenges in 3,780 trajectories\"",
+        "quote": "Headline results"
+      },
+      "body": "**Severity**: Minor\n**Evidence Anchor**: text: README.md，“Headline results”第一行 — \"0 challenges in 3,780 trajectories\"\n**Confidence**: 4 — 已结合 F5–F9 的指标说明与官方行为测量论文核查概念范围，未逐条人工重标全部 Qwen 轨迹。\n\n最新 F9 已准确区分自动 flag、后续证据调用和意图性检测，README 的 challenges 却没有说明对应哪个可观测事件。anomaly_detection=0 或没有重查不能直接证明从未产生怀疑；poisoned_answer_used 也曾是包含提及的 legacy flag。最低修复是把标题改成所运行检测器的零标记结果，并在同处列出 used/all-toxic 与 used/exposed，说明是否做过人工 trace 核验。若要保留人类行为意义上的“零挑战”，则需要定义挑战并开展相应标注。这是可局部修复的测量措辞问题，不额外要求新模型运行。[Trace-vs-label 官方论文](https://arxiv.org/abs/2610.30491)",
+      "severity": "minor",
+      "confidence": 4,
+      "competence_basis": "已结合 F5–F9 的指标说明与官方行为测量论文核查概念范围，未逐条人工重标全部 Qwen 轨迹。"
+    },
+    {
+      "id": "W4",
+      "title": "学习型 scorer 的失败解释仍把一种相容诊断写得过于确定",
+      "evidence_anchor": {
+        "anchor_type": "text",
+        "locator": "findings.md，F8 — \"learns the scale of a column, not the statistic to within 10-50%\"",
+        "quote": "learns the scale of a column, not the statistic to within 10-50%"
+      },
+      "body": "**Severity**: Minor\n**Evidence Anchor**: text: findings.md，F8 — \"learns the scale of a column, not the statistic to within 10-50%\"\n**Confidence**: 4 — 判断基于 F8 的 held-out 预测误差、coverage 与 sanity 结果，未复训或做表示探针。\n\n训练配置在留出表上误差很大、区间覆盖差且 sanity 失败，足以支持这个配置未成为有效污染检测器。预测与真值存在一定相关性，与学习到了粗数量级相容；但现有结果并未区分目标表征、输入截断、训练规模、跨表迁移和模型容量的影响，不能确定它究竟学会了什么内部表示。将这一句改成受观测支持的行为诊断，并把候选原因保留为假说即可。该负结果有价值，但不能作为学习型核验普遍受信息限制的独立证明。",
+      "severity": "minor",
+      "confidence": 4,
+      "competence_basis": "判断基于 F8 的 held-out 预测误差、coverage 与 sanity 结果，未复训或做表示探针。"
+    }
+  ],
+  "perspective": [
+    {
+      "id": "W1",
+      "title": "当前中心结论仍保留过强的可达上界措辞",
+      "evidence_anchor": {
+        "anchor_type": "text",
+        "locator": "findings.md，Central claim, reconciled，“the part no context-limited checker can recover”",
+        "quote": "the part no context-limited checker can recover"
+      },
+      "body": "**Severity**: Minor\n**Evidence Anchor**: text: findings.md，Central claim, reconciled，“the part no context-limited checker can recover”\n**Confidence**: 5 — 可直接比较当前中心结论与同文件限定说明。\n\nF4''' 已说明 0o* 只针对“观测统计量加精确抽样规律”的受限构造，且使用可见样本 spread 的 0r_log 可以在较大 k 超过它；F11–F12 进一步说明不能用信息不足概括所有失败。然而仍以当前中心结论呈现的句子把 0o−0o* 泛称为任何 context-limited checker 均不可恢复的部分，另有 achievable reference 的表述。对系统读者，这会把一个使用全表离线抽样规律的参考构造误读为可部署核验器的普遍信息上界。\n\n建议把这段和 README 的总括统一到最新范围：分别说明已测核验器、受限 oracle 参考、随机行与 head 行，以及选定 matched20 中已展示的统计可提取性。保留历史版本但给出一段唯一的当前结论即可；不要求新增实验或证明普遍上界。",
+      "severity": "minor",
+      "confidence": 5,
+      "competence_basis": "可直接比较当前中心结论与同文件限定说明。"
+    },
+    {
+      "id": "W2",
+      "title": "Qwen 固定返回试验的原始回复尚不能独立审计",
+      "evidence_anchor": {
+        "anchor_type": "absence",
+        "locator": "data/ours/context_pilot/20261107/qwen3-8b/",
+        "absence_scope": "72条原始回复及关联运行信息",
+        "check_performed": "目录完整文件清单、scored_responses.json与config.json的存在情况、findings.md的F10 addendum clarification"
+      },
+      "body": "**Severity**: Minor\n**Evidence Anchor**: absence: data/ours/context_pilot/20261107/qwen3-8b/ — expected 72条原始回复及关联运行信息; checked 目录完整文件清单、scored_responses.json与config.json的存在情况、findings.md的F10 addendum clarification\n**Confidence**: 5 — 只读文件清单与作者明确披露相互印证。\n\n该目录实际只有 summary.json、scored_responses.json 和 config.json。现有汇总足以复算保存的计数，但不能从原始回复独立确认 72/72 strict-schema valid、理由内容或评分解析。材料已诚实承认这一缺口，因此这里不将其解释为结果造假，也不否定可复算的 scored-level 对照。它限制的是 Qwen 原始行为与格式审计的证据层级。\n\n最小修复是归档已生成的回复、版本及与 manifest 的对应关系，随后用既定解析器复算并记录一致性；无需重跑模型。若原始记录无法取回，应继续明确将 Qwen 部分标成仅汇总与评分记录可核验，并限制理由和格式结论。核心的选定样本统计可提取性仍有独立的统计实验支持。",
+      "severity": "minor",
+      "confidence": 5,
+      "competence_basis": "只读文件清单与作者明确披露相互印证。"
+    },
+    {
+      "id": "W3",
+      "title": "恢复与错误重试的摘要还缺少时间顺序",
+      "evidence_anchor": {
+        "anchor_type": "dataset",
+        "locator": "data/ours/p4/gemini-3.8-flash/T1/toxic_seed0.jsonl，SHA256 bd160cc5c29afc0654d27394235161cfebf8f713da9884311ec76e9f13d0d757，既有audit_gemini_recovery.py的恢复轨迹时序重计"
+      },
+      "body": "**Severity**: Minor\n**Evidence Anchor**: dataset: data/ours/p4/gemini-3.8-flash/T1/toxic_seed0.jsonl，SHA256 bd160cc5c29afc0654d27394235161cfebf8f713da9884311ec76e9f13d0d757，既有audit_gemini_recovery.py的恢复轨迹时序重计\n**Confidence**: 5 — 直接对已保存轨迹执行既有只读重计脚本。\n\nF9 报告 50 次恢复中 37 次在污染后也出现 Python 错误，但“后来有错误”不能解释核验如何开始。实际重计为：23 次首次后续 Python 调用成功，27 次首次后续 Python 调用出错；10 次是在一次成功 Python 调用后才出现后续错误。因而，不能从 37/50 推断全部恢复主要由错误重试触发，也不能从 23 次成功调用推断其一定属于有意识错。材料已明确 intentional detection 未经单独标注，这一点应保留。\n\n建议在 F9 的恢复摘要加入这些时间顺序计数，并分别标明触发行为、重新执行、得到真值和最终回答恢复。若希望提出主动核验率，应对冻结轨迹预先规定语义标注规则并独立复核；在此之前只报告观测到的后续取证与恢复即可。无须为这一文字修复新增模型调用。",
+      "severity": "minor",
+      "confidence": 5,
+      "competence_basis": "直接对已保存轨迹执行既有只读重计脚本。"
+    },
+    {
+      "id": "W4",
+      "title": "离线标错尚未连接到完整的运行时动作与成本",
+      "evidence_anchor": {
+        "anchor_type": "absence",
+        "locator": "PREREGISTRATION.md的A-CTX-EVIDENCE Operational decisions及A-CTX-RESAMPLE、F9–F12和所附两份统计报告",
+        "absence_scope": "标错后的动作规则与对应端到端延迟、额外调用和净错误成本对照",
+        "check_performed": "固定flag阈值、误报漏报表、弃答定义、采集usage说明及后续研究计划"
+      },
+      "body": "**Severity**: Minor\n**Evidence Anchor**: absence: PREREGISTRATION.md的A-CTX-EVIDENCE Operational decisions及A-CTX-RESAMPLE、F9–F12和所附两份统计报告 — expected 标错后的动作规则与对应端到端延迟、额外调用和净错误成本对照; checked 固定flag阈值、误报漏报表、弃答定义、采集usage说明及后续研究计划\n**Confidence**: 4 — 系统工作流评估能力范围内，未测量部署环境。\n\n固定阈值已有 flag/compatible 的定义，下一步系统可能选择阻止、弃答、请求新证据或再次运行工具，但这些动作各自的净收益尚未被测量。14/240 clean flags 代表潜在工作流中断，79/240 漏标意味着不能把 compatible 当成授权信号。B=2000 的离线核验、影子置信度调用和重新取证也不是无成本操作。已保存 usage 的美元估计不涵盖未知内部 HTTP 重试尝试，运行器确实采用有界重试而没有逐尝试遥测。\n\n当前结果足以讨论研究可行性，无须为了这份材料立即实现部署系统。最小修复是增加一张权限与动作说明表：在 poison_once 可重查、禁止重查、持续污染等条件下，哪些动作只是建议，哪些已有行为证据；并将现有开销标为离线或保存响应的测量。若后续主张可部署收益，则需按预定策略测量错误最终答案、误阻断、弃答、恢复、延迟和调用成本，避免把未来架构或统计判别率当作已经验证的端到端收益。\n\n总体而言，这批材料支持一项范围明确的系统实证研究：在已测数值返回协议下，局部证据、证据处理方式、接口格式和重查机会都影响可解释的核验结果。其应用意义目前是指导核验边界与后续干预设计。当前材料尚未建立持久污染下的恢复、通用工具返回覆盖或部署收益；作者最新报告已大体承认这些边界，以上修复旨在使各入口的当前结论一致。",
+      "severity": "minor",
+      "confidence": 4,
+      "competence_basis": "系统工作流评估能力范围内，未测量部署环境。"
+    }
+  ],
+  "da": [
+    {
+      "id": "M1",
+      "title": "指定 oracle 的经验 AUROC 尚未构成信息上界，分数差值也未被识别为可恢复与不可恢复的信息分解。0o* 仅以有限次全表抽样估计 bias/IQR，再对观察统计量与候选值使用绝对标准化距离；知道这些量不意味着该排序在污染检测问题上最",
+      "evidence_anchor": {
+        "anchor_type": "text",
+        "locator": "findings.md §Central claim, reconciled “what bounds detection is the information in the observation context”；PREREGISTRATION.md §A-P3d “not recoverable by any k-row checker”；experiments/zeroparam.py:319–359，oracle_law 与 score_0o_star “return d, abs(d)”",
+        "quote": "what bounds detection is the information in the observation context"
+      },
+      "body": "指定 oracle 的经验 AUROC 尚未构成信息上界，分数差值也未被识别为可恢复与不可恢复的信息分解。0o* 仅以有限次全表抽样估计 bias/IQR，再对观察统计量与候选值使用绝对标准化距离；知道这些量不意味着该排序在污染检测问题上最优。即使只限制使用模板统计量，仍需最优性论证，不能从该分数直接推出 ceiling。材料对更丰富输入的 caveat 是必要修正，但没有证明剩下的受限上界；对非随机 head5 使用随机抽样 law 更不能支撑通用限制。\n使目前以信息上限解释各类检测失败的核心推理不能成立，但不否定 0d/0o/0o* 已测经验曲线，也不否定 F11/F12 的信号存在性。单独不足以推翻收窄后的研究，故为 Major。\n将 exact law 改为有限 Monte Carlo 的 bias/spread 参考，将 ceiling/不可恢复/estimator loss 改为指定分数之间的描述性差异；统一 README、F4'''、central claim 与图注。保留更强上界须另给明确可观测量、候选分布与最优排序的证明；成本明显更高，可由作者选择。",
+      "severity": "major",
+      "confidence": 5,
+      "competence_basis": "直接核对协议、中心表述与 oracle 实现，结论限于缺少所需最优性论证。",
+      "remedy": "将 exact law 改为有限 Monte Carlo 的 bias/spread 参考，将 ceiling/不可恢复/estimator loss 改为指定分数之间的描述性差异；统一 README、F4'''、central claim 与图注。保留更强上界须另给明确可观测量、候选分布与最优排序的证明；成本明显更高，可由作者选择。"
+    },
+    {
+      "id": "M2",
+      "title": "learned scorer 的失败没有提供一个有效检测器的强否定证据，因而不能增强所有信号在默认 context 下都因信息容量而失效的解释。训练拟合、测试迁移和工具有效性是不同环节；该实例既未覆盖 clean quantile 目标，也",
+      "evidence_anchor": {
+        "anchor_type": "text",
+        "locator": "findings.md §F8 “fails its own sanity and calibration rules”；“the paper's contribution rests on C1”；“with the information-capacity curve explaining why”；README.md §Headline results “Clean-only learned scorer”",
+        "quote": "fails its own sanity and calibration rules"
+      },
+      "body": "learned scorer 的失败没有提供一个有效检测器的强否定证据，因而不能增强所有信号在默认 context 下都因信息容量而失效的解释。训练拟合、测试迁移和工具有效性是不同环节；该实例既未覆盖 clean quantile 目标，也未通过极端扰动 sanity。其 AUROC 可作为训练失败诊断保留，但不能同时被头条列作可用检测方法的普遍失败。材料已诚实报告失败，这降低诚信担忧，却没有修复 README/F8 的总括推断。\n影响负结果可支持的对象范围和原因解释，需要实质重写证据层级，但保留该配置的训练/迁移失败以及合格基线的经验结果。没有证据说全部研究无效，故为 Major。\n从“有效信号检测表现”头条中移出或明确标为 gate-failed diagnostic；把结论限定为此 backbone、训练数据、目标和配置未得到可用 scorer，不据其推断 learned UQ 的一般无效或信息不足机制。修复现有论证无需新训练；若坚持比较一个有效 learned detector，再先独立证明其 sanity 与 held-out coverage 合格。",
+      "severity": "major",
+      "confidence": 5,
+      "competence_basis": "作者直接报告门槛失败，并在同一节给出总括推论；未独立重训模型。",
+      "remedy": "从“有效信号检测表现”头条中移出或明确标为 gate-failed diagnostic；把结论限定为此 backbone、训练数据、目标和配置未得到可用 scorer，不据其推断 learned UQ 的一般无效或信息不足机制。修复现有论证无需新训练；若坚持比较一个有效 learned detector，再先独立证明其 sanity 与 held-out coverage 合格。"
+    }
+  ]
+}

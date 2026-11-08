@@ -1,0 +1,22 @@
+{
+  "eic": {
+    "code": 0,
+    "text": "[PHASE1-TRIGGER-SHORT: /private/tmp/toolreturn-final-panel-20261107/attempt2/eic/phase1.md: D5 what_triggers_block has fewer than 8 words]\n[PHASE1-TRIGGER-SHORT: /private/tmp/toolreturn-final-panel-20261107/attempt2/eic/phase1.md: D5 what_triggers_warn has fewer than 8 words]\n[PHASE1-TRIGGER-SHORT: /private/tmp/toolreturn-final-panel-20261107/attempt2/eic/phase1.md: D6 what_triggers_block has fewer than 8 words]\n[PHASE1-TRIGGER-SHORT: /private/tmp/toolreturn-final-panel-20261107/attempt2/eic/phase1.md: D6 what_triggers_warn has fewer than 8 words]\n[PHASE1-TRIGGER-SHORT: /private/tmp/toolreturn-final-panel-20261107/attempt2/eic/phase1.md: D6 what_triggers_fatal has fewer than 8 words]\nPHASE-CONFORMANCE: PASS\n"
+  },
+  "methodology": {
+    "code": 0,
+    "text": "[PHASE1-TRIGGER-SHORT: /private/tmp/toolreturn-final-panel-20261107/attempt2/methodology/phase1.md: D1 what_triggers_block has fewer than 8 words]\n[PHASE1-TRIGGER-SHORT: /private/tmp/toolreturn-final-panel-20261107/attempt2/methodology/phase1.md: D1 what_triggers_warn has fewer than 8 words]\n[PHASE1-TRIGGER-SHORT: /private/tmp/toolreturn-final-panel-20261107/attempt2/methodology/phase1.md: D1 what_triggers_fatal has fewer than 8 words]\n[PHASE1-TRIGGER-SHORT: /private/tmp/toolreturn-final-panel-20261107/attempt2/methodology/phase1.md: D3 what_triggers_block has fewer than 8 words]\n[PHASE1-TRIGGER-SHORT: /private/tmp/toolreturn-final-panel-20261107/attempt2/methodology/phase1.md: D3 what_triggers_warn has fewer than 8 words]\n[PHASE1-TRIGGER-SHORT: /private/tmp/toolreturn-final-panel-20261107/attempt2/methodology/phase1.md: D3 what_triggers_fatal has fewer than 8 words]\nPHASE-CONFORMANCE: PASS\n"
+  },
+  "domain": {
+    "code": 0,
+    "text": "[PHASE1-TRIGGER-SHORT: /private/tmp/toolreturn-final-panel-20261107/attempt2/domain/phase1.md: D2 what_triggers_block has fewer than 8 words]\n[PHASE1-TRIGGER-SHORT: /private/tmp/toolreturn-final-panel-20261107/attempt2/domain/phase1.md: D2 what_triggers_warn has fewer than 8 words]\n[PHASE1-TRIGGER-SHORT: /private/tmp/toolreturn-final-panel-20261107/attempt2/domain/phase1.md: D2 what_triggers_fatal has fewer than 8 words]\nPHASE-CONFORMANCE: PASS\n"
+  },
+  "perspective": {
+    "code": 0,
+    "text": "[PHASE1-TRIGGER-SHORT: /private/tmp/toolreturn-final-panel-20261107/attempt2/perspective/phase1.md: D4 what_triggers_block has fewer than 8 words]\n[PHASE1-TRIGGER-SHORT: /private/tmp/toolreturn-final-panel-20261107/attempt2/perspective/phase1.md: D4 what_triggers_warn has fewer than 8 words]\nPHASE-CONFORMANCE: PASS\n"
+  },
+  "da": {
+    "code": 0,
+    "text": "[PHASE1-TRIGGER-SHORT: /private/tmp/toolreturn-final-panel-20261107/attempt2/da/phase1.md: D3 what_triggers_block has fewer than 8 words]\n[PHASE1-TRIGGER-SHORT: /private/tmp/toolreturn-final-panel-20261107/attempt2/da/phase1.md: D3 what_triggers_warn has fewer than 8 words]\n[PHASE1-TRIGGER-SHORT: /private/tmp/toolreturn-final-panel-20261107/attempt2/da/phase1.md: D3 what_triggers_fatal has fewer than 8 words]\nPHASE-CONFORMANCE: PASS\n"
+  }
+}

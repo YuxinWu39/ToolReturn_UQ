@@ -1,0 +1,2231 @@
+{
+  "manifest_format_version": "1.0",
+  "base_draft_hash": "0360fd6e94fe",
+  "blocks": [
+    {
+      "block_id": "B0001",
+      "old_hash": "ecc703f1186a",
+      "first_line_excerpt": "# ToolReturn_UQ: research-artifact review packet"
+    },
+    {
+      "block_id": "B0002",
+      "old_hash": "8a766b7fbc3d",
+      "first_line_excerpt": "Scope: research evidence and proposed conclusions, not a complete paper manuscr…"
+    },
+    {
+      "block_id": "B0003",
+      "old_hash": "cef29fadb836",
+      "first_line_excerpt": "# SOURCE: README.md"
+    },
+    {
+      "block_id": "B0004",
+      "old_hash": "40bcf11c474e",
+      "first_line_excerpt": "# ToolReturn_UQ"
+    },
+    {
+      "block_id": "B0005",
+      "old_hash": "f63b62209ff3",
+      "first_line_excerpt": "**Can anything tell a corrupted tool return from a clean one, at the moment an …"
+    },
+    {
+      "block_id": "B0006",
+      "old_hash": "a6e09278085b",
+      "first_line_excerpt": "A data-analysis agent writes pandas code, a `python_exec` tool runs it on a CSV…"
+    },
+    {
+      "block_id": "B0007",
+      "old_hash": "77a5bf53e2fc",
+      "first_line_excerpt": "## Headline results"
+    },
+    {
+      "block_id": "B0008",
+      "old_hash": "d1d2a78c0c47",
+      "first_line_excerpt": "| Finding | Number |"
+    },
+    {
+      "block_id": "B0009",
+      "old_hash": "dfcfde5aa6d8",
+      "first_line_excerpt": "Reading: under the default observation context (first 5 rows) nothing tested se…"
+    },
+    {
+      "block_id": "B0010",
+      "old_hash": "9535b10be9ab",
+      "first_line_excerpt": "## Quick start"
+    },
+    {
+      "block_id": "B0011",
+      "old_hash": "e079ebaaaf86",
+      "first_line_excerpt": "```bash"
+    },
+    {
+      "block_id": "B0012",
+      "old_hash": "034e7d2a9914",
+      "first_line_excerpt": "A Gemini Flash T1 replication adds 630 trajectories. Its output formatting leav…"
+    },
+    {
+      "block_id": "B0013",
+      "old_hash": "7f2135c67ee7",
+      "first_line_excerpt": "All agent trajectories and scored events are committed under `data/ours/`, so e…"
+    },
+    {
+      "block_id": "B0014",
+      "old_hash": "d75e560641e8",
+      "first_line_excerpt": "## Method in one paragraph"
+    },
+    {
+      "block_id": "B0015",
+      "old_hash": "6e547fcf120f",
+      "first_line_excerpt": "Every step is pre-registered: the hypothesis, the statistic and the pass/fail t…"
+    },
+    {
+      "block_id": "B0016",
+      "old_hash": "dd1ea73d1388",
+      "first_line_excerpt": "## Data and licenses"
+    },
+    {
+      "block_id": "B0017",
+      "old_hash": "0f154a36c077",
+      "first_line_excerpt": "- ToxicBench (turambar928/Toxic_Tool_Bench): MIT code, CC BY 4.0 data; cloned, …"
+    },
+    {
+      "block_id": "B0018",
+      "old_hash": "5ea2cdff1397",
+      "first_line_excerpt": "# SOURCE: findings.md"
+    },
+    {
+      "block_id": "B0019",
+      "old_hash": "d3699ba4aaad",
+      "first_line_excerpt": "# Findings (narrative, kept current; each finding names the paper figure/table …"
+    },
+    {
+      "block_id": "B0020",
+      "old_hash": "0ec04dc996b7",
+      "first_line_excerpt": "## F0 — What the data is (2026-10-31, inventory.py)"
+    },
+    {
+      "block_id": "B0021",
+      "old_hash": "cdc4ab9ecbd2",
+      "first_line_excerpt": "9,585 usable trajectories (4 real models, 26 adapters), 133 tasks, 41 tables, 2…"
+    },
+    {
+      "block_id": "B0022",
+      "old_hash": "39b31f97164f",
+      "first_line_excerpt": "## F1 — Observation failures are the majority of failures (taxonomy.py, G1 PASS)"
+    },
+    {
+      "block_id": "B0023",
+      "old_hash": "431f08af05d0",
+      "first_line_excerpt": "3,633 pairs: capability 452, observation 682, unexposed 52, no-effect 2,447 (re…"
+    },
+    {
+      "block_id": "B0024",
+      "old_hash": "217c7d325da4",
+      "first_line_excerpt": "## F2 — [SUPERSEDED by F2' and F3'; kept for the record] A zero-parameter rule …"
+    },
+    {
+      "block_id": "B0025",
+      "old_hash": "e1141b38cefc",
+      "first_line_excerpt": "On unfiltered single aggregations (811 events, 283 poisoned): range check AUROC…"
+    },
+    {
+      "block_id": "B0026",
+      "old_hash": "0a719976e4c4",
+      "first_line_excerpt": "## F1' — Observation failures survive a run-to-run noise null (taxonomy.py A-P1)"
+    },
+    {
+      "block_id": "B0027",
+      "old_hash": "95e0131a01d8",
+      "first_line_excerpt": "Clean-vs-clean discordance on 737 duplicate keys is 4.3% (toxic-vs-toxic 11.0%)…"
+    },
+    {
+      "block_id": "B0028",
+      "old_hash": "4a3332d2b703",
+      "first_line_excerpt": "## F2' — [SUPERSEDED by F2''/F2'''; original numbers (41.8% / 58%) retained for…"
+    },
+    {
+      "block_id": "B0029",
+      "old_hash": "ef10fb094d83",
+      "first_line_excerpt": "After excluding 482 ERROR observations the range check flags every poisoned mea…"
+    },
+    {
+      "block_id": "B0030",
+      "old_hash": "b1fa6d8b717a",
+      "first_line_excerpt": "## F3 — [SUPERSEDED by F3'/F4 after A-P3; v1 tasks, range check only] Large-tab…"
+    },
+    {
+      "block_id": "B0031",
+      "old_hash": "6a620071cdc1",
+      "first_line_excerpt": "180 pre-registered tasks on six public tables (344-17,379 rows; 33% unfiltered …"
+    },
+    {
+      "block_id": "B0032",
+      "old_hash": "15f196211b85",
+      "first_line_excerpt": "## F3' — [SUPERSEDED after round 3/5: the like-for-like control has only 2 uniq…"
+    },
+    {
+      "block_id": "B0033",
+      "old_hash": "2b516fe60b76",
+      "first_line_excerpt": "210 pre-registered tasks on six public tables (344-17,379 rows; 60 unfiltered /…"
+    },
+    {
+      "block_id": "B0034",
+      "old_hash": "a247781c5557",
+      "first_line_excerpt": "## F4 — [SUPERSEDED by F4' -> F4'' -> F4''': 'every zero-parameter method is ne…"
+    },
+    {
+      "block_id": "B0035",
+      "old_hash": "3d5ad66b63ad",
+      "first_line_excerpt": "0d (re-execute the query on bootstrap resamples of the visible rows) at T0: AUR…"
+    },
+    {
+      "block_id": "B0036",
+      "old_hash": "5fb4f801e5de",
+      "first_line_excerpt": "## Disclosures added 2026-10-31 (round-3 and round-4 reviews)"
+    },
+    {
+      "block_id": "B0037",
+      "old_hash": "bd2b418b0150",
+      "first_line_excerpt": "- Degenerate-interval floor: range scores are normalized by (hi - lo) + 1% of t…"
+    },
+    {
+      "block_id": "B0038",
+      "old_hash": "54d0019b8526",
+      "first_line_excerpt": "## F4' — [SUPERSEDED by F4'' after A-P3c: the 0r reference was withheld and mis…"
+    },
+    {
+      "block_id": "B0039",
+      "old_hash": "ad887bed6b2a",
+      "first_line_excerpt": "210 tasks x k in {5,10,20,50,100,200} x 20 random row draws per table, B = 50, …"
+    },
+    {
+      "block_id": "B0040",
+      "old_hash": "cfdb34d894b7",
+      "first_line_excerpt": "## F4'' — [SUPERSEDED by F4''' after A-P3d: 0o is computed from the full table …"
+    },
+    {
+      "block_id": "B0041",
+      "old_hash": "cea0292d063a",
+      "first_line_excerpt": "Oracle reference 0o = the true sampling distribution of each task's k-row stati…"
+    },
+    {
+      "block_id": "B0042",
+      "old_hash": "48db6b760db3",
+      "first_line_excerpt": "| k rows | 5 | 10 | 20 | 50 | 100 | 200 |"
+    },
+    {
+      "block_id": "B0043",
+      "old_hash": "35991f0c3a2e",
+      "first_line_excerpt": "Pre-registered decision (A-P3c): lower CI bound > 0.05 at k = 5, 10, 20 -> **es…"
+    },
+    {
+      "block_id": "B0044",
+      "old_hash": "407b1bec2265",
+      "first_line_excerpt": "## F2'' — [updates F2' numbers after porting to the shared 0d; superseded by F2…"
+    },
+    {
+      "block_id": "B0045",
+      "old_hash": "2970461a507b",
+      "first_line_excerpt": "With the shared implementation (resample size = visible rows; AST sum-type rule…"
+    },
+    {
+      "block_id": "B0046",
+      "old_hash": "4db34d02b3bc",
+      "first_line_excerpt": "## F4''' — [replaces F4''] At five visible rows a checker that knows the exact …"
+    },
+    {
+      "block_id": "B0047",
+      "old_hash": "7c663c9e7dd2",
+      "first_line_excerpt": "Two references, both from the same M = 300 full-table k-subsets per (task, k): …"
+    },
+    {
+      "block_id": "B0048",
+      "old_hash": "8f7983de055e",
+      "first_line_excerpt": "Primary curve (168 tasks computable at every k, pooled AUROC; within-table in p…"
+    },
+    {
+      "block_id": "B0049",
+      "old_hash": "6aee96ad19dc",
+      "first_line_excerpt": "| k rows | 5 | 10 | 20 | 50 | 100 | 200 |"
+    },
+    {
+      "block_id": "B0050",
+      "old_hash": "b7275a3ed97c",
+      "first_line_excerpt": "Decomposition on the common support, mean over tables with 6-table bootstrap CI:"
+    },
+    {
+      "block_id": "B0051",
+      "old_hash": "6f9bb3f2235e",
+      "first_line_excerpt": "| k | 5 | 10 | 20 | 50 | 100 | 200 |"
+    },
+    {
+      "block_id": "B0052",
+      "old_hash": "eab0b925e2e7",
+      "first_line_excerpt": "Pre-registered decision (A-P3d, lower CI > 0.05 at k = 5, 10, 20): **estimator …"
+    },
+    {
+      "block_id": "B0053",
+      "old_hash": "39696f0411b8",
+      "first_line_excerpt": "Where the estimator loss lives: filtered 0.58 -> 0.69, grouped 0.61 -> 0.72, un…"
+    },
+    {
+      "block_id": "B0054",
+      "old_hash": "7b33737a2279",
+      "first_line_excerpt": "**On unfiltered mean/median the round-5 reading holds.** 0d 0.68 / 0r_log 0.71 …"
+    },
+    {
+      "block_id": "B0055",
+      "old_hash": "16493e8baaea",
+      "first_line_excerpt": "Sensitivities unchanged: B = 500 vs 50 moves 0d by 0.002 (clean FP 37% -> 35%);…"
+    },
+    {
+      "block_id": "B0056",
+      "old_hash": "36ea96308c34",
+      "first_line_excerpt": "**T0_agent is two columns, not one** (A-P3d): whole-column min/max 0a = 0.57 (p…"
+    },
+    {
+      "block_id": "B0057",
+      "old_hash": "8e3e52eae2b1",
+      "first_line_excerpt": "Consequences for P4 and the paper: (i) the C3 bar on slice (b) is \"beats max(0d…"
+    },
+    {
+      "block_id": "B0058",
+      "old_hash": "2a9bf3b19b3e",
+      "first_line_excerpt": "## F2''' — [updates F2''] 0d on the original ToxicBench tables under the A-P3d …"
+    },
+    {
+      "block_id": "B0059",
+      "old_hash": "c31ef284a7be",
+      "first_line_excerpt": "The A-P3d sum-type rule reclassifies 163 of the 1,568 scored python_exec events…"
+    },
+    {
+      "block_id": "B0060",
+      "old_hash": "dad931927ac3",
+      "first_line_excerpt": "## Central claim, reconciled (2026-10-31, after A-P3d)"
+    },
+    {
+      "block_id": "B0061",
+      "old_hash": "bfe67a0737f5",
+      "first_line_excerpt": "Earlier text said detection \"depends less on which signal is used than on wheth…"
+    },
+    {
+      "block_id": "B0062",
+      "old_hash": "72412969dcdd",
+      "first_line_excerpt": "## Known limitations of the A-P3d sum-type rule (round 6, 2026-10-31)"
+    },
+    {
+      "block_id": "B0063",
+      "old_hash": "a04ca6bec6c5",
+      "first_line_excerpt": "`is_sum_type` now returns False for count-distinct (`nunique`, `len(x.unique())…"
+    },
+    {
+      "block_id": "B0064",
+      "old_hash": "7808c739c7e7",
+      "first_line_excerpt": "## F5 (preliminary, confirmatory protocol P4/A-P4) — Qwen3-4B at T1 (head-5, no…"
+    },
+    {
+      "block_id": "B0065",
+      "old_hash": "57b9873a4150",
+      "first_line_excerpt": "630 trajectories (210 P3 tasks x clean seed 0 / clean seed 1 / toxic), vLLM Qwe…"
+    },
+    {
+      "block_id": "B0066",
+      "old_hash": "ced66d718907",
+      "first_line_excerpt": "Zero-parameter signals on the agent's real events (193 poisoned scalar events v…"
+    },
+    {
+      "block_id": "B0067",
+      "old_hash": "957798ccedbd",
+      "first_line_excerpt": "Reading: at the T1 ToxicBench gives agents, even the oracle that knows the k-ro…"
+    },
+    {
+      "block_id": "B0068",
+      "old_hash": "3dec0d95403c",
+      "first_line_excerpt": "## F6 (preliminary, P4/A-P4, H1 first test) — Qwen3-4B's own signals carry no i…"
+    },
+    {
+      "block_id": "B0069",
+      "old_hash": "f87cd104a4e7",
+      "first_line_excerpt": "Replication run T1r2 (210 x clean seed 0 / seed 1 / toxic, same tier and settin…"
+    },
+    {
+      "block_id": "B0070",
+      "old_hash": "524e6c85150e",
+      "first_line_excerpt": "Signals on the completion following the python_exec observation (202 poisoned v…"
+    },
+    {
+      "block_id": "B0071",
+      "old_hash": "1a16893b4133",
+      "first_line_excerpt": "| signal | all | plausible+subtle | H1 |"
+    },
+    {
+      "block_id": "B0072",
+      "old_hash": "924ffeed50c1",
+      "first_line_excerpt": "Reading: every intrinsic signal is at or below chance within-table, but the reg…"
+    },
+    {
+      "block_id": "B0073",
+      "old_hash": "bfc0f5c281da",
+      "first_line_excerpt": "**Round-7 additions (2026-11-01).** (i) Zero-parameter pairing impurity: in 4.2…"
+    },
+    {
+      "block_id": "B0074",
+      "old_hash": "d377198cbfc1",
+      "first_line_excerpt": "## F7 (preliminary, P4/A-P4b, second agent) — Qwen3-8B at T1 replicates Qwen3-4…"
+    },
+    {
+      "block_id": "B0075",
+      "old_hash": "9cbd4f777076",
+      "first_line_excerpt": "630 trajectories (210 x clean seed 0 / seed 1 / toxic), same harness, tier T1, …"
+    },
+    {
+      "block_id": "B0076",
+      "old_hash": "b4509a78f387",
+      "first_line_excerpt": "Zero-parameter on the agent's real events (196 poisoned vs 199 clean, within-ta…"
+    },
+    {
+      "block_id": "B0077",
+      "old_hash": "2d29815f324e",
+      "first_line_excerpt": "Intrinsic signals (completion after the poisoned observation; plausible+subtle …"
+    },
+    {
+      "block_id": "B0078",
+      "old_hash": "4427f8fe3bbf",
+      "first_line_excerpt": "Across the two open agents: behaviour identical (poison used 93% / 92%), intrin…"
+    },
+    {
+      "block_id": "B0079",
+      "old_hash": "872690e4fccf",
+      "first_line_excerpt": "**F7 addendum — Qwen3-8B T0_agent (head-5 + whole-column min/max).** Clean 182/…"
+    },
+    {
+      "block_id": "B0080",
+      "old_hash": "cc7853ecfc17",
+      "first_line_excerpt": "## F8 (P5, confirmatory, C3 NEGATIVE) — The clean-only predictive scorer is at …"
+    },
+    {
+      "block_id": "B0081",
+      "old_hash": "376f8bd0ed39",
+      "first_line_excerpt": "30 LOTO members (6 held-out tables x 5 bootstrap seeds, Qwen2.5-0.5B + LoRA r=1…"
+    },
+    {
+      "block_id": "B0082",
+      "old_hash": "f7ca6c900568",
+      "first_line_excerpt": "| eval set | events | surprise within-table [CI] | plausible+subtle | epistemic…"
+    },
+    {
+      "block_id": "B0083",
+      "old_hash": "afe5ca9ade53",
+      "first_line_excerpt": "Clean events get *higher* median surprise (1.94) than poisoned events (1.67): t…"
+    },
+    {
+      "block_id": "B0084",
+      "old_hash": "df284b583a14",
+      "first_line_excerpt": "## F5/F6/F7 correction (2026-11-07) — three scoring defects fixed (p4_common.py…"
+    },
+    {
+      "block_id": "B0085",
+      "old_hash": "5ca8623266ed",
+      "first_line_excerpt": "Source: external code review of the d0e7ba4 snapshot (collaborator, 2026-11-06)…"
+    },
+    {
+      "block_id": "B0086",
+      "old_hash": "dd1495dfbe27",
+      "first_line_excerpt": "1. **Zero-parameter checks scored on the tier cap, not on what the agent saw.**…"
+    },
+    {
+      "block_id": "B0087",
+      "old_hash": "008f4ee5ab58",
+      "first_line_excerpt": "Also: the intrinsic scorer now checks the single-number condition on the scored…"
+    },
+    {
+      "block_id": "B0088",
+      "old_hash": "ed0a72e152b6",
+      "first_line_excerpt": "**Within-table AUROC, before -> after (actual exposure). Coverage in parenthese…"
+    },
+    {
+      "block_id": "B0089",
+      "old_hash": "e75ba0152d98",
+      "first_line_excerpt": "| set | 0a | 0d | 0o* | verbalized (P+S, H1) | mean entropy |"
+    },
+    {
+      "block_id": "B0090",
+      "old_hash": "c86058feb8b4",
+      "first_line_excerpt": "8B differences of <=0.006 are Monte-Carlo noise from a changed RNG consumption …"
+    },
+    {
+      "block_id": "B0091",
+      "old_hash": "1628284479d4",
+      "first_line_excerpt": "**What changes in the text.** (a) \"no head-5 reference exceeds 0.58\" (F5, F7, p…"
+    },
+    {
+      "block_id": "B0092",
+      "old_hash": "fa18aa16058f",
+      "first_line_excerpt": "Not re-run: the k-sweep (unaffected), the scorer (its eval files are built by b…"
+    },
+    {
+      "block_id": "B0093",
+      "old_hash": "0686cd4aa5d5",
+      "first_line_excerpt": "## F9 (A-P4-Gemini, 2026-11-07) — Gemini Flash external replication and scalar …"
+    },
+    {
+      "block_id": "B0094",
+      "old_hash": "4c00f773f025",
+      "first_line_excerpt": "Protocol commit `4fa7740` precedes generation. Collection implementation `f01f8…"
+    },
+    {
+      "block_id": "B0095",
+      "old_hash": "2da06f2e9d49",
+      "first_line_excerpt": "| Run | Tasks | Task success | Poison fired | Poison adoption | Subsequent-evid…"
+    },
+    {
+      "block_id": "B0096",
+      "old_hash": "e6cc0be2c47f",
+      "first_line_excerpt": "Conditional on the 128 actually exposed runs, poison adoption was"
+    },
+    {
+      "block_id": "B0097",
+      "old_hash": "43e8fb8ed8cc",
+      "first_line_excerpt": "Of the 128 first poisoned observations, 35 were scalar under the existing parser"
+    },
+    {
+      "block_id": "B0098",
+      "old_hash": "7c053ef11ee9",
+      "first_line_excerpt": "**H5 is not confirmed.** The registered subtle slice contains 73 eligible tasks,"
+    },
+    {
+      "block_id": "B0099",
+      "old_hash": "4127f5704bbd",
+      "first_line_excerpt": "Confidence was a valid integer in 731/769"
+    },
+    {
+      "block_id": "B0100",
+      "old_hash": "b40821d9ec24",
+      "first_line_excerpt": "Formal responses recorded 1679 live and 769"
+    },
+    {
+      "block_id": "B0101",
+      "old_hash": "d6883d725145",
+      "first_line_excerpt": "[Google pricing](https://ai.google.dev/gemini-api/docs/pricing)."
+    },
+    {
+      "block_id": "B0102",
+      "old_hash": "a8af0e8b53d9",
+      "first_line_excerpt": "## F10 — Fixed-return context pilot, Gemini Flash (2026-11-07; exploratory)"
+    },
+    {
+      "block_id": "B0103",
+      "old_hash": "9eb2943a9471",
+      "first_line_excerpt": "A-CTX-PILOT protocol `bfaf713`, collection code `7e5c662`, frozen requests `5da…"
+    },
+    {
+      "block_id": "B0104",
+      "old_hash": "fee125731cd6",
+      "first_line_excerpt": "| Context | Accept clean | Accept corrupted | Wrong scalar adopted | Truth reco…"
+    },
+    {
+      "block_id": "B0105",
+      "old_hash": "894cf17138fb",
+      "first_line_excerpt": "Primary matched20 minus random20 contrast in clean-minus-corrupted acceptance: …"
+    },
+    {
+      "block_id": "B0106",
+      "old_hash": "6eb7f7d1018e",
+      "first_line_excerpt": "Strict counts include invalid outputs in denominators. Five invalids consist of…"
+    },
+    {
+      "block_id": "B0107",
+      "old_hash": "fe9e9fe391c4",
+      "first_line_excerpt": "All 72 packets were validated; 36 corrupted cells have completed responses. The…"
+    },
+    {
+      "block_id": "B0108",
+      "old_hash": "0c93f4b4b08a",
+      "first_line_excerpt": "## F10 addendum — Qwen3-8B reproduction of the fixed-return context pilot (2026…"
+    },
+    {
+      "block_id": "B0109",
+      "old_hash": "7e57dac7fce3",
+      "first_line_excerpt": "Same frozen manifest (SHA d9c467df…, byte-identical to the Gemini run), same A-…"
+    },
+    {
+      "block_id": "B0110",
+      "old_hash": "1d973c32a4e2",
+      "first_line_excerpt": "| Context | Accept clean | Accept corrupted | Wrong scalar adopted |"
+    },
+    {
+      "block_id": "B0111",
+      "old_hash": "533cbdabe5a0",
+      "first_line_excerpt": "**Primary contrast matched20 − random20 (clean-minus-corrupted acceptance): 0.0…"
+    },
+    {
+      "block_id": "B0112",
+      "old_hash": "e6055c4517bf",
+      "first_line_excerpt": "**The context-checking benefit does not replicate and the direction flips.** Ge…"
+    },
+    {
+      "block_id": "B0113",
+      "old_hash": "be97d3e77562",
+      "first_line_excerpt": "**Consequences.**"
+    },
+    {
+      "block_id": "B0114",
+      "old_hash": "d2dcf6b2e0ec",
+      "first_line_excerpt": "1. The \"Gemini shows signs of improvement with more context\" observation (F10) …"
+    },
+    {
+      "block_id": "B0115",
+      "old_hash": "86cc297631d1",
+      "first_line_excerpt": "Data: `data/ours/context_pilot/20261107/qwen3-8b/{summary.json,scored_responses…"
+    },
+    {
+      "block_id": "B0116",
+      "old_hash": "614b1bbcf744",
+      "first_line_excerpt": "### F10 addendum clarification — verified primary contrast and confidence scope…"
+    },
+    {
+      "block_id": "B0117",
+      "old_hash": "b59aae9a40f8",
+      "first_line_excerpt": "Independent recomputation from both scored files agrees with the existing count…"
+    },
+    {
+      "block_id": "B0118",
+      "old_hash": "1a8c52c8a399",
+      "first_line_excerpt": "| Model | head5 wrong adoption | random20 wrong adoption | matched20 wrong adop…"
+    },
+    {
+      "block_id": "B0119",
+      "old_hash": "eb9791445ba9",
+      "first_line_excerpt": "The earlier phrase \"direction flips\" does not describe the primary contrast: Qw…"
+    },
+    {
+      "block_id": "B0120",
+      "old_hash": "fc24e5fa5228",
+      "first_line_excerpt": "The earlier \"same scale-noncompliance pattern\" is unsupported for Qwen. Its sco…"
+    },
+    {
+      "block_id": "B0121",
+      "old_hash": "0fe1793c2a04",
+      "first_line_excerpt": "Audit scope: Gemini 72/72 raw replies re-parsed; Qwen 0/72 raw replies present …"
+    },
+    {
+      "block_id": "B0122",
+      "old_hash": "dd4835a8ad16",
+      "first_line_excerpt": "Next priority: preregister an offline same-evidence statistical-checker feasibi…"
+    },
+    {
+      "block_id": "B0123",
+      "old_hash": "db8d733b4c50",
+      "first_line_excerpt": "## F11 — Same-evidence statistical feasibility (2026-11-07, exploratory)"
+    },
+    {
+      "block_id": "B0124",
+      "old_hash": "c60c5d022d9c",
+      "first_line_excerpt": "A-CTX-EVIDENCE protocol `f94ffbb`, frozen analysis code `a5b6e07`."
+    },
+    {
+      "block_id": "B0125",
+      "old_hash": "49b0a7e8e4f3",
+      "first_line_excerpt": "Primary 0d matched20 passes sanity AUROC 1.000, with"
+    },
+    {
+      "block_id": "B0126",
+      "old_hash": "5ecae06eb7db",
+      "first_line_excerpt": "On the identical matched20 data evidence, Qwen accepts 11/12 corrupted returns …"
+    },
+    {
+      "block_id": "B0127",
+      "old_hash": "48e18430e08d",
+      "first_line_excerpt": "0a matched20 passes sanity but has actual within-table AUROC"
+    },
+    {
+      "block_id": "B0128",
+      "old_hash": "4a6d41250537",
+      "first_line_excerpt": "Interpretation: this fixed matched20 sample contains statistical signal accessi…"
+    },
+    {
+      "block_id": "B0129",
+      "old_hash": "f0d27195955a",
+      "first_line_excerpt": "Next: independent row-draw robustness and fresh generated/transformed-table con…"
+    },
+    {
+      "block_id": "B0130",
+      "old_hash": "cdb9bec0cc58",
+      "first_line_excerpt": "## F12 — Independent row-draw robustness, selected queries (2026-11-07, explora…"
+    },
+    {
+      "block_id": "B0131",
+      "old_hash": "d39b1e325058",
+      "first_line_excerpt": "A-CTX-RESAMPLE protocol 7f6400e, code 0494e7f, evidence freeze b192a58. Twenty …"
+    },
+    {
+      "block_id": "B0132",
+      "old_hash": "e7f5c0425b95",
+      "first_line_excerpt": "0d sanity 0.995938 passes. Query/draw-mixture within-table AUROC 0.818437, desc…"
+    },
+    {
+      "block_id": "B0133",
+      "old_hash": "dc1c6e32d505",
+      "first_line_excerpt": "| 0d slice | Corrupted flags | Clean false flags |"
+    },
+    {
+      "block_id": "B0134",
+      "old_hash": "054bfa4d3280",
+      "first_line_excerpt": "Severity is tied to query. Secondary 0a passes sanity, real AUROC 0.614583; zer…"
+    },
+    {
+      "block_id": "B0135",
+      "old_hash": "55c7138681e9",
+      "first_line_excerpt": "Signal persists across sampling for these selected queries, with task heterogen…"
+    },
+    {
+      "block_id": "B0136",
+      "old_hash": "22bb044b11c6",
+      "first_line_excerpt": "Next: preregister fresh-table raw-rows versus same-row-statistics controls, cro…"
+    },
+    {
+      "block_id": "B0137",
+      "old_hash": "3a37d505c67d",
+      "first_line_excerpt": "# SOURCE: PREREGISTRATION.md"
+    },
+    {
+      "block_id": "B0138",
+      "old_hash": "7463ce3a9fe6",
+      "first_line_excerpt": "# Pre-registration"
+    },
+    {
+      "block_id": "B0139",
+      "old_hash": "2abcb92e637f",
+      "first_line_excerpt": "Each section is committed before the script that tests it produces a number. La…"
+    },
+    {
+      "block_id": "B0140",
+      "old_hash": "abc50ead4774",
+      "first_line_excerpt": "## P1 — Failure taxonomy on existing ToxicBench trajectories (step 2, `taxonomy…"
+    },
+    {
+      "block_id": "B0141",
+      "old_hash": "e8ef947747ca",
+      "first_line_excerpt": "Committed: 2026-10-31. Feeds: pilot gate G1, hypothesis H6 (C2)."
+    },
+    {
+      "block_id": "B0142",
+      "old_hash": "e72b12a00b6c",
+      "first_line_excerpt": "**Data.** All runs in `results/*.jsonl` with a `tool_events` field, excluding `…"
+    },
+    {
+      "block_id": "B0143",
+      "old_hash": "7e9143fece4e",
+      "first_line_excerpt": "**Labels per pair** (from `metrics.task_success`, `metrics.poisoned_answer_used…"
+    },
+    {
+      "block_id": "B0144",
+      "old_hash": "656ac8ae3098",
+      "first_line_excerpt": "| class | rule |"
+    },
+    {
+      "block_id": "B0145",
+      "old_hash": "bdbd8a13a1a5",
+      "first_line_excerpt": "**Severity** is recomputed from the task file with ToxicBench's own `infer_seve…"
+    },
+    {
+      "block_id": "B0146",
+      "old_hash": "aaa3bc3de691",
+      "first_line_excerpt": "**Pre-specified outputs.** Counts and shares per class, overall and stratified …"
+    },
+    {
+      "block_id": "B0147",
+      "old_hash": "5208fbc5253a",
+      "first_line_excerpt": "**Gate G1.** PASS if `observation / (capability + observation) >= 0.15` overall…"
+    },
+    {
+      "block_id": "B0148",
+      "old_hash": "167d4b6fe6cb",
+      "first_line_excerpt": "**Confirmatory status.** G1 is confirmatory. All stratified breakdowns are expl…"
+    },
+    {
+      "block_id": "B0149",
+      "old_hash": "fff87e41b344",
+      "first_line_excerpt": "## P2 — Zero-parameter range check at context tiers (step 3, `range_check.py`)"
+    },
+    {
+      "block_id": "B0150",
+      "old_hash": "95c9d3c1d7e1",
+      "first_line_excerpt": "Committed: 2026-10-31. Feeds: pilot gate G2, hypothesis H2 (signal 0a/0b at tie…"
+    },
+    {
+      "block_id": "B0151",
+      "old_hash": "f04d68eed568",
+      "first_line_excerpt": "**Events.** All `python_exec` events in numerical-family runs (clean and toxic)…"
+    },
+    {
+      "block_id": "B0152",
+      "old_hash": "b3e82f985746",
+      "first_line_excerpt": "**Context tiers** computed from the frozen CSV in `datasets/` (identical to wha…"
+    },
+    {
+      "block_id": "B0153",
+      "old_hash": "a129f5e1d255",
+      "first_line_excerpt": "**Signal 0a (range check)**, op-aware expected interval from the visible rows `…"
+    },
+    {
+      "block_id": "B0154",
+      "old_hash": "084c5359e59f",
+      "first_line_excerpt": "**Signal 0b (z-score)**: for `mean/median/min/max`, `|y - mean(v)| / (std(v) + …"
+    },
+    {
+      "block_id": "B0155",
+      "old_hash": "5444c957940e",
+      "first_line_excerpt": "**Metrics.** AUROC and AUPRC, positive = poisoned, per tier, overall and per po…"
+    },
+    {
+      "block_id": "B0156",
+      "old_hash": "02abe0ed2760",
+      "first_line_excerpt": ">= 5 negatives). 95% CI by bootstrap clustered on `dataset`, 2,000 resamples (1…"
+    },
+    {
+      "block_id": "B0157",
+      "old_hash": "4e0e73be56ce",
+      "first_line_excerpt": "Base rate reported with AUPRC."
+    },
+    {
+      "block_id": "B0158",
+      "old_hash": "d7c05e61d77b",
+      "first_line_excerpt": "**Gate G2.** Decision statistic = pooled AUROC of 0a at **T1** on `aggregate_sc…"
+    },
+    {
+      "block_id": "B0159",
+      "old_hash": "9e152d4f2dfe",
+      "first_line_excerpt": "**Known limitation stated in advance.** 38 of 41 tables have <= 12 rows, so T1 …"
+    },
+    {
+      "block_id": "B0160",
+      "old_hash": "371ae66db651",
+      "first_line_excerpt": "**Confirmatory status.** G2 is confirmatory. Per-poison-type and within-table b…"
+    },
+    {
+      "block_id": "B0161",
+      "old_hash": "80e90a498704",
+      "first_line_excerpt": "## Amendments 2026-10-31 (after independent review `docs/REVIEW_2026-10-31_pilo…"
+    },
+    {
+      "block_id": "B0162",
+      "old_hash": "279868ca33ba",
+      "first_line_excerpt": "### A-P1: G1 re-decided against a run-to-run noise null"
+    },
+    {
+      "block_id": "B0163",
+      "old_hash": "83627728728a",
+      "first_line_excerpt": "Problem: with one clean and one toxic run per pair, stochastic agents produce d…"
+    },
+    {
+      "block_id": "B0164",
+      "old_hash": "9d0dd7c70289",
+      "first_line_excerpt": "- `capability` is split into `cap_both_fail` and `cap_clean_only_fail` (clean f…"
+    },
+    {
+      "block_id": "B0165",
+      "old_hash": "88b72120516e",
+      "first_line_excerpt": "### A-P2: parser fixes, sanity row, actual-preview check, and a competing zero-…"
+    },
+    {
+      "block_id": "B0166",
+      "old_hash": "29eafbd4de88",
+      "first_line_excerpt": "- Observations starting with `ERROR` or `Traceback`, or containing `Error:`, ar…"
+    },
+    {
+      "block_id": "B0167",
+      "old_hash": "fba1342043c3",
+      "first_line_excerpt": "## P3 — Large-table task generation and rule-ceiling analysis (step 4a, `gen_ta…"
+    },
+    {
+      "block_id": "B0168",
+      "old_hash": "713d43e6e2ab",
+      "first_line_excerpt": "Committed: 2026-10-31, before `gen_tasks.py` exists. Feeds: G2 re-decision, H1/…"
+    },
+    {
+      "block_id": "B0169",
+      "old_hash": "1b21fb178f71",
+      "first_line_excerpt": "**Tables.** Six public CC-BY-4.0 / CC0 tables, each >= 344 rows: the three alre…"
+    },
+    {
+      "block_id": "B0170",
+      "old_hash": "27bd4c951e86",
+      "first_line_excerpt": ">= 200 rows are reported separately from the pooled figure (all six qualify, so…"
+    },
+    {
+      "block_id": "B0171",
+      "old_hash": "b4df43edde69",
+      "first_line_excerpt": "**Query templates and mix (pre-committed, matches the original 66% non-trivial …"
+    },
+    {
+      "block_id": "B0172",
+      "old_hash": "aac86af30684",
+      "first_line_excerpt": ">= 20 distinct values (identifier-like columns such as `instant` excluded by na…"
+    },
+    {
+      "block_id": "B0173",
+      "old_hash": "d9bdbc097c60",
+      "first_line_excerpt": "Total 180 tasks."
+    },
+    {
+      "block_id": "B0174",
+      "old_hash": "7c57b44562e3",
+      "first_line_excerpt": "**Oracle.** `clean_value` computed twice: pandas and a `csv`+`statistics` imple…"
+    },
+    {
+      "block_id": "B0175",
+      "old_hash": "d94701f9ba70",
+      "first_line_excerpt": "**Corruption.** `aggregate_scale` only (the one type whose magnitude is continu…"
+    },
+    {
+      "block_id": "B0176",
+      "old_hash": "7ab2efa7e829",
+      "first_line_excerpt": "**Task format.** ToxicBench `tasks/*.jsonl` schema (`task_id, family=numerical,…"
+    },
+    {
+      "block_id": "B0177",
+      "old_hash": "1df3c94fab0b",
+      "first_line_excerpt": "**Deterministic rule-ceiling analysis (no agent needed).** For each task and ti…"
+    },
+    {
+      "block_id": "B0178",
+      "old_hash": "2c2e23a8f386",
+      "first_line_excerpt": "**Contamination note.** All six tables are familiar public datasets; `clean_val…"
+    },
+    {
+      "block_id": "B0179",
+      "old_hash": "6b181ea2f967",
+      "first_line_excerpt": "**Power.** >= 30 tasks per severity bin, >= 60 per template, >= 20 per table; i…"
+    },
+    {
+      "block_id": "B0180",
+      "old_hash": "670ab1eb9fc7",
+      "first_line_excerpt": "**What P3 does NOT decide.** G2 is re-decided only after agent trajectories exi…"
+    },
+    {
+      "block_id": "B0181",
+      "old_hash": "937bbd06a664",
+      "first_line_excerpt": "## Hypothesis rewordings (2026-10-31, from review D2/D4)"
+    },
+    {
+      "block_id": "B0182",
+      "old_hash": "5720356a27cc",
+      "first_line_excerpt": "- **H1 (amended)**: intrinsic signals (1,2,3) are content-blind: on the `subtle…"
+    },
+    {
+      "block_id": "B0183",
+      "old_hash": "a5a68361e1a9",
+      "first_line_excerpt": "## Amendment A-P3 (2026-10-31, after `docs/REVIEW_2026-10-31_rescore.md`)"
+    },
+    {
+      "block_id": "B0184",
+      "old_hash": "986775a3496c",
+      "first_line_excerpt": "Closes the P3 deviations and pre-registers the CPU-only experiment that decides…"
+    },
+    {
+      "block_id": "B0185",
+      "old_hash": "a3fe2c17738c",
+      "first_line_excerpt": "**Regeneration (`large_tables_v2.jsonl`).** Grouped tasks raised to 10 per tabl…"
+    },
+    {
+      "block_id": "B0186",
+      "old_hash": "21e6617080bb",
+      "first_line_excerpt": "**Tiers.** T0_full (whole-column min/max, as leaked by ToxicBench's preview), T…"
+    },
+    {
+      "block_id": "B0187",
+      "old_hash": "222215c4c2a2",
+      "first_line_excerpt": "**0a interval rule (one rule, disclosed).** mean/median/max -> [min(v), max(v)]…"
+    },
+    {
+      "block_id": "B0188",
+      "old_hash": "c6fc822cab41",
+      "first_line_excerpt": "**0b at T0 is labelled a leak upper bound**: whole-column mean/std are not in t…"
+    },
+    {
+      "block_id": "B0189",
+      "old_hash": "383eb6d00886",
+      "first_line_excerpt": "**0d re-execution ceiling.** For each task and tier, the template query is rend…"
+    },
+    {
+      "block_id": "B0190",
+      "old_hash": "aa34d0a972f7",
+      "first_line_excerpt": "**Reporting.** Per tier x template x severity bin: 0a, 0b, 0d AUROC pooled and …"
+    },
+    {
+      "block_id": "B0191",
+      "old_hash": "82fb82d04a69",
+      "first_line_excerpt": "**Hit-rate bound (replaces \"agent-run 0a <= ceiling\").** Because 0a >= 0 and ze…"
+    },
+    {
+      "block_id": "B0192",
+      "old_hash": "b13d3ee3299d",
+      "first_line_excerpt": "**Sanity rows extended** to 0b and 0d (program.md rule says \"each content-aware…"
+    },
+    {
+      "block_id": "B0193",
+      "old_hash": "fefcb46c76eb",
+      "first_line_excerpt": "**Noise floor** reported per model and reweighted to the pair composition (revi…"
+    },
+    {
+      "block_id": "B0194",
+      "old_hash": "c46cd15e7aa5",
+      "first_line_excerpt": "**Corrections to prior text.** 0d scored coverage on original tables is 482/1,1…"
+    },
+    {
+      "block_id": "B0195",
+      "old_hash": "a4afe7a36af2",
+      "first_line_excerpt": "## P4 — Agent runs on the P3 tasks (step 4b-5; needs a model endpoint)"
+    },
+    {
+      "block_id": "B0196",
+      "old_hash": "4fd327096592",
+      "first_line_excerpt": "Committed: 2026-10-31, before any agent run. Feeds: C1 matrix (Figure 1), G2 fo…"
+    },
+    {
+      "block_id": "B0197",
+      "old_hash": "f32b389b0b55",
+      "first_line_excerpt": "**Tasks.** `data/ours/tasks/large_tables_v2.jsonl` (210 tasks). Each task is ru…"
+    },
+    {
+      "block_id": "B0198",
+      "old_hash": "8b41c2a67113",
+      "first_line_excerpt": "**Context tiers are enforced in the harness, not post hoc.** The `preview` tool…"
+    },
+    {
+      "block_id": "B0199",
+      "old_hash": "af37b59d1a55",
+      "first_line_excerpt": "**Agents.** Two open-weight (Qwen3-4B and Qwen3-8B, served by vLLM with `logpro…"
+    },
+    {
+      "block_id": "B0200",
+      "old_hash": "dd970cfb95c4",
+      "first_line_excerpt": "**Signals scored per python_exec event** (shadow scoring; live trajectory untou…"
+    },
+    {
+      "block_id": "B0201",
+      "old_hash": "f4ae403fd260",
+      "first_line_excerpt": "**Metrics.** As in Metrics/A-P2: AUROC + AUPRC, pooled and within-table (table-…"
+    },
+    {
+      "block_id": "B0202",
+      "old_hash": "f0282b974760",
+      "first_line_excerpt": "**Decisions.**"
+    },
+    {
+      "block_id": "B0203",
+      "old_hash": "da30dadb2823",
+      "first_line_excerpt": "- G2 (formal): fork iff lower CI of within-table 0a AUROC at T1 (plausible+subt…"
+    },
+    {
+      "block_id": "B0204",
+      "old_hash": "5c5428e34946",
+      "first_line_excerpt": "**Budget.** ~5,700 trajectories (3 agents) x ~6 tool calls; open models ~1-2 GP…"
+    },
+    {
+      "block_id": "B0205",
+      "old_hash": "fd88d3af9703",
+      "first_line_excerpt": "**Contamination control.** For a 30-task subset, columns are renamed to neutral…"
+    },
+    {
+      "block_id": "B0206",
+      "old_hash": "f2235ab9dbb0",
+      "first_line_excerpt": "## Amendment A-P3b (2026-10-31, after `docs/REVIEW_2026-10-31_round3.md`)"
+    },
+    {
+      "block_id": "B0207",
+      "old_hash": "855c5e7cba5d",
+      "first_line_excerpt": "**One shared zero-parameter implementation** (`experiments/zeroparam.py`) used …"
+    },
+    {
+      "block_id": "B0208",
+      "old_hash": "0dfea3a4f9ce",
+      "first_line_excerpt": "**0r analytic reference** (calibrated, signed): for mean, t = (log y - log m_k)…"
+    },
+    {
+      "block_id": "B0209",
+      "old_hash": "59c2470a2113",
+      "first_line_excerpt": "**k-sweep.** k in {5, 10, 20, 50, 100, 200, full}; 20 random row draws per tabl…"
+    },
+    {
+      "block_id": "B0210",
+      "old_hash": "05297ffa5377",
+      "first_line_excerpt": "**Agent-real T0.** `T0_agent` = what ToxicBench's preview shows: head-5 rows pl…"
+    },
+    {
+      "block_id": "B0211",
+      "old_hash": "b026aeca2435",
+      "first_line_excerpt": "**Headroom control** (replaces the like-for-like bin table). For op = mean at s…"
+    },
+    {
+      "block_id": "B0212",
+      "old_hash": "9c5ed9641f2c",
+      "first_line_excerpt": "**Disclosures.** grouped x max equals the column max (5 tasks; reported as unfi…"
+    },
+    {
+      "block_id": "B0213",
+      "old_hash": "81adb526f31c",
+      "first_line_excerpt": "**Threat model (for the paper).** A checker that can re-execute the query on th…"
+    },
+    {
+      "block_id": "B0214",
+      "old_hash": "d0a62dd3e66a",
+      "first_line_excerpt": "## Amendment A-P4 (2026-10-31)"
+    },
+    {
+      "block_id": "B0215",
+      "old_hash": "8b68a37613ea",
+      "first_line_excerpt": "- 0d visibility per tier = exactly the preview the agent saw (T0_agent, T1 head…"
+    },
+    {
+      "block_id": "B0216",
+      "old_hash": "73b3a2e6b73d",
+      "first_line_excerpt": "## Amendment A-P3c (2026-10-31, after `docs/REVIEW_2026-10-31_round4.md`)"
+    },
+    {
+      "block_id": "B0217",
+      "old_hash": "bc1f9e88f7df",
+      "first_line_excerpt": "**Logged deviations from A-P3b (code-level clarifications made before results w…"
+    },
+    {
+      "block_id": "B0218",
+      "old_hash": "eff61307fd6c",
+      "first_line_excerpt": "**0o — oracle sampling-distribution reference.** For each task and k, draw M = …"
+    },
+    {
+      "block_id": "B0219",
+      "old_hash": "f19734af0828",
+      "first_line_excerpt": "**0r** restricted to unfiltered mean and median, in the registered log-ratio fo…"
+    },
+    {
+      "block_id": "B0220",
+      "old_hash": "475142efd716",
+      "first_line_excerpt": "**Decision (replaces A-P3b's rule).** On the **common support** (task-draw rows…"
+    },
+    {
+      "block_id": "B0221",
+      "old_hash": "8d2f3fb1dc06",
+      "first_line_excerpt": "**T0_agent recombination.** Each component (0a on whole-column [min, max]; 0d o…"
+    },
+    {
+      "block_id": "B0222",
+      "old_hash": "1faf8935725e",
+      "first_line_excerpt": "**Sensitivities (k in {5, 20}).** B in {50, 500} for 0d; degenerate-interval fl…"
+    },
+    {
+      "block_id": "B0223",
+      "old_hash": "3f0816576755",
+      "first_line_excerpt": "**CIs on the k-curve.** Table-level (6 clusters) alongside (table, draw); the c…"
+    },
+    {
+      "block_id": "B0224",
+      "old_hash": "82c0fbafbfff",
+      "first_line_excerpt": "**`range_check.py`** ported to `zeroparam.bootstrap_0d` with the sum-type rule …"
+    },
+    {
+      "block_id": "B0225",
+      "old_hash": "e61fcf421a30",
+      "first_line_excerpt": "**Sum-type rule for arbitrary agent code (also binds P4):** the statistic is su…"
+    },
+    {
+      "block_id": "B0226",
+      "old_hash": "c8c7532613b5",
+      "first_line_excerpt": "**Figure-1 axis note.** The k-curve is \"rows visible to a zero-parameter checke…"
+    },
+    {
+      "block_id": "B0227",
+      "old_hash": "d55876667403",
+      "first_line_excerpt": "## A-P4 fixes (2026-10-31, round-4 items)"
+    },
+    {
+      "block_id": "B0228",
+      "old_hash": "d67a9336da59",
+      "first_line_excerpt": "- H2(0d) arms are **pre-decided by the k-sweep ceiling** (T0_agent 0d ~0.53 -> …"
+    },
+    {
+      "block_id": "B0229",
+      "old_hash": "50c507be38c2",
+      "first_line_excerpt": "## Amendment A-P3d (2026-10-31, after `docs/REVIEW_2026-10-31_round5.md`)"
+    },
+    {
+      "block_id": "B0230",
+      "old_hash": "c135e2e74dba",
+      "first_line_excerpt": "**Why.** A-P3c's 0o is computed once per (task, k) from the full table and neve…"
+    },
+    {
+      "block_id": "B0231",
+      "old_hash": "aeb6afe53ac0",
+      "first_line_excerpt": "**0o\\* — draw-conditioned oracle.** For each task and k, from the same M = 300 …"
+    },
+    {
+      "block_id": "B0232",
+      "old_hash": "346d4441f193",
+      "first_line_excerpt": "|log theta_hat(draw) - log y - b_k| / (w_k + eps) (linear analogue in the non-p…"
+    },
+    {
+      "block_id": "B0233",
+      "old_hash": "368e9db2401f",
+      "first_line_excerpt": "when theta_hat(draw) is undefined or (log case) y <= 0. 0o\\* knows the exact k-…"
+    },
+    {
+      "block_id": "B0234",
+      "old_hash": "6cb45d328d76",
+      "first_line_excerpt": "**Sanity rows (program.md hard rule, now applied to every reported reference).*…"
+    },
+    {
+      "block_id": "B0235",
+      "old_hash": "7f2834e915f2",
+      "first_line_excerpt": "**Decomposition and decision (replaces A-P3c's decision).** On the common suppo…"
+    },
+    {
+      "block_id": "B0236",
+      "old_hash": "2d252705748d",
+      "first_line_excerpt": "- estimator loss := 0o\\* - 0d. If the table-level CI lower bound > 0.05: 0d's p…"
+    },
+    {
+      "block_id": "B0237",
+      "old_hash": "678770bb2083",
+      "first_line_excerpt": "**C3 bar (one definition; supersedes \"C3 bar = 0o curve\" in the plan/findings a…"
+    },
+    {
+      "block_id": "B0238",
+      "old_hash": "43943e48206d",
+      "first_line_excerpt": "- Primary: AUROC_7 - max(AUROC_0d, AUROC_0r_log where defined) on the common su…"
+    },
+    {
+      "block_id": "B0239",
+      "old_hash": "a1bc5bf470b9",
+      "first_line_excerpt": "**Fixes to the shared implementation (before re-running anything):**"
+    },
+    {
+      "block_id": "B0240",
+      "old_hash": "a19337a93240",
+      "first_line_excerpt": "- `is_sum_type`: also sum-type when the final call is a reducer over `groupby(.…"
+    },
+    {
+      "block_id": "B0241",
+      "old_hash": "68c0267a2576",
+      "first_line_excerpt": "**Re-runs.** `ksweep2.py` (same seed, same draws) and `range_check.py` head-5 w…"
+    },
+    {
+      "block_id": "B0242",
+      "old_hash": "b69600323e6d",
+      "first_line_excerpt": "**Process notes.** The post-smoke T0_agent re-slice fix in `ksweep2.py` (02:01 …"
+    },
+    {
+      "block_id": "B0243",
+      "old_hash": "52e9c5e52038",
+      "first_line_excerpt": "## A-P3d note (2026-10-31, round-6 item 1)"
+    },
+    {
+      "block_id": "B0244",
+      "old_hash": "a0d2f9a19a07",
+      "first_line_excerpt": "A-P4 line \"0d on agent code: resample size k for every op (A-P3b), no op classi…"
+    },
+    {
+      "block_id": "B0245",
+      "old_hash": "71e80ce448c6",
+      "first_line_excerpt": "## A-P4 note (2026-11-01, smoke run 1, before any P4 result is used)"
+    },
+    {
+      "block_id": "B0246",
+      "old_hash": "297874e5d95b",
+      "first_line_excerpt": "First Qwen3-4B smoke (20 tasks, T1, clean): parse-ok 20/20 but success 0/20 bec…"
+    },
+    {
+      "block_id": "B0247",
+      "old_hash": "0ed86008a37b",
+      "first_line_excerpt": "## Amendment A-P4b (2026-11-01, after `docs/REVIEW_2026-11-01_round7_p4week1.md…"
+    },
+    {
+      "block_id": "B0248",
+      "old_hash": "8b30dc0c313c",
+      "first_line_excerpt": "**Signal 1 definition.** The registered \"token entropy of the first generated t…"
+    },
+    {
+      "block_id": "B0249",
+      "old_hash": "fb893d19bf13",
+      "first_line_excerpt": "## P5 — C3 predictive scorer: training spec (2026-11-01, before any training ru…"
+    },
+    {
+      "block_id": "B0250",
+      "old_hash": "fb42276699a8",
+      "first_line_excerpt": "**Task.** Predict the clean scalar return of a python_exec call from its contex…"
+    },
+    {
+      "block_id": "B0251",
+      "old_hash": "cc129f9a8cc3",
+      "first_line_excerpt": "## A-P4-Gemini (2026-11-07, before live Gemini calls)"
+    },
+    {
+      "block_id": "B0252",
+      "old_hash": "6c12b66964d6",
+      "first_line_excerpt": "Add an external replication on Google's stable `gemini-3.8-flash` at T1."
+    },
+    {
+      "block_id": "B0253",
+      "old_hash": "ec7c627e3e79",
+      "first_line_excerpt": "The integration check uses the runner's fixed 20 clean smoke tasks, followed by…"
+    },
+    {
+      "block_id": "B0254",
+      "old_hash": "24cae21c36fc",
+      "first_line_excerpt": "## A-CTX-PILOT (2026-11-07, before controlled-context Gemini calls)"
+    },
+    {
+      "block_id": "B0255",
+      "old_hash": "cf15dcb0a7c1",
+      "first_line_excerpt": "**Purpose and scope.** Exploratory feasibility experiment for the proposed quer…"
+    },
+    {
+      "block_id": "B0256",
+      "old_hash": "d82dcbfe6286",
+      "first_line_excerpt": "**Units and selection.** From `large_tables_v2.jsonl`, process datasets alphabe…"
+    },
+    {
+      "block_id": "B0257",
+      "old_hash": "f4ac78108ad9",
+      "first_line_excerpt": "**Treatment cells.** Cross three explicitly presented contexts with clean/corru…"
+    },
+    {
+      "block_id": "B0258",
+      "old_hash": "a48a9b794e28",
+      "first_line_excerpt": "**Prompt and response.** Common instructions ask whether a full-table mean tool…"
+    },
+    {
+      "block_id": "B0259",
+      "old_hash": "bcd52a1e1df1",
+      "first_line_excerpt": "**Models and execution.** Gemini `gemini-3.8-flash`, low reasoning, provider-de…"
+    },
+    {
+      "block_id": "B0260",
+      "old_hash": "ca7ebd204c36",
+      "first_line_excerpt": "**Measures.** For each context, show accept/reject/uncertain/invalid counts sep…"
+    },
+    {
+      "block_id": "B0261",
+      "old_hash": "660eeb20cf99",
+      "first_line_excerpt": "**Gates and decisions.** Offline invariants must verify exact pair delivery, fr…"
+    },
+    {
+      "block_id": "B0262",
+      "old_hash": "f711831329f9",
+      "first_line_excerpt": "### A-CTX-PILOT implementation clarification (before collection, 2026-11-07)"
+    },
+    {
+      "block_id": "B0263",
+      "old_hash": "c871a6f87829",
+      "first_line_excerpt": "The independent pre-collection audit found no blocking pairing/leakage/scoring …"
+    },
+    {
+      "block_id": "B0264",
+      "old_hash": "09aaa20bbc48",
+      "first_line_excerpt": "## A-CTX-EVIDENCE (2026-11-07, before computing same-evidence statistical basel…"
+    },
+    {
+      "block_id": "B0265",
+      "old_hash": "3fa50a8d3e4b",
+      "first_line_excerpt": "**Scope and prior knowledge.** Exploratory follow-up to A-CTX-PILOT and its Qwen"
+    },
+    {
+      "block_id": "B0266",
+      "old_hash": "57d47a2fa199",
+      "first_line_excerpt": "**Fixed units.** Reuse the immutable `data/ours/context_pilot/20261107/manifest…"
+    },
+    {
+      "block_id": "B0267",
+      "old_hash": "2e58be93caf0",
+      "first_line_excerpt": "**Information boundary.** Parse the exact evidence JSON and CSV embedded in fro…"
+    },
+    {
+      "block_id": "B0268",
+      "old_hash": "23c0ca2d84ea",
+      "first_line_excerpt": "**Methods.** (1) 0a sample range check via `zeroparam.rule_0a('mean', ...)` on …"
+    },
+    {
+      "block_id": "B0269",
+      "old_hash": "75aa7d2f95ff",
+      "first_line_excerpt": "**Operational decisions.** A missing/nonfinite score means unscorable, never si…"
+    },
+    {
+      "block_id": "B0270",
+      "old_hash": "9194da33febd",
+      "first_line_excerpt": "**Sanity gate.** For each query/context add candidates truth*1000 and truth/100…"
+    },
+    {
+      "block_id": "B0271",
+      "old_hash": "824867163cc3",
+      "first_line_excerpt": "**Analysis.** Primary: sanity-gated, equal-table AUROC for 0d on matched20. Rep…"
+    },
+    {
+      "block_id": "B0272",
+      "old_hash": "13025bd68f03",
+      "first_line_excerpt": "**Validation and stopping.** Offline tests before running real cases: visible-o…"
+    },
+    {
+      "block_id": "B0273",
+      "old_hash": "e8be77436451",
+      "first_line_excerpt": "**Research decisions.** Inspect discrimination jointly with clean false flags, …"
+    },
+    {
+      "block_id": "B0274",
+      "old_hash": "6fcee4549cc8",
+      "first_line_excerpt": "## A-CTX-RESAMPLE (2026-11-07, before independent-draw statistical robustness c…"
+    },
+    {
+      "block_id": "B0275",
+      "old_hash": "0dff5ca114d6",
+      "first_line_excerpt": "**Motivation/prior knowledge.** A-CTX-EVIDENCE is complete: on one frozen match…"
+    },
+    {
+      "block_id": "B0276",
+      "old_hash": "3be463a1b557",
+      "first_line_excerpt": "**Design.** Reuse all twelve original filtered-mean queries, original truths an…"
+    },
+    {
+      "block_id": "B0277",
+      "old_hash": "6ffb3403d37a",
+      "first_line_excerpt": "**Method.** Reuse the exact context_evidence.features, score and events_for_que…"
+    },
+    {
+      "block_id": "B0278",
+      "old_hash": "de752712d4cb",
+      "first_line_excerpt": "**Analysis.** Primary is 0d, 0a secondary. Sanity gate strictly >0.95 within-ta…"
+    },
+    {
+      "block_id": "B0279",
+      "old_hash": "26d0c06374a7",
+      "first_line_excerpt": "**Execution/reporting.** New output under data/ours/context_evidence_resample/2…"
+    },
+    {
+      "block_id": "B0280",
+      "old_hash": "492eaac66b2a",
+      "first_line_excerpt": "# SOURCE: research-state.yaml"
+    },
+    {
+      "block_id": "B0281",
+      "old_hash": "2d8a63c99c9d",
+      "first_line_excerpt": "project:"
+    },
+    {
+      "block_id": "B0282",
+      "old_hash": "8d2c2dd0cc7d",
+      "first_line_excerpt": "literature:"
+    },
+    {
+      "block_id": "B0283",
+      "old_hash": "c82da202adf6",
+      "first_line_excerpt": "hypotheses:"
+    },
+    {
+      "block_id": "B0284",
+      "old_hash": "3709ca852543",
+      "first_line_excerpt": "  - {id: H1, statement: \"A-P4: token entropy and verbalized, subtle log-ratio b…"
+    },
+    {
+      "block_id": "B0285",
+      "old_hash": "133002f85cca",
+      "first_line_excerpt": "experiments:"
+    },
+    {
+      "block_id": "B0286",
+      "old_hash": "6dbbd5a28dac",
+      "first_line_excerpt": "    - {run_id: gemini_flash_t1_001, hypothesis: H5, metric_value: 0.55555555555…"
+    },
+    {
+      "block_id": "B0287",
+      "old_hash": "8ea2ef287f33",
+      "first_line_excerpt": "outer_loop:"
+    },
+    {
+      "block_id": "B0288",
+      "old_hash": "cb8b3457f700",
+      "first_line_excerpt": "workspace:"
+    },
+    {
+      "block_id": "B0289",
+      "old_hash": "7b9bed6dfff9",
+      "first_line_excerpt": "context_pilots:"
+    },
+    {
+      "block_id": "B0290",
+      "old_hash": "a0fb4e22d10d",
+      "first_line_excerpt": "  - run_id: gemini_fixed_return_context_20261107"
+    },
+    {
+      "block_id": "B0291",
+      "old_hash": "70b6a678c378",
+      "first_line_excerpt": "context_replication_review:"
+    },
+    {
+      "block_id": "B0292",
+      "old_hash": "94ef4ebcccaa",
+      "first_line_excerpt": "context_evidence:"
+    },
+    {
+      "block_id": "B0293",
+      "old_hash": "dcdaede1bf21",
+      "first_line_excerpt": "context_evidence_resample:"
+    },
+    {
+      "block_id": "B0294",
+      "old_hash": "55fcd809f57c",
+      "first_line_excerpt": "# SOURCE: docs/CONTEXT_PILOT_2026-11-07_gemini.md"
+    },
+    {
+      "block_id": "B0295",
+      "old_hash": "0d3a1c991071",
+      "first_line_excerpt": "# Gemini 固定返回 context pilot（2026-11-07）"
+    },
+    {
+      "block_id": "B0296",
+      "old_hash": "c8a5a40adafd",
+      "first_line_excerpt": "本轮是显式要求模型审计工具返回的单次判断实验。它与此前允许模型自行调用工具的 P4 实验分开。"
+    },
+    {
+      "block_id": "B0297",
+      "old_hash": "881d2e4a6eec",
+      "first_line_excerpt": "完成 72/72 个实验条件，格式有效 67/72；实际收到污染条件响应 36 条。每个条件一次回答，共 12 个查询、6 张表；72 个回答不能当成 72 …"
+    },
+    {
+      "block_id": "B0298",
+      "old_hash": "8c46a0ce7fd4",
+      "first_line_excerpt": "| 展示的 context | 接受正确返回 | 接受错误返回 | 最终答案照抄错误值 | 正确返回时答对 | 错误返回时答对 |"
+    },
+    {
+      "block_id": "B0299",
+      "old_hash": "b4248838ad5e",
+      "first_line_excerpt": "“接受”读取 decision；“照抄错误值”读取最终 answer，并要求它匹配错误值且不匹配真值。两者回答不同问题。拒绝、犹豫或弃答都不自动等于恢复正确答…"
+    },
+    {
+      "block_id": "B0300",
+      "old_hash": "e41ce4edf7e6",
+      "first_line_excerpt": "| Context | 正确返回：拒绝 / 犹豫 / 格式失败 / 弃答 | 错误返回：拒绝 / 犹豫 / 格式失败 / 弃答 | 正确 / 错误返回的平均 …"
+    },
+    {
+      "block_id": "B0301",
+      "old_hash": "b1fd0d2a814c",
+      "first_line_excerpt": "弃答是 answer=null，与 decision 的拒绝/犹豫可能重叠，不能把这几列相加。"
+    },
+    {
+      "block_id": "B0302",
+      "old_hash": "6879e82cd624",
+      "first_line_excerpt": "## 预先锁定的主对照"
+    },
+    {
+      "block_id": "B0303",
+      "old_hash": "77b35d9d2636",
+      "first_line_excerpt": "每个查询的区分度 = 接受正确返回 − 接受错误返回；范围 −1 到 1。下面的效应是两种 context 的区分度差，按表等权，区间为六表 cluster …"
+    },
+    {
+      "block_id": "B0304",
+      "old_hash": "aaeb713ba16d",
+      "first_line_excerpt": "| 对照 | 差值（百分点） | 95% 描述性区间（百分点） | 查询 / 表 |"
+    },
+    {
+      "block_id": "B0305",
+      "old_hash": "57f08e6480ac",
+      "first_line_excerpt": "主对照是 matched20 − random20，两组都给 20 行。random20 − head5 同时改变行数和抽样方式，不能把它称为纯粹的“多给 c…"
+    },
+    {
+      "block_id": "B0306",
+      "old_hash": "76e2fb6d80ac",
+      "first_line_excerpt": "主对照区间跨过 0；本轮不能确认“相关 20 行优于随机 20 行”。9→7→5 是原始严格计数，不能直接当成语义识错能力的改善。"
+    },
+    {
+      "block_id": "B0307",
+      "old_hash": "0a0a8aa57ec8",
+      "first_line_excerpt": "| 完整有效配对敏感性 | 差值（百分点） | 95% 描述性区间（百分点） | 查询 / 表 |"
+    },
+    {
+      "block_id": "B0308",
+      "old_hash": "dc05e6004bb7",
+      "first_line_excerpt": "有效配对分析改变了任务与表的支持集；它不是缺失无偏的证明。主对照的逐表贡献中，Abalone 的正贡献涉及相关样本组的污染响应截断，Student 的负贡献涉…"
+    },
+    {
+      "block_id": "B0309",
+      "old_hash": "1608ac136cdf",
+      "first_line_excerpt": "## 逐查询与严重度"
+    },
+    {
+      "block_id": "B0310",
+      "old_hash": "a8edf48d21f2",
+      "first_line_excerpt": "| 表 / 查询 | 扰动倍数 | 严重度 | 前 5 行：正确 / 错误 | 随机 20：正确 / 错误 | 相关 20：正确 / 错误 |"
+    },
+    {
+      "block_id": "B0311",
+      "old_hash": "f3678221f5fa",
+      "first_line_excerpt": "| 严重度 | Context | 接受正确返回 | 接受错误返回 | 照抄错误值 |"
+    },
+    {
+      "block_id": "B0312",
+      "old_hash": "c8e7e0166b04",
+      "first_line_excerpt": "严重度与查询绑定、扰动方向与表绑定；切片仅作描述，不能推断严重度或方向的因果作用。"
+    },
+    {
+      "block_id": "B0313",
+      "old_hash": "1223ae8628dd",
+      "first_line_excerpt": "## 结果后诊断（不改变预注册评分）"
+    },
+    {
+      "block_id": "B0314",
+      "old_hash": "05607039f4d0",
+      "first_line_excerpt": "严格格式失败 5 条：3 条是完整 JSON 外包 markdown fence，2 条因 length 截断。没有修复后替换评分，也没有重跑这些条件。"
+    },
+    {
+      "block_id": "B0315",
+      "old_hash": "d9ab7d61dc45",
+      "first_line_excerpt": "10 条有效 reject 中，10 条 confidence≥95。这与提示中“工具值正确的信心”定义冲突，符合模型将其理解为“对当前判断的信心”的解释。因…"
+    },
+    {
+      "block_id": "B0316",
+      "old_hash": "9af67ad1919b",
+      "first_line_excerpt": "若干 reason 引用了标准数据集的总体均值，例如被污染的 Gentoo 体重返回旁写出 “Palmer Penguins ground truth (~5…"
+    },
+    {
+      "block_id": "B0317",
+      "old_hash": "4cdce14edd89",
+      "first_line_excerpt": "## 复现与限制"
+    },
+    {
+      "block_id": "B0318",
+      "old_hash": "0c21e2408d3d",
+      "first_line_excerpt": "- 模型：gemini-3.8-flash；低 reasoning，默认采样；finish_reason：{\"length\": 2, \"stop\": 70}。"
+    },
+    {
+      "block_id": "B0319",
+      "old_hash": "165bcadd7f44",
+      "first_line_excerpt": "Manifest SHA256：`7263b5dcd25ccf3c4463ffe6778243a3f953a153c55f0c493d9714cd0dc999…"
+    },
+    {
+      "block_id": "B0320",
+      "old_hash": "4696c589e2fb",
+      "first_line_excerpt": "原始数据：`data/ours/context_pilot/20261107/gemini-3.8-flash/responses/`；汇总：同目录 `sum…"
+    },
+    {
+      "block_id": "B0321",
+      "old_hash": "a27ec1a7c63d",
+      "first_line_excerpt": "Qwen 启动自己的 OpenAI-compatible 服务后，从仓库根目录执行（模型服务名称需为 qwen3-8b）："
+    },
+    {
+      "block_id": "B0322",
+      "old_hash": "9bf4e90ffda3",
+      "first_line_excerpt": "```bash"
+    },
+    {
+      "block_id": "B0323",
+      "old_hash": "06fe08cd7e07",
+      "first_line_excerpt": "直接复用 manifest，不要重新 prepare。需要同版 context_pilot.py、p4_run.py、zeroparam.py 和 Toxic…"
+    },
+    {
+      "block_id": "B0324",
+      "old_hash": "ebc505385424",
+      "first_line_excerpt": "# SOURCE: docs/CONTEXT_EVIDENCE_2026-11-07.md"
+    },
+    {
+      "block_id": "B0325",
+      "old_hash": "de931769f871",
+      "first_line_excerpt": "# 相同样本的统计核验实验（2026-11-07）"
+    },
+    {
+      "block_id": "B0326",
+      "old_hash": "5ded9aaca453",
+      "first_line_excerpt": "## 这轮回答了什么"
+    },
+    {
+      "block_id": "B0327",
+      "old_hash": "7740ed7b5807",
+      "first_line_excerpt": "在本轮十二个预选查询的相关二十行条件中，已有 bootstrap 核验器能提取出明显判别信号，而提示式模型审计仍接受较多错误返回。因而，单纯“展示的数据太少”…"
+    },
+    {
+      "block_id": "B0328",
+      "old_hash": "4d57b6001b4f",
+      "first_line_excerpt": "这不是新算法；也没有证明某个内部机制或统计方法普遍优于 LLM。数值证据相同，但统计程序拿到明确的结构化查询规格，并执行了 bootstrap 运算；两者的输…"
+    },
+    {
+      "block_id": "B0329",
+      "old_hash": "9b1dcfeaf871",
+      "first_line_excerpt": "## 主要结果：相同的相关 20 行"
+    },
+    {
+      "block_id": "B0330",
+      "old_hash": "63cc42e69f81",
+      "first_line_excerpt": "| 核验方式 | 保留正确返回 | 接受/兼容错误返回 | 明确标错/拒绝错误 | 不确定错误 | 正确 / 错误格式失败 |"
+    },
+    {
+      "block_id": "B0331",
+      "old_hash": "362d4b4d91ac",
+      "first_line_excerpt": "0d 通过极端污染 sanity（AUROC=1.000）。真实污染的表内 AUROC=0.917，六表描述性 bootstrap 区间 [0.833, 1.…"
+    },
+    {
+      "block_id": "B0332",
+      "old_hash": "47bac26b4653",
+      "first_line_excerpt": "固定规则下，0d 标出错误 10/12，同时误标正确 1/12。“兼容”只表示没有与样本统计冲突，不能当成“已经确认正确”。模型不接受可能是拒绝、犹豫或格式失…"
+    },
+    {
+      "block_id": "B0333",
+      "old_hash": "c0006a5f6308",
+      "first_line_excerpt": "## 所有条件，包括失败的条件"
+    },
+    {
+      "block_id": "B0334",
+      "old_hash": "9dfafd4979b1",
+      "first_line_excerpt": "| 方法 | Context | 有分数的查询 / 12 | Sanity AUROC | 正确值被标错 | 错值被标错 | 真实污染表内 AUROC |"
+    },
+    {
+      "block_id": "B0335",
+      "old_hash": "7d66b27ab984",
+      "first_line_excerpt": "未通过 sanity 的行仅是失败诊断；对应真实 AUROC 和跨 context 效应按协议 withheld。不能用这张表宣称已量化“相关 20 行比随机…"
+    },
+    {
+      "block_id": "B0336",
+      "old_hash": "84aee7d4577d",
+      "first_line_excerpt": "## 严重度和逐查询例外"
+    },
+    {
+      "block_id": "B0337",
+      "old_hash": "66c72c2b44dc",
+      "first_line_excerpt": "| 0d matched20 严重度 | 错值被标错 | 正确值被误标 | 表内 AUROC |"
+    },
+    {
+      "block_id": "B0338",
+      "old_hash": "8c2fe6bc122c",
+      "first_line_excerpt": "严重度与查询身份绑定，不能把切片差异解释成严重度的因果效果。"
+    },
+    {
+      "block_id": "B0339",
+      "old_hash": "9773100891c7",
+      "first_line_excerpt": "| 查询 | 样本均值 | 样本 bootstrap 区间 | 正确值判定 | 错误值判定 |"
+    },
+    {
+      "block_id": "B0340",
+      "old_hash": "b31e3bffa137",
+      "first_line_excerpt": "唯一 clean false flag 是 Bike 的 registered / workingday=1；两个未标出的错误是 Abalone Whole_…"
+    },
+    {
+      "block_id": "B0341",
+      "old_hash": "163a3be6a76a",
+      "first_line_excerpt": "距离边界最近的已标错返回是 lt_wine_quality_fil_012，仅在区间外 0.000304（原始单位）。当前没有调整阈值；后续独立抽样重复尤其需…"
+    },
+    {
+      "block_id": "B0342",
+      "old_hash": "1efbbe424a0b",
+      "first_line_excerpt": "![Same-evidence interval diagnostic](../data/ours/context_evidence/20261107/int…"
+    },
+    {
+      "block_id": "B0343",
+      "old_hash": "246591068a60",
+      "first_line_excerpt": "图中数值除以总体真均值，仅为跨量纲绘图。总体真值只用于评价和这条参考线，从未作为核验器特征。每行展示一份冻结样本，不是跨抽样平均。"
+    },
+    {
+      "block_id": "B0344",
+      "old_hash": "c6e2c4e45342",
+      "first_line_excerpt": "## 与模型的描述性配对差值"
+    },
+    {
+      "block_id": "B0345",
+      "old_hash": "f55e142303df",
+      "first_line_excerpt": "指标为“兼容正确 − 兼容错误”减去模型“接受正确 − 接受错误”；不是 AUROC 差值。"
+    },
+    {
+      "block_id": "B0346",
+      "old_hash": "acb55b7dd083",
+      "first_line_excerpt": "| 模型对照 | 格式处理 | 查询 / 表 | 差值（百分点） | 描述性区间（百分点） |"
+    },
+    {
+      "block_id": "B0347",
+      "old_hash": "c6a40df95f02",
+      "first_line_excerpt": "Gemini 完整有效配对仅九查询、五表，且存在公开数据集先验；Qwen 的原始 responses 尚未入库。该差值不能证明通用模型优劣，也不能定位差距来自…"
+    },
+    {
+      "block_id": "B0348",
+      "old_hash": "777c98f4d27b",
+      "first_line_excerpt": "## 论文结论现在怎么写"
+    },
+    {
+      "block_id": "B0349",
+      "old_hash": "0ad95446c623",
+      "first_line_excerpt": "可写：在选定的数值工具返回任务中，核验表现同时取决于展示的证据和采用的核验程序；直接多展示相关行尚未带来跨模型稳定收益，但相同相关样本中的统计信号能被已有核验…"
+    },
+    {
+      "block_id": "B0350",
+      "old_hash": "4ee9bb5a41f3",
+      "first_line_excerpt": "不可写：所有不确定性方法都没用、模型完全不会利用证据、更多 context 无效、0d 总能识错、0o* 是通用信息论上界、或者已提出一个优于现有方法的新算法。"
+    },
+    {
+      "block_id": "B0351",
+      "old_hash": "ae28e89979dd",
+      "first_line_excerpt": "## 投稿判断与下一步"
+    },
+    {
+      "block_id": "B0352",
+      "old_hash": "6e82f994560f",
+      "first_line_excerpt": "有继续组织成实证 workshop 短文的价值，但不能给可靠录用概率。目标 workshop 明确接受负结果与四页短文，同时强调系统机制、审计和可信演化；本项…"
+    },
+    {
+      "block_id": "B0353",
+      "old_hash": "d095fc8bfc50",
+      "first_line_excerpt": "主要风险仍是六张表、复用的十二个 filtered-mean 查询、一次冻结抽样、两个模型族与既有方法。本轮协议先于新基线测量，但我们已知道任务和模型结果，因…"
+    },
+    {
+      "block_id": "B0354",
+      "old_hash": "aee036003146",
+      "first_line_excerpt": "下一步先锁定独立抽样重复和新生成/变换表的规则，检查统计核验的误报是否稳定；随后在新表上让 Gemini/Qwen 对照“原始样本行”与“相同行生成的统计摘要…"
+    },
+    {
+      "block_id": "B0355",
+      "old_hash": "f971a4de0d9a",
+      "first_line_excerpt": "本轮按固定协议到此完成，没有依据效果扩大样本或新调用 API。下一轮需要单独预注册；不能拿扩大后的结果替换这份 pilot。"
+    },
+    {
+      "block_id": "B0356",
+      "old_hash": "b938c790257a",
+      "first_line_excerpt": "## 实现与审查"
+    },
+    {
+      "block_id": "B0357",
+      "old_hash": "788594ed66c8",
+      "first_line_excerpt": "- 协议 `f94ffbb`；代码 `a5b6e07`；36 个 query/context，288 个 real/sanity/method 事件。"
+    },
+    {
+      "block_id": "B0358",
+      "old_hash": "706a8cad71cd",
+      "first_line_excerpt": "```bash"
+    },
+    {
+      "block_id": "B0359",
+      "old_hash": "bc3ab98470f1",
+      "first_line_excerpt": "设计与审查使用 experimental-design / scientific-critical-thinking skills。方法资源：Kassis, …"
+    },
+    {
+      "block_id": "B0360",
+      "old_hash": "6f8515f1a5fb",
+      "first_line_excerpt": "## 后续独立抽样阶段"
+    },
+    {
+      "block_id": "B0361",
+      "old_hash": "f99c12009827",
+      "first_line_excerpt": "随后按单独协议完成二十次独立抽样检查，见 [稳健性报告](CONTEXT_EVIDENCE_RESAMPLING_2026-11-07.md)。两阶段估计对象…"
+    },
+    {
+      "block_id": "B0362",
+      "old_hash": "d8954e096c21",
+      "first_line_excerpt": "# SOURCE: docs/CONTEXT_EVIDENCE_RESAMPLING_2026-11-07.md"
+    },
+    {
+      "block_id": "B0363",
+      "old_hash": "017e47a66bf5",
+      "first_line_excerpt": "# 独立抽样稳健性检查（2026-11-07）"
+    },
+    {
+      "block_id": "B0364",
+      "old_hash": "555b4b5dcd1f",
+      "first_line_excerpt": "## 结论"
+    },
+    {
+      "block_id": "B0365",
+      "old_hash": "6fca9f4673a1",
+      "first_line_excerpt": "在这十二个选定查询上，二十条相关样本包含统计方法可利用的判别信号，但效果依赖任务和抽样。该结果支持继续检验证据如何被模型使用，不证明某个模型内部机制。"
+    },
+    {
+      "block_id": "B0366",
+      "old_hash": "a2f09b2619fb",
+      "first_line_excerpt": "每查询二十次新抽样，共 240 个 query/draw 单位；仍然只有十二个查询、六张表，不是新增 240 个独立任务。每次筛选后均匀抽取二十个有效值，单次…"
+    },
+    {
+      "block_id": "B0367",
+      "old_hash": "38437df28a84",
+      "first_line_excerpt": "| 方法 | 错误返回被标出 | 正确返回被误标 | Sanity AUROC | 真实污染表内 AUROC | 描述性区间 |"
+    },
+    {
+      "block_id": "B0368",
+      "old_hash": "18c7e5e86d93",
+      "first_line_excerpt": "主方法 0d：错误检出率 67.1%，正确值误标率 5.8%。仍有 79/240 个错误值与样本区间相容。"
+    },
+    {
+      "block_id": "B0369",
+      "old_hash": "0ddc7b3cccbb",
+      "first_line_excerpt": "0a 为样本范围检查，0d 为既有 bootstrap 均值区间检查。两者通过预设 sanity；通过不等于已校准。"
+    },
+    {
+      "block_id": "B0370",
+      "old_hash": "9608107d7247",
+      "first_line_excerpt": "| 0d 指标 | 六表等权比例 | 六表描述性 bootstrap 区间 |"
+    },
+    {
+      "block_id": "B0371",
+      "old_hash": "107202b1dd3b",
+      "first_line_excerpt": "区间按六张表聚类，不把 240 次抽样当独立表。区间描述选定表/查询上的变异，不是有限总体误报保证。0a 的零误报及退化区间 [0,0] 来自全零观察；0d …"
+    },
+    {
+      "block_id": "B0372",
+      "old_hash": "ab2b055b41e4",
+      "first_line_excerpt": "## 严重度切片"
+    },
+    {
+      "block_id": "B0373",
+      "old_hash": "e73a615d4f45",
+      "first_line_excerpt": "| 方法 | 切片 | 错误标出 | 正确误标 | 表内 AUROC |"
+    },
+    {
+      "block_id": "B0374",
+      "old_hash": "6b45dc8907e4",
+      "first_line_excerpt": "subtle 使用 1.10 倍或倒数，plausible 使用 1.50 倍或倒数，但切片绑定不同查询。差异不能全归因于扰动幅度；下一轮应在每个查询内部交叉…"
+    },
+    {
+      "block_id": "B0375",
+      "old_hash": "4c149b9d5ed6",
+      "first_line_excerpt": "## 每个原查询的抽样敏感性"
+    },
+    {
+      "block_id": "B0376",
+      "old_hash": "52213666bd78",
+      "first_line_excerpt": "| 查询 | 0d 错误标出 / 20 | 0d 正确误标 / 20 |"
+    },
+    {
+      "block_id": "B0377",
+      "old_hash": "d8c4d682369b",
+      "first_line_excerpt": "查询间差异明显，不能用平均值覆盖低检出任务。此次无缺失评分。"
+    },
+    {
+      "block_id": "B0378",
+      "old_hash": "009e4043dcc0",
+      "first_line_excerpt": "## 与前轮结果的关系"
+    },
+    {
+      "block_id": "B0379",
+      "old_hash": "dca1861bed1d",
+      "first_line_excerpt": "原冻结样本 0d AUROC 为 0.917；本轮查询/抽样混合分布约为 0.818。估计对象不同，可以并列，不能据此证明最初幸运、有偏，或正式量化性能下降。…"
+    },
+    {
+      "block_id": "B0380",
+      "old_hash": "39dc55025047",
+      "first_line_excerpt": "前轮相同样本对照支持存在统计方法与模型判断的差距。本轮只检查统计核验的抽样敏感性；没有让 Gemini/Qwen 读取新样本，没有复用旧回答。因此不能声称模型…"
+    },
+    {
+      "block_id": "B0381",
+      "old_hash": "9052824acf28",
+      "first_line_excerpt": "## 论文现在能说什么"
+    },
+    {
+      "block_id": "B0382",
+      "old_hash": "f0d980655875",
+      "first_line_excerpt": "1. 在已测协议下，直接增加相关样本尚未带来跨模型稳定核验收益。"
+    },
+    {
+      "block_id": "B0383",
+      "old_hash": "b1f8951679e7",
+      "first_line_excerpt": "投稿判断：值得组织成实证 workshop 短文，但无法给可靠录用概率。目标 workshop 接受负结果与四页短文。应定位为运行时工具返回核验的实证研究，说…"
+    },
+    {
+      "block_id": "B0384",
+      "old_hash": "9412e2dd7092",
+      "first_line_excerpt": "## 下一轮实验"
+    },
+    {
+      "block_id": "B0385",
+      "old_hash": "dca0fc686243",
+      "first_line_excerpt": "在新生成或数值变换的表上，比较原始样本行与由同一批行计算的统计摘要。保留直接 0d 基线、clean、极端错误 sanity、弃答和格式计数；每查询内部交叉扰…"
+    },
+    {
+      "block_id": "B0386",
+      "old_hash": "793f0d56b041",
+      "first_line_excerpt": "先锁定生成、随机化和评分。考虑摘要长度、提示和计算预算变化的控制。这测的是证据表达/计算辅助的干预效果，不能直接等同模型内部机制。新表/任务泛化与新算法优势均…"
+    },
+    {
+      "block_id": "B0387",
+      "old_hash": "a9e897930f81",
+      "first_line_excerpt": "## 复现与审查"
+    },
+    {
+      "block_id": "B0388",
+      "old_hash": "5ad850d5651a",
+      "first_line_excerpt": "协议 `7f6400e`，代码 `0494e7f`，清单冻结 `b192a58`。1920 个事件、240 组可见样本；仍为六表、十二个查询。复用 B=200…"
+    },
+    {
+      "block_id": "B0389",
+      "old_hash": "7d7185ccc61f",
+      "first_line_excerpt": "两项新增测试、前阶段九项 synthetic 检查及共享 helpers 三组检查通过。独立 reviewer 从保存区间/范围复算全部 score，并用分数…"
+    },
+    {
+      "block_id": "B0390",
+      "old_hash": "abe1fa4cc5c5",
+      "first_line_excerpt": "```bash"
+    },
+    {
+      "block_id": "B0391",
+      "old_hash": "3a2c179e95d6",
+      "first_line_excerpt": "设计与审查使用 experimental-design / scientific-critical-thinking skills。方法资源：Kassis, …"
+    },
+    {
+      "block_id": "B0392",
+      "old_hash": "1b9af7255adb",
+      "first_line_excerpt": "# SOURCE: docs/references_verified.bib"
+    },
+    {
+      "block_id": "B0393",
+      "old_hash": "afe9f87189f8",
+      "first_line_excerpt": "% Verified references for ToolReturnUQ project"
+    },
+    {
+      "block_id": "B0394",
+      "old_hash": "78eeaf8555c2",
+      "first_line_excerpt": "@inproceedings{ShieldMCP2026,"
+    },
+    {
+      "block_id": "B0395",
+      "old_hash": "9220a559bf8c",
+      "first_line_excerpt": "@inproceedings{MaoACLSRW2026,"
+    },
+    {
+      "block_id": "B0396",
+      "old_hash": "660a8a41815c",
+      "first_line_excerpt": "@article{QUASAR,"
+    },
+    {
+      "block_id": "B0397",
+      "old_hash": "747ad4cef703",
+      "first_line_excerpt": "@article{StoisserAgentsKnow,"
+    },
+    {
+      "block_id": "B0398",
+      "old_hash": "4c5cd0a1cc61",
+      "first_line_excerpt": "@article{TRACER,"
+    },
+    {
+      "block_id": "B0399",
+      "old_hash": "2f2c425b4670",
+      "first_line_excerpt": "@article{AgentDrift,"
+    },
+    {
+      "block_id": "B0400",
+      "old_hash": "a982595f2c9a",
+      "first_line_excerpt": "@article{EnvTrustBench,"
+    },
+    {
+      "block_id": "B0401",
+      "old_hash": "257d2a2789b5",
+      "first_line_excerpt": "@article{TrustNoTool,"
+    },
+    {
+      "block_id": "B0402",
+      "old_hash": "2416c888ef12",
+      "first_line_excerpt": "@article{WhenToolDecides,"
+    },
+    {
+      "block_id": "B0403",
+      "old_hash": "c37d77ab4aee",
+      "first_line_excerpt": "@article{ConfidenceLaundering,"
+    },
+    {
+      "block_id": "B0404",
+      "old_hash": "0ef0ebc7053f",
+      "first_line_excerpt": "@article{DontBlindlyTrust,"
+    },
+    {
+      "block_id": "B0405",
+      "old_hash": "ff37c7b18c85",
+      "first_line_excerpt": "@article{Argus,"
+    },
+    {
+      "block_id": "B0406",
+      "old_hash": "2419c56dee41",
+      "first_line_excerpt": "@article{AgenticAbstention,"
+    },
+    {
+      "block_id": "B0407",
+      "old_hash": "bb6fbf888e6e",
+      "first_line_excerpt": "@article{AgentAbstain,"
+    },
+    {
+      "block_id": "B0408",
+      "old_hash": "e57280f1eac5",
+      "first_line_excerpt": "@article{ModelOrHarness,"
+    },
+    {
+      "block_id": "B0409",
+      "old_hash": "f67def1fd4e3",
+      "first_line_excerpt": "@article{CAGE,"
+    },
+    {
+      "block_id": "B0410",
+      "old_hash": "1595cd76f138",
+      "first_line_excerpt": "@article{RealtimeDetectionRepair,"
+    },
+    {
+      "block_id": "B0411",
+      "old_hash": "72798a884c12",
+      "first_line_excerpt": "@article{GettingParamsRight,"
+    },
+    {
+      "block_id": "B0412",
+      "old_hash": "fb8ed05539c9",
+      "first_line_excerpt": "@article{KnowingSayingGap,"
+    },
+    {
+      "block_id": "B0413",
+      "old_hash": "239ad7753a5d",
+      "first_line_excerpt": "@article{TrajectoryAdaptedUQ,"
+    },
+    {
+      "block_id": "B0414",
+      "old_hash": "ec1668b9814c",
+      "first_line_excerpt": "@article{RUPA,"
+    },
+    {
+      "block_id": "B0415",
+      "old_hash": "52532ad66535",
+      "first_line_excerpt": "@article{OutcomeMonitors,"
+    },
+    {
+      "block_id": "B0416",
+      "old_hash": "7613b838d004",
+      "first_line_excerpt": "@article{RobustnessAnalysis,"
+    },
+    {
+      "block_id": "B0417",
+      "old_hash": "06d882f9347c",
+      "first_line_excerpt": "@article{InvocationLevelReliability,"
+    },
+    {
+      "block_id": "B0418",
+      "old_hash": "89229c105674",
+      "first_line_excerpt": "@article{CallsFromInside,"
+    },
+    {
+      "block_id": "B0419",
+      "old_hash": "0830482291e7",
+      "first_line_excerpt": "@article{Overreliance,"
+    },
+    {
+      "block_id": "B0420",
+      "old_hash": "64bad843811d",
+      "first_line_excerpt": "@article{AgentUQTaxonomy,"
+    },
+    {
+      "block_id": "B0421",
+      "old_hash": "a5a08a1a1aab",
+      "first_line_excerpt": "@article{SilentFailures,"
+    },
+    {
+      "block_id": "B0422",
+      "old_hash": "a43b5ee3a897",
+      "first_line_excerpt": "@article{ToxicBench,"
+    },
+    {
+      "block_id": "B0423",
+      "old_hash": "dd20645dd382",
+      "first_line_excerpt": "@article{RSureAgent,"
+    },
+    {
+      "block_id": "B0424",
+      "old_hash": "69279d13169f",
+      "first_line_excerpt": "@article{DifficultyVsRunLevel,"
+    },
+    {
+      "block_id": "B0425",
+      "old_hash": "e1814ead38b4",
+      "first_line_excerpt": "@article{HERA,"
+    },
+    {
+      "block_id": "B0426",
+      "old_hash": "16c236c82a3f",
+      "first_line_excerpt": "@article{EvidenceToAction,"
+    },
+    {
+      "block_id": "B0427",
+      "old_hash": "d1648d32d064",
+      "first_line_excerpt": "@article{CRGs,"
+    },
+    {
+      "block_id": "B0428",
+      "old_hash": "1897209e2461",
+      "first_line_excerpt": "@article{MathAgentsCorrupted,"
+    },
+    {
+      "block_id": "B0429",
+      "old_hash": "d1a17e0ff476",
+      "first_line_excerpt": "@article{VoS,"
+    },
+    {
+      "block_id": "B0430",
+      "old_hash": "f9901da2fb84",
+      "first_line_excerpt": "@article{FormalRuntimeVerification,"
+    },
+    {
+      "block_id": "B0431",
+      "old_hash": "13d1b2dcbc87",
+      "first_line_excerpt": "@article{LoudQuietFailures,"
+    },
+    {
+      "block_id": "B0432",
+      "old_hash": "569b6e99a9dd",
+      "first_line_excerpt": "@article{SSCBench,"
+    },
+    {
+      "block_id": "B0433",
+      "old_hash": "42557355406c",
+      "first_line_excerpt": "@article{StructuralBaselines,"
+    },
+    {
+      "block_id": "B0434",
+      "old_hash": "12880189ff97",
+      "first_line_excerpt": "@article{OutcomeGroundedCalibration,"
+    },
+    {
+      "block_id": "B0435",
+      "old_hash": "87e642f88069",
+      "first_line_excerpt": "@article{ToolBottleneckBench,"
+    },
+    {
+      "block_id": "B0436",
+      "old_hash": "50366d6056fc",
+      "first_line_excerpt": "@article{AgentPerturb,"
+    },
+    {
+      "block_id": "B0437",
+      "old_hash": "b660c5984d92",
+      "first_line_excerpt": "@article{GraphACM,"
+    },
+    {
+      "block_id": "B0438",
+      "old_hash": "886b3f0cdb98",
+      "first_line_excerpt": "@article{ActVsStepBack,"
+    },
+    {
+      "block_id": "B0439",
+      "old_hash": "6eb00afa4118",
+      "first_line_excerpt": "@article{TraceVsLabel,"
+    },
+    {
+      "block_id": "B0440",
+      "old_hash": "99b9a694f3df",
+      "first_line_excerpt": "@article{EpiSEMBench,"
+    },
+    {
+      "block_id": "B0441",
+      "old_hash": "b5435dee90c0",
+      "first_line_excerpt": "@article{KnowingWhenToStop,"
+    },
+    {
+      "block_id": "B0442",
+      "old_hash": "034163843392",
+      "first_line_excerpt": "@article{WarpedFormatters,"
+    },
+    {
+      "block_id": "B0443",
+      "old_hash": "6c1e74a8fdca",
+      "first_line_excerpt": "@article{CASEL,"
+    },
+    {
+      "block_id": "B0444",
+      "old_hash": "79ccb2a367fd",
+      "first_line_excerpt": "# Supporting artifacts available for verification"
+    },
+    {
+      "block_id": "B0445",
+      "old_hash": "a4f817ab8ed0",
+      "first_line_excerpt": "The original repository at /Users/yuxinwu/Desktop/ToolReturn_UQ is a read-only …"
+    }
+  ]
+}

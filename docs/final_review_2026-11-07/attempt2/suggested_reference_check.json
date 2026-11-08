@@ -1,0 +1,30 @@
+{
+  "checker": "verify_panel_recommendations/1",
+  "status": "partial",
+  "reports": [
+    {
+      "seat": "R2",
+      "input": "/private/tmp/toolreturn-final-panel-20261107/attempt2/domain/phase2.md",
+      "input_sha256": "c022853dc4744a0148f449dafcb07a747e09c42c0cf34e5c660a538e0ac87ddc",
+      "blocks": 0,
+      "problems": [
+        {
+          "kind": "missing"
+        }
+      ]
+    },
+    {
+      "seat": "R3",
+      "input": "/private/tmp/toolreturn-final-panel-20261107/attempt2/perspective/phase2.md",
+      "input_sha256": "333e0214b6b0bc8ce1d885e8ef408c78d275365e47b54a22d2dd0473ac55ea09",
+      "blocks": 0,
+      "problems": [
+        {
+          "kind": "missing"
+        }
+      ]
+    }
+  ],
+  "items": [],
+  "item_problems": []
+}

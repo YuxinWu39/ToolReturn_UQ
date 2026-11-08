@@ -1,0 +1,19 @@
+{
+  "role": "da",
+  "phase": 2,
+  "read_peer_outputs": false,
+  "read_previous_attempt_outputs": false,
+  "extra_network_access": false,
+  "spawned_agents": false,
+  "new_model_experiments": false,
+  "modified_submission_materials": false,
+  "read_scope": [
+    "attempt2/da/phase2_prompt.md",
+    "attempt2/da/phase2_input.md, fully read in segments",
+    "read-only repository verification: experiments/p4_common.py, experiments/ksweep2.py, experiments/audit_gemini_recovery.py, experiments/zeroparam.py, experiments/p4_run.py; targeted rg searches"
+  ],
+  "verification_limits": "No new model calls, no retraining, no bootstrap rerun, no external bibliography or venue verification. Author-supplied prior review labels were treated as data, not panel authority.",
+  "reviewer_model": null,
+  "reviewer_provider": null,
+  "identity_note": "No independently available reviewer model/provider identity was inferred."
+}

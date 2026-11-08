@@ -1,0 +1,2089 @@
+{
+  "editorial_decision": "Major Revision",
+  "reviewer_reports": [
+    {
+      "reviewer_id": "EIC",
+      "role": "eic",
+      "criterion_judgements": [
+        {
+          "criterion_id": "D1",
+          "criterion_source": "reviewer/reviewer_full/v2",
+          "judgement_scale": "sprint_contract",
+          "judgement": "not_assessed",
+          "evidence_anchors": [],
+          "rationale": "该维度不属于本席评分范围。",
+          "uncertainty_or_scope_limit": "研究材料评估；无完整论文及正式场馆绑定。",
+          "decision_bearing": false,
+          "decision_bearing_reason": "ineligible role"
+        },
+        {
+          "criterion_id": "D2",
+          "criterion_source": "reviewer/reviewer_full/v2",
+          "judgement_scale": "sprint_contract",
+          "judgement": "not_assessed",
+          "evidence_anchors": [],
+          "rationale": "该维度不属于本席评分范围。",
+          "uncertainty_or_scope_limit": "研究材料评估；无完整论文及正式场馆绑定。",
+          "decision_bearing": false,
+          "decision_bearing_reason": "ineligible role"
+        },
+        {
+          "criterion_id": "D3",
+          "criterion_source": "reviewer/reviewer_full/v2",
+          "judgement_scale": "sprint_contract",
+          "judgement": "not_assessed",
+          "evidence_anchors": [],
+          "rationale": "该维度不属于本席评分范围。",
+          "uncertainty_or_scope_limit": "研究材料评估；无完整论文及正式场馆绑定。",
+          "decision_bearing": false,
+          "decision_bearing_reason": "ineligible role"
+        },
+        {
+          "criterion_id": "D4",
+          "criterion_source": "reviewer/reviewer_full/v2",
+          "judgement_scale": "sprint_contract",
+          "judgement": "not_assessed",
+          "evidence_anchors": [],
+          "rationale": "该维度不属于本席评分范围。",
+          "uncertainty_or_scope_limit": "研究材料评估；无完整论文及正式场馆绑定。",
+          "decision_bearing": false,
+          "decision_bearing_reason": "ineligible role"
+        },
+        {
+          "criterion_id": "D5",
+          "criterion_source": "reviewer/reviewer_full/v2",
+          "judgement_scale": "sprint_contract",
+          "judgement": "warn",
+          "evidence_anchors": [
+            {
+              "anchor_type": "text",
+              "locator": "findings.md，Central claim, reconciled — \"what bounds detection is the information\"；F4 最终版 unfiltered mean/median caveat — \"Neither is a bound on a checker that reads the query and the full visible rows.\"",
+              "quote": "what bounds detection is the information"
+            },
+            {
+              "anchor_type": "absence",
+              "locator": "提交材料的贡献定位",
+              "absence_scope": "将最终贡献逐项对照最近工作的研究单位、污染、可见证据操纵、信号及结论范围的明确说明",
+              "check_performed": "README.md、findings.md 当前贡献段、research-state.yaml 的 literature 与 open_problems、docs/references_verified.bib 及原源 program.md"
+            },
+            {
+              "anchor_type": "text",
+              "locator": "findings.md，F8 标题与 Paper consequence — \"fails its own sanity and calibration rules\"；\"every signal, learned or not, is at chance under the default observation context\"",
+              "quote": "fails its own sanity and calibration rules"
+            },
+            {
+              "anchor_type": "table",
+              "locator": "findings.md，F5/F6/F7 correction 的 Within-table AUROC before -> after 表，4B T0_agent 行 0a=0.579，与随后 What changes in the text 中关于 0d 与 0a 在所有条件均不超过 0.56 的陈述"
+            },
+            {
+              "anchor_type": "text",
+              "locator": "README.md，归档承诺 — \"All agent trajectories and scored events are committed\"；findings.md，F10 addendum clarification，Audit scope — \"Qwen 0/72 raw replies present in this repository.\"",
+              "quote": "All agent trajectories and scored events are committed"
+            },
+            {
+              "anchor_type": "text",
+              "locator": "research-state.yaml，H1—H4 状态及 G1 statement — \"status: pending\"；\"PILOT GATE: observation failures >= 15% of all failures in paired runs\"",
+              "quote": "status: pending"
+            }
+          ],
+          "rationale": "核心内容仍可理解和审查，但局部术语解释、段落衔接、图表标注或范围说明不充分，需定点修订以减少歧义。",
+          "uncertainty_or_scope_limit": "研究材料评估；无完整论文及正式场馆绑定。",
+          "decision_bearing": true,
+          "decision_bearing_reason": "合同限定的 eligible role 判断"
+        },
+        {
+          "criterion_id": "D6",
+          "criterion_source": "reviewer/reviewer_full/v2",
+          "judgement_scale": "sprint_contract",
+          "judgement": "block",
+          "evidence_anchors": [
+            {
+              "anchor_type": "text",
+              "locator": "findings.md，Central claim, reconciled — \"what bounds detection is the information\"；F4 最终版 unfiltered mean/median caveat — \"Neither is a bound on a checker that reads the query and the full visible rows.\"",
+              "quote": "what bounds detection is the information"
+            },
+            {
+              "anchor_type": "absence",
+              "locator": "提交材料的贡献定位",
+              "absence_scope": "将最终贡献逐项对照最近工作的研究单位、污染、可见证据操纵、信号及结论范围的明确说明",
+              "check_performed": "README.md、findings.md 当前贡献段、research-state.yaml 的 literature 与 open_problems、docs/references_verified.bib 及原源 program.md"
+            },
+            {
+              "anchor_type": "text",
+              "locator": "findings.md，F8 标题与 Paper consequence — \"fails its own sanity and calibration rules\"；\"every signal, learned or not, is at chance under the default observation context\"",
+              "quote": "fails its own sanity and calibration rules"
+            },
+            {
+              "anchor_type": "table",
+              "locator": "findings.md，F5/F6/F7 correction 的 Within-table AUROC before -> after 表，4B T0_agent 行 0a=0.579，与随后 What changes in the text 中关于 0d 与 0a 在所有条件均不超过 0.56 的陈述"
+            },
+            {
+              "anchor_type": "text",
+              "locator": "README.md，归档承诺 — \"All agent trajectories and scored events are committed\"；findings.md，F10 addendum clarification，Audit scope — \"Qwen 0/72 raw replies present in this repository.\"",
+              "quote": "All agent trajectories and scored events are committed"
+            },
+            {
+              "anchor_type": "text",
+              "locator": "research-state.yaml，H1—H4 状态及 G1 statement — \"status: pending\"；\"PILOT GATE: observation failures >= 15% of all failures in paired runs\"",
+              "quote": "status: pending"
+            }
+          ],
+          "rationale": "现有材料未充分建立所声称的原创增量或重要性，需要新增关键比较、补充证据或实质收窄贡献陈述后才能评价，但仍存在保留研究核心的修复路径。",
+          "uncertainty_or_scope_limit": "研究材料评估；无完整论文及正式场馆绑定。",
+          "decision_bearing": true,
+          "decision_bearing_reason": "合同限定的 eligible role 判断"
+        }
+      ],
+      "strengths": [
+        {
+          "description": "实验问题具有清楚的范围",
+          "evidence_anchor": {
+            "anchor_type": "text",
+            "locator": "README.md，Scope 段 — \"numeric, single-scalar tool returns on tabular data\"；\"one corruption type (scaling)\"",
+            "quote": "numeric, single-scalar tool returns on tabular data"
+          }
+        },
+        {
+          "description": "预测失败和负结果得到保留",
+          "evidence_anchor": {
+            "anchor_type": "text",
+            "locator": "findings.md，F8 — \"the P5 prediction [0.55, 0.70] is missed\"；\"C3 as specified in P5 is a **negative result**\"",
+            "quote": "the P5 prediction [0.55, 0.70] is missed"
+          }
+        },
+        {
+          "description": "同证据检查形成了可检验的经验问题",
+          "evidence_anchor": {
+            "anchor_type": "text",
+            "locator": "findings.md，F11 Interpretation — \"Insufficient displayed data alone cannot summarize all model failures\"；\"No new algorithm or universal bound.\"",
+            "quote": "Insufficient displayed data alone cannot summarize all model failures"
+          }
+        },
+        {
+          "description": "抽样复查限定了估计对象和独立单位",
+          "evidence_anchor": {
+            "anchor_type": "text",
+            "locator": "findings.md，F12 — \"Single-draw 0.917 and mixture 0.818 estimate different targets\"；\"No new table/task generalization\"",
+            "quote": "Single-draw 0.917 and mixture 0.818 estimate different targets"
+          }
+        },
+        {
+          "description": "修正记录说明了错误的影响",
+          "evidence_anchor": {
+            "anchor_type": "text",
+            "locator": "findings.md，F5/F6/F7 correction，第 3 项 — \"Constant scores dropped instead of scored 0.5.\"；\"Direction of this bug favoured us\"",
+            "quote": "Constant scores dropped instead of scored 0.5."
+          }
+        }
+      ],
+      "weaknesses": [
+        {
+          "description": "当前中心主张将受限 oracle 参考扩展为一般信息界限",
+          "severity": "major",
+          "type": "theory",
+          "evidence_anchor": {
+            "anchor_type": "text",
+            "locator": "findings.md，Central claim, reconciled — \"what bounds detection is the information\"；F4 最终版 unfiltered mean/median caveat — \"Neither is a bound on a checker that reads the query and the full visible rows.\"",
+            "quote": "what bounds detection is the information"
+          },
+          "confidence": 5,
+          "competence_basis": "当前中心主张与同文件适用范围限定可直接比对。"
+        },
+        {
+          "description": "最终领域增量尚缺近邻工作对照",
+          "severity": "major",
+          "type": "theory",
+          "evidence_anchor": {
+            "anchor_type": "absence",
+            "locator": "提交材料的贡献定位",
+            "absence_scope": "将最终贡献逐项对照最近工作的研究单位、污染、可见证据操纵、信号及结论范围的明确说明",
+            "check_performed": "README.md、findings.md 当前贡献段、research-state.yaml 的 literature 与 open_problems、docs/references_verified.bib 及原源 program.md"
+          },
+          "confidence": 4,
+          "competence_basis": "能检查材料是否建立比较；未联网或阅读所列文献全文。"
+        },
+        {
+          "description": "失败 sanity 的学习器仍进入概括性无效结论",
+          "severity": "major",
+          "type": "theory",
+          "evidence_anchor": {
+            "anchor_type": "text",
+            "locator": "findings.md，F8 标题与 Paper consequence — \"fails its own sanity and calibration rules\"；\"every signal, learned or not, is at chance under the default observation context\"",
+            "quote": "fails its own sanity and calibration rules"
+          },
+          "confidence": 5,
+          "competence_basis": "有效性门槛与贡献推论在同一条目中可比。"
+        },
+        {
+          "description": "修正段的数值范围仍未同步",
+          "severity": "minor",
+          "type": "theory",
+          "evidence_anchor": {
+            "anchor_type": "table",
+            "locator": "findings.md，F5/F6/F7 correction 的 Within-table AUROC before -> after 表，4B T0_agent 行 0a=0.579，与随后 What changes in the text 中关于 0d 与 0a 在所有条件均不超过 0.56 的陈述"
+          },
+          "confidence": 5,
+          "competence_basis": "同一修正段可直接核对表值与摘要。"
+        },
+        {
+          "description": "全称归档承诺超过 Qwen pilot 的原始材料覆盖",
+          "severity": "minor",
+          "type": "theory",
+          "evidence_anchor": {
+            "anchor_type": "text",
+            "locator": "README.md，归档承诺 — \"All agent trajectories and scored events are committed\"；findings.md，F10 addendum clarification，Audit scope — \"Qwen 0/72 raw replies present in this repository.\"",
+            "quote": "All agent trajectories and scored events are committed"
+          },
+          "confidence": 4,
+          "competence_basis": "缺口由提交材料披露；未逐个审计响应目录。"
+        },
+        {
+          "description": "当前假设索引混用旧门槛与更新结果",
+          "severity": "minor",
+          "type": "theory",
+          "evidence_anchor": {
+            "anchor_type": "text",
+            "locator": "research-state.yaml，H1—H4 状态及 G1 statement — \"status: pending\"；\"PILOT GATE: observation failures >= 15% of all failures in paired runs\"",
+            "quote": "status: pending"
+          },
+          "confidence": 5,
+          "competence_basis": "可与 A-P1、F7、F8 更新直接对应。"
+        }
+      ],
+      "questions": []
+    },
+    {
+      "reviewer_id": "R1",
+      "role": "methodology",
+      "criterion_judgements": [
+        {
+          "criterion_id": "D1",
+          "criterion_source": "reviewer/reviewer_full/v2",
+          "judgement_scale": "sprint_contract",
+          "judgement": "block",
+          "evidence_anchors": [
+            {
+              "anchor_type": "text",
+              "locator": "findings.md，Central claim, reconciled，“what bounds detection is the information in the observation context”；同段，“the part no context-limited checker can recover”。",
+              "quote": "what bounds detection is the information in the observation context"
+            },
+            {
+              "anchor_type": "text",
+              "locator": "PREREGISTRATION.md，A-P4，“H1 = token entropy (1) and verbalized (3) separately, subtle bin, T1”；A-P4b，“H1 statistic unchanged”。",
+              "quote": "H1 = token entropy (1) and verbalized (3) separately, subtle bin, T1"
+            },
+            {
+              "anchor_type": "absence",
+              "locator": "findings.md F8 及 experiments/scorer/score_scorer.py 的结果输出",
+              "absence_scope": "A-P3d/P5 指定的共同支持集上 AUROC_7−max(AUROC_0d,AUROC_0r_log) 及配对表级区间",
+              "check_performed": "完整 Phase2 材料中的 F8、2026-11-07 更正表、P5 和 score_scorer.py 全部比较输出。"
+            },
+            {
+              "anchor_type": "text",
+              "locator": "experiments/scorer/score_scorer.py，auc 局部函数，“h[c].nunique() < 2”；findings.md，2026-11-07 correction，“Constant scores dropped instead of scored 0.5.”",
+              "quote": "h[c].nunique() < 2"
+            },
+            {
+              "anchor_type": "text",
+              "locator": "findings.md，F10 addendum clarification，“Qwen 0/72 raw replies present in this repository.”",
+              "quote": "Qwen 0/72 raw replies present in this repository."
+            },
+            {
+              "anchor_type": "text",
+              "locator": "README.md，Reading，“nothing tested separates poisoned from clean returns”；findings.md，2026-11-07 correction，“0d and 0a <= 0.56 everywhere”。",
+              "quote": "nothing tested separates poisoned from clean returns"
+            }
+          ],
+          "rationale": "通过现有原始材料的重分析、补充披露或明确缩小估计对象仍有可行修复路径",
+          "uncertainty_or_scope_limit": "研究材料评估；无完整论文及正式场馆绑定。",
+          "decision_bearing": true,
+          "decision_bearing_reason": "合同限定的 eligible role 判断"
+        },
+        {
+          "criterion_id": "D2",
+          "criterion_source": "reviewer/reviewer_full/v2",
+          "judgement_scale": "sprint_contract",
+          "judgement": "not_assessed",
+          "evidence_anchors": [],
+          "rationale": "该维度不属于本席评分范围。",
+          "uncertainty_or_scope_limit": "研究材料评估；无完整论文及正式场馆绑定。",
+          "decision_bearing": false,
+          "decision_bearing_reason": "ineligible role"
+        },
+        {
+          "criterion_id": "D3",
+          "criterion_source": "reviewer/reviewer_full/v2",
+          "judgement_scale": "sprint_contract",
+          "judgement": "block",
+          "evidence_anchors": [
+            {
+              "anchor_type": "text",
+              "locator": "findings.md，Central claim, reconciled，“what bounds detection is the information in the observation context”；同段，“the part no context-limited checker can recover”。",
+              "quote": "what bounds detection is the information in the observation context"
+            },
+            {
+              "anchor_type": "text",
+              "locator": "PREREGISTRATION.md，A-P4，“H1 = token entropy (1) and verbalized (3) separately, subtle bin, T1”；A-P4b，“H1 statistic unchanged”。",
+              "quote": "H1 = token entropy (1) and verbalized (3) separately, subtle bin, T1"
+            },
+            {
+              "anchor_type": "absence",
+              "locator": "findings.md F8 及 experiments/scorer/score_scorer.py 的结果输出",
+              "absence_scope": "A-P3d/P5 指定的共同支持集上 AUROC_7−max(AUROC_0d,AUROC_0r_log) 及配对表级区间",
+              "check_performed": "完整 Phase2 材料中的 F8、2026-11-07 更正表、P5 和 score_scorer.py 全部比较输出。"
+            },
+            {
+              "anchor_type": "text",
+              "locator": "experiments/scorer/score_scorer.py，auc 局部函数，“h[c].nunique() < 2”；findings.md，2026-11-07 correction，“Constant scores dropped instead of scored 0.5.”",
+              "quote": "h[c].nunique() < 2"
+            },
+            {
+              "anchor_type": "text",
+              "locator": "findings.md，F10 addendum clarification，“Qwen 0/72 raw replies present in this repository.”",
+              "quote": "Qwen 0/72 raw replies present in this repository."
+            },
+            {
+              "anchor_type": "text",
+              "locator": "README.md，Reading，“nothing tested separates poisoned from clean returns”；findings.md，2026-11-07 correction，“0d and 0a <= 0.56 everywhere”。",
+              "quote": "nothing tested separates poisoned from clean returns"
+            }
+          ],
+          "rationale": "主结论包含现有分析未建立的关键推断",
+          "uncertainty_or_scope_limit": "研究材料评估；无完整论文及正式场馆绑定。",
+          "decision_bearing": true,
+          "decision_bearing_reason": "合同限定的 eligible role 判断"
+        },
+        {
+          "criterion_id": "D4",
+          "criterion_source": "reviewer/reviewer_full/v2",
+          "judgement_scale": "sprint_contract",
+          "judgement": "not_assessed",
+          "evidence_anchors": [],
+          "rationale": "该维度不属于本席评分范围。",
+          "uncertainty_or_scope_limit": "研究材料评估；无完整论文及正式场馆绑定。",
+          "decision_bearing": false,
+          "decision_bearing_reason": "ineligible role"
+        },
+        {
+          "criterion_id": "D5",
+          "criterion_source": "reviewer/reviewer_full/v2",
+          "judgement_scale": "sprint_contract",
+          "judgement": "not_assessed",
+          "evidence_anchors": [],
+          "rationale": "该维度不属于本席评分范围。",
+          "uncertainty_or_scope_limit": "研究材料评估；无完整论文及正式场馆绑定。",
+          "decision_bearing": false,
+          "decision_bearing_reason": "ineligible role"
+        },
+        {
+          "criterion_id": "D6",
+          "criterion_source": "reviewer/reviewer_full/v2",
+          "judgement_scale": "sprint_contract",
+          "judgement": "not_assessed",
+          "evidence_anchors": [],
+          "rationale": "该维度不属于本席评分范围。",
+          "uncertainty_or_scope_limit": "研究材料评估；无完整论文及正式场馆绑定。",
+          "decision_bearing": false,
+          "decision_bearing_reason": "ineligible role"
+        }
+      ],
+      "strengths": [
+        {
+          "description": "主要离线结果可以从事件级数据独立复算",
+          "evidence_anchor": {
+            "anchor_type": "dataset",
+            "locator": "data/ours/context_evidence/20261107/events.json 与 data/ours/context_evidence_resample/20261107/events.json，matched20、0d、clean/corrupted 事件。"
+          }
+        },
+        {
+          "description": "后续抽样研究正确保持查询与表的层级",
+          "evidence_anchor": {
+            "anchor_type": "text",
+            "locator": "PREREGISTRATION.md，A-CTX-RESAMPLE Design，“240 query/draw units from six source tables, not 240 independent queries or tables.”",
+            "quote": "240 query/draw units from six source tables, not 240 independent queries or tables."
+          }
+        },
+        {
+          "description": "近期实验明确区分统计兼容、模型判断与格式失败",
+          "evidence_anchor": {
+            "anchor_type": "text",
+            "locator": "findings.md，F11，“These are prompted model judgments versus a structured-query statistical procedure, not equivalent representations, computation, cost, or calibrated probabilities.”",
+            "quote": "These are prompted model judgments versus a structured-query statistical procedure, not equivalent representations, computation, cost, or calibrated probabilities."
+          }
+        }
+      ],
+      "weaknesses": [
+        {
+          "description": "0o* 的得分差仍被解释为信息上界与不可恢复知识",
+          "severity": "major",
+          "type": "methodology",
+          "evidence_anchor": {
+            "anchor_type": "text",
+            "locator": "findings.md，Central claim, reconciled，“what bounds detection is the information in the observation context”；同段，“the part no context-limited checker can recover”。",
+            "quote": "what bounds detection is the information in the observation context"
+          },
+          "confidence": 5,
+          "competence_basis": "统计判别与基准构造的直接方法学判断。"
+        },
+        {
+          "description": "H1 的主切片和决策规则没有唯一的版本账",
+          "severity": "major",
+          "type": "methodology",
+          "evidence_anchor": {
+            "anchor_type": "text",
+            "locator": "PREREGISTRATION.md，A-P4，“H1 = token entropy (1) and verbalized (3) separately, subtle bin, T1”；A-P4b，“H1 statistic unchanged”。",
+            "quote": "H1 = token entropy (1) and verbalized (3) separately, subtle bin, T1"
+          },
+          "confidence": 5,
+          "competence_basis": "预定估计对象与实际评分脚本可直接比对。"
+        },
+        {
+          "description": "学习 scorer 的相对比较缺少预定共同支持集差值",
+          "severity": "major",
+          "type": "methodology",
+          "evidence_anchor": {
+            "anchor_type": "absence",
+            "locator": "findings.md F8 及 experiments/scorer/score_scorer.py 的结果输出",
+            "absence_scope": "A-P3d/P5 指定的共同支持集上 AUROC_7−max(AUROC_0d,AUROC_0r_log) 及配对表级区间",
+            "check_performed": "完整 Phase2 材料中的 F8、2026-11-07 更正表、P5 和 score_scorer.py 全部比较输出。"
+          },
+          "confidence": 5,
+          "competence_basis": "配对性能比较及缺失支持集审查。"
+        },
+        {
+          "description": "scorer 的常数表处理仍保留已披露的旧错误",
+          "severity": "minor",
+          "type": "methodology",
+          "evidence_anchor": {
+            "anchor_type": "text",
+            "locator": "experiments/scorer/score_scorer.py，auc 局部函数，“h[c].nunique() < 2”；findings.md，2026-11-07 correction，“Constant scores dropped instead of scored 0.5.”",
+            "quote": "h[c].nunique() < 2"
+          },
+          "confidence": 5,
+          "competence_basis": "代码条件与已明确的评分语义直接对应。"
+        },
+        {
+          "description": "Qwen 固定返回 pilot 的原始回复缺档限制主要行为对照审计",
+          "severity": "major",
+          "type": "methodology",
+          "evidence_anchor": {
+            "anchor_type": "text",
+            "locator": "findings.md，F10 addendum clarification，“Qwen 0/72 raw replies present in this repository.”",
+            "quote": "Qwen 0/72 raw replies present in this repository."
+          },
+          "confidence": 5,
+          "competence_basis": "原始测量与派生评分可追溯性的审计判断。"
+        },
+        {
+          "description": "当前入口摘要仍把限定的低表现写成普遍不可分",
+          "severity": "minor",
+          "type": "methodology",
+          "evidence_anchor": {
+            "anchor_type": "text",
+            "locator": "README.md，Reading，“nothing tested separates poisoned from clean returns”；findings.md，2026-11-07 correction，“0d and 0a <= 0.56 everywhere”。",
+            "quote": "nothing tested separates poisoned from clean returns"
+          },
+          "confidence": 5,
+          "competence_basis": "当前摘要与同包更正表的直接一致性核查。"
+        }
+      ],
+      "questions": []
+    },
+    {
+      "reviewer_id": "R2",
+      "role": "domain",
+      "criterion_judgements": [
+        {
+          "criterion_id": "D1",
+          "criterion_source": "reviewer/reviewer_full/v2",
+          "judgement_scale": "sprint_contract",
+          "judgement": "not_assessed",
+          "evidence_anchors": [],
+          "rationale": "该维度不属于本席评分范围。",
+          "uncertainty_or_scope_limit": "研究材料评估；无完整论文及正式场馆绑定。",
+          "decision_bearing": false,
+          "decision_bearing_reason": "ineligible role"
+        },
+        {
+          "criterion_id": "D2",
+          "criterion_source": "reviewer/reviewer_full/v2",
+          "judgement_scale": "sprint_contract",
+          "judgement": "block",
+          "evidence_anchors": [
+            {
+              "anchor_type": "text",
+              "locator": "findings.md，F4''' — \"the achievable ceiling for a k-row checker using the template statistic is ~0.73 at five rows\"；Central claim, reconciled — \"the part no context-limited checker can recover\"",
+              "quote": "the achievable ceiling for a k-row checker using the template statistic is ~0.73 at five rows"
+            },
+            {
+              "anchor_type": "text",
+              "locator": "research-state.yaml，literature.key_papers，2608.22676 条目 — \"nearest prior: 2 signals at return boundary, closed model, 1 domain\"",
+              "quote": "nearest prior: 2 signals at return boundary, closed model, 1 domain"
+            },
+            {
+              "anchor_type": "text",
+              "locator": "README.md，“Headline results”第一行 — \"0 challenges in 3,780 trajectories\"",
+              "quote": "Headline results"
+            },
+            {
+              "anchor_type": "text",
+              "locator": "findings.md，F8 — \"learns the scale of a column, not the statistic to within 10-50%\"",
+              "quote": "learns the scale of a column, not the statistic to within 10-50%"
+            }
+          ],
+          "rationale": "机制判断缺少区分竞争解释所需的领域依据",
+          "uncertainty_or_scope_limit": "研究材料评估；无完整论文及正式场馆绑定。",
+          "decision_bearing": true,
+          "decision_bearing_reason": "合同限定的 eligible role 判断"
+        },
+        {
+          "criterion_id": "D3",
+          "criterion_source": "reviewer/reviewer_full/v2",
+          "judgement_scale": "sprint_contract",
+          "judgement": "not_assessed",
+          "evidence_anchors": [],
+          "rationale": "该维度不属于本席评分范围。",
+          "uncertainty_or_scope_limit": "研究材料评估；无完整论文及正式场馆绑定。",
+          "decision_bearing": false,
+          "decision_bearing_reason": "ineligible role"
+        },
+        {
+          "criterion_id": "D4",
+          "criterion_source": "reviewer/reviewer_full/v2",
+          "judgement_scale": "sprint_contract",
+          "judgement": "not_assessed",
+          "evidence_anchors": [],
+          "rationale": "该维度不属于本席评分范围。",
+          "uncertainty_or_scope_limit": "研究材料评估；无完整论文及正式场馆绑定。",
+          "decision_bearing": false,
+          "decision_bearing_reason": "ineligible role"
+        },
+        {
+          "criterion_id": "D5",
+          "criterion_source": "reviewer/reviewer_full/v2",
+          "judgement_scale": "sprint_contract",
+          "judgement": "not_assessed",
+          "evidence_anchors": [],
+          "rationale": "该维度不属于本席评分范围。",
+          "uncertainty_or_scope_limit": "研究材料评估；无完整论文及正式场馆绑定。",
+          "decision_bearing": false,
+          "decision_bearing_reason": "ineligible role"
+        },
+        {
+          "criterion_id": "D6",
+          "criterion_source": "reviewer/reviewer_full/v2",
+          "judgement_scale": "sprint_contract",
+          "judgement": "not_assessed",
+          "evidence_anchors": [],
+          "rationale": "该维度不属于本席评分范围。",
+          "uncertainty_or_scope_limit": "研究材料评估；无完整论文及正式场馆绑定。",
+          "decision_bearing": false,
+          "decision_bearing_reason": "ineligible role"
+        }
+      ],
+      "strengths": [
+        {
+          "description": "同样本对照提出了有意义且边界清楚的经验问题",
+          "evidence_anchor": {
+            "anchor_type": "text",
+            "locator": "findings.md，F11 — \"These are prompted model judgments versus a structured-query statistical procedure\"；\"not equivalent representations, computation, cost, or calibrated probabilities.\"",
+            "quote": "These are prompted model judgments versus a structured-query statistical procedure"
+          }
+        },
+        {
+          "description": "行抽样稳健性检查没有被冒充模型差距的重复验证",
+          "evidence_anchor": {
+            "anchor_type": "table",
+            "locator": "docs/CONTEXT_EVIDENCE_RESAMPLING_2026-11-07.md，“结论”主结果表及“每个原查询的抽样敏感性”表。"
+          }
+        },
+        {
+          "description": "最新外部复现对行为与置信度的区分较为准确",
+          "evidence_anchor": {
+            "anchor_type": "text",
+            "locator": "findings.md，F9 — \"Recovery is an outcome after further evidence calls.\"；\"Intentional error detection requires separate annotation.\"",
+            "quote": "Recovery is an outcome after further evidence calls."
+          }
+        }
+      ],
+      "weaknesses": [
+        {
+          "description": "0o* 是特定 oracle 分数，尚不能解释为可达信息上界或纯估计器损失",
+          "severity": "major",
+          "type": "theory",
+          "evidence_anchor": {
+            "anchor_type": "text",
+            "locator": "findings.md，F4''' — \"the achievable ceiling for a k-row checker using the template statistic is ~0.73 at five rows\"；Central claim, reconciled — \"the part no context-limited checker can recover\"",
+            "quote": "the achievable ceiling for a k-row checker using the template statistic is ~0.73 at five rows"
+          },
+          "confidence": 5,
+          "competence_basis": "已核对 A-P3d 定义及 zeroparam.py 中 oracle_law、score_0o_star 的实际计算。"
+        },
+        {
+          "description": "最近邻工作的模型条件被误述，现有定位尚未辨清已有发现与本研究增量",
+          "severity": "major",
+          "type": "theory",
+          "evidence_anchor": {
+            "anchor_type": "text",
+            "locator": "research-state.yaml，literature.key_papers，2608.22676 条目 — \"nearest prior: 2 signals at return boundary, closed model, 1 domain\"",
+            "quote": "nearest prior: 2 signals at return boundary, closed model, 1 domain"
+          },
+          "confidence": 5,
+          "competence_basis": "已核对最近邻官方 v2 全文的方法定义、模型说明及 ToxicBench 的受控证据实验。"
+        },
+        {
+          "description": "零挑战的标题措辞仍比所用行为指标能支持的范围更宽",
+          "severity": "minor",
+          "type": "theory",
+          "evidence_anchor": {
+            "anchor_type": "text",
+            "locator": "README.md，“Headline results”第一行 — \"0 challenges in 3,780 trajectories\"",
+            "quote": "Headline results"
+          },
+          "confidence": 4,
+          "competence_basis": "已结合 F5–F9 的指标说明与官方行为测量论文核查概念范围，未逐条人工重标全部 Qwen 轨迹。"
+        },
+        {
+          "description": "学习型 scorer 的失败解释仍把一种相容诊断写得过于确定",
+          "severity": "minor",
+          "type": "theory",
+          "evidence_anchor": {
+            "anchor_type": "text",
+            "locator": "findings.md，F8 — \"learns the scale of a column, not the statistic to within 10-50%\"",
+            "quote": "learns the scale of a column, not the statistic to within 10-50%"
+          },
+          "confidence": 4,
+          "competence_basis": "判断基于 F8 的 held-out 预测误差、coverage 与 sanity 结果，未复训或做表示探针。"
+        }
+      ],
+      "questions": []
+    },
+    {
+      "reviewer_id": "R3",
+      "role": "perspective",
+      "criterion_judgements": [
+        {
+          "criterion_id": "D1",
+          "criterion_source": "reviewer/reviewer_full/v2",
+          "judgement_scale": "sprint_contract",
+          "judgement": "not_assessed",
+          "evidence_anchors": [],
+          "rationale": "该维度不属于本席评分范围。",
+          "uncertainty_or_scope_limit": "研究材料评估；无完整论文及正式场馆绑定。",
+          "decision_bearing": false,
+          "decision_bearing_reason": "ineligible role"
+        },
+        {
+          "criterion_id": "D2",
+          "criterion_source": "reviewer/reviewer_full/v2",
+          "judgement_scale": "sprint_contract",
+          "judgement": "not_assessed",
+          "evidence_anchors": [],
+          "rationale": "该维度不属于本席评分范围。",
+          "uncertainty_or_scope_limit": "研究材料评估；无完整论文及正式场馆绑定。",
+          "decision_bearing": false,
+          "decision_bearing_reason": "ineligible role"
+        },
+        {
+          "criterion_id": "D3",
+          "criterion_source": "reviewer/reviewer_full/v2",
+          "judgement_scale": "sprint_contract",
+          "judgement": "not_assessed",
+          "evidence_anchors": [],
+          "rationale": "该维度不属于本席评分范围。",
+          "uncertainty_or_scope_limit": "研究材料评估；无完整论文及正式场馆绑定。",
+          "decision_bearing": false,
+          "decision_bearing_reason": "ineligible role"
+        },
+        {
+          "criterion_id": "D4",
+          "criterion_source": "reviewer/reviewer_full/v2",
+          "judgement_scale": "sprint_contract",
+          "judgement": "warn",
+          "evidence_anchors": [
+            {
+              "anchor_type": "text",
+              "locator": "findings.md，Central claim, reconciled，“the part no context-limited checker can recover”",
+              "quote": "the part no context-limited checker can recover"
+            },
+            {
+              "anchor_type": "absence",
+              "locator": "data/ours/context_pilot/20261107/qwen3-8b/",
+              "absence_scope": "72条原始回复及关联运行信息",
+              "check_performed": "目录完整文件清单、scored_responses.json与config.json的存在情况、findings.md的F10 addendum clarification"
+            },
+            {
+              "anchor_type": "dataset",
+              "locator": "data/ours/p4/gemini-3.8-flash/T1/toxic_seed0.jsonl，SHA256 bd160cc5c29afc0654d27394235161cfebf8f713da9884311ec76e9f13d0d757，既有audit_gemini_recovery.py的恢复轨迹时序重计"
+            },
+            {
+              "anchor_type": "absence",
+              "locator": "PREREGISTRATION.md的A-CTX-EVIDENCE Operational decisions及A-CTX-RESAMPLE、F9–F12和所附两份统计报告",
+              "absence_scope": "标错后的动作规则与对应端到端延迟、额外调用和净错误成本对照",
+              "check_performed": "固定flag阈值、误报漏报表、弃答定义、采集usage说明及后续研究计划"
+            }
+          ],
+          "rationale": "主要跨领域含义可以辨认，但局部定义、情境说明或用途边界交代不足，可通过有限澄清或补充解释修复。",
+          "uncertainty_or_scope_limit": "研究材料评估；无完整论文及正式场馆绑定。",
+          "decision_bearing": true,
+          "decision_bearing_reason": "合同限定的 eligible role 判断"
+        },
+        {
+          "criterion_id": "D5",
+          "criterion_source": "reviewer/reviewer_full/v2",
+          "judgement_scale": "sprint_contract",
+          "judgement": "not_assessed",
+          "evidence_anchors": [],
+          "rationale": "该维度不属于本席评分范围。",
+          "uncertainty_or_scope_limit": "研究材料评估；无完整论文及正式场馆绑定。",
+          "decision_bearing": false,
+          "decision_bearing_reason": "ineligible role"
+        },
+        {
+          "criterion_id": "D6",
+          "criterion_source": "reviewer/reviewer_full/v2",
+          "judgement_scale": "sprint_contract",
+          "judgement": "not_assessed",
+          "evidence_anchors": [],
+          "rationale": "该维度不属于本席评分范围。",
+          "uncertainty_or_scope_limit": "研究材料评估；无完整论文及正式场馆绑定。",
+          "decision_bearing": false,
+          "decision_bearing_reason": "ineligible role"
+        }
+      ],
+      "strengths": [
+        {
+          "description": "实际可见证据已成为明确且可审计的比较边界",
+          "evidence_anchor": {
+            "anchor_type": "text",
+            "locator": "findings.md，F5/F6/F7 correction，第1项，“rows and min/max are reconstructed from the preview events preceding the scored event”",
+            "quote": "rows and min/max are reconstructed from the preview events preceding the scored event"
+          }
+        },
+        {
+          "description": "一次污染与后续真实工具调用的关系有明确披露",
+          "evidence_anchor": {
+            "anchor_type": "text",
+            "locator": "PREREGISTRATION.md，Amendment A-P3b，Threat model，“under `poison_once` it wins outright”",
+            "quote": "under `poison_once` it wins outright"
+          }
+        },
+        {
+          "description": "格式失败与判断失败得到分别报告",
+          "evidence_anchor": {
+            "anchor_type": "text",
+            "locator": "findings.md，F10，“The main contrast includes format-related changes, not just semantic judgments.”",
+            "quote": "The main contrast includes format-related changes, not just semantic judgments."
+          }
+        },
+        {
+          "description": "统计标错与正确性保证分开，且报告实际误报和漏报",
+          "evidence_anchor": {
+            "anchor_type": "table",
+            "locator": "docs/CONTEXT_EVIDENCE_RESAMPLING_2026-11-07.md，主结果表及“每个原查询的抽样敏感性”表"
+          }
+        },
+        {
+          "description": "已记录的采集完整性可进行独立核对",
+          "evidence_anchor": {
+            "anchor_type": "dataset",
+            "locator": "data/ours/p4/gemini-3.8-flash/T1/audit.json，rows、missing_task_replicates、duplicate_task_replicates、tool_step_alignment_mismatches 和 trajectory_sha256"
+          }
+        }
+      ],
+      "weaknesses": [
+        {
+          "description": "当前中心结论仍保留过强的可达上界措辞",
+          "severity": "minor",
+          "type": "evidence",
+          "evidence_anchor": {
+            "anchor_type": "text",
+            "locator": "findings.md，Central claim, reconciled，“the part no context-limited checker can recover”",
+            "quote": "the part no context-limited checker can recover"
+          },
+          "confidence": 5,
+          "competence_basis": "可直接比较当前中心结论与同文件限定说明。"
+        },
+        {
+          "description": "Qwen 固定返回试验的原始回复尚不能独立审计",
+          "severity": "minor",
+          "type": "evidence",
+          "evidence_anchor": {
+            "anchor_type": "absence",
+            "locator": "data/ours/context_pilot/20261107/qwen3-8b/",
+            "absence_scope": "72条原始回复及关联运行信息",
+            "check_performed": "目录完整文件清单、scored_responses.json与config.json的存在情况、findings.md的F10 addendum clarification"
+          },
+          "confidence": 5,
+          "competence_basis": "只读文件清单与作者明确披露相互印证。"
+        },
+        {
+          "description": "恢复与错误重试的摘要还缺少时间顺序",
+          "severity": "minor",
+          "type": "evidence",
+          "evidence_anchor": {
+            "anchor_type": "dataset",
+            "locator": "data/ours/p4/gemini-3.8-flash/T1/toxic_seed0.jsonl，SHA256 bd160cc5c29afc0654d27394235161cfebf8f713da9884311ec76e9f13d0d757，既有audit_gemini_recovery.py的恢复轨迹时序重计"
+          },
+          "confidence": 5,
+          "competence_basis": "直接对已保存轨迹执行既有只读重计脚本。"
+        },
+        {
+          "description": "离线标错尚未连接到完整的运行时动作与成本",
+          "severity": "minor",
+          "type": "evidence",
+          "evidence_anchor": {
+            "anchor_type": "absence",
+            "locator": "PREREGISTRATION.md的A-CTX-EVIDENCE Operational decisions及A-CTX-RESAMPLE、F9–F12和所附两份统计报告",
+            "absence_scope": "标错后的动作规则与对应端到端延迟、额外调用和净错误成本对照",
+            "check_performed": "固定flag阈值、误报漏报表、弃答定义、采集usage说明及后续研究计划"
+          },
+          "confidence": 4,
+          "competence_basis": "系统工作流评估能力范围内，未测量部署环境。"
+        }
+      ],
+      "questions": []
+    },
+    {
+      "reviewer_id": "DA",
+      "role": "da",
+      "criterion_judgements": [
+        {
+          "criterion_id": "D1",
+          "criterion_source": "reviewer/reviewer_full/v2",
+          "judgement_scale": "sprint_contract",
+          "judgement": "not_assessed",
+          "evidence_anchors": [],
+          "rationale": "该维度不属于本席评分范围。",
+          "uncertainty_or_scope_limit": "研究材料评估；无完整论文及正式场馆绑定。",
+          "decision_bearing": false,
+          "decision_bearing_reason": "ineligible role"
+        },
+        {
+          "criterion_id": "D2",
+          "criterion_source": "reviewer/reviewer_full/v2",
+          "judgement_scale": "sprint_contract",
+          "judgement": "not_assessed",
+          "evidence_anchors": [],
+          "rationale": "该维度不属于本席评分范围。",
+          "uncertainty_or_scope_limit": "研究材料评估；无完整论文及正式场馆绑定。",
+          "decision_bearing": false,
+          "decision_bearing_reason": "ineligible role"
+        },
+        {
+          "criterion_id": "D3",
+          "criterion_source": "reviewer/reviewer_full/v2",
+          "judgement_scale": "sprint_contract",
+          "judgement": "block",
+          "evidence_anchors": [
+            {
+              "anchor_type": "text",
+              "locator": "findings.md §Central claim, reconciled “what bounds detection is the information in the observation context”；PREREGISTRATION.md §A-P3d “not recoverable by any k-row checker”；experiments/zeroparam.py:319–359，oracle_law 与 score_0o_star “return d, abs(d)”",
+              "quote": "what bounds detection is the information in the observation context"
+            },
+            {
+              "anchor_type": "text",
+              "locator": "findings.md §F8 “fails its own sanity and calibration rules”；“the paper's contribution rests on C1”；“with the information-capacity curve explaining why”；README.md §Headline results “Clean-only learned scorer”",
+              "quote": "fails its own sanity and calibration rules"
+            }
+          ],
+          "rationale": "核心推断存在实质证据缺口、未排除的竞争解释或关键概念偷换，使当前结论不能成立，但通过补充有区分力的证据、重建推理或实质收缩结论仍可能修复。",
+          "uncertainty_or_scope_limit": "研究材料评估；无完整论文及正式场馆绑定。",
+          "decision_bearing": true,
+          "decision_bearing_reason": "合同限定的 eligible role 判断"
+        },
+        {
+          "criterion_id": "D4",
+          "criterion_source": "reviewer/reviewer_full/v2",
+          "judgement_scale": "sprint_contract",
+          "judgement": "not_assessed",
+          "evidence_anchors": [],
+          "rationale": "该维度不属于本席评分范围。",
+          "uncertainty_or_scope_limit": "研究材料评估；无完整论文及正式场馆绑定。",
+          "decision_bearing": false,
+          "decision_bearing_reason": "ineligible role"
+        },
+        {
+          "criterion_id": "D5",
+          "criterion_source": "reviewer/reviewer_full/v2",
+          "judgement_scale": "sprint_contract",
+          "judgement": "not_assessed",
+          "evidence_anchors": [],
+          "rationale": "该维度不属于本席评分范围。",
+          "uncertainty_or_scope_limit": "研究材料评估；无完整论文及正式场馆绑定。",
+          "decision_bearing": false,
+          "decision_bearing_reason": "ineligible role"
+        },
+        {
+          "criterion_id": "D6",
+          "criterion_source": "reviewer/reviewer_full/v2",
+          "judgement_scale": "sprint_contract",
+          "judgement": "not_assessed",
+          "evidence_anchors": [],
+          "rationale": "该维度不属于本席评分范围。",
+          "uncertainty_or_scope_limit": "研究材料评估；无完整论文及正式场馆绑定。",
+          "decision_bearing": false,
+          "decision_bearing_reason": "ineligible role"
+        }
+      ],
+      "strengths": [],
+      "weaknesses": [
+        {
+          "description": "指定 oracle 的经验 AUROC 尚未构成信息上界，分数差值也未被识别为可恢复与不可恢复的信息分解。0o* 仅以有限次全表抽样估计 bias/IQR，再对观察统计量与候选值使用绝对标准化距离；知道这些量不意味着该排序在污染检测问题上最",
+          "severity": "major",
+          "type": "evidence",
+          "evidence_anchor": {
+            "anchor_type": "text",
+            "locator": "findings.md §Central claim, reconciled “what bounds detection is the information in the observation context”；PREREGISTRATION.md §A-P3d “not recoverable by any k-row checker”；experiments/zeroparam.py:319–359，oracle_law 与 score_0o_star “return d, abs(d)”",
+            "quote": "what bounds detection is the information in the observation context"
+          },
+          "confidence": 5,
+          "competence_basis": "直接核对协议、中心表述与 oracle 实现，结论限于缺少所需最优性论证。"
+        },
+        {
+          "description": "learned scorer 的失败没有提供一个有效检测器的强否定证据，因而不能增强所有信号在默认 context 下都因信息容量而失效的解释。训练拟合、测试迁移和工具有效性是不同环节；该实例既未覆盖 clean quantile 目标，也",
+          "severity": "major",
+          "type": "evidence",
+          "evidence_anchor": {
+            "anchor_type": "text",
+            "locator": "findings.md §F8 “fails its own sanity and calibration rules”；“the paper's contribution rests on C1”；“with the information-capacity curve explaining why”；README.md §Headline results “Clean-only learned scorer”",
+            "quote": "fails its own sanity and calibration rules"
+          },
+          "confidence": 5,
+          "competence_basis": "作者直接报告门槛失败，并在同一节给出总括推论；未独立重训模型。"
+        }
+      ],
+      "questions": [],
+      "coverage_receipt": {
+        "covers": "strengths",
+        "rows": [
+          {
+            "dimension": "D3",
+            "checked": "固定 DA 的非缺陷与反方说明段",
+            "basis": "正向/非缺陷观察保留于原始 DA 文本，未另造强项编号。"
+          }
+        ]
+      }
+    }
+  ],
+  "consensus": "SPLIT",
+  "revision_roadmap": {
+    "schema_version": "revision-roadmap/1.0",
+    "revision_round": 1,
+    "base_draft_sha256": "0360fd6e94fe6aa0be5d5ac3be1caa317a29510000b472d2c7484d6310e1517d",
+    "block_manifest_sha256": "840dde192b898c027a4fe2a35a8c911f01fd37da745bb7881205c8f4bd7419f4",
+    "items": [
+      {
+        "id": "REV-EIC-W1",
+        "source_refs": [
+          {
+            "seat": "EIC",
+            "channel": "finding",
+            "ordinal": 1,
+            "subclaim_ordinal": 0
+          }
+        ],
+        "description": "当前中心主张将受限 oracle 参考扩展为一般信息界限",
+        "reviewer": "EIC",
+        "sub_claim_ids": [
+          "SC-EIC-W1"
+        ],
+        "obligation_class": "must_fix",
+        "severity": "major",
+        "evidence_anchor": {
+          "anchor_type": "text",
+          "locator": "findings.md，Central claim, reconciled — \"what bounds detection is the information\"；F4 最终版 unfiltered mean/median caveat — \"Neither is a bound on a checker that reads the query and the full visible rows.\"",
+          "quote": "what bounds detection is the information"
+        },
+        "confidence": 5,
+        "competence_basis": "当前中心主张与同文件适用范围限定可直接比对。",
+        "cost_scope": {
+          "kind": "section",
+          "locator": "revision_base.md block B0061"
+        },
+        "consequence_if_unaddressed": {
+          "code": "claim_scope_unsupported",
+          "target": {
+            "kind": "section",
+            "locator": "revision_base.md block B0061"
+          }
+        },
+        "target_section": "findings.md，Central claim, reconciled — \"what bounds detection is the information\"；F4 最终版 unfiltered mean/median caveat — \"Neither is a bound on a checker that reads the query and the full visible rows.\"",
+        "suggested_action": "将 oracle 曲线与差值改为指定方法间的经验参考，统一中心结论并删除未经证明的通用信息上界与不可恢复性措辞。",
+        "consensus_level": "SINGLE-VERIFIER",
+        "verification_criteria": "对照该席位的原始证据锚点提供修订或限制说明；保留源数据、门槛及适用范围，不能以预期结果代替已执行分析。",
+        "proposed_targets": [
+          {
+            "block_id": "B0061",
+            "allowed_operations": [
+              "replace_block",
+              "insert_after"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "REV-EIC-W2",
+        "source_refs": [
+          {
+            "seat": "EIC",
+            "channel": "finding",
+            "ordinal": 2,
+            "subclaim_ordinal": 0
+          }
+        ],
+        "description": "最终领域增量尚缺近邻工作对照",
+        "reviewer": "EIC",
+        "sub_claim_ids": [
+          "SC-EIC-W2"
+        ],
+        "obligation_class": "must_fix",
+        "severity": "major",
+        "evidence_anchor": {
+          "anchor_type": "absence",
+          "locator": "提交材料的贡献定位",
+          "absence_scope": "将最终贡献逐项对照最近工作的研究单位、污染、可见证据操纵、信号及结论范围的明确说明",
+          "check_performed": "README.md、findings.md 当前贡献段、research-state.yaml 的 literature 与 open_problems、docs/references_verified.bib 及原源 program.md"
+        },
+        "confidence": 4,
+        "competence_basis": "能检查材料是否建立比较；未联网或阅读所列文献全文。",
+        "cost_scope": {
+          "kind": "section",
+          "locator": "revision_base.md block B0018"
+        },
+        "consequence_if_unaddressed": {
+          "code": "claim_scope_unsupported",
+          "target": {
+            "kind": "section",
+            "locator": "revision_base.md block B0018"
+          }
+        },
+        "target_section": "提交材料的贡献定位",
+        "suggested_action": "以原文建立最近邻比较表，明确研究新增的经验问题，撤回尚未建立的首创性与机制主张。",
+        "consensus_level": "SINGLE-VERIFIER",
+        "verification_criteria": "对照该席位的原始证据锚点提供修订或限制说明；保留源数据、门槛及适用范围，不能以预期结果代替已执行分析。",
+        "proposed_targets": [
+          {
+            "block_id": "B0018",
+            "allowed_operations": [
+              "replace_block",
+              "insert_after"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "REV-EIC-W3",
+        "source_refs": [
+          {
+            "seat": "EIC",
+            "channel": "finding",
+            "ordinal": 3,
+            "subclaim_ordinal": 0
+          }
+        ],
+        "description": "失败 sanity 的学习器仍进入概括性无效结论",
+        "reviewer": "EIC",
+        "sub_claim_ids": [
+          "SC-EIC-W3"
+        ],
+        "obligation_class": "must_fix",
+        "severity": "major",
+        "evidence_anchor": {
+          "anchor_type": "text",
+          "locator": "findings.md，F8 标题与 Paper consequence — \"fails its own sanity and calibration rules\"；\"every signal, learned or not, is at chance under the default observation context\"",
+          "quote": "fails its own sanity and calibration rules"
+        },
+        "confidence": 5,
+        "competence_basis": "有效性门槛与贡献推论在同一条目中可比。",
+        "cost_scope": {
+          "kind": "section",
+          "locator": "revision_base.md block B0080"
+        },
+        "consequence_if_unaddressed": {
+          "code": "claim_scope_unsupported",
+          "target": {
+            "kind": "section",
+            "locator": "revision_base.md block B0080"
+          }
+        },
+        "target_section": "findings.md，F8 标题与 Paper consequence — \"fails its own sanity and calibration rules\"；\"every signal, learned or not, is at chance under the default observation context\"",
+        "suggested_action": "按 sanity 与校准状态分层报告，将 learned scorer 定位为该训练配置未形成可用检测器，避免家族普遍无效推论。",
+        "consensus_level": "SINGLE-VERIFIER",
+        "verification_criteria": "对照该席位的原始证据锚点提供修订或限制说明；保留源数据、门槛及适用范围，不能以预期结果代替已执行分析。",
+        "proposed_targets": [
+          {
+            "block_id": "B0080",
+            "allowed_operations": [
+              "replace_block",
+              "insert_after"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "REV-EIC-W4",
+        "source_refs": [
+          {
+            "seat": "EIC",
+            "channel": "finding",
+            "ordinal": 4,
+            "subclaim_ordinal": 0
+          }
+        ],
+        "description": "修正段的数值范围仍未同步",
+        "reviewer": "EIC",
+        "sub_claim_ids": [
+          "SC-EIC-W4"
+        ],
+        "obligation_class": "should_fix",
+        "severity": "minor",
+        "evidence_anchor": {
+          "anchor_type": "table",
+          "locator": "findings.md，F5/F6/F7 correction 的 Within-table AUROC before -> after 表，4B T0_agent 行 0a=0.579，与随后 What changes in the text 中关于 0d 与 0a 在所有条件均不超过 0.56 的陈述"
+        },
+        "confidence": 5,
+        "competence_basis": "同一修正段可直接核对表值与摘要。",
+        "cost_scope": {
+          "kind": "section",
+          "locator": "revision_base.md block B0018"
+        },
+        "consequence_if_unaddressed": {
+          "code": "reader_traceability_reduced",
+          "target": {
+            "kind": "section",
+            "locator": "revision_base.md block B0018"
+          }
+        },
+        "target_section": "findings.md，F5/F6/F7 correction 的 Within-table AUROC before -> after 表，4B T0_agent 行 0a=0.579，与随后 What changes in the text 中关于 0d 与 0a 在所有条件均不超过 0.56 的陈述",
+        "suggested_action": "按实际暴露、协议条件和支持集核对当前摘要数值范围，区分低判别表现与严格无信息结论。",
+        "consensus_level": "SINGLE-VERIFIER",
+        "verification_criteria": "对照该席位的原始证据锚点提供修订或限制说明；保留源数据、门槛及适用范围，不能以预期结果代替已执行分析。",
+        "proposed_targets": [
+          {
+            "block_id": "B0018",
+            "allowed_operations": [
+              "replace_block",
+              "insert_after"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "REV-EIC-W5",
+        "source_refs": [
+          {
+            "seat": "EIC",
+            "channel": "finding",
+            "ordinal": 5,
+            "subclaim_ordinal": 0
+          }
+        ],
+        "description": "全称归档承诺超过 Qwen pilot 的原始材料覆盖",
+        "reviewer": "EIC",
+        "sub_claim_ids": [
+          "SC-EIC-W5"
+        ],
+        "obligation_class": "should_fix",
+        "severity": "minor",
+        "evidence_anchor": {
+          "anchor_type": "text",
+          "locator": "README.md，归档承诺 — \"All agent trajectories and scored events are committed\"；findings.md，F10 addendum clarification，Audit scope — \"Qwen 0/72 raw replies present in this repository.\"",
+          "quote": "All agent trajectories and scored events are committed"
+        },
+        "confidence": 4,
+        "competence_basis": "缺口由提交材料披露；未逐个审计响应目录。",
+        "cost_scope": {
+          "kind": "section",
+          "locator": "revision_base.md block B0013"
+        },
+        "consequence_if_unaddressed": {
+          "code": "reader_traceability_reduced",
+          "target": {
+            "kind": "section",
+            "locator": "revision_base.md block B0013"
+          }
+        },
+        "target_section": "README.md，归档承诺 — \"All agent trajectories and scored events are committed\"；findings.md，F10 addendum clarification，Audit scope — \"Qwen 0/72 raw replies present in this repository.\"",
+        "suggested_action": "从既有记录补齐 Qwen 原始回复与版本；无法取回则明确仅 scored/config 层可核验并收缩行为主张。",
+        "consensus_level": "SINGLE-VERIFIER",
+        "verification_criteria": "对照该席位的原始证据锚点提供修订或限制说明；保留源数据、门槛及适用范围，不能以预期结果代替已执行分析。",
+        "proposed_targets": [
+          {
+            "block_id": "B0013",
+            "allowed_operations": [
+              "replace_block",
+              "insert_after"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "REV-EIC-W6",
+        "source_refs": [
+          {
+            "seat": "EIC",
+            "channel": "finding",
+            "ordinal": 6,
+            "subclaim_ordinal": 0
+          }
+        ],
+        "description": "当前假设索引混用旧门槛与更新结果",
+        "reviewer": "EIC",
+        "sub_claim_ids": [
+          "SC-EIC-W6"
+        ],
+        "obligation_class": "should_fix",
+        "severity": "minor",
+        "evidence_anchor": {
+          "anchor_type": "text",
+          "locator": "research-state.yaml，H1—H4 状态及 G1 statement — \"status: pending\"；\"PILOT GATE: observation failures >= 15% of all failures in paired runs\"",
+          "quote": "status: pending"
+        },
+        "confidence": 5,
+        "competence_basis": "可与 A-P1、F7、F8 更新直接对应。",
+        "cost_scope": {
+          "kind": "section",
+          "locator": "revision_base.md block B0284"
+        },
+        "consequence_if_unaddressed": {
+          "code": "reader_traceability_reduced",
+          "target": {
+            "kind": "section",
+            "locator": "revision_base.md block B0284"
+          }
+        },
+        "target_section": "research-state.yaml，H1—H4 状态及 G1 statement — \"status: pending\"；\"PILOT GATE: observation failures >= 15% of all failures in paired runs\"",
+        "suggested_action": "建立假设版本、统计量、模型/tier、支持集与完成状态矩阵，保留旧协议并明确替代关系。",
+        "consensus_level": "SINGLE-VERIFIER",
+        "verification_criteria": "对照该席位的原始证据锚点提供修订或限制说明；保留源数据、门槛及适用范围，不能以预期结果代替已执行分析。",
+        "proposed_targets": [
+          {
+            "block_id": "B0284",
+            "allowed_operations": [
+              "replace_block",
+              "insert_after"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "REV-R1-W1",
+        "source_refs": [
+          {
+            "seat": "R1",
+            "channel": "finding",
+            "ordinal": 1,
+            "subclaim_ordinal": 0
+          }
+        ],
+        "description": "0o* 的得分差仍被解释为信息上界与不可恢复知识",
+        "reviewer": "R1",
+        "sub_claim_ids": [
+          "SC-R1-W1"
+        ],
+        "obligation_class": "must_fix",
+        "severity": "major",
+        "evidence_anchor": {
+          "anchor_type": "text",
+          "locator": "findings.md，Central claim, reconciled，“what bounds detection is the information in the observation context”；同段，“the part no context-limited checker can recover”。",
+          "quote": "what bounds detection is the information in the observation context"
+        },
+        "confidence": 5,
+        "competence_basis": "统计判别与基准构造的直接方法学判断。",
+        "cost_scope": {
+          "kind": "section",
+          "locator": "revision_base.md block B0018"
+        },
+        "consequence_if_unaddressed": {
+          "code": "claim_scope_unsupported",
+          "target": {
+            "kind": "section",
+            "locator": "revision_base.md block B0018"
+          }
+        },
+        "target_section": "findings.md，Central claim, reconciled，“what bounds detection is the information in the observation context”；同段，“the part no context-limited checker can recover”。",
+        "suggested_action": "将 oracle 参考与两项经验差值的解释限定到实际得分和信息条件，不保留未证明的最优性/信息分解。",
+        "consensus_level": "SINGLE-VERIFIER",
+        "verification_criteria": "对照该席位的原始证据锚点提供修订或限制说明；保留源数据、门槛及适用范围，不能以预期结果代替已执行分析。",
+        "proposed_targets": [
+          {
+            "block_id": "B0018",
+            "allowed_operations": [
+              "replace_block",
+              "insert_after"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "REV-R1-W2",
+        "source_refs": [
+          {
+            "seat": "R1",
+            "channel": "finding",
+            "ordinal": 2,
+            "subclaim_ordinal": 0
+          }
+        ],
+        "description": "H1 的主切片和决策规则没有唯一的版本账",
+        "reviewer": "R1",
+        "sub_claim_ids": [
+          "SC-R1-W2"
+        ],
+        "obligation_class": "must_fix",
+        "severity": "major",
+        "evidence_anchor": {
+          "anchor_type": "text",
+          "locator": "PREREGISTRATION.md，A-P4，“H1 = token entropy (1) and verbalized (3) separately, subtle bin, T1”；A-P4b，“H1 statistic unchanged”。",
+          "quote": "H1 = token entropy (1) and verbalized (3) separately, subtle bin, T1"
+        },
+        "confidence": 5,
+        "competence_basis": "预定估计对象与实际评分脚本可直接比对。",
+        "cost_scope": {
+          "kind": "re_analysis",
+          "locator": "revision_base.md block B0215"
+        },
+        "consequence_if_unaddressed": {
+          "code": "claim_scope_unsupported",
+          "target": {
+            "kind": "section",
+            "locator": "revision_base.md block B0215"
+          }
+        },
+        "target_section": "PREREGISTRATION.md，A-P4，“H1 = token entropy (1) and verbalized (3) separately, subtle bin, T1”；A-P4b，“H1 statistic unchanged”。",
+        "suggested_action": "按模型采集时间列出 subtle/P+S 与 AUPRC/AUROC 规则版本；重分析既有分数补齐原 subtle 命题，避免回填确认性结论。",
+        "consensus_level": "SINGLE-VERIFIER",
+        "verification_criteria": "对照该席位的原始证据锚点提供修订或限制说明；保留源数据、门槛及适用范围，不能以预期结果代替已执行分析。",
+        "proposed_targets": [
+          {
+            "block_id": "B0215",
+            "allowed_operations": [
+              "replace_block",
+              "insert_after"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "REV-R1-W3",
+        "source_refs": [
+          {
+            "seat": "R1",
+            "channel": "finding",
+            "ordinal": 3,
+            "subclaim_ordinal": 0
+          }
+        ],
+        "description": "学习 scorer 的相对比较缺少预定共同支持集差值",
+        "reviewer": "R1",
+        "sub_claim_ids": [
+          "SC-R1-W3"
+        ],
+        "obligation_class": "must_fix",
+        "severity": "major",
+        "evidence_anchor": {
+          "anchor_type": "absence",
+          "locator": "findings.md F8 及 experiments/scorer/score_scorer.py 的结果输出",
+          "absence_scope": "A-P3d/P5 指定的共同支持集上 AUROC_7−max(AUROC_0d,AUROC_0r_log) 及配对表级区间",
+          "check_performed": "完整 Phase2 材料中的 F8、2026-11-07 更正表、P5 和 score_scorer.py 全部比较输出。"
+        },
+        "confidence": 5,
+        "competence_basis": "配对性能比较及缺失支持集审查。",
+        "cost_scope": {
+          "kind": "re_analysis",
+          "locator": "revision_base.md block B0018"
+        },
+        "consequence_if_unaddressed": {
+          "code": "claim_scope_unsupported",
+          "target": {
+            "kind": "section",
+            "locator": "revision_base.md block B0018"
+          }
+        },
+        "target_section": "findings.md F8 及 experiments/scorer/score_scorer.py 的结果输出",
+        "suggested_action": "补齐预定共同支持集的配对比较，或将 P5 收缩为未过自身门槛、未建立增益，不声称已完成相对性能检验。",
+        "consensus_level": "SINGLE-VERIFIER",
+        "verification_criteria": "对照该席位的原始证据锚点提供修订或限制说明；保留源数据、门槛及适用范围，不能以预期结果代替已执行分析。",
+        "proposed_targets": [
+          {
+            "block_id": "B0018",
+            "allowed_operations": [
+              "replace_block",
+              "insert_after"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "REV-R1-W4",
+        "source_refs": [
+          {
+            "seat": "R1",
+            "channel": "finding",
+            "ordinal": 4,
+            "subclaim_ordinal": 0
+          }
+        ],
+        "description": "scorer 的常数表处理仍保留已披露的旧错误",
+        "reviewer": "R1",
+        "sub_claim_ids": [
+          "SC-R1-W4"
+        ],
+        "obligation_class": "should_fix",
+        "severity": "minor",
+        "evidence_anchor": {
+          "anchor_type": "text",
+          "locator": "experiments/scorer/score_scorer.py，auc 局部函数，“h[c].nunique() < 2”；findings.md，2026-11-07 correction，“Constant scores dropped instead of scored 0.5.”",
+          "quote": "h[c].nunique() < 2"
+        },
+        "confidence": 5,
+        "competence_basis": "代码条件与已明确的评分语义直接对应。",
+        "cost_scope": {
+          "kind": "re_analysis",
+          "locator": "revision_base.md block B0018"
+        },
+        "consequence_if_unaddressed": {
+          "code": "reader_traceability_reduced",
+          "target": {
+            "kind": "section",
+            "locator": "revision_base.md block B0018"
+          }
+        },
+        "target_section": "experiments/scorer/score_scorer.py，auc 局部函数，“h[c].nunique() < 2”；findings.md，2026-11-07 correction，“Constant scores dropped instead of scored 0.5.”",
+        "suggested_action": "统一 scorer 对双类常数分数的 0.5 语义，并用既有分数核对受影响表数和估计值。",
+        "consensus_level": "SINGLE-VERIFIER",
+        "verification_criteria": "对照该席位的原始证据锚点提供修订或限制说明；保留源数据、门槛及适用范围，不能以预期结果代替已执行分析。",
+        "proposed_targets": [
+          {
+            "block_id": "B0018",
+            "allowed_operations": [
+              "replace_block",
+              "insert_after"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "REV-R1-W5",
+        "source_refs": [
+          {
+            "seat": "R1",
+            "channel": "finding",
+            "ordinal": 5,
+            "subclaim_ordinal": 0
+          }
+        ],
+        "description": "Qwen 固定返回 pilot 的原始回复缺档限制主要行为对照审计",
+        "reviewer": "R1",
+        "sub_claim_ids": [
+          "SC-R1-W5"
+        ],
+        "obligation_class": "must_fix",
+        "severity": "major",
+        "evidence_anchor": {
+          "anchor_type": "text",
+          "locator": "findings.md，F10 addendum clarification，“Qwen 0/72 raw replies present in this repository.”",
+          "quote": "Qwen 0/72 raw replies present in this repository."
+        },
+        "confidence": 5,
+        "competence_basis": "原始测量与派生评分可追溯性的审计判断。",
+        "cost_scope": {
+          "kind": "section",
+          "locator": "revision_base.md block B0121"
+        },
+        "consequence_if_unaddressed": {
+          "code": "claim_scope_unsupported",
+          "target": {
+            "kind": "section",
+            "locator": "revision_base.md block B0121"
+          }
+        },
+        "target_section": "findings.md，F10 addendum clarification，“Qwen 0/72 raw replies present in this repository.”",
+        "suggested_action": "归档既有 Qwen 原始回复与运行版本并按冻结解析器复核；无法取回则降为原始审计未完成的辅助结果，不重新生成替代。",
+        "consensus_level": "SINGLE-VERIFIER",
+        "verification_criteria": "对照该席位的原始证据锚点提供修订或限制说明；保留源数据、门槛及适用范围，不能以预期结果代替已执行分析。",
+        "proposed_targets": [
+          {
+            "block_id": "B0121",
+            "allowed_operations": [
+              "replace_block",
+              "insert_after"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "REV-R1-W6",
+        "source_refs": [
+          {
+            "seat": "R1",
+            "channel": "finding",
+            "ordinal": 6,
+            "subclaim_ordinal": 0
+          }
+        ],
+        "description": "当前入口摘要仍把限定的低表现写成普遍不可分",
+        "reviewer": "R1",
+        "sub_claim_ids": [
+          "SC-R1-W6"
+        ],
+        "obligation_class": "should_fix",
+        "severity": "minor",
+        "evidence_anchor": {
+          "anchor_type": "text",
+          "locator": "README.md，Reading，“nothing tested separates poisoned from clean returns”；findings.md，2026-11-07 correction，“0d and 0a <= 0.56 everywhere”。",
+          "quote": "nothing tested separates poisoned from clean returns"
+        },
+        "confidence": 5,
+        "competence_basis": "当前摘要与同包更正表的直接一致性核查。",
+        "cost_scope": {
+          "kind": "section",
+          "locator": "revision_base.md block B0003"
+        },
+        "consequence_if_unaddressed": {
+          "code": "reader_traceability_reduced",
+          "target": {
+            "kind": "section",
+            "locator": "revision_base.md block B0003"
+          }
+        },
+        "target_section": "README.md，Reading，“nothing tested separates poisoned from clean returns”；findings.md，2026-11-07 correction，“0d and 0a <= 0.56 everywhere”。",
+        "suggested_action": "统一入口摘要与更正表的具体范围、覆盖和门槛状态，避免将近随机表现写成所有方法不可分。",
+        "consensus_level": "SINGLE-VERIFIER",
+        "verification_criteria": "对照该席位的原始证据锚点提供修订或限制说明；保留源数据、门槛及适用范围，不能以预期结果代替已执行分析。",
+        "proposed_targets": [
+          {
+            "block_id": "B0003",
+            "allowed_operations": [
+              "replace_block",
+              "insert_after"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "REV-R2-W1",
+        "source_refs": [
+          {
+            "seat": "R2",
+            "channel": "finding",
+            "ordinal": 1,
+            "subclaim_ordinal": 0
+          }
+        ],
+        "description": "0o* 是特定 oracle 分数，尚不能解释为可达信息上界或纯估计器损失",
+        "reviewer": "R2",
+        "sub_claim_ids": [
+          "SC-R2-W1"
+        ],
+        "obligation_class": "must_fix",
+        "severity": "major",
+        "evidence_anchor": {
+          "anchor_type": "text",
+          "locator": "findings.md，F4''' — \"the achievable ceiling for a k-row checker using the template statistic is ~0.73 at five rows\"；Central claim, reconciled — \"the part no context-limited checker can recover\"",
+          "quote": "the achievable ceiling for a k-row checker using the template statistic is ~0.73 at five rows"
+        },
+        "confidence": 5,
+        "competence_basis": "已核对 A-P3d 定义及 zeroparam.py 中 oracle_law、score_0o_star 的实际计算。",
+        "cost_scope": {
+          "kind": "section",
+          "locator": "revision_base.md block B0018"
+        },
+        "consequence_if_unaddressed": {
+          "code": "claim_scope_unsupported",
+          "target": {
+            "kind": "section",
+            "locator": "revision_base.md block B0018"
+          }
+        },
+        "target_section": "findings.md，F4''' — \"the achievable ceiling for a k-row checker using the template statistic is ~0.73 at five rows\"；Central claim, reconciled — \"the part no context-limited checker can recover\"",
+        "suggested_action": "用任务专属、Monte Carlo 的 oracle reference 描述曲线，将差值解释为程序间经验差异并统一所有入口。",
+        "consensus_level": "SINGLE-VERIFIER",
+        "verification_criteria": "对照该席位的原始证据锚点提供修订或限制说明；保留源数据、门槛及适用范围，不能以预期结果代替已执行分析。",
+        "proposed_targets": [
+          {
+            "block_id": "B0018",
+            "allowed_operations": [
+              "replace_block",
+              "insert_after"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "REV-R2-W2",
+        "source_refs": [
+          {
+            "seat": "R2",
+            "channel": "finding",
+            "ordinal": 2,
+            "subclaim_ordinal": 0
+          }
+        ],
+        "description": "最近邻工作的模型条件被误述，现有定位尚未辨清已有发现与本研究增量",
+        "reviewer": "R2",
+        "sub_claim_ids": [
+          "SC-R2-W2"
+        ],
+        "obligation_class": "must_fix",
+        "severity": "major",
+        "evidence_anchor": {
+          "anchor_type": "text",
+          "locator": "research-state.yaml，literature.key_papers，2608.22676 条目 — \"nearest prior: 2 signals at return boundary, closed model, 1 domain\"",
+          "quote": "nearest prior: 2 signals at return boundary, closed model, 1 domain"
+        },
+        "confidence": 5,
+        "competence_basis": "已核对最近邻官方 v2 全文的方法定义、模型说明及 ToxicBench 的受控证据实验。",
+        "cost_scope": {
+          "kind": "section",
+          "locator": "revision_base.md block B0282"
+        },
+        "consequence_if_unaddressed": {
+          "code": "claim_scope_unsupported",
+          "target": {
+            "kind": "section",
+            "locator": "revision_base.md block B0282"
+          }
+        },
+        "target_section": "research-state.yaml，literature.key_papers，2608.22676 条目 — \"nearest prior: 2 signals at return boundary, closed model, 1 domain\"",
+        "suggested_action": "纠正最近邻工作实际模型与信号定义，按证据访问、抽样轴和研究单位建立原文支撑的增量对照。",
+        "consensus_level": "SINGLE-VERIFIER",
+        "verification_criteria": "对照该席位的原始证据锚点提供修订或限制说明；保留源数据、门槛及适用范围，不能以预期结果代替已执行分析。",
+        "proposed_targets": [
+          {
+            "block_id": "B0282",
+            "allowed_operations": [
+              "replace_block",
+              "insert_after"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "REV-R2-W3",
+        "source_refs": [
+          {
+            "seat": "R2",
+            "channel": "finding",
+            "ordinal": 3,
+            "subclaim_ordinal": 0
+          }
+        ],
+        "description": "零挑战的标题措辞仍比所用行为指标能支持的范围更宽",
+        "reviewer": "R2",
+        "sub_claim_ids": [
+          "SC-R2-W3"
+        ],
+        "obligation_class": "should_fix",
+        "severity": "minor",
+        "evidence_anchor": {
+          "anchor_type": "text",
+          "locator": "README.md，“Headline results”第一行 — \"0 challenges in 3,780 trajectories\"",
+          "quote": "Headline results"
+        },
+        "confidence": 4,
+        "competence_basis": "已结合 F5–F9 的指标说明与官方行为测量论文核查概念范围，未逐条人工重标全部 Qwen 轨迹。",
+        "cost_scope": {
+          "kind": "section",
+          "locator": "revision_base.md block B0007"
+        },
+        "consequence_if_unaddressed": {
+          "code": "reader_traceability_reduced",
+          "target": {
+            "kind": "section",
+            "locator": "revision_base.md block B0007"
+          }
+        },
+        "target_section": "README.md，“Headline results”第一行 — \"0 challenges in 3,780 trajectories\"",
+        "suggested_action": "将零挑战改成所用行为检测器的零标记结果，明确分母与人工标注状态。",
+        "consensus_level": "SINGLE-VERIFIER",
+        "verification_criteria": "对照该席位的原始证据锚点提供修订或限制说明；保留源数据、门槛及适用范围，不能以预期结果代替已执行分析。",
+        "proposed_targets": [
+          {
+            "block_id": "B0007",
+            "allowed_operations": [
+              "replace_block",
+              "insert_after"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "REV-R2-W4",
+        "source_refs": [
+          {
+            "seat": "R2",
+            "channel": "finding",
+            "ordinal": 4,
+            "subclaim_ordinal": 0
+          }
+        ],
+        "description": "学习型 scorer 的失败解释仍把一种相容诊断写得过于确定",
+        "reviewer": "R2",
+        "sub_claim_ids": [
+          "SC-R2-W4"
+        ],
+        "obligation_class": "should_fix",
+        "severity": "minor",
+        "evidence_anchor": {
+          "anchor_type": "text",
+          "locator": "findings.md，F8 — \"learns the scale of a column, not the statistic to within 10-50%\"",
+          "quote": "learns the scale of a column, not the statistic to within 10-50%"
+        },
+        "confidence": 4,
+        "competence_basis": "判断基于 F8 的 held-out 预测误差、coverage 与 sanity 结果，未复训或做表示探针。",
+        "cost_scope": {
+          "kind": "section",
+          "locator": "revision_base.md block B0018"
+        },
+        "consequence_if_unaddressed": {
+          "code": "reader_traceability_reduced",
+          "target": {
+            "kind": "section",
+            "locator": "revision_base.md block B0018"
+          }
+        },
+        "target_section": "findings.md，F8 — \"learns the scale of a column, not the statistic to within 10-50%\"",
+        "suggested_action": "将 learned scorer 的内部表示解释改成受误差/覆盖观测支持的行为诊断，保留其他失败原因作为候选。",
+        "consensus_level": "SINGLE-VERIFIER",
+        "verification_criteria": "对照该席位的原始证据锚点提供修订或限制说明；保留源数据、门槛及适用范围，不能以预期结果代替已执行分析。",
+        "proposed_targets": [
+          {
+            "block_id": "B0018",
+            "allowed_operations": [
+              "replace_block",
+              "insert_after"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "REV-R3-W1",
+        "source_refs": [
+          {
+            "seat": "R3",
+            "channel": "finding",
+            "ordinal": 1,
+            "subclaim_ordinal": 0
+          }
+        ],
+        "description": "当前中心结论仍保留过强的可达上界措辞",
+        "reviewer": "R3",
+        "sub_claim_ids": [
+          "SC-R3-W1"
+        ],
+        "obligation_class": "should_fix",
+        "severity": "minor",
+        "evidence_anchor": {
+          "anchor_type": "text",
+          "locator": "findings.md，Central claim, reconciled，“the part no context-limited checker can recover”",
+          "quote": "the part no context-limited checker can recover"
+        },
+        "confidence": 5,
+        "competence_basis": "可直接比较当前中心结论与同文件限定说明。",
+        "cost_scope": {
+          "kind": "section",
+          "locator": "revision_base.md block B0018"
+        },
+        "consequence_if_unaddressed": {
+          "code": "reader_traceability_reduced",
+          "target": {
+            "kind": "section",
+            "locator": "revision_base.md block B0018"
+          }
+        },
+        "target_section": "findings.md，Central claim, reconciled，“the part no context-limited checker can recover”",
+        "suggested_action": "将当前中心结论统一到已测核验器、受限参考、抽样规则与选定 matched20 样本，不保留一般信息界限。",
+        "consensus_level": "SINGLE-VERIFIER",
+        "verification_criteria": "对照该席位的原始证据锚点提供修订或限制说明；保留源数据、门槛及适用范围，不能以预期结果代替已执行分析。",
+        "proposed_targets": [
+          {
+            "block_id": "B0018",
+            "allowed_operations": [
+              "replace_block",
+              "insert_after"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "REV-R3-W2",
+        "source_refs": [
+          {
+            "seat": "R3",
+            "channel": "finding",
+            "ordinal": 2,
+            "subclaim_ordinal": 0
+          }
+        ],
+        "description": "Qwen 固定返回试验的原始回复尚不能独立审计",
+        "reviewer": "R3",
+        "sub_claim_ids": [
+          "SC-R3-W2"
+        ],
+        "obligation_class": "should_fix",
+        "severity": "minor",
+        "evidence_anchor": {
+          "anchor_type": "absence",
+          "locator": "data/ours/context_pilot/20261107/qwen3-8b/",
+          "absence_scope": "72条原始回复及关联运行信息",
+          "check_performed": "目录完整文件清单、scored_responses.json与config.json的存在情况、findings.md的F10 addendum clarification"
+        },
+        "confidence": 5,
+        "competence_basis": "只读文件清单与作者明确披露相互印证。",
+        "cost_scope": {
+          "kind": "section",
+          "locator": "revision_base.md block B0018"
+        },
+        "consequence_if_unaddressed": {
+          "code": "reader_traceability_reduced",
+          "target": {
+            "kind": "section",
+            "locator": "revision_base.md block B0018"
+          }
+        },
+        "target_section": "data/ours/context_pilot/20261107/qwen3-8b/",
+        "suggested_action": "补齐既有 Qwen 原始回复及版本或保留仅评分层可核验的限制，避免扩写理由/格式主张。",
+        "consensus_level": "SINGLE-VERIFIER",
+        "verification_criteria": "对照该席位的原始证据锚点提供修订或限制说明；保留源数据、门槛及适用范围，不能以预期结果代替已执行分析。",
+        "proposed_targets": [
+          {
+            "block_id": "B0018",
+            "allowed_operations": [
+              "replace_block",
+              "insert_after"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "REV-R3-W3",
+        "source_refs": [
+          {
+            "seat": "R3",
+            "channel": "finding",
+            "ordinal": 3,
+            "subclaim_ordinal": 0
+          }
+        ],
+        "description": "恢复与错误重试的摘要还缺少时间顺序",
+        "reviewer": "R3",
+        "sub_claim_ids": [
+          "SC-R3-W3"
+        ],
+        "obligation_class": "should_fix",
+        "severity": "minor",
+        "evidence_anchor": {
+          "anchor_type": "dataset",
+          "locator": "data/ours/p4/gemini-3.8-flash/T1/toxic_seed0.jsonl，SHA256 bd160cc5c29afc0654d27394235161cfebf8f713da9884311ec76e9f13d0d757，既有audit_gemini_recovery.py的恢复轨迹时序重计"
+        },
+        "confidence": 5,
+        "competence_basis": "直接对已保存轨迹执行既有只读重计脚本。",
+        "cost_scope": {
+          "kind": "section",
+          "locator": "revision_base.md block B0018"
+        },
+        "consequence_if_unaddressed": {
+          "code": "reader_traceability_reduced",
+          "target": {
+            "kind": "section",
+            "locator": "revision_base.md block B0018"
+          }
+        },
+        "target_section": "data/ours/p4/gemini-3.8-flash/T1/toxic_seed0.jsonl，SHA256 bd160cc5c29afc0654d27394235161cfebf8f713da9884311ec76e9f13d0d757，既有audit_gemini_recovery.py的恢复轨迹时序重计",
+        "suggested_action": "在恢复摘要中报告首次后续成功/错误和先成功后错误的时序计数，分开触发、重查、得到真值和恢复。",
+        "consensus_level": "SINGLE-VERIFIER",
+        "verification_criteria": "对照该席位的原始证据锚点提供修订或限制说明；保留源数据、门槛及适用范围，不能以预期结果代替已执行分析。",
+        "proposed_targets": [
+          {
+            "block_id": "B0018",
+            "allowed_operations": [
+              "replace_block",
+              "insert_after"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "REV-R3-W4",
+        "source_refs": [
+          {
+            "seat": "R3",
+            "channel": "finding",
+            "ordinal": 4,
+            "subclaim_ordinal": 0
+          }
+        ],
+        "description": "离线标错尚未连接到完整的运行时动作与成本",
+        "reviewer": "R3",
+        "sub_claim_ids": [
+          "SC-R3-W4"
+        ],
+        "obligation_class": "should_fix",
+        "severity": "minor",
+        "evidence_anchor": {
+          "anchor_type": "absence",
+          "locator": "PREREGISTRATION.md的A-CTX-EVIDENCE Operational decisions及A-CTX-RESAMPLE、F9–F12和所附两份统计报告",
+          "absence_scope": "标错后的动作规则与对应端到端延迟、额外调用和净错误成本对照",
+          "check_performed": "固定flag阈值、误报漏报表、弃答定义、采集usage说明及后续研究计划"
+        },
+        "confidence": 4,
+        "competence_basis": "系统工作流评估能力范围内，未测量部署环境。",
+        "cost_scope": {
+          "kind": "section",
+          "locator": "revision_base.md block B0137"
+        },
+        "consequence_if_unaddressed": {
+          "code": "reader_traceability_reduced",
+          "target": {
+            "kind": "section",
+            "locator": "revision_base.md block B0137"
+          }
+        },
+        "target_section": "PREREGISTRATION.md的A-CTX-EVIDENCE Operational decisions及A-CTX-RESAMPLE、F9–F12和所附两份统计报告",
+        "suggested_action": "补充权限与动作边界说明，将离线计算、保存 usage 和未测部署收益分开；若主张端到端收益再另行测量。",
+        "consensus_level": "SINGLE-VERIFIER",
+        "verification_criteria": "对照该席位的原始证据锚点提供修订或限制说明；保留源数据、门槛及适用范围，不能以预期结果代替已执行分析。",
+        "proposed_targets": [
+          {
+            "block_id": "B0137",
+            "allowed_operations": [
+              "replace_block",
+              "insert_after"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "REV-DA-M1",
+        "source_refs": [
+          {
+            "seat": "DA",
+            "channel": "finding",
+            "ordinal": 1,
+            "subclaim_ordinal": 0
+          }
+        ],
+        "description": "指定 oracle 的经验 AUROC 尚未构成信息上界，分数差值也未被识别为可恢复与不可恢复的信息分解。0o* 仅以有限次全表抽样估计 bias/IQR，再对观察统计量与候选值使用绝对标准化距离；知道这些量不意味着该排序在污染检测问题上最",
+        "reviewer": "DA",
+        "sub_claim_ids": [
+          "SC-DA-M1"
+        ],
+        "obligation_class": "must_fix",
+        "severity": "major",
+        "evidence_anchor": {
+          "anchor_type": "text",
+          "locator": "findings.md §Central claim, reconciled “what bounds detection is the information in the observation context”；PREREGISTRATION.md §A-P3d “not recoverable by any k-row checker”；experiments/zeroparam.py:319–359，oracle_law 与 score_0o_star “return d, abs(d)”",
+          "quote": "what bounds detection is the information in the observation context"
+        },
+        "confidence": 5,
+        "competence_basis": "直接核对协议、中心表述与 oracle 实现，结论限于缺少所需最优性论证。",
+        "cost_scope": {
+          "kind": "section",
+          "locator": "revision_base.md block B0018"
+        },
+        "consequence_if_unaddressed": {
+          "code": "claim_scope_unsupported",
+          "target": {
+            "kind": "section",
+            "locator": "revision_base.md block B0018"
+          }
+        },
+        "target_section": "findings.md §Central claim, reconciled “what bounds detection is the information in the observation context”；PREREGISTRATION.md §A-P3d “not recoverable by any k-row checker”；experiments/zeroparam.py:319–359，oracle_law 与 score_0o_star “return d, abs(d)”",
+        "suggested_action": "将 exact law 改为有限 Monte Carlo 的 bias/spread 参考，将 ceiling/不可恢复/estimator loss 改为指定分数之间的描述性差异；统一 README、F4'''、central claim 与图注。保留更强上界须另给明确可观测量、候选分布与最优排序的证明；成本明显更高，可由作者选择。",
+        "consensus_level": "SINGLE-VERIFIER",
+        "verification_criteria": "对照该席位的原始证据锚点提供修订或限制说明；保留源数据、门槛及适用范围，不能以预期结果代替已执行分析。",
+        "proposed_targets": [
+          {
+            "block_id": "B0018",
+            "allowed_operations": [
+              "replace_block",
+              "insert_after"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "REV-DA-M2",
+        "source_refs": [
+          {
+            "seat": "DA",
+            "channel": "finding",
+            "ordinal": 2,
+            "subclaim_ordinal": 0
+          }
+        ],
+        "description": "learned scorer 的失败没有提供一个有效检测器的强否定证据，因而不能增强所有信号在默认 context 下都因信息容量而失效的解释。训练拟合、测试迁移和工具有效性是不同环节；该实例既未覆盖 clean quantile 目标，也",
+        "reviewer": "DA",
+        "sub_claim_ids": [
+          "SC-DA-M2"
+        ],
+        "obligation_class": "must_fix",
+        "severity": "major",
+        "evidence_anchor": {
+          "anchor_type": "text",
+          "locator": "findings.md §F8 “fails its own sanity and calibration rules”；“the paper's contribution rests on C1”；“with the information-capacity curve explaining why”；README.md §Headline results “Clean-only learned scorer”",
+          "quote": "fails its own sanity and calibration rules"
+        },
+        "confidence": 5,
+        "competence_basis": "作者直接报告门槛失败，并在同一节给出总括推论；未独立重训模型。",
+        "cost_scope": {
+          "kind": "section",
+          "locator": "revision_base.md block B0080"
+        },
+        "consequence_if_unaddressed": {
+          "code": "claim_scope_unsupported",
+          "target": {
+            "kind": "section",
+            "locator": "revision_base.md block B0080"
+          }
+        },
+        "target_section": "findings.md §F8 “fails its own sanity and calibration rules”；“the paper's contribution rests on C1”；“with the information-capacity curve explaining why”；README.md §Headline results “Clean-only learned scorer”",
+        "suggested_action": "从“有效信号检测表现”头条中移出或明确标为 gate-failed diagnostic；把结论限定为此 backbone、训练数据、目标和配置未得到可用 scorer，不据其推断 learned UQ 的一般无效或信息不足机制。修复现有论证无需新训练；若坚持比较一个有效 learned detector，再先独立证明其 sanity 与 held-out coverage 合格。",
+        "consensus_level": "SINGLE-VERIFIER",
+        "verification_criteria": "对照该席位的原始证据锚点提供修订或限制说明；保留源数据、门槛及适用范围，不能以预期结果代替已执行分析。",
+        "proposed_targets": [
+          {
+            "block_id": "B0080",
+            "allowed_operations": [
+              "replace_block",
+              "insert_after"
+            ]
+          }
+        ]
+      }
+    ],
+    "total_items": 22,
+    "obligation_counts": {
+      "must_fix": 11,
+      "should_fix": 11,
+      "consider": 0
+    },
+    "editorial_decision": "Major Revision",
+    "consensus_summary": "保留限定实证结果；修复中心论证与协议/支持集账本。条目按原始席位与发现顺序保存，未将沉默算成共识或按置信度加权。",
+    "dissenting_opinions": [
+      "系统席将残留上界措辞和 Qwen 缺档评为 Minor，方法/领域/编辑席对有关项给出 Major；保留严重度差异，机械维度判决不以置信度覆盖。"
+    ]
+  },
+  "calibration_status": "NOT_CALIBRATED",
+  "review_mode": "reviewer_full",
+  "review_panel_provenance": {
+    "artifact_path": "panel_provenance.json",
+    "artifact_sha256": "6c2c0d56922309845e0271e1402a2d3ef36c7df47a85ce08e076b8e900ac5b2c",
+    "axes": {
+      "blind_to_peer_outputs": "unknown",
+      "fresh_context": true,
+      "human_distinct": false,
+      "model_family_distinct": "unknown",
+      "provider_distinct": "unknown",
+      "role_separated": true
+    },
+    "execution_topology_sha256": "6f0fb039379f2b635cf4b3036c3e5ec02fdd1b2235c546e8b27cae4ffac9b5ac",
+    "fresh_context_scope": "within_panel_attempt_only",
+    "normalized_manifest_sha256": "850a72b16eb8ed6b2906908b073c420f16b5489ccaa2a9e8fd7b46d8ce1ebd0b",
+    "review_mode": "reviewer_full",
+    "schema_version": "review-panel-provenance-carrier/1.0",
+    "status": "valid"
+  }
+}

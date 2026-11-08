@@ -1,0 +1,18 @@
+{
+  "dimension_verdicts": {
+    "D1": "block",
+    "D2": "block",
+    "D3": "block",
+    "D4": "warn",
+    "D5": "warn",
+    "D6": "block"
+  },
+  "fired_conditions": [
+    "F2",
+    "F3",
+    "F5"
+  ],
+  "editorial_decision": "editorial_decision=major_revision",
+  "usable_reports": 5,
+  "da_critical_ids": []
+}

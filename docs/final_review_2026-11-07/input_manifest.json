@@ -1,0 +1,34 @@
+{
+  "snapshot": "f41db2394cf3c4ef628ce36fd8da7e4b73e7ac77",
+  "review_scope": "research artifacts and conclusion claims; no complete paper manuscript found",
+  "review_mode": "full, phase0 only; reviewer execution pending explicit card confirmation",
+  "criteria_binding": "unavailable",
+  "files": {
+    "README.md": "24984da73c5cbf68dcf225d15e7ec24e9d37d194ed49faae6f16d7ca484a3f65",
+    "AGENTS.md": "4c74c1ab219e394addb45efd68dd8761238bd428204bfdad0e157aa42fc2ba8b",
+    "PREREGISTRATION.md": "ac460c89ff92de6515f2defbc1d18fc9957e373fd9f90f89a9ecff7df8494965",
+    "findings.md": "fb5aeccf3dec82b891160448a6a5cd23b476714b7227008916c8f264c19a9c19",
+    "research-state.yaml": "bbe0a7b4bbde98b57215a2932babb5df7d0130a2be42982388c95ed26e4ca1f5",
+    "docs/CONTEXT_PILOT_2026-11-07_gemini.md": "a6bd422c541062ac04eabcc3e15ec61b247b71ccb7d08956ecd766852833f0a4",
+    "docs/CONTEXT_EVIDENCE_2026-11-07.md": "ee852c9bbabb3b0de356a6f5af3184f03bda9d9850d1108afa564150d563425c",
+    "docs/CONTEXT_EVIDENCE_RESAMPLING_2026-11-07.md": "0b68ee360f031e2122fe23e4d285f343fda2ed99930299ff2830a66a30e5382a",
+    "experiments/context_pilot.py": "c2fed770b386f3c234c7be55ea31355fad509cf8c022da22baf5d8f7aaf0e158",
+    "experiments/context_evidence.py": "a27a05e0168e703c0d0e35891de3b2bacd65be5a71bc9a61ec65c41b1fa471ae",
+    "experiments/context_evidence_resample.py": "f297a197b35d13a33c545c4fd0a4498fad99f85dccbdd0ed7e6d716d413afe73",
+    "experiments/zeroparam.py": "2b3c470a0189d96a354b9879a9d3641cccbc2e98b0fc40e7c9a6cdc022a4ac96",
+    "experiments/p4_common.py": "d7c1fc5ebad19534bb0fc04af3f9774e4205b4d8e4a58a07a1e45847b594728e",
+    "data/ours/context_pilot/20261107/gemini-3.8-flash/summary.json": "a1f00f53b7c3730b87c6a9474c0eb1e9b20c498f5b63b898bb26779b53e50f57",
+    "data/ours/context_pilot/20261107/gemini-3.8-flash/config.json": "bda24952a9edc802388ae45014c0309d5118a53f414aa1540b653ce7931bdfe8",
+    "data/ours/context_pilot/20261107/qwen3-8b/summary.json": "429309a44a0f00c859f48c3aa82df9d2680906364fa11654ec63373cd081fb6b",
+    "data/ours/context_pilot/20261107/qwen3-8b/config.json": "1f14a9751faccbe77b214166527874792371aeb1a6110db6cf39fc35f7e81aff",
+    "data/ours/context_evidence/20261107/summary.json": "0dcca2861a369576b9cacc89bf9e6046c6002dad46acd0f9d4d7d79bc6df4926",
+    "data/ours/context_evidence/20261107/config.json": "f24aeacb1fccae78f9e3e46ac609ee942b6b2ef413432e464e4c6d0db566c61b",
+    "data/ours/context_evidence_resample/20261107/summary.json": "43a6c57cfa5a155853f2d3af3f1de22a2fd5bed45fcd2cafd6d2908555f788b6",
+    "data/ours/context_evidence_resample/20261107/config.json": "31d1f8ddc36986b88d292e213e8597136156d32b01e389297e9df3a266a54ebc"
+  },
+  "raw_responses_available": {
+    "gemini_context": 72,
+    "qwen_context": 0
+  },
+  "role_separation_claim": "phase0 field analyst only, no completed panel review"
+}

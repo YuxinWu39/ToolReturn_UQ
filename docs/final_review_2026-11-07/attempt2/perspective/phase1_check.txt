@@ -1,0 +1,3 @@
+[PHASE1-TRIGGER-SHORT: /private/tmp/toolreturn-final-panel-20261107/attempt2/perspective/phase1.md: D4 what_triggers_block has fewer than 8 words]
+[PHASE1-TRIGGER-SHORT: /private/tmp/toolreturn-final-panel-20261107/attempt2/perspective/phase1.md: D4 what_triggers_warn has fewer than 8 words]
+PHASE1-CONFORMANCE: PASS
