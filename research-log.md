@@ -555,3 +555,31 @@ pass. Seven source hashes match and their original files are unchanged. Historic
 prefixes, original five-seat review and all data/ours artifacts remain unchanged.
 Manuscript has no em dash; focused bibliography contains 10 verified entries.
 No new statistical tests were added for prose edits. git diff --check passed.
+
+
+## Step: verify user-reframed manuscript and assess experiment A — 2026-11-08
+
+Source main/origin-main 554b2d0 reviewed without modifying manuscript/code/data.
+Exporter --check passes 25 evidence records, 14 source files, 9 generated tables.
+Recount/inventory verifies 4,410 full-size trajectories (including T1r2 and clean
+replicates), six displayed adoption configurations, and fixed-common-support 0d
+k curve 0.616628->0.839350 on 168 tasks. Flagged pooled/per-k sanity support versus
+within-table/common-task curve support for explicit labeling/verification.
+Existing filtered-mean positive finite queries with >=20 matching finite targets
+number 5/7/8/7/5/5 by Abalone/Auto/Bike/Penguins/Student/Wine; 36 balanced-six is
+not available directly. This is source verification/feasibility inventory, no
+new efficacy estimates or model calls. No preregistration is backfilled.
+
+Report docs/REVIEW_REFRAME_2026-11-08.md distinguishes descriptive adoption from
+preview causality, selected-program curves from universal information bounds,
+monitor motivation from measured system gain, and missing intrinsic sanity from
+a failed learned-scorer gate. Five added arXiv titles/authors checked on primary
+records; runtime monitoring already has direct prior art. No acceptance probability.
+
+Experiment A is a design recommendation, not locked protocol or live authorization.
+Suggest 30 balanced queries or predeclared new queries; paired raw/check/code arms,
+explicit row-draw versus completion replication, clean acceptance and abstention,
+actual request/cost accounting, and no recovered-truth claim from a flag alone.
+No API requests, new training, publication, manuscript rewrite or push.
+Verdict: reframe direction supported; empirical and system-claim corrections
+required before final manuscript / new-experiment implementation.
