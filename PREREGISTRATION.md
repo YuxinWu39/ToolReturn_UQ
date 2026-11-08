@@ -962,3 +962,22 @@ truth guarantees. Repeats are not extra queries/tables. No interim efficacy stop
 or sample expansion; stop on auth, invalid config, isolation failure or persistent
 transport failure, preserving all records. Results do not identify verification intent,
 internal mechanism, superiority of runtime placement or end-to-end recovery benefit.
+
+
+### A-MONITOR-INTERVENTION engineering amendment (2026-11-08; after excluded synthetic smoke, before main inputs/outcomes)
+
+All six synthetic smoke cells completed, with two real Python executions; no primary
+query was sent to Gemini. Smoke used eight successful model requests, no request
+errors. For feasible collection time, main concurrency is four workers (rather than
+the original two), with permitted reduction to two or one on rate errors. The 810
+trajectory roster, sampling, tokens, tool budgets, model, outcomes, analysis and
+stopping criteria are unchanged. This is an engineering change based on synthetic
+transport timing, not outcome selection. Record the new runner hashes before main
+freeze. Smoke files retain their original code hashes/version and are never rewritten.
+
+Each HTTP attempt is checkpointed before transmission with an in-flight status. A
+process interruption may leave its provider outcome unknown; retain and label that
+state on resume and count the attempt, rather than imply it never happened. Existing
+max-three-attempt limit applies across resume. Report partial/failed records' costs
+separately and retain a clearly interim completed-common-cell sensitivity if collection
+is incomplete; no final primary decision until the entire roster is completed.
